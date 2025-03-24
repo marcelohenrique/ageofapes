@@ -194,7 +194,8 @@ function createRelic(relic, grid) {
     relicElement.addEventListener("click", (event) => {
         // Prevent moving the relic if the click is on the stars
         if (!event.target.classList.contains("stars")) {
-            moveRelic(relicElement, grid);
+            const targetGrid = grid.id == availableRelicsGrid.id ? selectedRelicsGrid : availableRelicsGrid;
+            moveRelic(relicElement, targetGrid);
         }
     });
 
