@@ -1,4 +1,4 @@
-/* Estilos personalizados */
+/* Custom styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -94,39 +94,39 @@ h1 {
     font-weight: bold;
 }
 
-/* Estilos para o card de placeholder */
+/* Styles for the placeholder card */
 .placeholder-card .relic.placeholder {
-    background-color: #e9ecef; /* Cor de fundo mais clara */
-    opacity: 0.7; /* Efeito de transparência */
-    cursor: default; /* Cursor padrão (não clicável) */
+    background-color: #e9ecef; /* Lighter background color */
+    opacity: 0.7; /* Transparency effect */
+    cursor: default; /* Default cursor (not clickable) */
 }
 
 .placeholder-card .placeholder-circle {
     width: 100px;
     height: 100px;
-    background-color: #ccc; /* Cor do círculo */
-    border-radius: 50%; /* Transforma em um círculo */
+    background-color: #ccc; /* Circle color */
+    border-radius: 50%; /* Make it a circle */
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 10px auto; /* Centraliza e adiciona margem abaixo */
+    margin: 0 auto 10px auto; /* Center and add margin below */
 }
 
 .placeholder-card .placeholder-circle i {
-    font-size: 2em; /* Tamanho do ícone de + */
-    color: #fff; /* Cor do ícone */
+    font-size: 2em; /* Size of the + icon */
+    color: #fff; /* Icon color */
 }
 
 .placeholder-card .placeholder-stars i {
-    color: #ccc; /* Estrelas cinza */
+    color: #ccc; /* Gray stars */
 }
 
 .placeholder-card .placeholder-text {
-    color: #999; /* Texto cinza */
-    font-style: italic; /* Texto em itálico */
+    color: #999; /* Gray text */
+    font-style: italic; /* Italic text */
 }
 
-/* Estilos para a coluna de labels */
+/* Styles for the labels column */
 .labels-column {
     display: flex;
     flex-direction: column;
