@@ -1,0 +1,142 @@
+/* Estilos personalizados */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.filters {
+    margin-bottom: 20px;
+}
+
+.grid {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.relic {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.relic:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.relic img {
+    max-width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.stars {
+    margin-bottom: 10px;
+}
+
+.stars i {
+    color: #ffd700;
+    font-size: 1.2em;
+    text-shadow: 0 0 2px #000;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.stars i.far {
+    color: #ddd;
+}
+
+.stars.hover-effect i {
+    opacity: 0.7;
+}
+
+.relic h3 {
+    margin: 0;
+    font-size: 1.1em;
+    color: inherit;
+}
+
+.relic p {
+    margin: 5px 0 0;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.buff-label {
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 2px;
+}
+
+.buff-value {
+    font-size: 0.9em;
+}
+
+.buff-green {
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* Estilos para o card de placeholder */
+.placeholder-card .relic.placeholder {
+    background-color: #e9ecef; /* Cor de fundo mais clara */
+    opacity: 0.7; /* Efeito de transparência */
+    cursor: default; /* Cursor padrão (não clicável) */
+}
+
+.placeholder-card .placeholder-circle {
+    width: 100px;
+    height: 100px;
+    background-color: #ccc; /* Cor do círculo */
+    border-radius: 50%; /* Transforma em um círculo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px auto; /* Centraliza e adiciona margem abaixo */
+}
+
+.placeholder-card .placeholder-circle i {
+    font-size: 2em; /* Tamanho do ícone de + */
+    color: #fff; /* Cor do ícone */
+}
+
+.placeholder-card .placeholder-stars i {
+    color: #ccc; /* Estrelas cinza */
+}
+
+.placeholder-card .placeholder-text {
+    color: #999; /* Texto cinza */
+    font-style: italic; /* Texto em itálico */
+}
+
+/* Estilos para a coluna de labels */
+.labels-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.labels-column .label {
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0;
+    color: #555;
+}
