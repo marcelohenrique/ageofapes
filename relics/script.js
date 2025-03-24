@@ -25,7 +25,7 @@ const relics = [
     {
         id: 2,
         name: "Relic 2",
-        image: "antiagingdrink.webp", // Mesma imagem da primeira relíquia
+        image: "antiagingdrink.webp", // Same image as the first relic
         level: 5,
         unit: "Shooter",
         quality: "Epic",
@@ -194,8 +194,7 @@ function createRelic(relic, grid) {
     relicElement.addEventListener("click", (event) => {
         // Prevent moving the relic if the click is on the stars
         if (!event.target.classList.contains("stars")) {
-            const targetGrid = grid.id === "left-grid" ? rightGrid : leftGrid;
-            moveRelic(relicElement, targetGrid);
+            moveRelic(relicElement, grid);
         }
     });
 
@@ -210,7 +209,7 @@ function createPlaceholder() {
     const relicElement = document.createElement("div");
     relicElement.classList.add("relic", "placeholder");
 
-    // Círculo com símbolo de +
+    // Circle with plus symbol
     const placeholderCircle = document.createElement("div");
     placeholderCircle.classList.add("placeholder-circle");
     const plusIcon = document.createElement("i");
@@ -218,7 +217,7 @@ function createPlaceholder() {
     placeholderCircle.appendChild(plusIcon);
     relicElement.appendChild(placeholderCircle);
 
-    // Estrelas
+    // Stars
     const starsContainer = document.createElement("div");
     starsContainer.classList.add("stars", "placeholder-stars");
     for (let i = 0; i < 5; i++) {
@@ -228,7 +227,7 @@ function createPlaceholder() {
     }
     relicElement.appendChild(starsContainer);
 
-    // Texto do placeholder
+    // Placeholder text
     const title = document.createElement("h3");
     title.textContent = "No Relic Selected";
     title.classList.add("placeholder-text");
@@ -265,10 +264,10 @@ function createPlaceholder() {
 
 // Function to initialize placeholders
 function initializePlaceholders() {
-    const rightGrid = document.getElementById("right-grid");
+    const selectedRelicsGrid = document.getElementById("selected-relics-grid");
     for (let i = 0; i < 18; i++) {
         const placeholder = createPlaceholder();
-        rightGrid.appendChild(placeholder);
+        selectedRelicsGrid.appendChild(placeholder);
     }
 }
 
@@ -279,13 +278,13 @@ function moveRelic(relic, targetGrid) {
     const sourceGrid = relic.parentElement;
     if (sourceGrid === targetGrid) return; // Avoid moving to the same grid
 
-    // Encontra o primeiro placeholder no grid de destino
+    // Find the first placeholder in the target grid
     const placeholder = targetGrid.querySelector(".placeholder-card");
     if (placeholder) {
-        // Substitui o placeholder pela relíquia
+        // Replace the placeholder with the relic
         targetGrid.replaceChild(relic, placeholder);
     } else {
-        // Adiciona a relíquia ao grid de destino
+        // Add the relic to the target grid
         targetGrid.appendChild(relic);
     }
 }
@@ -295,11 +294,11 @@ function filterRelics() {
     const unitFilter = document.getElementById("unit-filter").value;
     const qualityFilter = document.getElementById("quality-filter").value;
 
-    const leftGrid = document.getElementById("left-grid");
-    const rightGrid = document.getElementById("right-grid");
+    const availableRelicsGrid = document.getElementById("available-relics-grid");
+    const selectedRelicsGrid = document.getElementById("selected-relics-grid");
 
-    // Clear the left grid before applying filters
-    leftGrid.innerHTML = "";
+    // Clear the available relics grid before applying filters
+    availableRelicsGrid.innerHTML = "";
 
     // Filter relics based on selected criteria
     relics.forEach(relic => {
@@ -307,11 +306,11 @@ function filterRelics() {
         const matchesQuality = qualityFilter === "all" || relic.quality === qualityFilter;
 
         if (matchesUnit && matchesQuality) {
-            // Check if the relic is already in the right grid (selected)
-            const isSelected = Array.from(rightGrid.children).some(child => child.dataset.id === relic.id.toString());
+            // Check if the relic is already in the selected relics grid
+            const isSelected = Array.from(selectedRelicsGrid.children).some(child => child.dataset.id === relic.id.toString());
 
             if (!isSelected) {
-                createRelic(relic, leftGrid);
+                createRelic(relic, availableRelicsGrid);
             }
         }
     });
@@ -324,15 +323,15 @@ document.getElementById("quality-filter").addEventListener("change", filterRelic
 // Add reset button functionality
 document.getElementById("reset-button").addEventListener("click", () => {
     localStorage.clear();
-    const rightGrid = document.getElementById("right-grid");
-    rightGrid.innerHTML = "";
+    const selectedRelicsGrid = document.getElementById("selected-relics-grid");
+    selectedRelicsGrid.innerHTML = "";
     initializePlaceholders(); // Reinitialize placeholders
     filterRelics();
 });
 
 // Initialize grids when the page loads
-const leftGrid = document.getElementById("left-grid");
-const rightGrid = document.getElementById("right-grid");
+const availableRelicsGrid = document.getElementById("available-relics-grid");
+const selectedRelicsGrid = document.getElementById("selected-relics-grid");
 
 function initializeGrids() {
     initializePlaceholders(); // Initialize placeholders
