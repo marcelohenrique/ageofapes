@@ -194,7 +194,13 @@ function createRelic(relic, grid) {
     relicElement.addEventListener("click", (event) => {
         // Prevent moving the relic if the click is on the stars
         if (!event.target.classList.contains("stars")) {
-            const targetGrid = grid.id == availableRelicsGrid.id ? selectedRelicsGrid : availableRelicsGrid;
+            // Check the current grid of the relic
+            const currentGrid = relicElement.parentElement;
+
+            // Set the target grid based on the current grid
+            const targetGrid = currentGrid.id === "available-relics-grid" ? selectedRelicsGrid : availableRelicsGrid;
+
+            // Move the relic to the target grid
             moveRelic(relicElement, targetGrid);
         }
     });
@@ -281,12 +287,20 @@ function moveRelic(relic, targetGrid) {
 
     // Find the first placeholder in the target grid
     const placeholder = targetGrid.querySelector(".placeholder-card");
+
     if (placeholder) {
         // Replace the placeholder with the relic
         targetGrid.replaceChild(relic, placeholder);
     } else {
         // Add the relic to the target grid
         targetGrid.appendChild(relic);
+    }
+
+    // If the relic was moved from the selected relics grid to the available relics grid,
+    // we need to add a new placeholder to the selected relics grid.
+    if (sourceGrid.id === "selected-relics-grid" && targetGrid.id === "available-relics-grid") {
+        const newPlaceholder = createPlaceholder();
+        sourceGrid.appendChild(newPlaceholder);
     }
 }
 
