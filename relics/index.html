@@ -18,38 +18,7 @@
     <div class="container-fluid">
         <h1 class="text-center my-4">Relic Selection</h1>
 
-        <!-- Filters (above the available relics grid) -->
-        <div class="row justify-content-center mb-4">
-            <div class="col-md-5">
-                <div class="filters p-3 bg-light rounded shadow-sm">
-                    <div class="row g-2">
-                        <div class="col-md-6">
-                            <label for="unit-filter" class="form-label">Filter by Unit:</label>
-                            <select id="unit-filter" class="form-select">
-                                <option value="all">All Units</option>
-                                <option value="Hitter">Hitter</option>
-                                <option value="Shooter">Shooter</option>
-                                <!-- Add more units as needed -->
-                            </select>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="quality-filter" class="form-label">Filter by Quality:</label>
-                            <select id="quality-filter" class="form-select">
-                                <option value="all">All Qualities</option>
-                                <option value="Rare">Rare</option>
-                                <option value="Epic">Epic</option>
-                                <option value="Legendary">Legendary</option>
-                                <option value="Super">Super</option>
-                                <!-- Add more qualities as needed -->
-                            </select>
-                        </div>
-                        <div class="col-12 text-center">
-                            <button id="reset-button" class="btn btn-secondary">Reset Selection</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
 
         <!-- Relic grids -->
         <div class="row justify-content-center">
@@ -81,6 +50,40 @@
 
             <!-- Available Relics Grid -->
             <div class="col-md-5">
+
+                <!-- Filters (above the available relics grid) -->
+                <div class="row justify-content-center mb-4">
+                    <div class="col-md-12">
+                        <div class="filters p-3 bg-light rounded shadow-sm">
+                            <div class="row g-2">
+                                <div class="col-md-6">
+                                    <label for="unit-filter" class="form-label">Filter by Unit:</label>
+                                    <select id="unit-filter" class="form-select">
+                                        <option value="all">All Units</option>
+                                        <option value="Hitter">Hitter</option>
+                                        <option value="Shooter">Shooter</option>
+                                        <!-- Add more units as needed -->
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="quality-filter" class="form-label">Filter by Quality:</label>
+                                    <select id="quality-filter" class="form-select">
+                                        <option value="all">All Qualities</option>
+                                        <option value="Rare">Rare</option>
+                                        <option value="Epic">Epic</option>
+                                        <option value="Legendary">Legendary</option>
+                                        <option value="Super">Super</option>
+                                        <!-- Add more qualities as needed -->
+                                    </select>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <button id="reset-button" class="btn btn-secondary">Reset Selection</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="grid p-3 bg-light rounded shadow-sm">
                     <h2 class="text-center mb-3">Available Relics</h2>
                     <div class="row" id="available-relics-grid">

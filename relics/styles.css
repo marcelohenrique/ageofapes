@@ -39,6 +39,17 @@ h1 {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* Relic name styling - Enhanced for better visibility */
+.relic h3 {
+    margin: 0;
+    font-size: 1.2em; /* Slightly larger font size */
+    color: inherit;
+    font-weight: bold; /* Bold for emphasis */
+    margin-bottom: 5px; /* Space below the name */
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    letter-spacing: 0.5px; /* Optional: Improves readability */
+}
+
 .relic img {
     max-width: 100%;
     height: 100px;
