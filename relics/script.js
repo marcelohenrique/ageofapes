@@ -1,51 +1,15 @@
-// Relic data (can be replaced with an API or database)
-const relics = [
-    {
-        id: 1,
-        name: "Relic 1",
-        image: "antiagingdrink.webp",
-        level: 3,
-        unit: "Hitter",
-        quality: "Rare",
-        buff: {
-            name: "Attack of Hitters",
-            values: [5, 10, 15, 20, 25] // Values for 1 to 5 stars
-        },
-        displayBuffs: [
-            {
-                name: "Damage of Hitters",
-                values: [1, 3, 5, 7, 10] // Values for 1 to 5 stars
-            },
-            {
-                name: "Attack of Hitters",
-                values: [2, 4, 6, 8, 12] // Values for 1 to 5 stars
-            }
-        ]
-    },
-    {
-        id: 2,
-        name: "Relic 2",
-        image: "antiagingdrink.webp", // Same image as the first relic
-        level: 5,
-        unit: "Shooter",
-        quality: "Epic",
-        buff: {
-            name: "Defense of Shooters",
-            values: [10, 20, 30, 40, 50] // Values for 1 to 5 stars
-        },
-        displayBuffs: [
-            {
-                name: "Damage of Shooters",
-                values: [2, 4, 6, 8, 10] // Values for 1 to 5 stars
-            },
-            {
-                name: "Attack of Shooters",
-                values: [3, 6, 9, 12, 15] // Values for 1 to 5 stars
-            }
-        ]
-    },
-    // Add more relics as needed...
-];
+// Load relics data from external JSON file
+let relics = [];
+
+async function loadRelics() {
+    try {
+        const response = await fetch('converted_relics.json'); // Adjust path if needed
+        relics = await response.json();
+        filterRelics(); // Display relics after loading
+    } catch (error) {
+        console.error("Error loading relics:", error);
+    }
+}
 
 // Function to get color based on relic quality
 function getQualityColor(quality) {
@@ -349,6 +313,7 @@ const availableRelicsGrid = document.getElementById("available-relics-grid");
 const selectedRelicsGrid = document.getElementById("selected-relics-grid");
 
 function initializeGrids() {
+    loadRelics(); // Load relics data
     initializePlaceholders(); // Initialize placeholders
     filterRelics(); // Apply filters when the page loads
 }

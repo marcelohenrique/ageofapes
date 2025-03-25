@@ -1,0 +1,5419 @@
+[
+    {
+        "id": 1,
+        "name": "Banana",
+        "image": "images/banana.webp",
+        "level": 4,
+        "unit": "Utility",
+        "quality": "Rare",
+        "buff": {
+            "name": "Food Production/Hour",
+            "values": [
+                500,
+                1000,
+                1500,
+                2000
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "AP Regen Rate",
+                "values": [
+                    1,
+                    1.5,
+                    2,
+                    2.5
+                ]
+            },
+            {
+                "name": "Food Production/Hour",
+                "values": [
+                    1125,
+                    2250,
+                    3375,
+                    4500
+                ]
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Space Helmet",
+        "image": "images/spacehelmet.webp",
+        "level": 4,
+        "unit": "Mutants",
+        "quality": "Rare",
+        "buff": {
+            "name": "Iron Production/Hour",
+            "values": [
+                500,
+                1000,
+                1500,
+                2000
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Neutral Unit Breaker",
+                "values": [
+                    1,
+                    2,
+                    3,
+                    4
+                ]
+            },
+            {
+                "name": "Iron Production/Hour",
+                "values": [
+                    1125,
+                    2250,
+                    3375,
+                    4500
+                ]
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Lakeside Cushion",
+        "image": "images/lakesidecushion.webp",
+        "level": 5,
+        "unit": "Utility",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Teleport Energy Cost Reduced",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Marching Speed",
+                "values": [
+                    6,
+                    12,
+                    18,
+                    24,
+                    30
+                ]
+            },
+            {
+                "name": "Teleport Energy Cost Reduced",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Fishing Net",
+        "image": "images/fishingnet.webp",
+        "level": 5,
+        "unit": "Gathering",
+        "quality": "Epic",
+        "buff": {
+            "name": "Iron Gathering Speed",
+            "values": [
+                1.8,
+                3.6,
+                5.4,
+                7.2,
+                9
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Iron Production",
+                "values": [
+                    3,
+                    6,
+                    9,
+                    12,
+                    15
+                ]
+            },
+            {
+                "name": "Iron Gathering Speed",
+                "values": [
+                    3,
+                    6,
+                    9,
+                    12,
+                    15
+                ]
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "name": "Fishing Pole",
+        "image": "images/fishingpole.webp",
+        "level": 5,
+        "unit": "Gathering",
+        "quality": "Epic",
+        "buff": {
+            "name": "Food Gathering Speed",
+            "values": [
+                1.8,
+                3.6,
+                5.4,
+                7.2,
+                9
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Food Production",
+                "values": [
+                    3,
+                    6,
+                    9,
+                    12,
+                    15
+                ]
+            },
+            {
+                "name": "Food Gathering Speed",
+                "values": [
+                    3,
+                    6,
+                    9,
+                    12,
+                    15
+                ]
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "name": "Figurine",
+        "image": "images/figurine.webp",
+        "level": 5,
+        "unit": "Hitters",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Attack of Hitters",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Damage dealt by Hitters against Pilots",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            },
+            {
+                "name": "Attack of Hitters",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "name": "Polypod Toy",
+        "image": "images/polypodtoy.webp",
+        "level": 5,
+        "unit": "Pilots",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Attack of Pilots",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Damage dealt by Pilots against Shooters",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            },
+            {
+                "name": "Attack of Pilots",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "name": "Shush Machine",
+        "image": "images/shushmachine.webp",
+        "level": 5,
+        "unit": "Shooters",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Attack of Shooters",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Damage dealt by Shooters against Hitters",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            },
+            {
+                "name": "Attack of Shooters",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "name": "Scuba Mask",
+        "image": "images/scubamask.webp",
+        "level": 5,
+        "unit": "Shooters",
+        "quality": "Epic",
+        "buff": {
+            "name": "Defense of Shooters",
+            "values": [
+                0.6,
+                1.2,
+                1.8,
+                2.4,
+                3
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Shooters Training Speed",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            },
+            {
+                "name": "Defense of Shooters",
+                "values": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            }
+        ]
+    },
+    {
+        "id": 10,
+        "name": "Sunblocker",
+        "image": "images/sunblocker.webp",
+        "level": 5,
+        "unit": "Pilots",
+        "quality": "Epic",
+        "buff": {
+            "name": "Defense of Pilots",
+            "values": [
+                0.6,
+                1.2,
+                1.8,
+                2.4,
+                3
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Pilots Training Speed",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            },
+            {
+                "name": "Defense of Pilots",
+                "values": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            }
+        ]
+    },
+    {
+        "id": 11,
+        "name": "Beach Shield",
+        "image": "images/beachshield.webp",
+        "level": 5,
+        "unit": "Hitters",
+        "quality": "Epic",
+        "buff": {
+            "name": "Defense of Hitters",
+            "values": [
+                0.6,
+                1.2,
+                1.8,
+                2.4,
+                3
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Hitters Training Speed",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            },
+            {
+                "name": "Defense of Hitters",
+                "values": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            }
+        ]
+    },
+    {
+        "id": 12,
+        "name": "Life Preserver",
+        "image": "images/lifepreserver.webp",
+        "level": 5,
+        "unit": "Wall Breakers",
+        "quality": "Epic",
+        "buff": {
+            "name": "Defense of Wall Breakers",
+            "values": [
+                0.6,
+                1.2,
+                1.8,
+                2.4,
+                3
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Wall Breakers Training Speed",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            },
+            {
+                "name": "Defense of Wall Breakers",
+                "values": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            }
+        ]
+    },
+    {
+        "id": 13,
+        "name": "Medical Notes",
+        "image": "images/medicalnotes.webp",
+        "level": 3,
+        "unit": "Utility",
+        "quality": "Basic",
+        "buff": {
+            "name": "Medical Station Capacity",
+            "values": [
+                500,
+                1000,
+                1500
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "AP Regen Rate",
+                "values": [
+                    0.5,
+                    1,
+                    1.5
+                ]
+            },
+            {
+                "name": "Healing Speed",
+                "values": [
+                    2.5,
+                    5,
+                    7.5
+                ]
+            }
+        ]
+    },
+    {
+        "id": 14,
+        "name": "Primitive Injector",
+        "image": "images/primitiveinjector.webp",
+        "level": 3,
+        "unit": "Mutants",
+        "quality": "Basic",
+        "buff": {
+            "name": "Healing Speed",
+            "values": [
+                2.5,
+                5,
+                7.5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Neutral Unit Breaker",
+                "values": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "name": "Healing Speed",
+                "values": [
+                    2.5,
+                    5,
+                    7.5
+                ]
+            }
+        ]
+    },
+    {
+        "id": 15,
+        "name": "Bitcoin",
+        "image": "images/bitcoin.webp",
+        "level": 5,
+        "unit": "Hitters",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Hitters Training Speed",
+            "values": [
+                1.5,
+                3,
+                4.5,
+                6,
+                7.5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Food Production",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            },
+            {
+                "name": "Defense of Hitters",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            }
+        ]
+    },
+    {
+        "id": 16,
+        "name": "Red Arrowhead",
+        "image": "images/redarrowhead.webp",
+        "level": 5,
+        "unit": "Pilots",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Pilots Training Speed",
+            "values": [
+                1.5,
+                3,
+                4.5,
+                6,
+                7.5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Iron Production",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            },
+            {
+                "name": "Defense of Pilots",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            }
+        ]
+    },
+    {
+        "id": 17,
+        "name": "Gold Bars",
+        "image": "images/goldbars.webp",
+        "level": 5,
+        "unit": "Shooters",
+        "quality": "Epic",
+        "buff": {
+            "name": "Shooters Training Speed",
+            "values": [
+                0.9,
+                1.8,
+                2.7,
+                3.6,
+                4.5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Windfall",
+                "values": [
+                    1.5,
+                    3,
+                    4.5,
+                    6,
+                    7.5
+                ]
+            },
+            {
+                "name": "Defense of Shooters",
+                "values": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            }
+        ]
+    },
+    {
+        "id": 18,
+        "name": "Oral Massager",
+        "image": "images/oralmassager.webp",
+        "level": 5,
+        "unit": "Utility",
+        "quality": "Epic",
+        "buff": {
+            "name": "Food Production/Hour",
+            "values": [
+                700,
+                1400,
+                2100,
+                2800,
+                3500
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Research Speed",
+                "values": [
+                    1.5,
+                    3,
+                    4.5,
+                    6,
+                    7.5
+                ]
+            },
+            {
+                "name": "Food Production/Hour",
+                "values": [
+                    1100,
+                    2200,
+                    3300,
+                    4400,
+                    5500
+                ]
+            }
+        ]
+    },
+    {
+        "id": 19,
+        "name": "Mad Cap",
+        "image": "images/madcap.webp",
+        "level": 5,
+        "unit": "Utility",
+        "quality": "Epic",
+        "buff": {
+            "name": "Teleport Energy Cost Reduced",
+            "values": [
+                0.6,
+                1.2,
+                1.8,
+                2.4,
+                3
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Building Speed",
+                "values": [
+                    1.5,
+                    3,
+                    4.5,
+                    6,
+                    7.5
+                ]
+            },
+            {
+                "name": "Teleport Energy Cost Reduced",
+                "values": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            }
+        ]
+    },
+    {
+        "id": 20,
+        "name": "Inflatable Ball",
+        "image": "images/inflatableball.webp",
+        "level": 5,
+        "unit": "Utility",
+        "quality": "Epic",
+        "buff": {
+            "name": "Iron Production/Hour",
+            "values": [
+                700,
+                1400,
+                2100,
+                2800,
+                3500
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Training Speed",
+                "values": [
+                    1.5,
+                    3,
+                    4.5,
+                    6,
+                    7.5
+                ]
+            },
+            {
+                "name": "Iron Production/Hour",
+                "values": [
+                    1100,
+                    2200,
+                    3300,
+                    4400,
+                    5500
+                ]
+            }
+        ]
+    },
+    {
+        "id": 21,
+        "name": "Zombie Stick",
+        "image": "images/zombiestick.webp",
+        "level": 5,
+        "unit": "Hitters",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Health of Hitters",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Damage dealt by Hitters against Pilots",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            },
+            {
+                "name": "Health of Hitters",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            }
+        ]
+    },
+    {
+        "id": 22,
+        "name": "Rage Ball",
+        "image": "images/rageball.webp",
+        "level": 5,
+        "unit": "Shooters",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Health of Shooters",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Damage dealt by Shooters against Hitters",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            },
+            {
+                "name": "Health of Shooters",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            }
+        ]
+    },
+    {
+        "id": 23,
+        "name": "Oversized Wallet",
+        "image": "images/oversizedwallet.webp",
+        "level": 5,
+        "unit": "Wall Breakers",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Health of Wall Breakers",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Neutral Unit Breaker",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            },
+            {
+                "name": "Health of Wall Breakers",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            }
+        ]
+    },
+    {
+        "id": 24,
+        "name": "Wearable Umbrella",
+        "image": "images/wearableumbrella.webp",
+        "level": 5,
+        "unit": "Pilots",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Health of Pilots",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Damage dealt by Pilots against Shooters",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            },
+            {
+                "name": "Health of Pilots",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            }
+        ]
+    },
+    {
+        "id": 25,
+        "name": "House/Car Model",
+        "image": "images/housecarmodel.webp",
+        "level": 5,
+        "unit": "Utility",
+        "quality": "Epic",
+        "buff": {
+            "name": "Building Speed",
+            "values": [
+                0.6,
+                1.2,
+                1.8,
+                2.4,
+                3
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Iron Gathering Speed",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            },
+            {
+                "name": "Building Speed",
+                "values": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            }
+        ]
+    },
+    {
+        "id": 26,
+        "name": "Instruction Tool",
+        "image": "images/instructiontool.webp",
+        "level": 5,
+        "unit": "Utility",
+        "quality": "Epic",
+        "buff": {
+            "name": "Research Speed",
+            "values": [
+                0.6,
+                1.2,
+                1.8,
+                2.4,
+                3
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Food Gathering Speed",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            },
+            {
+                "name": "Research Speed",
+                "values": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            }
+        ]
+    },
+    {
+        "id": 27,
+        "name": "Metal Drum",
+        "image": "images/metaldrum.webp",
+        "level": 4,
+        "unit": "Pilots",
+        "quality": "Rare",
+        "buff": {
+            "name": "Health of Pilots",
+            "values": [
+                0.5,
+                1,
+                1.5,
+                2
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Increased Marching Speed",
+                "values": [
+                    1.5,
+                    3,
+                    4.5,
+                    6
+                ]
+            },
+            {
+                "name": "Speed of Pilots",
+                "values": [
+                    3,
+                    6,
+                    9,
+                    12
+                ]
+            }
+        ]
+    },
+    {
+        "id": 28,
+        "name": "Magic Box",
+        "image": "images/magicbox.webp",
+        "level": 4,
+        "unit": "Hitters",
+        "quality": "Rare",
+        "buff": {
+            "name": "Health of Hitters",
+            "values": [
+                0.5,
+                1,
+                1.5,
+                2
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Windfall",
+                "values": [
+                    0.5,
+                    1,
+                    1.5,
+                    2
+                ]
+            },
+            {
+                "name": "Speed of Hitters",
+                "values": [
+                    3,
+                    6,
+                    9,
+                    12
+                ]
+            }
+        ]
+    },
+    {
+        "id": 29,
+        "name": "Wasabi Can",
+        "image": "images/wasabican.webp",
+        "level": 4,
+        "unit": "Shooters",
+        "quality": "Rare",
+        "buff": {
+            "name": "Health of Shooters",
+            "values": [
+                0.5,
+                1,
+                1.5,
+                2
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Teleport Energy Cost Reduced",
+                "values": [
+                    0.5,
+                    1,
+                    1.5,
+                    2
+                ]
+            },
+            {
+                "name": "Speed of Shooters",
+                "values": [
+                    3,
+                    6,
+                    9,
+                    12
+                ]
+            }
+        ]
+    },
+    {
+        "id": 30,
+        "name": "Rope",
+        "image": "images/rope.webp",
+        "level": 5,
+        "unit": "Hitters",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Speed of Hitters",
+            "values": [
+                3,
+                6,
+                9,
+                12,
+                15
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Damage dealt by Hitters against Pilots",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            },
+            {
+                "name": "Health of Hitters",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            }
+        ]
+    },
+    {
+        "id": 31,
+        "name": "Lifesaving Wheel",
+        "image": "images/lifesavingwheel.webp",
+        "level": 5,
+        "unit": "Pilots",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Speed of Pilots",
+            "values": [
+                3,
+                6,
+                9,
+                12,
+                15
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Damage dealt by Pilots against Shooters",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            },
+            {
+                "name": "Health of Pilots",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            }
+        ]
+    },
+    {
+        "id": 32,
+        "name": "Lantern",
+        "image": "images/lantern.webp",
+        "level": 5,
+        "unit": "Shooters",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Speed of Shooters",
+            "values": [
+                3,
+                6,
+                9,
+                12,
+                15
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Damage dealt by Shooters against Hitters",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            },
+            {
+                "name": "Health of Shooters",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            }
+        ]
+    },
+    {
+        "id": 33,
+        "name": "Vegetable Mask",
+        "image": "images/vegetablemask.webp",
+        "level": 5,
+        "unit": "Utility",
+        "quality": "Epic",
+        "buff": {
+            "name": "Decr. Research Food Cost",
+            "values": [
+                10000,
+                20000,
+                30000,
+                40000,
+                50000
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Pilots Training Speed",
+                "values": [
+                    3,
+                    6,
+                    9,
+                    12,
+                    15
+                ]
+            },
+            {
+                "name": "Decr. Research Food Cost",
+                "values": [
+                    17000,
+                    34000,
+                    51000,
+                    68000,
+                    85000
+                ]
+            }
+        ]
+    },
+    {
+        "id": 34,
+        "name": "Surprised Totem",
+        "image": "images/surprisedtotem.webp",
+        "level": 5,
+        "unit": "Utility",
+        "quality": "Epic",
+        "buff": {
+            "name": "AP Regen Rate",
+            "values": [
+                0.6,
+                1.2,
+                1.8,
+                2.4,
+                3
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Hitters Training Speed",
+                "values": [
+                    3,
+                    6,
+                    9,
+                    12,
+                    15
+                ]
+            },
+            {
+                "name": "AP Regen Rate",
+                "values": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            }
+        ]
+    },
+    {
+        "id": 35,
+        "name": "Bench Totem",
+        "image": "images/benchtotem.webp",
+        "level": 5,
+        "unit": "Utility",
+        "quality": "Epic",
+        "buff": {
+            "name": "Decr. Research Time (sec)",
+            "values": [
+                180,
+                360,
+                540,
+                720,
+                900
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Wall Breakers Training Speed",
+                "values": [
+                    3,
+                    6,
+                    9,
+                    12,
+                    15
+                ]
+            },
+            {
+                "name": "Decr. Research Time (sec)",
+                "values": [
+                    300,
+                    600,
+                    900,
+                    1200,
+                    1500
+                ]
+            }
+        ]
+    },
+    {
+        "id": 36,
+        "name": "Long-Nosed Totem",
+        "image": "images/longnosedtotem.webp",
+        "level": 5,
+        "unit": "Utility",
+        "quality": "Epic",
+        "buff": {
+            "name": "Decr. Research Iron Cost",
+            "values": [
+                10000,
+                20000,
+                30000,
+                40000,
+                50000
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Shooters Training Speed",
+                "values": [
+                    3,
+                    6,
+                    9,
+                    12,
+                    15
+                ]
+            },
+            {
+                "name": "Decr. Research Iron Cost",
+                "values": [
+                    17000,
+                    34000,
+                    51000,
+                    68000,
+                    85000
+                ]
+            }
+        ]
+    },
+    {
+        "id": 37,
+        "name": "Watercolor Brush",
+        "image": "images/watercolorbrush.webp",
+        "level": 5,
+        "unit": "Shooters",
+        "quality": "Epic",
+        "buff": {
+            "name": "Attack of Shooters",
+            "values": [
+                0.6,
+                1.2,
+                1.8,
+                2.4,
+                3
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Food Production/Hour",
+                "values": [
+                    1200,
+                    2400,
+                    3600,
+                    4800,
+                    6000
+                ]
+            },
+            {
+                "name": "Attack of Shooters",
+                "values": [
+                    0.8,
+                    1.6,
+                    2.4,
+                    3.2,
+                    4
+                ]
+            }
+        ]
+    },
+    {
+        "id": 38,
+        "name": "Bulletin Board",
+        "image": "images/bulletinboard.webp",
+        "level": 5,
+        "unit": "Wall Breakers",
+        "quality": "Epic",
+        "buff": {
+            "name": "Attack of Wall Breakers",
+            "values": [
+                0.6,
+                1.2,
+                1.8,
+                2.4,
+                3
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Iron Production/Hour",
+                "values": [
+                    1200,
+                    2400,
+                    3600,
+                    4800,
+                    6000
+                ]
+            },
+            {
+                "name": "Attack of Wall Breakers",
+                "values": [
+                    0.8,
+                    1.6,
+                    2.4,
+                    3.2,
+                    4
+                ]
+            }
+        ]
+    },
+    {
+        "id": 39,
+        "name": "Splash-Proof Helmet",
+        "image": "images/splashproofhelmet.webp",
+        "level": 5,
+        "unit": "Hitters",
+        "quality": "Epic",
+        "buff": {
+            "name": "Food Protection Capacity",
+            "values": [
+                70000,
+                140000,
+                210000,
+                280000,
+                350000
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Health of Hitters",
+                "values": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            },
+            {
+                "name": "Food Production Capacity",
+                "values": [
+                    90000,
+                    180000,
+                    270000,
+                    360000,
+                    450000
+                ]
+            }
+        ]
+    },
+    {
+        "id": 40,
+        "name": "Wooden Cup",
+        "image": "images/woodencup.webp",
+        "level": 4,
+        "unit": "Shooters",
+        "quality": "Rare",
+        "buff": {
+            "name": "Windfall",
+            "values": [
+                0.5,
+                1,
+                1.5,
+                2
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Health of Shooters",
+                "values": [
+                    0.4,
+                    0.8,
+                    1.2,
+                    1.6
+                ]
+            },
+            {
+                "name": "Food Production/Hour",
+                "values": [
+                    875,
+                    1750,
+                    2625,
+                    3500
+                ]
+            }
+        ]
+    },
+    {
+        "id": 41,
+        "name": "Baby Stroller",
+        "image": "images/babystroller.webp",
+        "level": 4,
+        "unit": "Hitters",
+        "quality": "Rare",
+        "buff": {
+            "name": "Speed of Hitters",
+            "values": [
+                1.5,
+                3,
+                4.5,
+                6
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Food Production Capacity",
+                "values": [
+                    45000,
+                    90000,
+                    135000,
+                    180000
+                ]
+            },
+            {
+                "name": "Speed of Hitters",
+                "values": [
+                    2.4,
+                    4.8,
+                    7.2,
+                    9.6
+                ]
+            }
+        ]
+    },
+    {
+        "id": 42,
+        "name": "Alarm Bell",
+        "image": "images/alarmbell.webp",
+        "level": 4,
+        "unit": "Pilots",
+        "quality": "Rare",
+        "buff": {
+            "name": "Iron Protection Capacity",
+            "values": [
+                62500,
+                125000,
+                187500,
+                250000
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Health of Pilots",
+                "values": [
+                    0.4,
+                    0.8,
+                    1.2,
+                    1.6
+                ]
+            },
+            {
+                "name": "Iron Protection Capacity",
+                "values": [
+                    87500,
+                    175000,
+                    262500,
+                    350000
+                ]
+            }
+        ]
+    },
+    {
+        "id": 43,
+        "name": "Wooden Shield",
+        "image": "images/woodenshield.webp",
+        "level": 4,
+        "unit": "Wall Breakers",
+        "quality": "Rare",
+        "buff": {
+            "name": "Dmg to Neutral Units",
+            "values": [
+                2.5,
+                5,
+                7.5,
+                10
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Health of Wall Breakers",
+                "values": [
+                    0.4,
+                    0.8,
+                    1.2,
+                    1.6
+                ]
+            },
+            {
+                "name": "Iron Production/Hour",
+                "values": [
+                    875,
+                    1750,
+                    2625,
+                    3500
+                ]
+            }
+        ]
+    },
+    {
+        "id": 44,
+        "name": "Surgical Knife",
+        "image": "images/surgicalknife.webp",
+        "level": 4,
+        "unit": "Hitters",
+        "quality": "Rare",
+        "buff": {
+            "name": "Attack of Hitters",
+            "values": [
+                0.5,
+                1,
+                1.5,
+                2
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Food Protection Capacity",
+                "values": [
+                    45000,
+                    90000,
+                    135000,
+                    180000
+                ]
+            },
+            {
+                "name": "Attack of Hitters",
+                "values": [
+                    0.8,
+                    1.6,
+                    2.4,
+                    3.2
+                ]
+            }
+        ]
+    },
+    {
+        "id": 45,
+        "name": "Bloodletter Axe",
+        "image": "images/bloodletteraxe.webp",
+        "level": 4,
+        "unit": "Pilots",
+        "quality": "Rare",
+        "buff": {
+            "name": "Speed of Pilots",
+            "values": [
+                1.5,
+                3,
+                4.5,
+                6
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Iron Protection Capacity",
+                "values": [
+                    45000,
+                    90000,
+                    135000,
+                    180000
+                ]
+            },
+            {
+                "name": "Speed of Pilots",
+                "values": [
+                    2.4,
+                    4.8,
+                    7.2,
+                    9.6
+                ]
+            }
+        ]
+    },
+    {
+        "id": 46,
+        "name": "Dental Picker",
+        "image": "images/dentalpicker.webp",
+        "level": 4,
+        "unit": "Mutants",
+        "quality": "Rare",
+        "buff": {
+            "name": "Skill Dmg to Neutral Units",
+            "values": [
+                5,
+                10,
+                15,
+                20
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Speed in Rallies",
+                "values": [
+                    1.2,
+                    2.4,
+                    3.6,
+                    4.8
+                ]
+            },
+            {
+                "name": "AP Regen Rate",
+                "values": [
+                    0.8,
+                    1.6,
+                    2.4,
+                    3.2
+                ]
+            }
+        ]
+    },
+    {
+        "id": 47,
+        "name": "Orthopedic Hammer",
+        "image": "images/orthopedichammer.webp",
+        "level": 4,
+        "unit": "Pilots",
+        "quality": "Rare",
+        "buff": {
+            "name": "Attack of Pilots",
+            "values": [
+                0.5,
+                1,
+                1.5,
+                2
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Iron Protection Capacity",
+                "values": [
+                    45000,
+                    90000,
+                    135000,
+                    180000
+                ]
+            },
+            {
+                "name": "Attack of Pilots",
+                "values": [
+                    0.8,
+                    1.6,
+                    2.4,
+                    3.2
+                ]
+            }
+        ]
+    },
+    {
+        "id": 48,
+        "name": "Street Totem",
+        "image": "images/streettotem.webp",
+        "level": 4,
+        "unit": "Pilots",
+        "quality": "Rare",
+        "buff": {
+            "name": "Pilots Training Speed",
+            "values": [
+                0.8,
+                1.5,
+                2.3,
+                3
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Speed of Pilots",
+                "values": [
+                    1.2,
+                    2.4,
+                    3.6,
+                    4.8
+                ]
+            },
+            {
+                "name": "Pilots Training Speed",
+                "values": [
+                    1.2,
+                    2.4,
+                    3.6,
+                    4.8
+                ]
+            }
+        ]
+    },
+    {
+        "id": 49,
+        "name": "Street Light",
+        "image": "images/streetlight.webp",
+        "level": 4,
+        "unit": "Wall Breakers",
+        "quality": "Rare",
+        "buff": {
+            "name": "Wall Breakers Training Speed",
+            "values": [
+                0.8,
+                1.5,
+                2.3,
+                3
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Speed of Wall Breakers",
+                "values": [
+                    1.2,
+                    2.4,
+                    3.6,
+                    4.8
+                ]
+            },
+            {
+                "name": "Wall Breakers Training Speed",
+                "values": [
+                    1.2,
+                    2.4,
+                    3.6,
+                    4.8
+                ]
+            }
+        ]
+    },
+    {
+        "id": 50,
+        "name": "Street Blocker",
+        "image": "images/streetblocker.webp",
+        "level": 4,
+        "unit": "Hitters",
+        "quality": "Rare",
+        "buff": {
+            "name": "Hitters Training Speed",
+            "values": [
+                0.8,
+                1.5,
+                2.3,
+                3
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Speed of Hitters",
+                "values": [
+                    1,
+                    2,
+                    4,
+                    5
+                ]
+            },
+            {
+                "name": "Hitters Training Speed",
+                "values": [
+                    1.2,
+                    2.4,
+                    3.6,
+                    4.8
+                ]
+            }
+        ]
+    },
+    {
+        "id": 51,
+        "name": "Street Water Fountain",
+        "image": "images/streetwaterfountain.webp",
+        "level": 4,
+        "unit": "Shooters",
+        "quality": "Rare",
+        "buff": {
+            "name": "Shooter Training Speed",
+            "values": [
+                0.8,
+                1.5,
+                2.3,
+                3
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Speed of Shooters",
+                "values": [
+                    1,
+                    2,
+                    4,
+                    5
+                ]
+            },
+            {
+                "name": "Shooters Training Speed",
+                "values": [
+                    1.2,
+                    2.4,
+                    3.6,
+                    4.8
+                ]
+            }
+        ]
+    },
+    {
+        "id": 52,
+        "name": "Throat Protector",
+        "image": "images/throatprotector.webp",
+        "level": 5,
+        "unit": "Gathering",
+        "quality": "Epic",
+        "buff": {
+            "name": "Food Production",
+            "values": [
+                1.2,
+                2.4,
+                3.6,
+                4.8,
+                6
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Increased Food Gathering",
+                "values": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            },
+            {
+                "name": "Food Production",
+                "values": [
+                    1.6,
+                    3.2,
+                    4.8,
+                    6.4,
+                    8
+                ]
+            }
+        ]
+    },
+    {
+        "id": 53,
+        "name": "Oral Protector",
+        "image": "images/oralprotector.webp",
+        "level": 5,
+        "unit": "Gathering",
+        "quality": "Epic",
+        "buff": {
+            "name": "Iron Production",
+            "values": [
+                1.2,
+                2.4,
+                3.6,
+                4.8,
+                6
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Increased Iron Gathering",
+                "values": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            },
+            {
+                "name": "Iron Production",
+                "values": [
+                    1.6,
+                    3.2,
+                    4.8,
+                    6.4,
+                    8
+                ]
+            }
+        ]
+    },
+    {
+        "id": 54,
+        "name": "Fishing Machine",
+        "image": "images/fishingmachine.webp",
+        "level": 5,
+        "unit": "Pilots",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Attack of Pilots",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Speed of Pilots",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            },
+            {
+                "name": "Attack of Pilots",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            }
+        ]
+    },
+    {
+        "id": 55,
+        "name": "Pesticide Sprayer",
+        "image": "images/pesticidesprayer.webp",
+        "level": 5,
+        "unit": "Hitters",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Attack of Hitters",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Speed of Hitters",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            },
+            {
+                "name": "Attack of Hitters",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            }
+        ]
+    },
+    {
+        "id": 56,
+        "name": "Aerial Net Puller",
+        "image": "images/aerialnetpuller.webp",
+        "level": 5,
+        "unit": "Shooters",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Defense of Shooters",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Speed of Shooters",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            },
+            {
+                "name": "Defense of Shooters",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            }
+        ]
+    },
+    {
+        "id": 57,
+        "name": "Starfish",
+        "image": "images/starfish.webp",
+        "level": 5,
+        "unit": "Pilots",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Medical Station Capacity",
+            "values": [
+                2000,
+                4000,
+                6000,
+                8000,
+                10000
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Pilot Healing Speed",
+                "values": [
+                    10,
+                    20,
+                    30,
+                    40,
+                    50
+                ]
+            },
+            {
+                "name": "Attack of Pilots",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            }
+        ]
+    },
+    {
+        "id": 58,
+        "name": "Fantasy Crown",
+        "image": "images/fantasycrown.webp",
+        "level": 5,
+        "unit": "Hitters",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Medical Station Capacity",
+            "values": [
+                2000,
+                4000,
+                6000,
+                8000,
+                10000
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Hitter Healing Speed",
+                "values": [
+                    10,
+                    20,
+                    30,
+                    40,
+                    50
+                ]
+            },
+            {
+                "name": "Attack of Hitters",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            }
+        ]
+    },
+    {
+        "id": 59,
+        "name": "Doctor Octopus",
+        "image": "images/doctoroctopus.webp",
+        "level": 5,
+        "unit": "Shooters",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Medical Station Capacity",
+            "values": [
+                2000,
+                4000,
+                6000,
+                8000,
+                10000
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Shooter Healing Speed",
+                "values": [
+                    10,
+                    20,
+                    30,
+                    40,
+                    50
+                ]
+            },
+            {
+                "name": "Attack of Shooters",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            }
+        ]
+    },
+    {
+        "id": 60,
+        "name": "Butterfly Helmet",
+        "image": "images/butterflyhelmet.webp",
+        "level": 5,
+        "unit": "Pilots",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Defense of Pilots",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Pilots Damage Taken from Shooters Reduced",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            },
+            {
+                "name": "Defense of Pilots",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            }
+        ]
+    },
+    {
+        "id": 61,
+        "name": "Rubber Soldier",
+        "image": "images/rubbersoldier.webp",
+        "level": 5,
+        "unit": "Hitters",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Defense of Hitters",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Hitters Damage Taken from Pilots Reduced",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            },
+            {
+                "name": "Defense of Hitters",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            }
+        ]
+    },
+    {
+        "id": 62,
+        "name": "Neon Billboard",
+        "image": "images/neonbillboard.webp",
+        "level": 5,
+        "unit": "Shooters",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Defense of Shooters",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Shooters Damage Taken from Hitters Reduced",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            },
+            {
+                "name": "Defense of Shooters",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            }
+        ]
+    },
+    {
+        "id": 63,
+        "name": "Camera",
+        "image": "images/camera.webp",
+        "level": 5,
+        "unit": "Pilots",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Attack of Pilots",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Pilots Damage Taken from Hitters Reduced",
+                "values": [
+                    2.4,
+                    4.8,
+                    7.2,
+                    9.6,
+                    12
+                ]
+            },
+            {
+                "name": "Defense of Pilots",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            }
+        ]
+    },
+    {
+        "id": 64,
+        "name": "Time Shield",
+        "image": "images/timeshield.webp",
+        "level": 5,
+        "unit": "Hitters",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Attack of Hitters",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Hitters Damage Taken from Shooters Reduced",
+                "values": [
+                    2.4,
+                    4.8,
+                    7.2,
+                    9.6,
+                    12
+                ]
+            },
+            {
+                "name": "Defense of Hitters",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            }
+        ]
+    },
+    {
+        "id": 65,
+        "name": "Light Summoner",
+        "image": "images/lightsummoner.webp",
+        "level": 5,
+        "unit": "Shooters",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Attack of Shooters",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Shooters Damage Taken from Pilots Reduced",
+                "values": [
+                    2.4,
+                    4.8,
+                    7.2,
+                    9.6,
+                    12
+                ]
+            },
+            {
+                "name": "Defense of Shooters",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            }
+        ]
+    },
+    {
+        "id": 66,
+        "name": "Roasting Trident",
+        "image": "images/roastingtrident.webp",
+        "level": 5,
+        "unit": "Pilots",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Attack of Pilots",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Pilots Damage Taken from Hitters Reduced",
+                "values": [
+                    2.4,
+                    4.8,
+                    7.2,
+                    9.6,
+                    12
+                ]
+            },
+            {
+                "name": "Attack of Pilots",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            }
+        ]
+    },
+    {
+        "id": 67,
+        "name": "Booby Trap",
+        "image": "images/boobytrap.webp",
+        "level": 5,
+        "unit": "Hitters",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Attack of Hitters",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Hitters Damage Taken from Shooters Reduced",
+                "values": [
+                    2.4,
+                    4.8,
+                    7.2,
+                    9.6,
+                    12
+                ]
+            },
+            {
+                "name": "Attack of Hitters",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            }
+        ]
+    },
+    {
+        "id": 68,
+        "name": "Silent Dart",
+        "image": "images/silentdart.webp",
+        "level": 5,
+        "unit": "Shooters",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Attack of Shooters",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Shooters Damage Taken from Pilots Reduced",
+                "values": [
+                    2.4,
+                    4.8,
+                    7.2,
+                    9.6,
+                    12
+                ]
+            },
+            {
+                "name": "Attack of Shooters",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            }
+        ]
+    },
+    {
+        "id": 69,
+        "name": "Rocksplitter",
+        "image": "images/rocksplitter.webp",
+        "level": 5,
+        "unit": "Pilots",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Attack of Pilots",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Pilots Damage Taken from Hitters Reduced",
+                "values": [
+                    2.4,
+                    4.8,
+                    7.2,
+                    9.6,
+                    12
+                ]
+            },
+            {
+                "name": "Attack of Pilots",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            }
+        ]
+    },
+    {
+        "id": 70,
+        "name": "Center-Earth Transporter",
+        "image": "images/centerearthtransporter.webp",
+        "level": 5,
+        "unit": "Hitters",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Attack of Hitters",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Hitters Damage Taken from Shooters Reduced",
+                "values": [
+                    2.4,
+                    4.8,
+                    7.2,
+                    9.6,
+                    12
+                ]
+            },
+            {
+                "name": "Attack of Hitters",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            }
+        ]
+    },
+    {
+        "id": 71,
+        "name": "Spiral Gun",
+        "image": "images/spiralgun.webp",
+        "level": 5,
+        "unit": "Shooters",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Attack of Shooters",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Shooters Damage Taken from Pilots Reduced",
+                "values": [
+                    2.4,
+                    4.8,
+                    7.2,
+                    9.6,
+                    12
+                ]
+            },
+            {
+                "name": "Attack of Shooters",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            }
+        ]
+    },
+    {
+        "id": 72,
+        "name": "Drill Bit",
+        "image": "images/drillbit.webp",
+        "level": 5,
+        "unit": "Wall Breakers",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Attack of Wall Breakers",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Speed of Wall Breakers",
+                "values": [
+                    3,
+                    6,
+                    9,
+                    12,
+                    15
+                ]
+            },
+            {
+                "name": "Attack of Wall Breakers",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 73,
+        "name": "Spike Barrel",
+        "image": "images/spikebarrel.webp",
+        "level": 5,
+        "unit": "Wall Breakers",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Attack of Wall Breakers",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Speed of Wall Breakers",
+                "values": [
+                    3,
+                    6,
+                    9,
+                    12,
+                    15
+                ]
+            },
+            {
+                "name": "Attack of Wall Breakers",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 74,
+        "name": "Portable Cannon",
+        "image": "images/portablecannon.webp",
+        "level": 5,
+        "unit": "Wall Breakers",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Attack of Wall Breakers",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Damage of Wall Breakers",
+                "values": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            },
+            {
+                "name": "Attack of Wall Breakers",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 75,
+        "name": "Gold Candlestick",
+        "image": "images/goldcandlestick.webp",
+        "level": 5,
+        "unit": "Wall Breakers",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Health of Wall Breakers",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                6
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Defense of Wall Breakers",
+                "values": [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ]
+            },
+            {
+                "name": "Health of Wall Breakers",
+                "values": [
+                    3,
+                    6,
+                    9,
+                    12,
+                    15
+                ]
+            }
+        ]
+    },
+    {
+        "id": 76,
+        "name": "Gold Pocket Watch",
+        "image": "images/goldpocketwatch.webp",
+        "level": 5,
+        "unit": "Wall Breakers",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Defense of Wall Breakers",
+            "values": [
+                2,
+                4,
+                6,
+                8,
+                10
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Health of Wall Breakers",
+                "values": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            },
+            {
+                "name": "Defense of Wall Breakers",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 77,
+        "name": "Gold Scale",
+        "image": "images/goldscale.webp",
+        "level": 5,
+        "unit": "Wall Breakers",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Wall Breakers Training Speed",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Damage of Wall Breakers",
+                "values": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            },
+            {
+                "name": "Wall Breakers Training Speed",
+                "values": [
+                    3,
+                    6,
+                    9,
+                    12,
+                    15
+                ]
+            }
+        ]
+    },
+    {
+        "id": 78,
+        "name": "Double Hammer",
+        "image": "images/doublehammer.webp",
+        "level": 5,
+        "unit": "Pilots",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Attack of Pilots",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Damage of Pilots",
+                "values": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            },
+            {
+                "name": "Attack of Pilots",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 79,
+        "name": "Leather Gloves",
+        "image": "images/leathergloves.webp",
+        "level": 5,
+        "unit": "Hitters",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Attack of Hitters",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Damage of Hitters",
+                "values": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            },
+            {
+                "name": "Attack of Hitters",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 80,
+        "name": "Football",
+        "image": "images/football.webp",
+        "level": 5,
+        "unit": "Shooters",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Attack of Shooters",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Damage of Shooters",
+                "values": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            },
+            {
+                "name": "Attack of Shooters",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 81,
+        "name": "Riding Vest",
+        "image": "images/ridingvest.webp",
+        "level": 5,
+        "unit": "Pilots",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Defense of Pilots",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Damage dealt by Normal Attacks",
+                "values": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            },
+            {
+                "name": "Defense of Pilots",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 82,
+        "name": "Social Divider",
+        "image": "images/socialdivider.webp",
+        "level": 5,
+        "unit": "Hitters",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Defense of Hitters",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Damage dealt by Normal Attacks",
+                "values": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            },
+            {
+                "name": "Defense of Hitters",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 83,
+        "name": "Goggles",
+        "image": "images/goggles.webp",
+        "level": 5,
+        "unit": "Shooters",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Defense of Shooters",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Damage dealt by Normal Attacks",
+                "values": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            },
+            {
+                "name": "Defense of Shooters",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 84,
+        "name": "Ambulance Bed",
+        "image": "images/ambulancebed.webp",
+        "level": 5,
+        "unit": "Pilots",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Attack of Pilots",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Health of Pilots",
+                "values": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            },
+            {
+                "name": "Attack of Pilots",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 85,
+        "name": "Massage Gun",
+        "image": "images/massagegun.webp",
+        "level": 5,
+        "unit": "Hitters",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Attack of Hitters",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Health of Hitters",
+                "values": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            },
+            {
+                "name": "Attack of Hitters",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 86,
+        "name": "Temperature Sensor",
+        "image": "images/temperaturesensor.webp",
+        "level": 5,
+        "unit": "Shooters",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Attack of Shooters",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Health of Shooters",
+                "values": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            },
+            {
+                "name": "Attack of Shooters",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 87,
+        "name": "Homing Cannon",
+        "image": "images/homingcannon.webp",
+        "level": 5,
+        "unit": "Wall Breakers",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Attack of Wall Breakers",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Wall Breaker Damage to Shooters",
+                "values": [
+                    3,
+                    6,
+                    9,
+                    12,
+                    15
+                ]
+            },
+            {
+                "name": "Attack of Wall Breakers",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 88,
+        "name": "Mag Shield",
+        "image": "images/magshield.webp",
+        "level": 5,
+        "unit": "Wall Breakers",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Defense of Wall Breakers",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Wall Breaker Damage to Hitters",
+                "values": [
+                    3,
+                    6,
+                    9,
+                    12,
+                    15
+                ]
+            },
+            {
+                "name": "Defense of Wall Breakers",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 89,
+        "name": "Onboard Locator",
+        "image": "images/onboardlocator.webp",
+        "level": 5,
+        "unit": "Wall Breakers",
+        "quality": "Legendary",
+        "buff": {
+            "name": "Health of Wall Breakers",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Wall Breaker Damage to Pilots",
+                "values": [
+                    3,
+                    6,
+                    9,
+                    12,
+                    15
+                ]
+            },
+            {
+                "name": "Health of Wall Breakers",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 90,
+        "name": "Moon Boots",
+        "image": "images/moonboots.webp",
+        "level": 5,
+        "unit": "Pilots",
+        "quality": "Super",
+        "buff": {
+            "name": "Attack of Pilots",
+            "values": [
+                2,
+                3,
+                4,
+                5,
+                6
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Pilots Take Reduced Damage from Pilots",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            },
+            {
+                "name": "Attack of Pilots",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 91,
+        "name": "Moon Landing Stamps",
+        "image": "images/moonlandingstamps.webp",
+        "level": 5,
+        "unit": "Pilots",
+        "quality": "Super",
+        "buff": {
+            "name": "Pilot Normal Attack Damage",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Pilot Damage to Pilots",
+                "values": [
+                    6,
+                    12,
+                    18,
+                    24,
+                    30
+                ]
+            },
+            {
+                "name": "Pilot Normal Attack Damage",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            }
+        ]
+    },
+    {
+        "id": 92,
+        "name": "Moon Landing Footprint",
+        "image": "images/moonlandingfootprint.webp",
+        "level": 5,
+        "unit": "Pilots",
+        "quality": "Super",
+        "buff": {
+            "name": "Defense of Pilots",
+            "values": [
+                3,
+                4,
+                5,
+                6,
+                7
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Skill Damage Up in All Pilot Troop",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            },
+            {
+                "name": "Defense of Pilots",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 93,
+        "name": "Astronaut Figurine",
+        "image": "images/astronautfigurine.webp",
+        "level": 5,
+        "unit": "Hitters",
+        "quality": "Super",
+        "buff": {
+            "name": "Attack of Hitters",
+            "values": [
+                3,
+                4,
+                5,
+                6,
+                7
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Skill Damage Up in All Hitter Troop",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            },
+            {
+                "name": "Attack of Hitters",
+                "values": [
+                    3,
+                    6,
+                    9,
+                    12,
+                    18
+                ]
+            }
+        ]
+    },
+    {
+        "id": 94,
+        "name": "Space Magazine",
+        "image": "images/spacemagazine.webp",
+        "level": 5,
+        "unit": "Hitters",
+        "quality": "Super",
+        "buff": {
+            "name": "Hitter Normal Attack Damage",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Hitters Take Reduced Damage from Hitters",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            },
+            {
+                "name": "Hitter Normal Attack Damage",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            }
+        ]
+    },
+    {
+        "id": 95,
+        "name": "Toy Spaceship",
+        "image": "images/toyspaceship.webp",
+        "level": 5,
+        "unit": "Hitters",
+        "quality": "Super",
+        "buff": {
+            "name": "Defense of Hitters",
+            "values": [
+                3,
+                4,
+                5,
+                6,
+                7
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Hitter Damage to Hitters",
+                "values": [
+                    7,
+                    14,
+                    21,
+                    28,
+                    35
+                ]
+            },
+            {
+                "name": "Defense of Hitters",
+                "values": [
+                    3,
+                    6,
+                    9,
+                    12,
+                    18
+                ]
+            }
+        ]
+    },
+    {
+        "id": 96,
+        "name": "Vintage Shirt",
+        "image": "images/vintageshirt.webp",
+        "level": 5,
+        "unit": "Shooters",
+        "quality": "Super",
+        "buff": {
+            "name": "Attack of Shooters",
+            "values": [
+                3,
+                4,
+                5,
+                6,
+                7
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Shooter Damage to Shooters",
+                "values": [
+                    6,
+                    12,
+                    18,
+                    24,
+                    30
+                ]
+            },
+            {
+                "name": "Attack of Shooters",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 97,
+        "name": "Record Player",
+        "image": "images/recordplayer.webp",
+        "level": 5,
+        "unit": "Shooters",
+        "quality": "Super",
+        "buff": {
+            "name": "Shooter Normal Attack Damage",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Shooters Take Reduced Damage from Shooters",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            },
+            {
+                "name": "Shooter Normal Attack Damage",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            }
+        ]
+    },
+    {
+        "id": 98,
+        "name": "Rock n' Roll Record",
+        "image": "images/rocknrollrecord.webp",
+        "level": 5,
+        "unit": "Shooters",
+        "quality": "Super",
+        "buff": {
+            "name": "Defense of Shooters",
+            "values": [
+                3,
+                4,
+                5,
+                6,
+                7
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Skill Damage Up in All Shooter Troop",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            },
+            {
+                "name": "Defense of Shooters",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 99,
+        "name": "Telescope",
+        "image": "images/telescope.webp",
+        "level": 5,
+        "unit": "Wall Breakers",
+        "quality": "Super",
+        "buff": {
+            "name": "Attack of Wall Breakers",
+            "values": [
+                3,
+                4,
+                5,
+                6,
+                7
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Wall Break Damage to Wall Breakers",
+                "values": [
+                    6,
+                    12,
+                    18,
+                    24,
+                    30
+                ]
+            },
+            {
+                "name": "Attack of Wall Breakers",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 100,
+        "name": "Satellite Phone",
+        "image": "images/satellitephone.webp",
+        "level": 5,
+        "unit": "Wall Breakers",
+        "quality": "Super",
+        "buff": {
+            "name": "Wall Breaker Normal Attack Damage",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Skill Damage Up in All Wall Breaker Troop",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            },
+            {
+                "name": "Wall Breaker Normal Attack Damage",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            }
+        ]
+    },
+    {
+        "id": 101,
+        "name": "Talk Box",
+        "image": "images/talkbox.webp",
+        "level": 5,
+        "unit": "Wall Breakers",
+        "quality": "Super",
+        "buff": {
+            "name": "Defense of Wall Breakers",
+            "values": [
+                2,
+                3,
+                4,
+                5,
+                6
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Wall Breakers Take Reduced Damage From Wall Breakers",
+                "values": [
+                    6,
+                    12,
+                    18,
+                    24,
+                    30
+                ]
+            },
+            {
+                "name": "Defense of Wall Breakers",
+                "values": [
+                    3,
+                    6,
+                    9,
+                    12,
+                    15
+                ]
+            }
+        ]
+    },
+    {
+        "id": 102,
+        "name": "Antique Camera",
+        "image": "images/antiquecamera.webp",
+        "level": 5,
+        "unit": "Pilots",
+        "quality": "Super",
+        "buff": {
+            "name": "Attack of Pilots",
+            "values": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Health of Pilots",
+                "values": [
+                    1.5,
+                    3,
+                    4.5,
+                    6,
+                    8
+                ]
+            },
+            {
+                "name": "Attack of Pilots",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 103,
+        "name": "Antique Television",
+        "image": "images/antiquetelevision.webp",
+        "level": 5,
+        "unit": "Pilots",
+        "quality": "Super",
+        "buff": {
+            "name": "Defense of Pilots",
+            "values": [
+                3,
+                4,
+                5,
+                6,
+                7
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Pilots Take Reduced Damage from Pilots",
+                "values": [
+                    6,
+                    12,
+                    18,
+                    24,
+                    30
+                ]
+            },
+            {
+                "name": "Defense of Pilots",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 104,
+        "name": "Antique Fan",
+        "image": "images/antiquefan.webp",
+        "level": 5,
+        "unit": "Pilots",
+        "quality": "Super",
+        "buff": {
+            "name": "Skill Damage Up in All Pilot Troop",
+            "values": [
+                2,
+                3,
+                4,
+                5,
+                6
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Attack of Pilots",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            },
+            {
+                "name": "Skill Damage Up in All Pilot Troop",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            }
+        ]
+    },
+    {
+        "id": 105,
+        "name": "Bread Maker",
+        "image": "images/breadmaker.webp",
+        "level": 5,
+        "unit": "Hitters",
+        "quality": "Super",
+        "buff": {
+            "name": "Attack of Hitters",
+            "values": [
+                3,
+                4,
+                5,
+                6,
+                7
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Health of Hitters",
+                "values": [
+                    1.5,
+                    3,
+                    4.5,
+                    6,
+                    8
+                ]
+            },
+            {
+                "name": "Attack of Hitters",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 106,
+        "name": "Refrigerator",
+        "image": "images/refrigerator.webp",
+        "level": 5,
+        "unit": "Hitters",
+        "quality": "Super",
+        "buff": {
+            "name": "Defense of Hitters",
+            "values": [
+                3,
+                4,
+                5,
+                6,
+                7
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Hitters Take Reduced Damage from Hitters",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            },
+            {
+                "name": "Defense of Hitters",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 107,
+        "name": "Microwave",
+        "image": "images/microwave.webp",
+        "level": 5,
+        "unit": "Hitters",
+        "quality": "Super",
+        "buff": {
+            "name": "Skill Damage Up in All Hitter Troop",
+            "values": [
+                2,
+                3,
+                4,
+                5,
+                6
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Attack of Hitters",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            },
+            {
+                "name": "Skill Damage Up in All Hitter Troop",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            }
+        ]
+    },
+    {
+        "id": 108,
+        "name": "Violin",
+        "image": "images/violin.webp",
+        "level": 5,
+        "unit": "Shooters",
+        "quality": "Super",
+        "buff": {
+            "name": "Attack of Shooters",
+            "values": [
+                3,
+                4,
+                5,
+                6,
+                7
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Shooters Take Reduced Damage from Shooters",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            },
+            {
+                "name": "Attack of Shooters",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 109,
+        "name": "Accordion",
+        "image": "images/accordion.webp",
+        "level": 5,
+        "unit": "Shooters",
+        "quality": "Super",
+        "buff": {
+            "name": "Defense of Shooters",
+            "values": [
+                3,
+                4,
+                5,
+                6,
+                7
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Health of Shooters",
+                "values": [
+                    1.5,
+                    3,
+                    4.5,
+                    6,
+                    8
+                ]
+            },
+            {
+                "name": "Defense of Shooters",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 110,
+        "name": "Saxophone",
+        "image": "images/saxophone.webp",
+        "level": 5,
+        "unit": "Shooters",
+        "quality": "Super",
+        "buff": {
+            "name": "Skill Damage Up in All Shooter Troop",
+            "values": [
+                2,
+                3,
+                4,
+                5,
+                6
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Attack of Shooters",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            },
+            {
+                "name": "Skill Damage Up in All Shooter Troop",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            }
+        ]
+    },
+    {
+        "id": 111,
+        "name": "Globe",
+        "image": "images/globe.webp",
+        "level": 5,
+        "unit": "Wall Breakers",
+        "quality": "Super",
+        "buff": {
+            "name": "Attack of Wall Breakers",
+            "values": [
+                3,
+                4,
+                5,
+                6,
+                7
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Wall Breakers Take Reduced Damage From Wall Breakers",
+                "values": [
+                    6,
+                    12,
+                    18,
+                    24,
+                    30
+                ]
+            },
+            {
+                "name": "Attack of Wall Breakers",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 112,
+        "name": "Microscope",
+        "image": "images/microscope.webp",
+        "level": 5,
+        "unit": "Wall Breakers",
+        "quality": "Super",
+        "buff": {
+            "name": "Defense of Wall Breakers",
+            "values": [
+                3,
+                4,
+                5,
+                6,
+                7
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Health of Wall Breakers",
+                "values": [
+                    1.5,
+                    3,
+                    4.5,
+                    6,
+                    8
+                ]
+            },
+            {
+                "name": "Defense of Wall Breakers",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 113,
+        "name": "Perpetual Motion Machine",
+        "image": "images/perpetualmotionmachine.webp",
+        "level": 5,
+        "unit": "Wall Breakers",
+        "quality": "Super",
+        "buff": {
+            "name": "Skill Damage Up in All Wall Breaker Troop",
+            "values": [
+                2,
+                3,
+                4,
+                5,
+                6
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Attack of Wall Breakers",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            },
+            {
+                "name": "Skill Damage Up in All Wall Breaker Troop",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            }
+        ]
+    },
+    {
+        "id": 114,
+        "name": "Watch",
+        "image": "images/watch.webp",
+        "level": 5,
+        "unit": "Pilots",
+        "quality": "Super",
+        "buff": {
+            "name": "Attack of Pilots",
+            "values": [
+                3,
+                4,
+                5,
+                6,
+                7
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Pilot Healing Speed",
+                "values": [
+                    13,
+                    26,
+                    39,
+                    52,
+                    65
+                ]
+            },
+            {
+                "name": "Attack of Pilots",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 115,
+        "name": "Antique Clock",
+        "image": "images/antiqueclock.webp",
+        "level": 5,
+        "unit": "Pilots",
+        "quality": "Super",
+        "buff": {
+            "name": "Defense of Pilots",
+            "values": [
+                3,
+                4,
+                5,
+                6,
+                7
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Pilots Training Speed",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            },
+            {
+                "name": "Defense of Pilots",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 116,
+        "name": "Alarm Clock",
+        "image": "images/alarmclock.webp",
+        "level": 5,
+        "unit": "Pilots",
+        "quality": "Super",
+        "buff": {
+            "name": "Pilot Normal Attack Damage",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Attack of Pilots",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            },
+            {
+                "name": "Pilot Normal Attack Damage",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            }
+        ]
+    },
+    {
+        "id": 117,
+        "name": "Anti-Aging Drink",
+        "image": "images/antiagingdrink.webp",
+        "level": 5,
+        "unit": "Hitters",
+        "quality": "Super",
+        "buff": {
+            "name": "Attack of Hitters",
+            "values": [
+                3,
+                4,
+                5,
+                6,
+                7
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Hitter Healing Speed",
+                "values": [
+                    13,
+                    26,
+                    39,
+                    52,
+                    65
+                ]
+            },
+            {
+                "name": "Attack of Hitters",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 118,
+        "name": "Premium Canned Food",
+        "image": "images/premiumcannedfood.webp",
+        "level": 5,
+        "unit": "Hitters",
+        "quality": "Super",
+        "buff": {
+            "name": "Defense of Hitters",
+            "values": [
+                3,
+                4,
+                5,
+                6,
+                7
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Hitters Training Speed",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            },
+            {
+                "name": "Defense of Hitters",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 119,
+        "name": "Emergency Biscuit",
+        "image": "images/emergencybiscuit.webp",
+        "level": 5,
+        "unit": "Hitters",
+        "quality": "Super",
+        "buff": {
+            "name": "Hitter Normal Attack Damage",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Attack of Hitters",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            },
+            {
+                "name": "Hitter Normal Attack Damage",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            }
+        ]
+    },
+    {
+        "id": 120,
+        "name": "Roland's Staff",
+        "image": "images/rolandsstaff.webp",
+        "level": 5,
+        "unit": "Shooters",
+        "quality": "Super",
+        "buff": {
+            "name": "Attack of Shooters",
+            "values": [
+                3,
+                4,
+                5,
+                6,
+                7
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Shooter Healing Speed",
+                "values": [
+                    13,
+                    26,
+                    39,
+                    52,
+                    65
+                ]
+            },
+            {
+                "name": "Attack of Shooters",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 121,
+        "name": "Roland's Cape",
+        "image": "images/rolandscape.webp",
+        "level": 5,
+        "unit": "Shooters",
+        "quality": "Super",
+        "buff": {
+            "name": "Defense of Shooters",
+            "values": [
+                3,
+                4,
+                5,
+                6,
+                7
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Shooters Training Speed",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            },
+            {
+                "name": "Defense of Shooters",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 122,
+        "name": "Roland's Crown",
+        "image": "images/rolandscrown.webp",
+        "level": 5,
+        "unit": "Shooters",
+        "quality": "Super",
+        "buff": {
+            "name": "Shooter Normal Attack Damage",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Attack of Shooters",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            },
+            {
+                "name": "Shooter Normal Attack Damage",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            }
+        ]
+    },
+    {
+        "id": 123,
+        "name": "Roland Poster",
+        "image": "images/rolandposter.webp",
+        "level": 5,
+        "unit": "Wall Breakers",
+        "quality": "Super",
+        "buff": {
+            "name": "Attack of Wall Breakers",
+            "values": [
+                3,
+                4,
+                5,
+                6,
+                7
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Wall Breaker Healing Speed",
+                "values": [
+                    13,
+                    26,
+                    39,
+                    52,
+                    65
+                ]
+            },
+            {
+                "name": "Attack of Wall Breakers",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 124,
+        "name": "Roland Statue",
+        "image": "images/rolandstatue.webp",
+        "level": 5,
+        "unit": "Wall Breakers",
+        "quality": "Super",
+        "buff": {
+            "name": "Defense of Wall Breakers",
+            "values": [
+                3,
+                4,
+                5,
+                6,
+                7
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Attack of Wall Breakers",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            },
+            {
+                "name": "Defense of Wall Breakers",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 125,
+        "name": "Space Ape Action Figure",
+        "image": "images/spaceapeactionfigure.webp",
+        "level": 5,
+        "unit": "Wall Breakers",
+        "quality": "Super",
+        "buff": {
+            "name": "Wall Breaker Normal Attack Damage",
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Wall Breakers Training Speed",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            },
+            {
+                "name": "Wall Breaker Normal Attack Damage",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            }
+        ]
+    },
+    {
+        "id": 126,
+        "name": "Big Head Car",
+        "image": "images/bigheadcar.webp",
+        "level": 5,
+        "unit": "Pilots",
+        "quality": "Super",
+        "buff": {
+            "name": "Attack of Pilots",
+            "values": [
+                3,
+                4,
+                5,
+                6,
+                7
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Pilot Damage to Pilots",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            },
+            {
+                "name": "Attack of Pilots",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 127,
+        "name": "Slender Car",
+        "image": "images/slendercar.webp",
+        "level": 5,
+        "unit": "Pilots",
+        "quality": "Super",
+        "buff": {
+            "name": "Defense of Pilots",
+            "values": [
+                3,
+                4,
+                5,
+                6,
+                7
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Speed of Pilots",
+                "values": [
+                    9,
+                    18,
+                    27,
+                    36,
+                    45
+                ]
+            },
+            {
+                "name": "Defense of Pilots",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 128,
+        "name": "Beetle Car",
+        "image": "images/beetlecar.webp",
+        "level": 5,
+        "unit": "Pilots",
+        "quality": "Super",
+        "buff": {
+            "name": "Skill Damage Up in All Pilot Troop",
+            "values": [
+                2,
+                3,
+                4,
+                5,
+                6
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Defense of Pilots",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            },
+            {
+                "name": "Skill Damage Up in All Pilot Troop",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            }
+        ]
+    },
+    {
+        "id": 129,
+        "name": "Antique Telephone",
+        "image": "images/antiquetelephone.webp",
+        "level": 5,
+        "unit": "Hitters",
+        "quality": "Super",
+        "buff": {
+            "name": "Attack of Hitters",
+            "values": [
+                3,
+                4,
+                5,
+                6,
+                7
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Speed of Hitters",
+                "values": [
+                    9,
+                    18,
+                    27,
+                    36,
+                    45
+                ]
+            },
+            {
+                "name": "Attack of Hitters",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 130,
+        "name": "Antique Telegraph",
+        "image": "images/antiquetelegraph.webp",
+        "level": 5,
+        "unit": "Hitters",
+        "quality": "Super",
+        "buff": {
+            "name": "Defense of Hitters",
+            "values": [
+                3,
+                4,
+                5,
+                6,
+                7
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Hitter Damage to Hitters",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            },
+            {
+                "name": "Defense of Hitters",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 131,
+        "name": "Antique Printing Press",
+        "image": "images/antiqueprintingpress.webp",
+        "level": 5,
+        "unit": "Hitters",
+        "quality": "Super",
+        "buff": {
+            "name": "Skill Damage Up in All Hitter Troop",
+            "values": [
+                2,
+                3,
+                4,
+                5,
+                6
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Defense of Hitters",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            },
+            {
+                "name": "Skill Damage Up in All Hitter Troop",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            }
+        ]
+    },
+    {
+        "id": 132,
+        "name": "Dartboard",
+        "image": "images/dartboard.webp",
+        "level": 5,
+        "unit": "Shooters",
+        "quality": "Super",
+        "buff": {
+            "name": "Attack of Shooters",
+            "values": [
+                3,
+                4,
+                5,
+                6,
+                7
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Shooter Damage to Shooters",
+                "values": [
+                    6,
+                    12,
+                    18,
+                    24,
+                    30
+                ]
+            },
+            {
+                "name": "Attack of Shooters",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 133,
+        "name": "Game Console",
+        "image": "images/gameconsole.webp",
+        "level": 5,
+        "unit": "Shooters",
+        "quality": "Super",
+        "buff": {
+            "name": "Defense of Shooters",
+            "values": [
+                3,
+                4,
+                5,
+                6,
+                7
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Speed of Shooters",
+                "values": [
+                    9,
+                    18,
+                    27,
+                    36,
+                    45
+                ]
+            },
+            {
+                "name": "Defense of Shooters",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 134,
+        "name": "Gaming Merchandise",
+        "image": "images/gamingmerchandise.webp",
+        "level": 5,
+        "unit": "Shooters",
+        "quality": "Super",
+        "buff": {
+            "name": "Skill Damage Up in All Shooter Troop",
+            "values": [
+                2,
+                3,
+                4,
+                5,
+                6
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Attack of Shooters",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            },
+            {
+                "name": "Skill Damage Up in All Shooter Troop",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            }
+        ]
+    },
+    {
+        "id": 135,
+        "name": "Alien Gun",
+        "image": "images/aliengun.webp",
+        "level": 5,
+        "unit": "Wall Breakers",
+        "quality": "Super",
+        "buff": {
+            "name": "Attack of Wall Breakers",
+            "values": [
+                3,
+                4,
+                5,
+                6,
+                7
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Wall Breaker Damage to Wall Breakers",
+                "values": [
+                    6,
+                    12,
+                    18,
+                    24,
+                    30
+                ]
+            },
+            {
+                "name": "Attack of Wall Breakers",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 136,
+        "name": "Unidentified Flying Object",
+        "image": "images/unidentifiedflyingobject.webp",
+        "level": 5,
+        "unit": "Wall Breakers",
+        "quality": "Super",
+        "buff": {
+            "name": "Defense of Wall Breakers",
+            "values": [
+                3,
+                4,
+                5,
+                6,
+                7
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Speed of Wall Breakers",
+                "values": [
+                    9,
+                    18,
+                    27,
+                    36,
+                    45
+                ]
+            },
+            {
+                "name": "Defense of Wall Breakers",
+                "values": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 137,
+        "name": "Alien Doll",
+        "image": "images/aliendoll.webp",
+        "level": 5,
+        "unit": "Wall Breakers",
+        "quality": "Super",
+        "buff": {
+            "name": "Skill Damage Up in All Wall Breaker Troop",
+            "values": [
+                2,
+                3,
+                4,
+                5,
+                6
+            ]
+        },
+        "displayBuffs": [
+            {
+                "name": "Defense of Wall Breakers",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            },
+            {
+                "name": "Skill Damage Up in All Wall Breaker Troop",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ]
+            }
+        ]
+    }
+]
