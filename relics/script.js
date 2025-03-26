@@ -78,7 +78,7 @@ function createRelic(relic, grid) {
     // Display Buffs only
     if (relic.displayBuffs && relic.displayBuffs.length > 0) {
         const displayBuffsLabel = document.createElement("p");
-        displayBuffsLabel.textContent = "Buffs:";
+        displayBuffsLabel.textContent = "Display Buffs:"; // Alterado para o label original
         displayBuffsLabel.classList.add("buff-label");
         relicElement.appendChild(displayBuffsLabel);
 
@@ -176,7 +176,7 @@ function createPlaceholder() {
     relicElement.appendChild(unit);
 
     const displayBuffsLabel = document.createElement("p");
-    displayBuffsLabel.textContent = "Buffs:";
+    displayBuffsLabel.textContent = "Display Buffs:"; // Alterado para o label original
     displayBuffsLabel.classList.add("buff-label", "placeholder-text");
     relicElement.appendChild(displayBuffsLabel);
 
