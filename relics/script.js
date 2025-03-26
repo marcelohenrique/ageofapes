@@ -3,36 +3,34 @@ let relics = [];
 
 async function loadRelics() {
     try {
-        const response = await fetch('converted_relics.json'); // Adjust path if needed
+        const response = await fetch('converted_relics.json');
         relics = await response.json();
-        filterRelics(); // Display relics after loading
+        filterRelics();
     } catch (error) {
         console.error("Error loading relics:", error);
     }
 }
 
-// Function to get color based on relic quality
 function getQualityColor(quality) {
     switch (quality) {
-        case "Rare": return "#d4eaf7"; // Very light blue
-        case "Epic": return "#e0d4f7"; // Very light purple
-        case "Legendary": return "#faf3d1"; // Very light yellow
-        case "Super": return "#f7d4d4"; // Very light red
-        default: return "#f9f9f9"; // Default color (light gray)
+        case "Rare": return "#d4eaf7";
+        case "Epic": return "#e0d4f7";
+        case "Legendary": return "#faf3d1";
+        case "Super": return "#f7d4d4";
+        default: return "#f9f9f9";
     }
 }
 
-// Function to update stars based on the selected level
 function updateStars(starsContainer, level, isHover = false) {
     if (!starsContainer) return;
 
-    starsContainer.innerHTML = ""; // Clear existing stars
+    starsContainer.innerHTML = "";
     for (let i = 1; i <= 5; i++) {
         const star = document.createElement("i");
-        star.classList.add("fas", "fa-star"); // Default to filled star
+        star.classList.add("fas", "fa-star");
         if (i > level) {
-            star.classList.remove("fas"); // Remove filled star class
-            star.classList.add("far"); // Add empty star class
+            star.classList.remove("fas");
+            star.classList.add("far");
         }
         starsContainer.appendChild(star);
     }
@@ -40,89 +38,70 @@ function updateStars(starsContainer, level, isHover = false) {
     else starsContainer.classList.remove("hover-effect");
 }
 
-// Function to save the selected level to localStorage
 function saveLevelToLocalStorage(relicId, level) {
     localStorage.setItem(`relic-${relicId}-level`, level);
 }
 
-// Function to load the selected level from localStorage
 function loadLevelFromLocalStorage(relicId) {
     const level = localStorage.getItem(`relic-${relicId}-level`);
     return level ? parseInt(level) : null;
 }
 
-// Function to create relic elements
 function createRelic(relic, grid) {
     if (!grid) return;
 
     const relicElement = document.createElement("div");
     relicElement.classList.add("col-md-4", "relic");
     relicElement.style.backgroundColor = getQualityColor(relic.quality);
-    relicElement.dataset.id = relic.id; // Add an ID for filtering
+    relicElement.dataset.id = relic.id;
 
-    // Add image
     const img = document.createElement("img");
     img.src = relic.image;
     img.alt = relic.name;
     img.classList.add("img-fluid");
     relicElement.appendChild(img);
 
-    // Add stars container
     const starsContainer = document.createElement("div");
     starsContainer.classList.add("stars");
-    let currentLevel = loadLevelFromLocalStorage(relic.id) ?? relic.level; // Use saved level or initial level
+    let currentLevel = loadLevelFromLocalStorage(relic.id) ?? relic.level;
     updateStars(starsContainer, currentLevel);
     relicElement.appendChild(starsContainer);
 
-    // Add name
     const title = document.createElement("h3");
     title.textContent = relic.name;
     relicElement.appendChild(title);
 
-    // Add unit
     const unit = document.createElement("p");
     unit.textContent = relic.unit;
     relicElement.appendChild(unit);
 
-    // Add buff label
-    const buffLabel = document.createElement("p");
-    buffLabel.textContent = "Buff:";
-    buffLabel.classList.add("buff-label");
-    relicElement.appendChild(buffLabel);
+    // Display Buffs only
+    if (relic.displayBuffs && relic.displayBuffs.length > 0) {
+        const displayBuffsLabel = document.createElement("p");
+        displayBuffsLabel.textContent = "Buffs:";
+        displayBuffsLabel.classList.add("buff-label");
+        relicElement.appendChild(displayBuffsLabel);
 
-    // Add buff information
-    const buff = document.createElement("p");
-    const buffValue = relic.buff.values[currentLevel - 1] ?? 0;
-    buff.innerHTML = `${relic.buff.name} <span class="buff-green">${buffValue}%</span>`;
-    buff.classList.add("buff-value");
-    relicElement.appendChild(buff);
+        relic.displayBuffs.forEach(displayBuff => {
+            const displayBuffElement = document.createElement("p");
+            const displayBuffValue = displayBuff.values[currentLevel - 1] ?? 0;
+            displayBuffElement.innerHTML = `${displayBuff.name} <span class="buff-green">${displayBuffValue}%</span>`;
+            displayBuffElement.classList.add("buff-value");
+            relicElement.appendChild(displayBuffElement);
+        });
+    }
 
-    // Add Display Buffs
-    const displayBuffsLabel = document.createElement("p");
-    displayBuffsLabel.textContent = "Display Buffs:";
-    displayBuffsLabel.classList.add("buff-label");
-    relicElement.appendChild(displayBuffsLabel);
-
-    relic.displayBuffs.forEach(displayBuff => {
-        const displayBuffElement = document.createElement("p");
-        const displayBuffValue = displayBuff.values[currentLevel - 1] ?? 0;
-        displayBuffElement.innerHTML = `${displayBuff.name} <span class="buff-green">${displayBuffValue}%</span>`;
-        displayBuffElement.classList.add("buff-value");
-        relicElement.appendChild(displayBuffElement);
-    });
-
-    // Add hover and click events for star selection
     starsContainer.addEventListener("mouseover", (event) => {
         if (event.target.tagName === "I") {
             const hoveredStar = event.target;
             const stars = Array.from(starsContainer.children);
             const hoveredIndex = stars.indexOf(hoveredStar);
-            updateStars(starsContainer, hoveredIndex + 1, true); // Temporary preview
+            updateStars(starsContainer, hoveredIndex + 1, true);
         }
     });
 
     starsContainer.addEventListener("mouseout", () => {
-        updateStars(starsContainer, currentLevel); // Revert to selected level
+        updateStars(starsContainer, currentLevel);
     });
 
     starsContainer.addEventListener("click", (event) => {
@@ -132,39 +111,30 @@ function createRelic(relic, grid) {
             const clickedIndex = stars.indexOf(clickedStar);
             let newLevel = clickedIndex + 1;
 
-            // Toggle the first star: if clicked again, set level to 0
             if (newLevel === 1 && currentLevel === 1) {
                 newLevel = 0;
             }
 
-            // Update the level and save to localStorage
             currentLevel = newLevel;
             updateStars(starsContainer, currentLevel);
             saveLevelToLocalStorage(relic.id, currentLevel);
 
-            // Update the buff value
-            const buffValue = relic.buff.values[currentLevel - 1] ?? 0;
-            buff.innerHTML = `${relic.buff.name} <span class="buff-green">${buffValue}%</span>`;
-
-            // Update the display buffs
-            relic.displayBuffs.forEach((displayBuff, index) => {
-                const displayBuffValue = displayBuff.values[currentLevel - 1] ?? 0;
-                relicElement.querySelectorAll(".buff-value")[index + 1].innerHTML = `${displayBuff.name} <span class="buff-green">${displayBuffValue}%</span>`;
-            });
+            // Update display buffs
+            if (relic.displayBuffs && relic.displayBuffs.length > 0) {
+                relic.displayBuffs.forEach((displayBuff, index) => {
+                    const displayBuffValue = displayBuff.values[currentLevel - 1] ?? 0;
+                    relicElement.querySelectorAll(".buff-value")[index].innerHTML = 
+                        `${displayBuff.name} <span class="buff-green">${displayBuffValue}%</span>`;
+                });
+            }
         }
     });
 
-    // Add click event to move the relic
     relicElement.addEventListener("click", (event) => {
-        // Prevent moving the relic if the click is on the stars
         if (!event.target.classList.contains("stars")) {
-            // Check the current grid of the relic
             const currentGrid = relicElement.parentElement;
-
-            // Set the target grid based on the current grid
-            const targetGrid = currentGrid.id === "available-relics-grid" ? selectedRelicsGrid : availableRelicsGrid;
-
-            // Move the relic to the target grid
+            const targetGrid = currentGrid.id === "available-relics-grid" ? 
+                selectedRelicsGrid : availableRelicsGrid;
             moveRelic(relicElement, targetGrid);
         }
     });
@@ -172,7 +142,6 @@ function createRelic(relic, grid) {
     grid.appendChild(relicElement);
 }
 
-// Function to create a placeholder card
 function createPlaceholder() {
     const placeholder = document.createElement("div");
     placeholder.classList.add("col-md-4", "placeholder-card");
@@ -180,7 +149,6 @@ function createPlaceholder() {
     const relicElement = document.createElement("div");
     relicElement.classList.add("relic", "placeholder");
 
-    // Circle with plus symbol
     const placeholderCircle = document.createElement("div");
     placeholderCircle.classList.add("placeholder-circle");
     const plusIcon = document.createElement("i");
@@ -188,7 +156,6 @@ function createPlaceholder() {
     placeholderCircle.appendChild(plusIcon);
     relicElement.appendChild(placeholderCircle);
 
-    // Stars
     const starsContainer = document.createElement("div");
     starsContainer.classList.add("stars", "placeholder-stars");
     for (let i = 0; i < 5; i++) {
@@ -198,7 +165,6 @@ function createPlaceholder() {
     }
     relicElement.appendChild(starsContainer);
 
-    // Placeholder text
     const title = document.createElement("h3");
     title.textContent = "No Relic Selected";
     title.classList.add("placeholder-text");
@@ -209,18 +175,8 @@ function createPlaceholder() {
     unit.classList.add("placeholder-text");
     relicElement.appendChild(unit);
 
-    const buffLabel = document.createElement("p");
-    buffLabel.textContent = "Buff:";
-    buffLabel.classList.add("buff-label", "placeholder-text");
-    relicElement.appendChild(buffLabel);
-
-    const buff = document.createElement("p");
-    buff.innerHTML = `<span class="buff-green">---</span>`;
-    buff.classList.add("buff-value", "placeholder-text");
-    relicElement.appendChild(buff);
-
     const displayBuffsLabel = document.createElement("p");
-    displayBuffsLabel.textContent = "Display Buffs:";
+    displayBuffsLabel.textContent = "Buffs:";
     displayBuffsLabel.classList.add("buff-label", "placeholder-text");
     relicElement.appendChild(displayBuffsLabel);
 
@@ -233,7 +189,6 @@ function createPlaceholder() {
     return placeholder;
 }
 
-// Function to initialize placeholders
 function initializePlaceholders() {
     const selectedRelicsGrid = document.getElementById("selected-relics-grid");
     for (let i = 0; i < 18; i++) {
@@ -242,33 +197,28 @@ function initializePlaceholders() {
     }
 }
 
-// Function to move a relic from one grid to another
 function moveRelic(relic, targetGrid) {
     if (!relic || !targetGrid) return;
 
     const sourceGrid = relic.parentElement;
-    if (sourceGrid === targetGrid) return; // Avoid moving to the same grid
+    if (sourceGrid === targetGrid) return;
 
-    // Find the first placeholder in the target grid
     const placeholder = targetGrid.querySelector(".placeholder-card");
 
     if (placeholder) {
-        // Replace the placeholder with the relic
         targetGrid.replaceChild(relic, placeholder);
     } else {
-        // Add the relic to the target grid
         targetGrid.appendChild(relic);
     }
 
-    // If the relic was moved from the selected relics grid to the available relics grid,
-    // we need to add a new placeholder to the selected relics grid.
     if (sourceGrid.id === "selected-relics-grid" && targetGrid.id === "available-relics-grid") {
         const newPlaceholder = createPlaceholder();
         sourceGrid.appendChild(newPlaceholder);
     }
+
+    updateBuffSummary();
 }
 
-// Function to filter relics based on selected unit and quality
 function filterRelics() {
     const unitFilter = document.getElementById("unit-filter").value;
     const qualityFilter = document.getElementById("quality-filter").value;
@@ -276,18 +226,15 @@ function filterRelics() {
     const availableRelicsGrid = document.getElementById("available-relics-grid");
     const selectedRelicsGrid = document.getElementById("selected-relics-grid");
 
-    // Clear the available relics grid before applying filters
     availableRelicsGrid.innerHTML = "";
 
-    // Filter relics based on selected criteria
     relics.forEach(relic => {
         const matchesUnit = unitFilter === "all" || relic.unit === unitFilter;
         const matchesQuality = qualityFilter === "all" || relic.quality === qualityFilter;
 
         if (matchesUnit && matchesQuality) {
-            // Check if the relic is already in the selected relics grid
-            const isSelected = Array.from(selectedRelicsGrid.children).some(child => child.dataset.id === relic.id.toString());
-
+            const isSelected = Array.from(selectedRelicsGrid.children).some(child => 
+                child.dataset.id === relic.id.toString());
             if (!isSelected) {
                 createRelic(relic, availableRelicsGrid);
             }
@@ -295,27 +242,81 @@ function filterRelics() {
     });
 }
 
-// Add change events to filters
+function calculateTotalBuffs() {
+    const selectedRelicsGrid = document.getElementById("selected-relics-grid");
+    const buffs = {};
+
+    Array.from(selectedRelicsGrid.children).forEach(relicElement => {
+        if (!relicElement.classList.contains("placeholder-card") && relicElement.dataset.id) {
+            const relicId = parseInt(relicElement.dataset.id);
+            const relic = relics.find(r => r.id === relicId);
+            const level = loadLevelFromLocalStorage(relicId) || relic.level;
+
+            if (relic.buff) {
+                const buffValue = relic.buff.values[level - 1] || 0;
+                buffs[relic.buff.name] = (buffs[relic.buff.name] || 0) + buffValue;
+            }
+
+            relic.displayBuffs?.forEach(displayBuff => {
+                const displayBuffValue = displayBuff.values[level - 1] || 0;
+                buffs[displayBuff.name] = (buffs[displayBuff.name] || 0) + displayBuffValue;
+            });
+        }
+    });
+
+    return buffs;
+}
+
+function updateBuffSummary() {
+    const buffSummary = document.getElementById("buff-summary");
+    const buffs = calculateTotalBuffs();
+
+    buffSummary.innerHTML = '';
+
+    if (Object.keys(buffs).length === 0) {
+        buffSummary.innerHTML = '<p class="text-muted">No relics selected.</p>';
+        return;
+    }
+
+    const sortedBuffs = Object.keys(buffs).sort();
+
+    sortedBuffs.forEach(buffName => {
+        const buffItem = document.createElement("div");
+        buffItem.classList.add("buff-summary-item");
+
+        const nameSpan = document.createElement("span");
+        nameSpan.classList.add("buff-summary-name");
+        nameSpan.textContent = buffName;
+
+        const valueSpan = document.createElement("span");
+        valueSpan.classList.add("buff-summary-value");
+        valueSpan.textContent = `${buffs[buffName]}%`;
+
+        buffItem.appendChild(nameSpan);
+        buffItem.appendChild(valueSpan);
+        buffSummary.appendChild(buffItem);
+    });
+}
+
 document.getElementById("unit-filter").addEventListener("change", filterRelics);
 document.getElementById("quality-filter").addEventListener("change", filterRelics);
 
-// Add reset button functionality
 document.getElementById("reset-button").addEventListener("click", () => {
     localStorage.clear();
     const selectedRelicsGrid = document.getElementById("selected-relics-grid");
     selectedRelicsGrid.innerHTML = "";
-    initializePlaceholders(); // Reinitialize placeholders
+    initializePlaceholders();
     filterRelics();
+    updateBuffSummary();
 });
 
-// Initialize grids when the page loads
 const availableRelicsGrid = document.getElementById("available-relics-grid");
 const selectedRelicsGrid = document.getElementById("selected-relics-grid");
 
 function initializeGrids() {
-    loadRelics(); // Load relics data
-    initializePlaceholders(); // Initialize placeholders
-    filterRelics(); // Apply filters when the page loads
+    loadRelics();
+    initializePlaceholders();
+    filterRelics();
 }
 
 window.onload = initializeGrids;
