@@ -198,7 +198,7 @@
         "name": "Figurine",
         "image": "images/figurine.webp",
         "level": 5,
-        "unit": "Hitters",
+        "unit": "Hitter",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Hitters",
@@ -238,7 +238,7 @@
         "name": "Polypod Toy",
         "image": "images/polypodtoy.webp",
         "level": 5,
-        "unit": "Pilots",
+        "unit": "Pilot",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Pilots",
@@ -278,7 +278,7 @@
         "name": "Shush Machine",
         "image": "images/shushmachine.webp",
         "level": 5,
-        "unit": "Shooters",
+        "unit": "Shooter",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Shooters",
@@ -318,7 +318,7 @@
         "name": "Scuba Mask",
         "image": "images/scubamask.webp",
         "level": 5,
-        "unit": "Shooters",
+        "unit": "Shooter",
         "quality": "Epic",
         "buff": {
             "name": "Defense of Shooters",
@@ -358,7 +358,7 @@
         "name": "Sunblocker",
         "image": "images/sunblocker.webp",
         "level": 5,
-        "unit": "Pilots",
+        "unit": "Pilot",
         "quality": "Epic",
         "buff": {
             "name": "Defense of Pilots",
@@ -398,7 +398,7 @@
         "name": "Beach Shield",
         "image": "images/beachshield.webp",
         "level": 5,
-        "unit": "Hitters",
+        "unit": "Hitter",
         "quality": "Epic",
         "buff": {
             "name": "Defense of Hitters",
@@ -438,7 +438,7 @@
         "name": "Life Preserver",
         "image": "images/lifepreserver.webp",
         "level": 5,
-        "unit": "Wall Breakers",
+        "unit": "Wall Breaker",
         "quality": "Epic",
         "buff": {
             "name": "Defense of Wall Breakers",
@@ -546,7 +546,7 @@
         "name": "Bitcoin",
         "image": "images/bitcoin.webp",
         "level": 5,
-        "unit": "Hitters",
+        "unit": "Hitter",
         "quality": "Legendary",
         "buff": {
             "name": "Hitters Training Speed",
@@ -586,7 +586,7 @@
         "name": "Red Arrowhead",
         "image": "images/redarrowhead.webp",
         "level": 5,
-        "unit": "Pilots",
+        "unit": "Pilot",
         "quality": "Legendary",
         "buff": {
             "name": "Pilots Training Speed",
@@ -626,7 +626,7 @@
         "name": "Gold Bars",
         "image": "images/goldbars.webp",
         "level": 5,
-        "unit": "Shooters",
+        "unit": "Shooter",
         "quality": "Epic",
         "buff": {
             "name": "Shooters Training Speed",
@@ -786,7 +786,7 @@
         "name": "Zombie Stick",
         "image": "images/zombiestick.webp",
         "level": 5,
-        "unit": "Hitters",
+        "unit": "Hitter",
         "quality": "Legendary",
         "buff": {
             "name": "Health of Hitters",
@@ -826,7 +826,7 @@
         "name": "Rage Ball",
         "image": "images/rageball.webp",
         "level": 5,
-        "unit": "Shooters",
+        "unit": "Shooter",
         "quality": "Legendary",
         "buff": {
             "name": "Health of Shooters",
@@ -866,7 +866,7 @@
         "name": "Oversized Wallet",
         "image": "images/oversizedwallet.webp",
         "level": 5,
-        "unit": "Wall Breakers",
+        "unit": "Wall Breaker",
         "quality": "Legendary",
         "buff": {
             "name": "Health of Wall Breakers",
@@ -906,7 +906,7 @@
         "name": "Wearable Umbrella",
         "image": "images/wearableumbrella.webp",
         "level": 5,
-        "unit": "Pilots",
+        "unit": "Pilot",
         "quality": "Legendary",
         "buff": {
             "name": "Health of Pilots",
@@ -1026,7 +1026,7 @@
         "name": "Metal Drum",
         "image": "images/metaldrum.webp",
         "level": 4,
-        "unit": "Pilots",
+        "unit": "Pilot",
         "quality": "Rare",
         "buff": {
             "name": "Health of Pilots",
@@ -1063,7 +1063,7 @@
         "name": "Magic Box",
         "image": "images/magicbox.webp",
         "level": 4,
-        "unit": "Hitters",
+        "unit": "Hitter",
         "quality": "Rare",
         "buff": {
             "name": "Health of Hitters",
@@ -1100,7 +1100,7 @@
         "name": "Wasabi Can",
         "image": "images/wasabican.webp",
         "level": 4,
-        "unit": "Shooters",
+        "unit": "Shooter",
         "quality": "Rare",
         "buff": {
             "name": "Health of Shooters",
@@ -1137,7 +1137,7 @@
         "name": "Rope",
         "image": "images/rope.webp",
         "level": 5,
-        "unit": "Hitters",
+        "unit": "Hitter",
         "quality": "Legendary",
         "buff": {
             "name": "Speed of Hitters",
@@ -1177,7 +1177,7 @@
         "name": "Lifesaving Wheel",
         "image": "images/lifesavingwheel.webp",
         "level": 5,
-        "unit": "Pilots",
+        "unit": "Pilot",
         "quality": "Legendary",
         "buff": {
             "name": "Speed of Pilots",
@@ -1217,7 +1217,7 @@
         "name": "Lantern",
         "image": "images/lantern.webp",
         "level": 5,
-        "unit": "Shooters",
+        "unit": "Shooter",
         "quality": "Legendary",
         "buff": {
             "name": "Speed of Shooters",
@@ -1417,7 +1417,7 @@
         "name": "Watercolor Brush",
         "image": "images/watercolorbrush.webp",
         "level": 5,
-        "unit": "Shooters",
+        "unit": "Shooter",
         "quality": "Epic",
         "buff": {
             "name": "Attack of Shooters",
@@ -1457,7 +1457,7 @@
         "name": "Bulletin Board",
         "image": "images/bulletinboard.webp",
         "level": 5,
-        "unit": "Wall Breakers",
+        "unit": "Wall Breaker",
         "quality": "Epic",
         "buff": {
             "name": "Attack of Wall Breakers",
@@ -1497,7 +1497,7 @@
         "name": "Splash-Proof Helmet",
         "image": "images/splashproofhelmet.webp",
         "level": 5,
-        "unit": "Hitters",
+        "unit": "Hitter",
         "quality": "Epic",
         "buff": {
             "name": "Food Protection Capacity",
@@ -1537,7 +1537,7 @@
         "name": "Wooden Cup",
         "image": "images/woodencup.webp",
         "level": 4,
-        "unit": "Shooters",
+        "unit": "Shooter",
         "quality": "Rare",
         "buff": {
             "name": "Windfall",
@@ -1574,7 +1574,7 @@
         "name": "Baby Stroller",
         "image": "images/babystroller.webp",
         "level": 4,
-        "unit": "Hitters",
+        "unit": "Hitter",
         "quality": "Rare",
         "buff": {
             "name": "Speed of Hitters",
@@ -1611,7 +1611,7 @@
         "name": "Alarm Bell",
         "image": "images/alarmbell.webp",
         "level": 4,
-        "unit": "Pilots",
+        "unit": "Pilot",
         "quality": "Rare",
         "buff": {
             "name": "Iron Protection Capacity",
@@ -1648,7 +1648,7 @@
         "name": "Wooden Shield",
         "image": "images/woodenshield.webp",
         "level": 4,
-        "unit": "Wall Breakers",
+        "unit": "Wall Breaker",
         "quality": "Rare",
         "buff": {
             "name": "Dmg to Neutral Units",
@@ -1685,7 +1685,7 @@
         "name": "Surgical Knife",
         "image": "images/surgicalknife.webp",
         "level": 4,
-        "unit": "Hitters",
+        "unit": "Hitter",
         "quality": "Rare",
         "buff": {
             "name": "Attack of Hitters",
@@ -1722,7 +1722,7 @@
         "name": "Bloodletter Axe",
         "image": "images/bloodletteraxe.webp",
         "level": 4,
-        "unit": "Pilots",
+        "unit": "Pilot",
         "quality": "Rare",
         "buff": {
             "name": "Speed of Pilots",
@@ -1796,7 +1796,7 @@
         "name": "Orthopedic Hammer",
         "image": "images/orthopedichammer.webp",
         "level": 4,
-        "unit": "Pilots",
+        "unit": "Pilot",
         "quality": "Rare",
         "buff": {
             "name": "Attack of Pilots",
@@ -1833,7 +1833,7 @@
         "name": "Street Totem",
         "image": "images/streettotem.webp",
         "level": 4,
-        "unit": "Pilots",
+        "unit": "Pilot",
         "quality": "Rare",
         "buff": {
             "name": "Pilots Training Speed",
@@ -1870,7 +1870,7 @@
         "name": "Street Light",
         "image": "images/streetlight.webp",
         "level": 4,
-        "unit": "Wall Breakers",
+        "unit": "Wall Breaker",
         "quality": "Rare",
         "buff": {
             "name": "Wall Breakers Training Speed",
@@ -1907,7 +1907,7 @@
         "name": "Street Blocker",
         "image": "images/streetblocker.webp",
         "level": 4,
-        "unit": "Hitters",
+        "unit": "Hitter",
         "quality": "Rare",
         "buff": {
             "name": "Hitters Training Speed",
@@ -1944,7 +1944,7 @@
         "name": "Street Water Fountain",
         "image": "images/streetwaterfountain.webp",
         "level": 4,
-        "unit": "Shooters",
+        "unit": "Shooter",
         "quality": "Rare",
         "buff": {
             "name": "Shooter Training Speed",
@@ -2061,7 +2061,7 @@
         "name": "Fishing Machine",
         "image": "images/fishingmachine.webp",
         "level": 5,
-        "unit": "Pilots",
+        "unit": "Pilot",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Pilots",
@@ -2101,7 +2101,7 @@
         "name": "Pesticide Sprayer",
         "image": "images/pesticidesprayer.webp",
         "level": 5,
-        "unit": "Hitters",
+        "unit": "Hitter",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Hitters",
@@ -2141,7 +2141,7 @@
         "name": "Aerial Net Puller",
         "image": "images/aerialnetpuller.webp",
         "level": 5,
-        "unit": "Shooters",
+        "unit": "Shooter",
         "quality": "Legendary",
         "buff": {
             "name": "Defense of Shooters",
@@ -2181,7 +2181,7 @@
         "name": "Starfish",
         "image": "images/starfish.webp",
         "level": 5,
-        "unit": "Pilots",
+        "unit": "Pilot",
         "quality": "Legendary",
         "buff": {
             "name": "Medical Station Capacity",
@@ -2221,7 +2221,7 @@
         "name": "Fantasy Crown",
         "image": "images/fantasycrown.webp",
         "level": 5,
-        "unit": "Hitters",
+        "unit": "Hitter",
         "quality": "Legendary",
         "buff": {
             "name": "Medical Station Capacity",
@@ -2261,7 +2261,7 @@
         "name": "Doctor Octopus",
         "image": "images/doctoroctopus.webp",
         "level": 5,
-        "unit": "Shooters",
+        "unit": "Shooter",
         "quality": "Legendary",
         "buff": {
             "name": "Medical Station Capacity",
@@ -2301,7 +2301,7 @@
         "name": "Butterfly Helmet",
         "image": "images/butterflyhelmet.webp",
         "level": 5,
-        "unit": "Pilots",
+        "unit": "Pilot",
         "quality": "Legendary",
         "buff": {
             "name": "Defense of Pilots",
@@ -2341,7 +2341,7 @@
         "name": "Rubber Soldier",
         "image": "images/rubbersoldier.webp",
         "level": 5,
-        "unit": "Hitters",
+        "unit": "Hitter",
         "quality": "Legendary",
         "buff": {
             "name": "Defense of Hitters",
@@ -2381,7 +2381,7 @@
         "name": "Neon Billboard",
         "image": "images/neonbillboard.webp",
         "level": 5,
-        "unit": "Shooters",
+        "unit": "Shooter",
         "quality": "Legendary",
         "buff": {
             "name": "Defense of Shooters",
@@ -2421,7 +2421,7 @@
         "name": "Camera",
         "image": "images/camera.webp",
         "level": 5,
-        "unit": "Pilots",
+        "unit": "Pilot",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Pilots",
@@ -2461,7 +2461,7 @@
         "name": "Time Shield",
         "image": "images/timeshield.webp",
         "level": 5,
-        "unit": "Hitters",
+        "unit": "Hitter",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Hitters",
@@ -2501,7 +2501,7 @@
         "name": "Light Summoner",
         "image": "images/lightsummoner.webp",
         "level": 5,
-        "unit": "Shooters",
+        "unit": "Shooter",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Shooters",
@@ -2541,7 +2541,7 @@
         "name": "Roasting Trident",
         "image": "images/roastingtrident.webp",
         "level": 5,
-        "unit": "Pilots",
+        "unit": "Pilot",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Pilots",
@@ -2581,7 +2581,7 @@
         "name": "Booby Trap",
         "image": "images/boobytrap.webp",
         "level": 5,
-        "unit": "Hitters",
+        "unit": "Hitter",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Hitters",
@@ -2621,7 +2621,7 @@
         "name": "Silent Dart",
         "image": "images/silentdart.webp",
         "level": 5,
-        "unit": "Shooters",
+        "unit": "Shooter",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Shooters",
@@ -2661,7 +2661,7 @@
         "name": "Rocksplitter",
         "image": "images/rocksplitter.webp",
         "level": 5,
-        "unit": "Pilots",
+        "unit": "Pilot",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Pilots",
@@ -2701,7 +2701,7 @@
         "name": "Center-Earth Transporter",
         "image": "images/centerearthtransporter.webp",
         "level": 5,
-        "unit": "Hitters",
+        "unit": "Hitter",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Hitters",
@@ -2741,7 +2741,7 @@
         "name": "Spiral Gun",
         "image": "images/spiralgun.webp",
         "level": 5,
-        "unit": "Shooters",
+        "unit": "Shooter",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Shooters",
@@ -2781,7 +2781,7 @@
         "name": "Drill Bit",
         "image": "images/drillbit.webp",
         "level": 5,
-        "unit": "Wall Breakers",
+        "unit": "Wall Breaker",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Wall Breakers",
@@ -2821,7 +2821,7 @@
         "name": "Spike Barrel",
         "image": "images/spikebarrel.webp",
         "level": 5,
-        "unit": "Wall Breakers",
+        "unit": "Wall Breaker",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Wall Breakers",
@@ -2861,7 +2861,7 @@
         "name": "Portable Cannon",
         "image": "images/portablecannon.webp",
         "level": 5,
-        "unit": "Wall Breakers",
+        "unit": "Wall Breaker",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Wall Breakers",
@@ -2901,7 +2901,7 @@
         "name": "Gold Candlestick",
         "image": "images/goldcandlestick.webp",
         "level": 5,
-        "unit": "Wall Breakers",
+        "unit": "Wall Breaker",
         "quality": "Legendary",
         "buff": {
             "name": "Health of Wall Breakers",
@@ -2941,7 +2941,7 @@
         "name": "Gold Pocket Watch",
         "image": "images/goldpocketwatch.webp",
         "level": 5,
-        "unit": "Wall Breakers",
+        "unit": "Wall Breaker",
         "quality": "Legendary",
         "buff": {
             "name": "Defense of Wall Breakers",
@@ -2981,7 +2981,7 @@
         "name": "Gold Scale",
         "image": "images/goldscale.webp",
         "level": 5,
-        "unit": "Wall Breakers",
+        "unit": "Wall Breaker",
         "quality": "Legendary",
         "buff": {
             "name": "Wall Breakers Training Speed",
@@ -3021,7 +3021,7 @@
         "name": "Double Hammer",
         "image": "images/doublehammer.webp",
         "level": 5,
-        "unit": "Pilots",
+        "unit": "Pilot",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Pilots",
@@ -3061,7 +3061,7 @@
         "name": "Leather Gloves",
         "image": "images/leathergloves.webp",
         "level": 5,
-        "unit": "Hitters",
+        "unit": "Hitter",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Hitters",
@@ -3101,7 +3101,7 @@
         "name": "Football",
         "image": "images/football.webp",
         "level": 5,
-        "unit": "Shooters",
+        "unit": "Shooter",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Shooters",
@@ -3141,7 +3141,7 @@
         "name": "Riding Vest",
         "image": "images/ridingvest.webp",
         "level": 5,
-        "unit": "Pilots",
+        "unit": "Pilot",
         "quality": "Legendary",
         "buff": {
             "name": "Defense of Pilots",
@@ -3181,7 +3181,7 @@
         "name": "Social Divider",
         "image": "images/socialdivider.webp",
         "level": 5,
-        "unit": "Hitters",
+        "unit": "Hitter",
         "quality": "Legendary",
         "buff": {
             "name": "Defense of Hitters",
@@ -3221,7 +3221,7 @@
         "name": "Goggles",
         "image": "images/goggles.webp",
         "level": 5,
-        "unit": "Shooters",
+        "unit": "Shooter",
         "quality": "Legendary",
         "buff": {
             "name": "Defense of Shooters",
@@ -3261,7 +3261,7 @@
         "name": "Ambulance Bed",
         "image": "images/ambulancebed.webp",
         "level": 5,
-        "unit": "Pilots",
+        "unit": "Pilot",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Pilots",
@@ -3301,7 +3301,7 @@
         "name": "Massage Gun",
         "image": "images/massagegun.webp",
         "level": 5,
-        "unit": "Hitters",
+        "unit": "Hitter",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Hitters",
@@ -3341,7 +3341,7 @@
         "name": "Temperature Sensor",
         "image": "images/temperaturesensor.webp",
         "level": 5,
-        "unit": "Shooters",
+        "unit": "Shooter",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Shooters",
@@ -3381,7 +3381,7 @@
         "name": "Homing Cannon",
         "image": "images/homingcannon.webp",
         "level": 5,
-        "unit": "Wall Breakers",
+        "unit": "Wall Breaker",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Wall Breakers",
@@ -3421,7 +3421,7 @@
         "name": "Mag Shield",
         "image": "images/magshield.webp",
         "level": 5,
-        "unit": "Wall Breakers",
+        "unit": "Wall Breaker",
         "quality": "Legendary",
         "buff": {
             "name": "Defense of Wall Breakers",
@@ -3461,7 +3461,7 @@
         "name": "Onboard Locator",
         "image": "images/onboardlocator.webp",
         "level": 5,
-        "unit": "Wall Breakers",
+        "unit": "Wall Breaker",
         "quality": "Legendary",
         "buff": {
             "name": "Health of Wall Breakers",
@@ -3501,7 +3501,7 @@
         "name": "Moon Boots",
         "image": "images/moonboots.webp",
         "level": 5,
-        "unit": "Pilots",
+        "unit": "Pilot",
         "quality": "Super",
         "buff": {
             "name": "Attack of Pilots",
@@ -3541,7 +3541,7 @@
         "name": "Moon Landing Stamps",
         "image": "images/moonlandingstamps.webp",
         "level": 5,
-        "unit": "Pilots",
+        "unit": "Pilot",
         "quality": "Super",
         "buff": {
             "name": "Pilot Normal Attack Damage",
@@ -3581,7 +3581,7 @@
         "name": "Moon Landing Footprint",
         "image": "images/moonlandingfootprint.webp",
         "level": 5,
-        "unit": "Pilots",
+        "unit": "Pilot",
         "quality": "Super",
         "buff": {
             "name": "Defense of Pilots",
@@ -3621,7 +3621,7 @@
         "name": "Astronaut Figurine",
         "image": "images/astronautfigurine.webp",
         "level": 5,
-        "unit": "Hitters",
+        "unit": "Hitter",
         "quality": "Super",
         "buff": {
             "name": "Attack of Hitters",
@@ -3661,7 +3661,7 @@
         "name": "Space Magazine",
         "image": "images/spacemagazine.webp",
         "level": 5,
-        "unit": "Hitters",
+        "unit": "Hitter",
         "quality": "Super",
         "buff": {
             "name": "Hitter Normal Attack Damage",
@@ -3701,7 +3701,7 @@
         "name": "Toy Spaceship",
         "image": "images/toyspaceship.webp",
         "level": 5,
-        "unit": "Hitters",
+        "unit": "Hitter",
         "quality": "Super",
         "buff": {
             "name": "Defense of Hitters",
@@ -3741,7 +3741,7 @@
         "name": "Vintage Shirt",
         "image": "images/vintageshirt.webp",
         "level": 5,
-        "unit": "Shooters",
+        "unit": "Shooter",
         "quality": "Super",
         "buff": {
             "name": "Attack of Shooters",
@@ -3781,7 +3781,7 @@
         "name": "Record Player",
         "image": "images/recordplayer.webp",
         "level": 5,
-        "unit": "Shooters",
+        "unit": "Shooter",
         "quality": "Super",
         "buff": {
             "name": "Shooter Normal Attack Damage",
@@ -3821,7 +3821,7 @@
         "name": "Rock n' Roll Record",
         "image": "images/rocknrollrecord.webp",
         "level": 5,
-        "unit": "Shooters",
+        "unit": "Shooter",
         "quality": "Super",
         "buff": {
             "name": "Defense of Shooters",
@@ -3861,7 +3861,7 @@
         "name": "Telescope",
         "image": "images/telescope.webp",
         "level": 5,
-        "unit": "Wall Breakers",
+        "unit": "Wall Breaker",
         "quality": "Super",
         "buff": {
             "name": "Attack of Wall Breakers",
@@ -3901,7 +3901,7 @@
         "name": "Satellite Phone",
         "image": "images/satellitephone.webp",
         "level": 5,
-        "unit": "Wall Breakers",
+        "unit": "Wall Breaker",
         "quality": "Super",
         "buff": {
             "name": "Wall Breaker Normal Attack Damage",
@@ -3941,7 +3941,7 @@
         "name": "Talk Box",
         "image": "images/talkbox.webp",
         "level": 5,
-        "unit": "Wall Breakers",
+        "unit": "Wall Breaker",
         "quality": "Super",
         "buff": {
             "name": "Defense of Wall Breakers",
@@ -3981,7 +3981,7 @@
         "name": "Antique Camera",
         "image": "images/antiquecamera.webp",
         "level": 5,
-        "unit": "Pilots",
+        "unit": "Pilot",
         "quality": "Super",
         "buff": {
             "name": "Attack of Pilots",
@@ -4021,7 +4021,7 @@
         "name": "Antique Television",
         "image": "images/antiquetelevision.webp",
         "level": 5,
-        "unit": "Pilots",
+        "unit": "Pilot",
         "quality": "Super",
         "buff": {
             "name": "Defense of Pilots",
@@ -4061,7 +4061,7 @@
         "name": "Antique Fan",
         "image": "images/antiquefan.webp",
         "level": 5,
-        "unit": "Pilots",
+        "unit": "Pilot",
         "quality": "Super",
         "buff": {
             "name": "Skill Damage Up in All Pilot Troop",
@@ -4101,7 +4101,7 @@
         "name": "Bread Maker",
         "image": "images/breadmaker.webp",
         "level": 5,
-        "unit": "Hitters",
+        "unit": "Hitter",
         "quality": "Super",
         "buff": {
             "name": "Attack of Hitters",
@@ -4141,7 +4141,7 @@
         "name": "Refrigerator",
         "image": "images/refrigerator.webp",
         "level": 5,
-        "unit": "Hitters",
+        "unit": "Hitter",
         "quality": "Super",
         "buff": {
             "name": "Defense of Hitters",
@@ -4181,7 +4181,7 @@
         "name": "Microwave",
         "image": "images/microwave.webp",
         "level": 5,
-        "unit": "Hitters",
+        "unit": "Hitter",
         "quality": "Super",
         "buff": {
             "name": "Skill Damage Up in All Hitter Troop",
@@ -4221,7 +4221,7 @@
         "name": "Violin",
         "image": "images/violin.webp",
         "level": 5,
-        "unit": "Shooters",
+        "unit": "Shooter",
         "quality": "Super",
         "buff": {
             "name": "Attack of Shooters",
@@ -4261,7 +4261,7 @@
         "name": "Accordion",
         "image": "images/accordion.webp",
         "level": 5,
-        "unit": "Shooters",
+        "unit": "Shooter",
         "quality": "Super",
         "buff": {
             "name": "Defense of Shooters",
@@ -4301,7 +4301,7 @@
         "name": "Saxophone",
         "image": "images/saxophone.webp",
         "level": 5,
-        "unit": "Shooters",
+        "unit": "Shooter",
         "quality": "Super",
         "buff": {
             "name": "Skill Damage Up in All Shooter Troop",
@@ -4341,7 +4341,7 @@
         "name": "Globe",
         "image": "images/globe.webp",
         "level": 5,
-        "unit": "Wall Breakers",
+        "unit": "Wall Breaker",
         "quality": "Super",
         "buff": {
             "name": "Attack of Wall Breakers",
@@ -4381,7 +4381,7 @@
         "name": "Microscope",
         "image": "images/microscope.webp",
         "level": 5,
-        "unit": "Wall Breakers",
+        "unit": "Wall Breaker",
         "quality": "Super",
         "buff": {
             "name": "Defense of Wall Breakers",
@@ -4421,7 +4421,7 @@
         "name": "Perpetual Motion Machine",
         "image": "images/perpetualmotionmachine.webp",
         "level": 5,
-        "unit": "Wall Breakers",
+        "unit": "Wall Breaker",
         "quality": "Super",
         "buff": {
             "name": "Skill Damage Up in All Wall Breaker Troop",
@@ -4461,7 +4461,7 @@
         "name": "Watch",
         "image": "images/watch.webp",
         "level": 5,
-        "unit": "Pilots",
+        "unit": "Pilot",
         "quality": "Super",
         "buff": {
             "name": "Attack of Pilots",
@@ -4501,7 +4501,7 @@
         "name": "Antique Clock",
         "image": "images/antiqueclock.webp",
         "level": 5,
-        "unit": "Pilots",
+        "unit": "Pilot",
         "quality": "Super",
         "buff": {
             "name": "Defense of Pilots",
@@ -4541,7 +4541,7 @@
         "name": "Alarm Clock",
         "image": "images/alarmclock.webp",
         "level": 5,
-        "unit": "Pilots",
+        "unit": "Pilot",
         "quality": "Super",
         "buff": {
             "name": "Pilot Normal Attack Damage",
@@ -4581,7 +4581,7 @@
         "name": "Anti-Aging Drink",
         "image": "images/antiagingdrink.webp",
         "level": 5,
-        "unit": "Hitters",
+        "unit": "Hitter",
         "quality": "Super",
         "buff": {
             "name": "Attack of Hitters",
@@ -4621,7 +4621,7 @@
         "name": "Premium Canned Food",
         "image": "images/premiumcannedfood.webp",
         "level": 5,
-        "unit": "Hitters",
+        "unit": "Hitter",
         "quality": "Super",
         "buff": {
             "name": "Defense of Hitters",
@@ -4661,7 +4661,7 @@
         "name": "Emergency Biscuit",
         "image": "images/emergencybiscuit.webp",
         "level": 5,
-        "unit": "Hitters",
+        "unit": "Hitter",
         "quality": "Super",
         "buff": {
             "name": "Hitter Normal Attack Damage",
@@ -4701,7 +4701,7 @@
         "name": "Roland's Staff",
         "image": "images/rolandsstaff.webp",
         "level": 5,
-        "unit": "Shooters",
+        "unit": "Shooter",
         "quality": "Super",
         "buff": {
             "name": "Attack of Shooters",
@@ -4741,7 +4741,7 @@
         "name": "Roland's Cape",
         "image": "images/rolandscape.webp",
         "level": 5,
-        "unit": "Shooters",
+        "unit": "Shooter",
         "quality": "Super",
         "buff": {
             "name": "Defense of Shooters",
@@ -4781,7 +4781,7 @@
         "name": "Roland's Crown",
         "image": "images/rolandscrown.webp",
         "level": 5,
-        "unit": "Shooters",
+        "unit": "Shooter",
         "quality": "Super",
         "buff": {
             "name": "Shooter Normal Attack Damage",
@@ -4821,7 +4821,7 @@
         "name": "Roland Poster",
         "image": "images/rolandposter.webp",
         "level": 5,
-        "unit": "Wall Breakers",
+        "unit": "Wall Breaker",
         "quality": "Super",
         "buff": {
             "name": "Attack of Wall Breakers",
@@ -4861,7 +4861,7 @@
         "name": "Roland Statue",
         "image": "images/rolandstatue.webp",
         "level": 5,
-        "unit": "Wall Breakers",
+        "unit": "Wall Breaker",
         "quality": "Super",
         "buff": {
             "name": "Defense of Wall Breakers",
@@ -4901,7 +4901,7 @@
         "name": "Space Ape Action Figure",
         "image": "images/spaceapeactionfigure.webp",
         "level": 5,
-        "unit": "Wall Breakers",
+        "unit": "Wall Breaker",
         "quality": "Super",
         "buff": {
             "name": "Wall Breaker Normal Attack Damage",
@@ -4941,7 +4941,7 @@
         "name": "Big Head Car",
         "image": "images/bigheadcar.webp",
         "level": 5,
-        "unit": "Pilots",
+        "unit": "Pilot",
         "quality": "Super",
         "buff": {
             "name": "Attack of Pilots",
@@ -4981,7 +4981,7 @@
         "name": "Slender Car",
         "image": "images/slendercar.webp",
         "level": 5,
-        "unit": "Pilots",
+        "unit": "Pilot",
         "quality": "Super",
         "buff": {
             "name": "Defense of Pilots",
@@ -5021,7 +5021,7 @@
         "name": "Beetle Car",
         "image": "images/beetlecar.webp",
         "level": 5,
-        "unit": "Pilots",
+        "unit": "Pilot",
         "quality": "Super",
         "buff": {
             "name": "Skill Damage Up in All Pilot Troop",
@@ -5061,7 +5061,7 @@
         "name": "Antique Telephone",
         "image": "images/antiquetelephone.webp",
         "level": 5,
-        "unit": "Hitters",
+        "unit": "Hitter",
         "quality": "Super",
         "buff": {
             "name": "Attack of Hitters",
@@ -5101,7 +5101,7 @@
         "name": "Antique Telegraph",
         "image": "images/antiquetelegraph.webp",
         "level": 5,
-        "unit": "Hitters",
+        "unit": "Hitter",
         "quality": "Super",
         "buff": {
             "name": "Defense of Hitters",
@@ -5141,7 +5141,7 @@
         "name": "Antique Printing Press",
         "image": "images/antiqueprintingpress.webp",
         "level": 5,
-        "unit": "Hitters",
+        "unit": "Hitter",
         "quality": "Super",
         "buff": {
             "name": "Skill Damage Up in All Hitter Troop",
@@ -5181,7 +5181,7 @@
         "name": "Dartboard",
         "image": "images/dartboard.webp",
         "level": 5,
-        "unit": "Shooters",
+        "unit": "Shooter",
         "quality": "Super",
         "buff": {
             "name": "Attack of Shooters",
@@ -5221,7 +5221,7 @@
         "name": "Game Console",
         "image": "images/gameconsole.webp",
         "level": 5,
-        "unit": "Shooters",
+        "unit": "Shooter",
         "quality": "Super",
         "buff": {
             "name": "Defense of Shooters",
@@ -5261,7 +5261,7 @@
         "name": "Gaming Merchandise",
         "image": "images/gamingmerchandise.webp",
         "level": 5,
-        "unit": "Shooters",
+        "unit": "Shooter",
         "quality": "Super",
         "buff": {
             "name": "Skill Damage Up in All Shooter Troop",
@@ -5301,7 +5301,7 @@
         "name": "Alien Gun",
         "image": "images/aliengun.webp",
         "level": 5,
-        "unit": "Wall Breakers",
+        "unit": "Wall Breaker",
         "quality": "Super",
         "buff": {
             "name": "Attack of Wall Breakers",
@@ -5341,7 +5341,7 @@
         "name": "Unidentified Flying Object",
         "image": "images/unidentifiedflyingobject.webp",
         "level": 5,
-        "unit": "Wall Breakers",
+        "unit": "Wall Breaker",
         "quality": "Super",
         "buff": {
             "name": "Defense of Wall Breakers",
@@ -5381,7 +5381,7 @@
         "name": "Alien Doll",
         "image": "images/aliendoll.webp",
         "level": 5,
-        "unit": "Wall Breakers",
+        "unit": "Wall Breaker",
         "quality": "Super",
         "buff": {
             "name": "Skill Damage Up in All Wall Breaker Troop",
