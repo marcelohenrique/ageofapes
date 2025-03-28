@@ -13,11 +13,12 @@ async function loadRelics() {
 
 function getQualityColor(quality) {
     switch (quality) {
-        case "Rare": return "#d4eaf7";
-        case "Epic": return "#e0d4f7";
-        case "Legendary": return "#faf3d1";
-        case "Super": return "#f7d4d4";
-        default: return "#f9f9f9";
+        case "Basic": return "#d4f7e2";  // Light green
+        case "Rare": return "#d4eaf7";   // Light blue (unchanged)
+        case "Epic": return "#e0d4f7";   // Light purple (unchanged)
+        case "Legendary": return "#faf3d1"; // Light yellow (unchanged)
+        case "Super": return "#f7d4d4";  // Light red (unchanged)
+        default: return "#f9f9f9";       // Default light gray (unchanged)
     }
 }
 
