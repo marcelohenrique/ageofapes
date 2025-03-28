@@ -61,46 +61,46 @@
 
             <!-- Available Relics Grid -->
             <div class="col-md-5">
-
-                <!-- Filters (above the available relics grid) -->
-                <div class="row justify-content-center mb-4">
-                    <div class="col-md-12">
-                        <div class="filters p-3 bg-light rounded shadow-sm">
-                            <div class="row g-2">
-                                <div class="col-md-6">
-                                    <label for="unit-filter" class="form-label">Filter by Unit:</label>
-                                    <select id="unit-filter" class="form-select">
-                                        <option value="all">All Units</option>
-                                        <option value="Hitter">Hitter</option>
-                                        <option value="Shooter">Shooter</option>
-                                        <!-- Add more units as needed -->
-                                    </select>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="quality-filter" class="form-label">Filter by Quality:</label>
-                                    <select id="quality-filter" class="form-select">
-                                        <option value="all">All Qualities</option>
-                                        <option value="Rare">Rare</option>
-                                        <option value="Epic">Epic</option>
-                                        <option value="Legendary">Legendary</option>
-                                        <option value="Super">Super</option>
-                                        <!-- Add more qualities as needed -->
-                                    </select>
-                                </div>
-                                <div class="col-12 text-center">
-                                    <button id="reset-button" class="btn btn-secondary">Reset Selection</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="grid p-3 bg-light rounded shadow-sm">
                     <h2 class="text-center mb-3">Available Relics</h2>
                     <div class="row" id="available-relics-grid">
                         <!-- Available relics will be dynamically generated here -->
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão flutuante e menu de filtros -->
+    <div class="floating-filter-container">
+        <!-- Botão flutuante -->
+        <button id="floating-filter-button" class="btn btn-primary floating-button">
+            <i class="fas fa-filter"></i>
+        </button>
+        
+        <!-- Menu de filtros -->
+        <div id="filter-menu" class="filter-menu">
+            <div class="filter-menu-content p-3">
+                <h5>Filtrar Relíquias</h5>
+                <div class="mb-3">
+                    <label for="menu-unit-filter" class="form-label">Filtrar por Unidade:</label>
+                    <select id="menu-unit-filter" class="form-select">
+                        <option value="all">Todas as Unidades</option>
+                        <option value="Hitter">Hitter</option>
+                        <option value="Shooter">Shooter</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="menu-quality-filter" class="form-label">Filtrar por Qualidade:</label>
+                    <select id="menu-quality-filter" class="form-select">
+                        <option value="all">Todas as Qualidades</option>
+                        <option value="Rare">Rare</option>
+                        <option value="Epic">Epic</option>
+                        <option value="Legendary">Legendary</option>
+                        <option value="Super">Super</option>
+                    </select>
+                </div>
+                <button id="menu-reset-button" class="btn btn-secondary w-100">Resetar Filtros</button>
             </div>
         </div>
     </div>

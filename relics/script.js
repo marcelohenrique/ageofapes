@@ -78,7 +78,7 @@ function createRelic(relic, grid) {
     // Display Buffs only
     if (relic.displayBuffs && relic.displayBuffs.length > 0) {
         const displayBuffsLabel = document.createElement("p");
-        displayBuffsLabel.textContent = "Display Buffs:"; // Alterado para o label original
+        displayBuffsLabel.textContent = "Display Buffs:";
         displayBuffsLabel.classList.add("buff-label");
         relicElement.appendChild(displayBuffsLabel);
 
@@ -176,7 +176,7 @@ function createPlaceholder() {
     relicElement.appendChild(unit);
 
     const displayBuffsLabel = document.createElement("p");
-    displayBuffsLabel.textContent = "Display Buffs:"; // Alterado para o label original
+    displayBuffsLabel.textContent = "Display Buffs:";
     displayBuffsLabel.classList.add("buff-label", "placeholder-text");
     relicElement.appendChild(displayBuffsLabel);
 
@@ -220,8 +220,8 @@ function moveRelic(relic, targetGrid) {
 }
 
 function filterRelics() {
-    const unitFilter = document.getElementById("unit-filter").value;
-    const qualityFilter = document.getElementById("quality-filter").value;
+    const menuUnitFilter = document.getElementById("menu-unit-filter").value;
+    const menuQualityFilter = document.getElementById("menu-quality-filter").value;
 
     const availableRelicsGrid = document.getElementById("available-relics-grid");
     const selectedRelicsGrid = document.getElementById("selected-relics-grid");
@@ -229,8 +229,8 @@ function filterRelics() {
     availableRelicsGrid.innerHTML = "";
 
     relics.forEach(relic => {
-        const matchesUnit = unitFilter === "all" || relic.unit === unitFilter;
-        const matchesQuality = qualityFilter === "all" || relic.quality === qualityFilter;
+        const matchesUnit = menuUnitFilter === "all" || relic.unit === menuUnitFilter;
+        const matchesQuality = menuQualityFilter === "all" || relic.quality === menuQualityFilter;
 
         if (matchesUnit && matchesQuality) {
             const isSelected = Array.from(selectedRelicsGrid.children).some(child => 
@@ -298,17 +298,53 @@ function updateBuffSummary() {
     });
 }
 
-document.getElementById("unit-filter").addEventListener("change", filterRelics);
-document.getElementById("quality-filter").addEventListener("change", filterRelics);
+// Floating Filter Functionality
+const floatingFilterButton = document.getElementById('floating-filter-button');
+const filterMenu = document.getElementById('filter-menu');
+const menuUnitFilter = document.getElementById('menu-unit-filter');
+const menuQualityFilter = document.getElementById('menu-quality-filter');
+const menuResetButton = document.getElementById('menu-reset-button');
 
-document.getElementById("reset-button").addEventListener("click", () => {
-    localStorage.clear();
-    const selectedRelicsGrid = document.getElementById("selected-relics-grid");
-    selectedRelicsGrid.innerHTML = "";
-    initializePlaceholders();
-    filterRelics();
-    updateBuffSummary();
+// Toggle filter menu
+floatingFilterButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+    filterMenu.classList.toggle('show');
 });
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!filterMenu.contains(e.target)) {
+        filterMenu.classList.remove('show');
+    }
+});
+
+// Sync filters with main filters
+menuUnitFilter.addEventListener('change', () => {
+    // document.getElementById('unit-filter').value = menuUnitFilter.value;
+    filterRelics();
+    filterMenu.classList.remove('show');
+});
+
+menuQualityFilter.addEventListener('change', () => {
+    // document.getElementById('quality-filter').value = menuQualityFilter.value;
+    filterRelics();
+    filterMenu.classList.remove('show');
+});
+
+menuResetButton.addEventListener('click', () => {
+    // document.getElementById('unit-filter').value = 'all';
+    // document.getElementById('quality-filter').value = 'all';
+    menuUnitFilter.value = 'all';
+    menuQualityFilter.value = 'all';
+    filterRelics();
+    filterMenu.classList.remove('show');
+});
+
+// // Initialize menu filters to match main filters
+// function syncMenuFilters() {
+//     menuUnitFilter.value = document.getElementById('unit-filter').value;
+//     menuQualityFilter.value = document.getElementById('quality-filter').value;
+// }
 
 const availableRelicsGrid = document.getElementById("available-relics-grid");
 const selectedRelicsGrid = document.getElementById("selected-relics-grid");
@@ -317,6 +353,7 @@ function initializeGrids() {
     loadRelics();
     initializePlaceholders();
     filterRelics();
+    // syncMenuFilters();
 }
 
 window.onload = initializeGrids;
