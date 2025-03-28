@@ -44,7 +44,7 @@ function saveLevelToLocalStorage(relicId, level) {
 
 function loadLevelFromLocalStorage(relicId) {
     const level = localStorage.getItem(`relic-${relicId}-level`);
-    return level ? parseInt(level) : null;
+    return level ? parseInt(level) : 5; // Default to 5 stars if no setting exists
 }
 
 function createRelic(relic, grid) {
@@ -63,7 +63,7 @@ function createRelic(relic, grid) {
 
     const starsContainer = document.createElement("div");
     starsContainer.classList.add("stars");
-    let currentLevel = loadLevelFromLocalStorage(relic.id) ?? relic.level;
+    let currentLevel = loadLevelFromLocalStorage(relic.id); // Will return 5 by default
     updateStars(starsContainer, currentLevel);
     relicElement.appendChild(starsContainer);
 
@@ -110,19 +110,20 @@ function createRelic(relic, grid) {
             const stars = Array.from(starsContainer.children);
             const clickedIndex = stars.indexOf(clickedStar);
             let newLevel = clickedIndex + 1;
-
-            if (newLevel === 1 && currentLevel === 1) {
+    
+            // Toggle off if clicking the currently active star
+            if (newLevel === currentLevel) {
                 newLevel = 0;
             }
-
+    
             currentLevel = newLevel;
             updateStars(starsContainer, currentLevel);
             saveLevelToLocalStorage(relic.id, currentLevel);
-
+    
             // Update display buffs
             if (relic.displayBuffs && relic.displayBuffs.length > 0) {
                 relic.displayBuffs.forEach((displayBuff, index) => {
-                    const displayBuffValue = displayBuff.values[currentLevel - 1] ?? 0;
+                    const displayBuffValue = currentLevel > 0 ? (displayBuff.values[currentLevel - 1] ?? 0) : 0;
                     relicElement.querySelectorAll(".buff-value")[index].innerHTML = 
                         `${displayBuff.name} <span class="buff-green">${displayBuffValue}%</span>`;
                 });
