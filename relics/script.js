@@ -22,17 +22,13 @@ function getQualityColor(quality) {
     }
 }
 
-function updateStars(starsContainer, level, isHover = false) {
+function updateStars(starsContainer, currentLevel, maxLevel = 5, isHover = false) {
     if (!starsContainer) return;
-
+    
     starsContainer.innerHTML = "";
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 1; i <= maxLevel; i++) {
         const star = document.createElement("i");
-        star.classList.add("fas", "fa-star");
-        if (i > level) {
-            star.classList.remove("fas");
-            star.classList.add("far");
-        }
+        star.classList.add(i <= currentLevel ? "fas" : "far", "fa-star");
         starsContainer.appendChild(star);
     }
     if (isHover) starsContainer.classList.add("hover-effect");
@@ -43,9 +39,16 @@ function saveLevelToLocalStorage(relicId, level) {
     localStorage.setItem(`relic-${relicId}-level`, level);
 }
 
-function loadLevelFromLocalStorage(relicId) {
-    const level = localStorage.getItem(`relic-${relicId}-level`);
-    return level ? parseInt(level) : 5; // Default to 5 stars if no setting exists
+function loadLevelFromLocalStorage(relic) {
+    const storedLevel = localStorage.getItem(`relic-${relic.id}-level`);
+    if (storedLevel !== null) return parseInt(storedLevel);
+    
+    // Default levels based on quality
+    switch (relic.quality) {
+        case "Basic": return 3;
+        case "Rare": return 4;
+        default: return 5; // Epic, Legendary, Super
+    }
 }
 
 function createRelic(relic, grid) {
@@ -64,8 +67,13 @@ function createRelic(relic, grid) {
 
     const starsContainer = document.createElement("div");
     starsContainer.classList.add("stars");
-    let currentLevel = loadLevelFromLocalStorage(relic.id); // Will return 5 by default
-    updateStars(starsContainer, currentLevel);
+    
+    // Determine max level based on quality
+    const maxLevel = relic.quality === "Basic" ? 3 : 
+                     relic.quality === "Rare" ? 4 : 5;
+    
+    let currentLevel = loadLevelFromLocalStorage(relic);
+    updateStars(starsContainer, currentLevel, maxLevel);
     relicElement.appendChild(starsContainer);
 
     const title = document.createElement("h3");
@@ -97,12 +105,12 @@ function createRelic(relic, grid) {
             const hoveredStar = event.target;
             const stars = Array.from(starsContainer.children);
             const hoveredIndex = stars.indexOf(hoveredStar);
-            updateStars(starsContainer, hoveredIndex + 1, true);
+            updateStars(starsContainer, hoveredIndex + 1, maxLevel, true);
         }
     });
-
+    
     starsContainer.addEventListener("mouseout", () => {
-        updateStars(starsContainer, currentLevel);
+        updateStars(starsContainer, currentLevel, maxLevel);
     });
 
     starsContainer.addEventListener("click", (event) => {
@@ -112,13 +120,17 @@ function createRelic(relic, grid) {
             const clickedIndex = stars.indexOf(clickedStar);
             let newLevel = clickedIndex + 1;
     
-            // Toggle off if clicking the currently active star
+            // Toggle off if clicking current level
             if (newLevel === currentLevel) {
                 newLevel = 0;
             }
+            // Don't exceed max level
+            else if (newLevel > maxLevel) {
+                newLevel = maxLevel;
+            }
     
             currentLevel = newLevel;
-            updateStars(starsContainer, currentLevel);
+            updateStars(starsContainer, currentLevel, maxLevel);
             saveLevelToLocalStorage(relic.id, currentLevel);
     
             // Update display buffs
