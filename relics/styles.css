@@ -55,12 +55,14 @@ h1 {
 
 .stars {
     margin-bottom: 8px;
+    pointer-events: none; /* Permite cliques atravessarem para o container */
 }
 
 .stars i {
     color: #ffd700;
     font-size: 1em;
     text-shadow: 0 0 2px #000;
+    pointer-events: auto; /* Habilita cliques apenas nas estrelas */
     cursor: pointer;
     transition: color 0.2s;
 }
