@@ -13,26 +13,13 @@ async function loadRelics() {
 
 function getQualityColor(quality) {
     switch (quality) {
-        case "Basic": return "#d4f7e2";  // Light green
-        case "Rare": return "#d4eaf7";   // Light blue (unchanged)
-        case "Epic": return "#e0d4f7";   // Light purple (unchanged)
-        case "Legendary": return "#faf3d1"; // Light yellow (unchanged)
-        case "Super": return "#f7d4d4";  // Light red (unchanged)
-        default: return "#f9f9f9";       // Default light gray (unchanged)
+        case "Basic": return "#d4f7e2";
+        case "Rare": return "#d4eaf7";
+        case "Epic": return "#e0d4f7";
+        case "Legendary": return "#faf3d1";
+        case "Super": return "#f7d4d4";
+        default: return "#f9f9f9";
     }
-}
-
-function updateStars(starsContainer, currentLevel, maxLevel = 5, isHover = false) {
-    if (!starsContainer) return;
-    
-    starsContainer.innerHTML = "";
-    for (let i = 1; i <= maxLevel; i++) {
-        const star = document.createElement("i");
-        star.classList.add(i <= currentLevel ? "fas" : "far", "fa-star");
-        starsContainer.appendChild(star);
-    }
-    if (isHover) starsContainer.classList.add("hover-effect");
-    else starsContainer.classList.remove("hover-effect");
 }
 
 function saveLevelToLocalStorage(relicId, level) {
@@ -43,12 +30,25 @@ function loadLevelFromLocalStorage(relic) {
     const storedLevel = localStorage.getItem(`relic-${relic.id}-level`);
     if (storedLevel !== null) return parseInt(storedLevel);
     
-    // Default levels based on quality
     switch (relic.quality) {
         case "Basic": return 3;
         case "Rare": return 4;
-        default: return 5; // Epic, Legendary, Super
+        default: return 5;
     }
+}
+
+function updateRelicBuffs(relicElement, relic, level) {
+    if (!relic.displayBuffs) return;
+    
+    const buffElements = relicElement.querySelectorAll('.buff-value');
+    relic.displayBuffs.forEach((buff, index) => {
+        if (buffElements[index]) {
+            const value = level > 0 ? (buff.values[level - 1] ?? 0) : 0;
+            buffElements[index].innerHTML = `
+                ${buff.name} <span class="buff-green">${value}%</span>
+            `;
+        }
+    });
 }
 
 function createRelic(relic, grid) {
@@ -70,16 +70,39 @@ function createRelic(relic, grid) {
     const starsContainer = document.createElement("div");
     starsContainer.classList.add("stars");
     
-    // Determine max level based on quality
     const maxLevel = relic.quality === "Basic" ? 3 : 
                      relic.quality === "Rare" ? 4 : 5;
-    
-    // Load current level (from storage or default)
     let currentLevel = loadLevelFromLocalStorage(relic);
-    
-    // Initialize stars display
-    updateStars(starsContainer, currentLevel, maxLevel);
+
+    // Create stars
+    for (let i = 1; i <= maxLevel; i++) {
+        const star = document.createElement("i");
+        star.classList.add(i <= currentLevel ? "fas" : "far", "fa-star");
+        starsContainer.appendChild(star);
+    }
     relicElement.appendChild(starsContainer);
+
+    // Add click handlers to each star
+    starsContainer.querySelectorAll('i').forEach((star, index) => {
+        star.addEventListener('click', (event) => {
+            event.stopPropagation();
+            event.stopImmediatePropagation();
+            
+            const clickedLevel = index + 1;
+            currentLevel = clickedLevel === currentLevel ? 0 : clickedLevel;
+            
+            // Update star display
+            starsContainer.querySelectorAll('i').forEach((s, i) => {
+                s.classList.toggle('fas', i < currentLevel);
+                s.classList.toggle('far', i >= currentLevel);
+            });
+            
+            // Save and update
+            saveLevelToLocalStorage(relic.id, currentLevel);
+            updateRelicBuffs(relicElement, relic, currentLevel);
+            updateBuffSummary();
+        });
+    });
 
     // Create relic title
     const title = document.createElement("h3");
@@ -91,7 +114,7 @@ function createRelic(relic, grid) {
     unit.textContent = relic.unit;
     relicElement.appendChild(unit);
 
-    // Create display buffs if they exist
+    // Create display buffs
     if (relic.displayBuffs && relic.displayBuffs.length > 0) {
         const displayBuffsLabel = document.createElement("p");
         displayBuffsLabel.textContent = "Display Buffs:";
@@ -100,68 +123,26 @@ function createRelic(relic, grid) {
 
         relic.displayBuffs.forEach(displayBuff => {
             const displayBuffElement = document.createElement("p");
-            const displayBuffValue = currentLevel > 0 ? (displayBuff.values[currentLevel - 1] ?? 0) : 0;
-            displayBuffElement.innerHTML = `${displayBuff.name} <span class="buff-green">${displayBuffValue}%</span>`;
             displayBuffElement.classList.add("buff-value");
             relicElement.appendChild(displayBuffElement);
         });
+        
+        // Initialize buffs
+        updateRelicBuffs(relicElement, relic, currentLevel);
     }
 
-    // Hover effects for stars
-    starsContainer.addEventListener("mouseover", (event) => {
-        if (event.target.tagName === "I") {
-            const hoveredStar = event.target;
-            const stars = Array.from(starsContainer.children);
-            const hoveredLevel = stars.indexOf(hoveredStar) + 1;
-            updateStars(starsContainer, hoveredLevel, maxLevel, true);
-        }
-    });
-    
-    starsContainer.addEventListener("mouseout", () => {
-        // Use the actual currentLevel, not the hover state
-        updateStars(starsContainer, currentLevel, maxLevel);
-    });
-
-    // Star click handler
-    starsContainer.addEventListener("click", (event) => {
-        event.stopPropagation(); // Impede que o evento chegue no relicElement
-        
-        const star = event.target.closest('i');
-        if (!star) return;
-        
-        const stars = Array.from(starsContainer.children);
-        const clickedLevel = stars.indexOf(star) + 1;
-        
-        currentLevel = clickedLevel === currentLevel ? 0 : clickedLevel;
-        
-        updateStars(starsContainer, currentLevel, maxLevel);
-        saveLevelToLocalStorage(relic.id, currentLevel);
-    
-        // Atualiza os buffs
-        if (relic.displayBuffs) {
-            relic.displayBuffs.forEach((displayBuff, index) => {
-                const displayBuffValue = currentLevel > 0 ? (displayBuff.values[currentLevel - 1] ?? 0) : 0;
-                const buffElements = relicElement.querySelectorAll(".buff-value");
-                if (buffElements[index]) {
-                    buffElements[index].innerHTML = 
-                        `${displayBuff.name} <span class="buff-green">${displayBuffValue}%</span>`;
-                }
-            });
-        }
-    });
-
-    // Handle relic card clicks (move between grids)
-    relicElement.addEventListener("click", (event) => {
+    // Relic click handler (excluding stars)
+    relicElement.addEventListener('click', (event) => {
         if (event.target.closest('.stars')) return;
         
         const currentGrid = relicElement.parentElement;
-        const targetGrid = currentGrid.id === "available-relics-grid" ? 
-            document.getElementById("selected-relics-grid") : 
-            document.getElementById("available-relics-grid");
+        const targetGrid = currentGrid.id === "available-relics-grid" 
+            ? document.getElementById("selected-relics-grid") 
+            : document.getElementById("available-relics-grid");
+        
         moveRelic(relicElement, targetGrid);
     });
 
-    // Add to grid
     grid.appendChild(relicElement);
 }
 
@@ -273,7 +254,7 @@ function calculateTotalBuffs() {
         if (!relicElement.classList.contains("placeholder-card") && relicElement.dataset.id) {
             const relicId = parseInt(relicElement.dataset.id);
             const relic = relics.find(r => r.id === relicId);
-            const level = loadLevelFromLocalStorage(relicId) || relic.level;
+            const level = loadLevelFromLocalStorage(relic);
 
             if (relic.buff) {
                 const buffValue = relic.buff.values[level - 1] || 0;
@@ -328,55 +309,38 @@ const menuUnitFilter = document.getElementById('menu-unit-filter');
 const menuQualityFilter = document.getElementById('menu-quality-filter');
 const menuResetButton = document.getElementById('menu-reset-button');
 
-// Toggle filter menu
 floatingFilterButton.addEventListener('click', (e) => {
     e.stopPropagation();
     filterMenu.classList.toggle('show');
 });
 
-// Close menu when clicking outside
 document.addEventListener('click', (e) => {
     if (!filterMenu.contains(e.target)) {
         filterMenu.classList.remove('show');
     }
 });
 
-// Sync filters with main filters
 menuUnitFilter.addEventListener('change', () => {
-    // document.getElementById('unit-filter').value = menuUnitFilter.value;
     filterRelics();
     filterMenu.classList.remove('show');
 });
 
 menuQualityFilter.addEventListener('change', () => {
-    // document.getElementById('quality-filter').value = menuQualityFilter.value;
     filterRelics();
     filterMenu.classList.remove('show');
 });
 
 menuResetButton.addEventListener('click', () => {
-    // document.getElementById('unit-filter').value = 'all';
-    // document.getElementById('quality-filter').value = 'all';
     menuUnitFilter.value = 'all';
     menuQualityFilter.value = 'all';
     filterRelics();
     filterMenu.classList.remove('show');
 });
 
-// // Initialize menu filters to match main filters
-// function syncMenuFilters() {
-//     menuUnitFilter.value = document.getElementById('unit-filter').value;
-//     menuQualityFilter.value = document.getElementById('quality-filter').value;
-// }
-
-const availableRelicsGrid = document.getElementById("available-relics-grid");
-const selectedRelicsGrid = document.getElementById("selected-relics-grid");
-
 function initializeGrids() {
     loadRelics();
     initializePlaceholders();
     filterRelics();
-    // syncMenuFilters();
 }
 
 window.onload = initializeGrids;

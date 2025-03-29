@@ -29,6 +29,8 @@ h1 {
     color: #333;
     margin-bottom: 10px;
     height: 100%;
+    position: relative;
+    z-index: 1;
 }
 
 .relic:hover {
@@ -55,24 +57,22 @@ h1 {
 
 .stars {
     margin-bottom: 8px;
-    pointer-events: none; /* Permite cliques atravessarem para o container */
+    pointer-events: none;
 }
 
 .stars i {
     color: #ffd700;
     font-size: 1em;
     text-shadow: 0 0 2px #000;
-    pointer-events: auto; /* Habilita cliques apenas nas estrelas */
     cursor: pointer;
     transition: color 0.2s;
+    pointer-events: auto;
+    position: relative;
+    z-index: 2;
 }
 
 .stars i.far {
     color: #ddd;
-}
-
-.stars.hover-effect i {
-    opacity: 0.7;
 }
 
 .relic p {
@@ -168,7 +168,6 @@ h1 {
     font-weight: bold;
 }
 
-/* Floating Filter Button Styles */
 .floating-filter-container {
     position: fixed;
     bottom: 20px;
@@ -218,14 +217,12 @@ h1 {
     overflow-y: auto;
 }
 
-/* Esconde os filtros originais na versão desktop */
 @media (min-width: 768px) {
     .filters {
         display: none;
     }
 }
 
-/* Mostra os filtros originais na versão mobile */
 @media (max-width: 767px) {
     .floating-filter-container {
         display: none;
