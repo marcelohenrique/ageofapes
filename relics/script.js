@@ -328,9 +328,9 @@ const menuResetButton = document.getElementById('menu-reset-button');
 floatingFilterButton.addEventListener('click', (e) => {
     e.stopPropagation();
     filterMenu.classList.toggle('show');
-    
-    // Close buff menu if open
-    buffMenu.classList.remove('show');
+    if (filterMenu.classList.contains('show')) {
+        buffMenu.classList.remove('show');
+    }
 });
 
 // Buff Summary Floating Button Functionality
@@ -340,9 +340,9 @@ const buffMenu = document.getElementById('buff-menu');
 floatingBuffButton.addEventListener('click', (e) => {
     e.stopPropagation();
     buffMenu.classList.toggle('show');
-    
-    // Close filter menu if open
-    filterMenu.classList.remove('show');
+    if (buffMenu.classList.contains('show')) {
+        filterMenu.classList.remove('show');
+    }
 });
 
 document.addEventListener('click', (e) => {
