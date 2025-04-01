@@ -2,7 +2,7 @@
     {
         "id": 1,
         "name": "Banana",
-        "image": "images/banana.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/banana.webp",
         "level": 4,
         "unit": "Utility",
         "quality": "Rare",
@@ -13,7 +13,8 @@
                 1000,
                 1500,
                 2000
-            ]
+            ],
+            "uom": "Food"
         },
         "displayBuffs": [
             {
@@ -23,7 +24,8 @@
                     1.5,
                     2,
                     2.5
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Food Production/Hour",
@@ -32,14 +34,15 @@
                     2250,
                     3375,
                     4500
-                ]
+                ],
+                "uom": "Food"
             }
         ]
     },
     {
         "id": 2,
         "name": "Space Helmet",
-        "image": "images/spacehelmet.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/spacehelmet.webp",
         "level": 4,
         "unit": "Mutants",
         "quality": "Rare",
@@ -50,7 +53,8 @@
                 1000,
                 1500,
                 2000
-            ]
+            ],
+            "uom": "Iron"
         },
         "displayBuffs": [
             {
@@ -60,7 +64,8 @@
                     2,
                     3,
                     4
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Iron Production/Hour",
@@ -69,14 +74,15 @@
                     2250,
                     3375,
                     4500
-                ]
+                ],
+                "uom": "Iron"
             }
         ]
     },
     {
         "id": 3,
         "name": "Lakeside Cushion",
-        "image": "images/lakesidecushion.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/lakesidecushion.webp",
         "level": 5,
         "unit": "Utility",
         "quality": "Legendary",
@@ -88,7 +94,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -99,7 +106,8 @@
                     18,
                     24,
                     30
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Teleport Energy Cost Reduced",
@@ -109,14 +117,15 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 4,
         "name": "Fishing Net",
-        "image": "images/fishingnet.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/fishingnet.webp",
         "level": 5,
         "unit": "Gathering",
         "quality": "Epic",
@@ -128,7 +137,8 @@
                 5.4,
                 7.2,
                 9
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -139,7 +149,8 @@
                     9,
                     12,
                     15
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Iron Gathering Speed",
@@ -149,14 +160,15 @@
                     9,
                     12,
                     15
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 5,
         "name": "Fishing Pole",
-        "image": "images/fishingpole.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/fishingpole.webp",
         "level": 5,
         "unit": "Gathering",
         "quality": "Epic",
@@ -168,7 +180,8 @@
                 5.4,
                 7.2,
                 9
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -179,7 +192,8 @@
                     9,
                     12,
                     15
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Food Gathering Speed",
@@ -189,16 +203,17 @@
                     9,
                     12,
                     15
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 6,
         "name": "Figurine",
-        "image": "images/figurine.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/figurine.webp",
         "level": 5,
-        "unit": "Hitter",
+        "unit": "Hitters",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Hitters",
@@ -208,7 +223,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -219,7 +235,8 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Hitters",
@@ -229,16 +246,17 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 7,
         "name": "Polypod Toy",
-        "image": "images/polypodtoy.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/polypodtoy.webp",
         "level": 5,
-        "unit": "Pilot",
+        "unit": "Pilots",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Pilots",
@@ -248,7 +266,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -259,7 +278,8 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Pilots",
@@ -269,16 +289,17 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 8,
         "name": "Shush Machine",
-        "image": "images/shushmachine.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/shushmachine.webp",
         "level": 5,
-        "unit": "Shooter",
+        "unit": "Shooters",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Shooters",
@@ -288,7 +309,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -299,7 +321,8 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Shooters",
@@ -309,16 +332,17 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 9,
         "name": "Scuba Mask",
-        "image": "images/scubamask.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/scubamask.webp",
         "level": 5,
-        "unit": "Shooter",
+        "unit": "Shooters",
         "quality": "Epic",
         "buff": {
             "name": "Defense of Shooters",
@@ -328,7 +352,8 @@
                 1.8,
                 2.4,
                 3
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -339,7 +364,8 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Shooters",
@@ -349,16 +375,17 @@
                     3,
                     4,
                     5
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 10,
         "name": "Sunblocker",
-        "image": "images/sunblocker.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/sunblocker.webp",
         "level": 5,
-        "unit": "Pilot",
+        "unit": "Pilots",
         "quality": "Epic",
         "buff": {
             "name": "Defense of Pilots",
@@ -368,7 +395,8 @@
                 1.8,
                 2.4,
                 3
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -379,7 +407,8 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Pilots",
@@ -389,16 +418,17 @@
                     3,
                     4,
                     5
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 11,
         "name": "Beach Shield",
-        "image": "images/beachshield.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/beachshield.webp",
         "level": 5,
-        "unit": "Hitter",
+        "unit": "Hitters",
         "quality": "Epic",
         "buff": {
             "name": "Defense of Hitters",
@@ -408,7 +438,8 @@
                 1.8,
                 2.4,
                 3
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -419,7 +450,8 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Hitters",
@@ -429,16 +461,17 @@
                     3,
                     4,
                     5
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 12,
         "name": "Life Preserver",
-        "image": "images/lifepreserver.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/lifepreserver.webp",
         "level": 5,
-        "unit": "Wall Breaker",
+        "unit": "Wall Breakers",
         "quality": "Epic",
         "buff": {
             "name": "Defense of Wall Breakers",
@@ -448,7 +481,8 @@
                 1.8,
                 2.4,
                 3
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -459,7 +493,8 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Wall Breakers",
@@ -469,14 +504,15 @@
                     3,
                     4,
                     5
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 13,
         "name": "Medical Notes",
-        "image": "images/medicalnotes.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/medicalnotes.webp",
         "level": 3,
         "unit": "Utility",
         "quality": "Basic",
@@ -486,7 +522,8 @@
                 500,
                 1000,
                 1500
-            ]
+            ],
+            "uom": "Troops"
         },
         "displayBuffs": [
             {
@@ -495,7 +532,8 @@
                     0.5,
                     1,
                     1.5
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Healing Speed",
@@ -503,14 +541,15 @@
                     2.5,
                     5,
                     7.5
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 14,
         "name": "Primitive Injector",
-        "image": "images/primitiveinjector.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/primitiveinjector.webp",
         "level": 3,
         "unit": "Mutants",
         "quality": "Basic",
@@ -520,7 +559,8 @@
                 2.5,
                 5,
                 7.5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -529,7 +569,8 @@
                     1,
                     2,
                     3
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Healing Speed",
@@ -537,16 +578,17 @@
                     2.5,
                     5,
                     7.5
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 15,
         "name": "Bitcoin",
-        "image": "images/bitcoin.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/bitcoin.webp",
         "level": 5,
-        "unit": "Hitter",
+        "unit": "Hitters",
         "quality": "Legendary",
         "buff": {
             "name": "Hitters Training Speed",
@@ -556,7 +598,8 @@
                 4.5,
                 6,
                 7.5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -567,7 +610,8 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Hitters",
@@ -577,16 +621,17 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 16,
         "name": "Red Arrowhead",
-        "image": "images/redarrowhead.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/redarrowhead.webp",
         "level": 5,
-        "unit": "Pilot",
+        "unit": "Pilots",
         "quality": "Legendary",
         "buff": {
             "name": "Pilots Training Speed",
@@ -596,7 +641,8 @@
                 4.5,
                 6,
                 7.5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -607,7 +653,8 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Pilots",
@@ -617,16 +664,17 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 17,
         "name": "Gold Bars",
-        "image": "images/goldbars.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/goldbars.webp",
         "level": 5,
-        "unit": "Shooter",
+        "unit": "Shooters",
         "quality": "Epic",
         "buff": {
             "name": "Shooters Training Speed",
@@ -636,7 +684,8 @@
                 2.7,
                 3.6,
                 4.5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -647,7 +696,8 @@
                     4.5,
                     6,
                     7.5
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Shooters",
@@ -657,14 +707,15 @@
                     3,
                     4,
                     5
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 18,
         "name": "Oral Massager",
-        "image": "images/oralmassager.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/oralmassager.webp",
         "level": 5,
         "unit": "Utility",
         "quality": "Epic",
@@ -676,7 +727,8 @@
                 2100,
                 2800,
                 3500
-            ]
+            ],
+            "uom": "Food"
         },
         "displayBuffs": [
             {
@@ -687,7 +739,8 @@
                     4.5,
                     6,
                     7.5
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Food Production/Hour",
@@ -697,14 +750,15 @@
                     3300,
                     4400,
                     5500
-                ]
+                ],
+                "uom": "Food"
             }
         ]
     },
     {
         "id": 19,
         "name": "Mad Cap",
-        "image": "images/madcap.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/madcap.webp",
         "level": 5,
         "unit": "Utility",
         "quality": "Epic",
@@ -716,7 +770,8 @@
                 1.8,
                 2.4,
                 3
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -727,7 +782,8 @@
                     4.5,
                     6,
                     7.5
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Teleport Energy Cost Reduced",
@@ -737,14 +793,15 @@
                     3,
                     4,
                     5
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 20,
         "name": "Inflatable Ball",
-        "image": "images/inflatableball.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/inflatableball.webp",
         "level": 5,
         "unit": "Utility",
         "quality": "Epic",
@@ -756,7 +813,8 @@
                 2100,
                 2800,
                 3500
-            ]
+            ],
+            "uom": "Iron"
         },
         "displayBuffs": [
             {
@@ -767,7 +825,8 @@
                     4.5,
                     6,
                     7.5
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Iron Production/Hour",
@@ -777,16 +836,17 @@
                     3300,
                     4400,
                     5500
-                ]
+                ],
+                "uom": "Iron"
             }
         ]
     },
     {
         "id": 21,
         "name": "Zombie Stick",
-        "image": "images/zombiestick.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/zombiestick.webp",
         "level": 5,
-        "unit": "Hitter",
+        "unit": "Hitters",
         "quality": "Legendary",
         "buff": {
             "name": "Health of Hitters",
@@ -796,7 +856,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -807,7 +868,8 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Health of Hitters",
@@ -817,16 +879,17 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 22,
         "name": "Rage Ball",
-        "image": "images/rageball.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/rageball.webp",
         "level": 5,
-        "unit": "Shooter",
+        "unit": "Shooters",
         "quality": "Legendary",
         "buff": {
             "name": "Health of Shooters",
@@ -836,7 +899,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -847,7 +911,8 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Health of Shooters",
@@ -857,16 +922,17 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 23,
         "name": "Oversized Wallet",
-        "image": "images/oversizedwallet.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/oversizedwallet.webp",
         "level": 5,
-        "unit": "Wall Breaker",
+        "unit": "Wall Breakers",
         "quality": "Legendary",
         "buff": {
             "name": "Health of Wall Breakers",
@@ -876,7 +942,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -887,7 +954,8 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Health of Wall Breakers",
@@ -897,16 +965,17 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 24,
         "name": "Wearable Umbrella",
-        "image": "images/wearableumbrella.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/wearableumbrella.webp",
         "level": 5,
-        "unit": "Pilot",
+        "unit": "Pilots",
         "quality": "Legendary",
         "buff": {
             "name": "Health of Pilots",
@@ -916,7 +985,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -927,7 +997,8 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Health of Pilots",
@@ -937,14 +1008,15 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 25,
         "name": "House/Car Model",
-        "image": "images/housecarmodel.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/housecarmodel.webp",
         "level": 5,
         "unit": "Utility",
         "quality": "Epic",
@@ -956,7 +1028,8 @@
                 1.8,
                 2.4,
                 3
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -967,7 +1040,8 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Building Speed",
@@ -977,14 +1051,15 @@
                     3,
                     4,
                     5
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 26,
         "name": "Instruction Tool",
-        "image": "images/instructiontool.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/instructiontool.webp",
         "level": 5,
         "unit": "Utility",
         "quality": "Epic",
@@ -996,7 +1071,8 @@
                 1.8,
                 2.4,
                 3
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -1007,7 +1083,8 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Research Speed",
@@ -1017,16 +1094,17 @@
                     3,
                     4,
                     5
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 27,
         "name": "Metal Drum",
-        "image": "images/metaldrum.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/metaldrum.webp",
         "level": 4,
-        "unit": "Pilot",
+        "unit": "Pilots",
         "quality": "Rare",
         "buff": {
             "name": "Health of Pilots",
@@ -1035,7 +1113,8 @@
                 1,
                 1.5,
                 2
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -1045,7 +1124,8 @@
                     3,
                     4.5,
                     6
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Speed of Pilots",
@@ -1054,16 +1134,17 @@
                     6,
                     9,
                     12
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 28,
         "name": "Magic Box",
-        "image": "images/magicbox.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/magicbox.webp",
         "level": 4,
-        "unit": "Hitter",
+        "unit": "Hitters",
         "quality": "Rare",
         "buff": {
             "name": "Health of Hitters",
@@ -1072,7 +1153,8 @@
                 1,
                 1.5,
                 2
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -1082,7 +1164,8 @@
                     1,
                     1.5,
                     2
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Speed of Hitters",
@@ -1091,16 +1174,17 @@
                     6,
                     9,
                     12
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 29,
         "name": "Wasabi Can",
-        "image": "images/wasabican.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/wasabican.webp",
         "level": 4,
-        "unit": "Shooter",
+        "unit": "Shooters",
         "quality": "Rare",
         "buff": {
             "name": "Health of Shooters",
@@ -1109,7 +1193,8 @@
                 1,
                 1.5,
                 2
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -1119,7 +1204,8 @@
                     1,
                     1.5,
                     2
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Speed of Shooters",
@@ -1128,16 +1214,17 @@
                     6,
                     9,
                     12
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 30,
         "name": "Rope",
-        "image": "images/rope.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/rope.webp",
         "level": 5,
-        "unit": "Hitter",
+        "unit": "Hitters",
         "quality": "Legendary",
         "buff": {
             "name": "Speed of Hitters",
@@ -1147,7 +1234,8 @@
                 9,
                 12,
                 15
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -1158,7 +1246,8 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Health of Hitters",
@@ -1168,16 +1257,17 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 31,
         "name": "Lifesaving Wheel",
-        "image": "images/lifesavingwheel.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/lifesavingwheel.webp",
         "level": 5,
-        "unit": "Pilot",
+        "unit": "Pilots",
         "quality": "Legendary",
         "buff": {
             "name": "Speed of Pilots",
@@ -1187,7 +1277,8 @@
                 9,
                 12,
                 15
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -1198,7 +1289,8 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Health of Pilots",
@@ -1208,16 +1300,17 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 32,
         "name": "Lantern",
-        "image": "images/lantern.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/lantern.webp",
         "level": 5,
-        "unit": "Shooter",
+        "unit": "Shooters",
         "quality": "Legendary",
         "buff": {
             "name": "Speed of Shooters",
@@ -1227,7 +1320,8 @@
                 9,
                 12,
                 15
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -1238,7 +1332,8 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Health of Shooters",
@@ -1248,14 +1343,15 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 33,
         "name": "Vegetable Mask",
-        "image": "images/vegetablemask.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/vegetablemask.webp",
         "level": 5,
         "unit": "Utility",
         "quality": "Epic",
@@ -1267,7 +1363,8 @@
                 30000,
                 40000,
                 50000
-            ]
+            ],
+            "uom": "Food"
         },
         "displayBuffs": [
             {
@@ -1278,7 +1375,8 @@
                     9,
                     12,
                     15
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Decr. Research Food Cost",
@@ -1288,14 +1386,15 @@
                     51000,
                     68000,
                     85000
-                ]
+                ],
+                "uom": "Food"
             }
         ]
     },
     {
         "id": 34,
         "name": "Surprised Totem",
-        "image": "images/surprisedtotem.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/surprisedtotem.webp",
         "level": 5,
         "unit": "Utility",
         "quality": "Epic",
@@ -1307,7 +1406,8 @@
                 1.8,
                 2.4,
                 3
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -1318,7 +1418,8 @@
                     9,
                     12,
                     15
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "AP Regen Rate",
@@ -1328,14 +1429,15 @@
                     3,
                     4,
                     5
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 35,
         "name": "Bench Totem",
-        "image": "images/benchtotem.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/benchtotem.webp",
         "level": 5,
         "unit": "Utility",
         "quality": "Epic",
@@ -1347,7 +1449,8 @@
                 540,
                 720,
                 900
-            ]
+            ],
+            "uom": "sec"
         },
         "displayBuffs": [
             {
@@ -1358,7 +1461,8 @@
                     9,
                     12,
                     15
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Decr. Research Time (sec)",
@@ -1368,14 +1472,15 @@
                     900,
                     1200,
                     1500
-                ]
+                ],
+                "uom": "sec"
             }
         ]
     },
     {
         "id": 36,
         "name": "Long-Nosed Totem",
-        "image": "images/longnosedtotem.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/longnosedtotem.webp",
         "level": 5,
         "unit": "Utility",
         "quality": "Epic",
@@ -1387,7 +1492,8 @@
                 30000,
                 40000,
                 50000
-            ]
+            ],
+            "uom": "Iron"
         },
         "displayBuffs": [
             {
@@ -1398,7 +1504,8 @@
                     9,
                     12,
                     15
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Decr. Research Iron Cost",
@@ -1408,16 +1515,17 @@
                     51000,
                     68000,
                     85000
-                ]
+                ],
+                "uom": "Iron"
             }
         ]
     },
     {
         "id": 37,
         "name": "Watercolor Brush",
-        "image": "images/watercolorbrush.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/watercolorbrush.webp",
         "level": 5,
-        "unit": "Shooter",
+        "unit": "Shooters",
         "quality": "Epic",
         "buff": {
             "name": "Attack of Shooters",
@@ -1427,7 +1535,8 @@
                 1.8,
                 2.4,
                 3
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -1438,7 +1547,8 @@
                     3600,
                     4800,
                     6000
-                ]
+                ],
+                "uom": "Food"
             },
             {
                 "name": "Attack of Shooters",
@@ -1448,16 +1558,17 @@
                     2.4,
                     3.2,
                     4
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 38,
         "name": "Bulletin Board",
-        "image": "images/bulletinboard.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/bulletinboard.webp",
         "level": 5,
-        "unit": "Wall Breaker",
+        "unit": "Wall Breakers",
         "quality": "Epic",
         "buff": {
             "name": "Attack of Wall Breakers",
@@ -1467,7 +1578,8 @@
                 1.8,
                 2.4,
                 3
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -1478,7 +1590,8 @@
                     3600,
                     4800,
                     6000
-                ]
+                ],
+                "uom": "Iron"
             },
             {
                 "name": "Attack of Wall Breakers",
@@ -1488,16 +1601,17 @@
                     2.4,
                     3.2,
                     4
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 39,
         "name": "Splash-Proof Helmet",
-        "image": "images/splashproofhelmet.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/splashproofhelmet.webp",
         "level": 5,
-        "unit": "Hitter",
+        "unit": "Hitters",
         "quality": "Epic",
         "buff": {
             "name": "Food Protection Capacity",
@@ -1507,7 +1621,8 @@
                 210000,
                 280000,
                 350000
-            ]
+            ],
+            "uom": "Food"
         },
         "displayBuffs": [
             {
@@ -1518,7 +1633,8 @@
                     3,
                     4,
                     5
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Food Production Capacity",
@@ -1528,16 +1644,17 @@
                     270000,
                     360000,
                     450000
-                ]
+                ],
+                "uom": "Food"
             }
         ]
     },
     {
         "id": 40,
         "name": "Wooden Cup",
-        "image": "images/woodencup.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/woodencup.webp",
         "level": 4,
-        "unit": "Shooter",
+        "unit": "Shooters",
         "quality": "Rare",
         "buff": {
             "name": "Windfall",
@@ -1546,7 +1663,8 @@
                 1,
                 1.5,
                 2
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -1556,7 +1674,8 @@
                     0.8,
                     1.2,
                     1.6
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Food Production/Hour",
@@ -1565,16 +1684,17 @@
                     1750,
                     2625,
                     3500
-                ]
+                ],
+                "uom": "Food"
             }
         ]
     },
     {
         "id": 41,
         "name": "Baby Stroller",
-        "image": "images/babystroller.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/babystroller.webp",
         "level": 4,
-        "unit": "Hitter",
+        "unit": "Hitters",
         "quality": "Rare",
         "buff": {
             "name": "Speed of Hitters",
@@ -1583,7 +1703,8 @@
                 3,
                 4.5,
                 6
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -1593,7 +1714,8 @@
                     90000,
                     135000,
                     180000
-                ]
+                ],
+                "uom": "Food"
             },
             {
                 "name": "Speed of Hitters",
@@ -1602,16 +1724,17 @@
                     4.8,
                     7.2,
                     9.6
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 42,
         "name": "Alarm Bell",
-        "image": "images/alarmbell.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/alarmbell.webp",
         "level": 4,
-        "unit": "Pilot",
+        "unit": "Pilots",
         "quality": "Rare",
         "buff": {
             "name": "Iron Protection Capacity",
@@ -1620,7 +1743,8 @@
                 125000,
                 187500,
                 250000
-            ]
+            ],
+            "uom": "Iron"
         },
         "displayBuffs": [
             {
@@ -1630,7 +1754,8 @@
                     0.8,
                     1.2,
                     1.6
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Iron Protection Capacity",
@@ -1639,16 +1764,17 @@
                     175000,
                     262500,
                     350000
-                ]
+                ],
+                "uom": "Iron"
             }
         ]
     },
     {
         "id": 43,
         "name": "Wooden Shield",
-        "image": "images/woodenshield.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/woodenshield.webp",
         "level": 4,
-        "unit": "Wall Breaker",
+        "unit": "Wall Breakers",
         "quality": "Rare",
         "buff": {
             "name": "Dmg to Neutral Units",
@@ -1657,7 +1783,8 @@
                 5,
                 7.5,
                 10
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -1667,7 +1794,8 @@
                     0.8,
                     1.2,
                     1.6
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Iron Production/Hour",
@@ -1676,16 +1804,17 @@
                     1750,
                     2625,
                     3500
-                ]
+                ],
+                "uom": "Iron"
             }
         ]
     },
     {
         "id": 44,
         "name": "Surgical Knife",
-        "image": "images/surgicalknife.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/surgicalknife.webp",
         "level": 4,
-        "unit": "Hitter",
+        "unit": "Hitters",
         "quality": "Rare",
         "buff": {
             "name": "Attack of Hitters",
@@ -1694,7 +1823,8 @@
                 1,
                 1.5,
                 2
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -1704,7 +1834,8 @@
                     90000,
                     135000,
                     180000
-                ]
+                ],
+                "uom": "Food"
             },
             {
                 "name": "Attack of Hitters",
@@ -1713,16 +1844,17 @@
                     1.6,
                     2.4,
                     3.2
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 45,
         "name": "Bloodletter Axe",
-        "image": "images/bloodletteraxe.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/bloodletteraxe.webp",
         "level": 4,
-        "unit": "Pilot",
+        "unit": "Pilots",
         "quality": "Rare",
         "buff": {
             "name": "Speed of Pilots",
@@ -1731,7 +1863,8 @@
                 3,
                 4.5,
                 6
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -1741,7 +1874,8 @@
                     90000,
                     135000,
                     180000
-                ]
+                ],
+                "uom": "Iron"
             },
             {
                 "name": "Speed of Pilots",
@@ -1750,14 +1884,15 @@
                     4.8,
                     7.2,
                     9.6
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 46,
         "name": "Dental Picker",
-        "image": "images/dentalpicker.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/dentalpicker.webp",
         "level": 4,
         "unit": "Mutants",
         "quality": "Rare",
@@ -1768,7 +1903,8 @@
                 10,
                 15,
                 20
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -1778,7 +1914,8 @@
                     2.4,
                     3.6,
                     4.8
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "AP Regen Rate",
@@ -1787,16 +1924,17 @@
                     1.6,
                     2.4,
                     3.2
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 47,
         "name": "Orthopedic Hammer",
-        "image": "images/orthopedichammer.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/orthopedichammer.webp",
         "level": 4,
-        "unit": "Pilot",
+        "unit": "Pilots",
         "quality": "Rare",
         "buff": {
             "name": "Attack of Pilots",
@@ -1805,7 +1943,8 @@
                 1,
                 1.5,
                 2
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -1815,7 +1954,8 @@
                     90000,
                     135000,
                     180000
-                ]
+                ],
+                "uom": "Iron"
             },
             {
                 "name": "Attack of Pilots",
@@ -1824,16 +1964,17 @@
                     1.6,
                     2.4,
                     3.2
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 48,
         "name": "Street Totem",
-        "image": "images/streettotem.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/streettotem.webp",
         "level": 4,
-        "unit": "Pilot",
+        "unit": "Pilots",
         "quality": "Rare",
         "buff": {
             "name": "Pilots Training Speed",
@@ -1842,7 +1983,8 @@
                 1.5,
                 2.3,
                 3
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -1852,7 +1994,8 @@
                     2.4,
                     3.6,
                     4.8
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Pilots Training Speed",
@@ -1861,16 +2004,17 @@
                     2.4,
                     3.6,
                     4.8
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 49,
         "name": "Street Light",
-        "image": "images/streetlight.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/streetlight.webp",
         "level": 4,
-        "unit": "Wall Breaker",
+        "unit": "Wall Breakers",
         "quality": "Rare",
         "buff": {
             "name": "Wall Breakers Training Speed",
@@ -1879,7 +2023,8 @@
                 1.5,
                 2.3,
                 3
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -1889,7 +2034,8 @@
                     2.4,
                     3.6,
                     4.8
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Wall Breakers Training Speed",
@@ -1898,16 +2044,17 @@
                     2.4,
                     3.6,
                     4.8
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 50,
         "name": "Street Blocker",
-        "image": "images/streetblocker.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/streetblocker.webp",
         "level": 4,
-        "unit": "Hitter",
+        "unit": "Hitters",
         "quality": "Rare",
         "buff": {
             "name": "Hitters Training Speed",
@@ -1916,7 +2063,8 @@
                 1.5,
                 2.3,
                 3
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -1926,7 +2074,8 @@
                     2,
                     4,
                     5
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Hitters Training Speed",
@@ -1935,16 +2084,17 @@
                     2.4,
                     3.6,
                     4.8
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 51,
         "name": "Street Water Fountain",
-        "image": "images/streetwaterfountain.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/streetwaterfountain.webp",
         "level": 4,
-        "unit": "Shooter",
+        "unit": "Shooters",
         "quality": "Rare",
         "buff": {
             "name": "Shooter Training Speed",
@@ -1953,7 +2103,8 @@
                 1.5,
                 2.3,
                 3
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -1963,7 +2114,8 @@
                     2,
                     4,
                     5
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Shooters Training Speed",
@@ -1972,14 +2124,15 @@
                     2.4,
                     3.6,
                     4.8
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 52,
         "name": "Throat Protector",
-        "image": "images/throatprotector.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/throatprotector.webp",
         "level": 5,
         "unit": "Gathering",
         "quality": "Epic",
@@ -1991,7 +2144,8 @@
                 3.6,
                 4.8,
                 6
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -2002,7 +2156,8 @@
                     3,
                     4,
                     5
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Food Production",
@@ -2012,14 +2167,15 @@
                     4.8,
                     6.4,
                     8
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 53,
         "name": "Oral Protector",
-        "image": "images/oralprotector.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/oralprotector.webp",
         "level": 5,
         "unit": "Gathering",
         "quality": "Epic",
@@ -2031,7 +2187,8 @@
                 3.6,
                 4.8,
                 6
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -2042,7 +2199,8 @@
                     3,
                     4,
                     5
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Iron Production",
@@ -2052,16 +2210,17 @@
                     4.8,
                     6.4,
                     8
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 54,
         "name": "Fishing Machine",
-        "image": "images/fishingmachine.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/fishingmachine.webp",
         "level": 5,
-        "unit": "Pilot",
+        "unit": "Pilots",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Pilots",
@@ -2071,7 +2230,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -2082,7 +2242,8 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Pilots",
@@ -2092,16 +2253,17 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 55,
         "name": "Pesticide Sprayer",
-        "image": "images/pesticidesprayer.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/pesticidesprayer.webp",
         "level": 5,
-        "unit": "Hitter",
+        "unit": "Hitters",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Hitters",
@@ -2111,7 +2273,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -2122,7 +2285,8 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Hitters",
@@ -2132,16 +2296,17 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 56,
         "name": "Aerial Net Puller",
-        "image": "images/aerialnetpuller.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/aerialnetpuller.webp",
         "level": 5,
-        "unit": "Shooter",
+        "unit": "Shooters",
         "quality": "Legendary",
         "buff": {
             "name": "Defense of Shooters",
@@ -2151,7 +2316,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -2162,7 +2328,8 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Shooters",
@@ -2172,16 +2339,17 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 57,
         "name": "Starfish",
-        "image": "images/starfish.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/starfish.webp",
         "level": 5,
-        "unit": "Pilot",
+        "unit": "Pilots",
         "quality": "Legendary",
         "buff": {
             "name": "Medical Station Capacity",
@@ -2191,7 +2359,8 @@
                 6000,
                 8000,
                 10000
-            ]
+            ],
+            "uom": "Troops"
         },
         "displayBuffs": [
             {
@@ -2202,7 +2371,8 @@
                     30,
                     40,
                     50
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Pilots",
@@ -2212,16 +2382,17 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 58,
         "name": "Fantasy Crown",
-        "image": "images/fantasycrown.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/fantasycrown.webp",
         "level": 5,
-        "unit": "Hitter",
+        "unit": "Hitters",
         "quality": "Legendary",
         "buff": {
             "name": "Medical Station Capacity",
@@ -2231,7 +2402,8 @@
                 6000,
                 8000,
                 10000
-            ]
+            ],
+            "uom": "Troops"
         },
         "displayBuffs": [
             {
@@ -2242,7 +2414,8 @@
                     30,
                     40,
                     50
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Hitters",
@@ -2252,16 +2425,17 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 59,
         "name": "Doctor Octopus",
-        "image": "images/doctoroctopus.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/doctoroctopus.webp",
         "level": 5,
-        "unit": "Shooter",
+        "unit": "Shooters",
         "quality": "Legendary",
         "buff": {
             "name": "Medical Station Capacity",
@@ -2271,7 +2445,8 @@
                 6000,
                 8000,
                 10000
-            ]
+            ],
+            "uom": "Troops"
         },
         "displayBuffs": [
             {
@@ -2282,7 +2457,8 @@
                     30,
                     40,
                     50
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Shooters",
@@ -2292,16 +2468,17 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 60,
         "name": "Butterfly Helmet",
-        "image": "images/butterflyhelmet.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/butterflyhelmet.webp",
         "level": 5,
-        "unit": "Pilot",
+        "unit": "Pilots",
         "quality": "Legendary",
         "buff": {
             "name": "Defense of Pilots",
@@ -2311,7 +2488,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -2322,7 +2500,8 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Pilots",
@@ -2332,16 +2511,17 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 61,
         "name": "Rubber Soldier",
-        "image": "images/rubbersoldier.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/rubbersoldier.webp",
         "level": 5,
-        "unit": "Hitter",
+        "unit": "Hitters",
         "quality": "Legendary",
         "buff": {
             "name": "Defense of Hitters",
@@ -2351,7 +2531,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -2362,7 +2543,8 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Hitters",
@@ -2372,16 +2554,17 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 62,
         "name": "Neon Billboard",
-        "image": "images/neonbillboard.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/neonbillboard.webp",
         "level": 5,
-        "unit": "Shooter",
+        "unit": "Shooters",
         "quality": "Legendary",
         "buff": {
             "name": "Defense of Shooters",
@@ -2391,7 +2574,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -2402,7 +2586,8 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Shooters",
@@ -2412,16 +2597,17 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 63,
         "name": "Camera",
-        "image": "images/camera.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/camera.webp",
         "level": 5,
-        "unit": "Pilot",
+        "unit": "Pilots",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Pilots",
@@ -2431,7 +2617,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -2442,7 +2629,8 @@
                     7.2,
                     9.6,
                     12
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Pilots",
@@ -2452,16 +2640,17 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 64,
         "name": "Time Shield",
-        "image": "images/timeshield.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/timeshield.webp",
         "level": 5,
-        "unit": "Hitter",
+        "unit": "Hitters",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Hitters",
@@ -2471,7 +2660,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -2482,7 +2672,8 @@
                     7.2,
                     9.6,
                     12
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Hitters",
@@ -2492,16 +2683,17 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 65,
         "name": "Light Summoner",
-        "image": "images/lightsummoner.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/lightsummoner.webp",
         "level": 5,
-        "unit": "Shooter",
+        "unit": "Shooters",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Shooters",
@@ -2511,7 +2703,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -2522,7 +2715,8 @@
                     7.2,
                     9.6,
                     12
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Shooters",
@@ -2532,16 +2726,17 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 66,
         "name": "Roasting Trident",
-        "image": "images/roastingtrident.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/roastingtrident.webp",
         "level": 5,
-        "unit": "Pilot",
+        "unit": "Pilots",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Pilots",
@@ -2551,7 +2746,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -2562,7 +2758,8 @@
                     7.2,
                     9.6,
                     12
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Pilots",
@@ -2572,16 +2769,17 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 67,
         "name": "Booby Trap",
-        "image": "images/boobytrap.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/boobytrap.webp",
         "level": 5,
-        "unit": "Hitter",
+        "unit": "Hitters",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Hitters",
@@ -2591,7 +2789,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -2602,7 +2801,8 @@
                     7.2,
                     9.6,
                     12
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Hitters",
@@ -2612,16 +2812,17 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 68,
         "name": "Silent Dart",
-        "image": "images/silentdart.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/silentdart.webp",
         "level": 5,
-        "unit": "Shooter",
+        "unit": "Shooters",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Shooters",
@@ -2631,7 +2832,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -2642,7 +2844,8 @@
                     7.2,
                     9.6,
                     12
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Shooters",
@@ -2652,16 +2855,17 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 69,
         "name": "Rocksplitter",
-        "image": "images/rocksplitter.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/rocksplitter.webp",
         "level": 5,
-        "unit": "Pilot",
+        "unit": "Pilots",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Pilots",
@@ -2671,7 +2875,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -2682,7 +2887,8 @@
                     7.2,
                     9.6,
                     12
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Pilots",
@@ -2692,16 +2898,17 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 70,
         "name": "Center-Earth Transporter",
-        "image": "images/centerearthtransporter.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/centerearthtransporter.webp",
         "level": 5,
-        "unit": "Hitter",
+        "unit": "Hitters",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Hitters",
@@ -2711,7 +2918,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -2722,7 +2930,8 @@
                     7.2,
                     9.6,
                     12
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Hitters",
@@ -2732,16 +2941,17 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 71,
         "name": "Spiral Gun",
-        "image": "images/spiralgun.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/spiralgun.webp",
         "level": 5,
-        "unit": "Shooter",
+        "unit": "Shooters",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Shooters",
@@ -2751,7 +2961,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -2762,7 +2973,8 @@
                     7.2,
                     9.6,
                     12
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Shooters",
@@ -2772,16 +2984,17 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 72,
         "name": "Drill Bit",
-        "image": "images/drillbit.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/drillbit.webp",
         "level": 5,
-        "unit": "Wall Breaker",
+        "unit": "Wall Breakers",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Wall Breakers",
@@ -2791,7 +3004,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -2802,7 +3016,8 @@
                     9,
                     12,
                     15
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Wall Breakers",
@@ -2812,16 +3027,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 73,
         "name": "Spike Barrel",
-        "image": "images/spikebarrel.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/spikebarrel.webp",
         "level": 5,
-        "unit": "Wall Breaker",
+        "unit": "Wall Breakers",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Wall Breakers",
@@ -2831,7 +3047,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -2842,7 +3059,8 @@
                     9,
                     12,
                     15
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Wall Breakers",
@@ -2852,16 +3070,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 74,
         "name": "Portable Cannon",
-        "image": "images/portablecannon.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/portablecannon.webp",
         "level": 5,
-        "unit": "Wall Breaker",
+        "unit": "Wall Breakers",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Wall Breakers",
@@ -2871,7 +3090,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -2882,7 +3102,8 @@
                     3,
                     4,
                     5
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Wall Breakers",
@@ -2892,16 +3113,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 75,
         "name": "Gold Candlestick",
-        "image": "images/goldcandlestick.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/goldcandlestick.webp",
         "level": 5,
-        "unit": "Wall Breaker",
+        "unit": "Wall Breakers",
         "quality": "Legendary",
         "buff": {
             "name": "Health of Wall Breakers",
@@ -2911,7 +3133,8 @@
                 3,
                 4,
                 6
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -2922,7 +3145,8 @@
                     6,
                     8,
                     10
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Health of Wall Breakers",
@@ -2932,16 +3156,17 @@
                     9,
                     12,
                     15
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 76,
         "name": "Gold Pocket Watch",
-        "image": "images/goldpocketwatch.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/goldpocketwatch.webp",
         "level": 5,
-        "unit": "Wall Breaker",
+        "unit": "Wall Breakers",
         "quality": "Legendary",
         "buff": {
             "name": "Defense of Wall Breakers",
@@ -2951,7 +3176,8 @@
                 6,
                 8,
                 10
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -2962,7 +3188,8 @@
                     3,
                     4,
                     5
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Wall Breakers",
@@ -2972,16 +3199,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 77,
         "name": "Gold Scale",
-        "image": "images/goldscale.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/goldscale.webp",
         "level": 5,
-        "unit": "Wall Breaker",
+        "unit": "Wall Breakers",
         "quality": "Legendary",
         "buff": {
             "name": "Wall Breakers Training Speed",
@@ -2991,7 +3219,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -3002,7 +3231,8 @@
                     3,
                     4,
                     5
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Wall Breakers Training Speed",
@@ -3012,16 +3242,17 @@
                     9,
                     12,
                     15
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 78,
         "name": "Double Hammer",
-        "image": "images/doublehammer.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/doublehammer.webp",
         "level": 5,
-        "unit": "Pilot",
+        "unit": "Pilots",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Pilots",
@@ -3031,7 +3262,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -3042,7 +3274,8 @@
                     3,
                     4,
                     5
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Pilots",
@@ -3052,16 +3285,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 79,
         "name": "Leather Gloves",
-        "image": "images/leathergloves.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/leathergloves.webp",
         "level": 5,
-        "unit": "Hitter",
+        "unit": "Hitters",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Hitters",
@@ -3071,7 +3305,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -3082,7 +3317,8 @@
                     3,
                     4,
                     5
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Hitters",
@@ -3092,16 +3328,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 80,
         "name": "Football",
-        "image": "images/football.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/football.webp",
         "level": 5,
-        "unit": "Shooter",
+        "unit": "Shooters",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Shooters",
@@ -3111,7 +3348,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -3122,7 +3360,8 @@
                     3,
                     4,
                     5
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Shooters",
@@ -3132,16 +3371,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 81,
         "name": "Riding Vest",
-        "image": "images/ridingvest.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/ridingvest.webp",
         "level": 5,
-        "unit": "Pilot",
+        "unit": "Pilots",
         "quality": "Legendary",
         "buff": {
             "name": "Defense of Pilots",
@@ -3151,7 +3391,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -3162,7 +3403,8 @@
                     3,
                     4,
                     5
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Pilots",
@@ -3172,16 +3414,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 82,
         "name": "Social Divider",
-        "image": "images/socialdivider.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/socialdivider.webp",
         "level": 5,
-        "unit": "Hitter",
+        "unit": "Hitters",
         "quality": "Legendary",
         "buff": {
             "name": "Defense of Hitters",
@@ -3191,7 +3434,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -3202,7 +3446,8 @@
                     3,
                     4,
                     5
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Hitters",
@@ -3212,16 +3457,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 83,
         "name": "Goggles",
-        "image": "images/goggles.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/goggles.webp",
         "level": 5,
-        "unit": "Shooter",
+        "unit": "Shooters",
         "quality": "Legendary",
         "buff": {
             "name": "Defense of Shooters",
@@ -3231,7 +3477,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -3242,7 +3489,8 @@
                     3,
                     4,
                     5
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Shooters",
@@ -3252,16 +3500,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 84,
         "name": "Ambulance Bed",
-        "image": "images/ambulancebed.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/ambulancebed.webp",
         "level": 5,
-        "unit": "Pilot",
+        "unit": "Pilots",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Pilots",
@@ -3271,7 +3520,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -3282,7 +3532,8 @@
                     3,
                     4,
                     5
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Pilots",
@@ -3292,16 +3543,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 85,
         "name": "Massage Gun",
-        "image": "images/massagegun.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/massagegun.webp",
         "level": 5,
-        "unit": "Hitter",
+        "unit": "Hitters",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Hitters",
@@ -3311,7 +3563,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -3322,7 +3575,8 @@
                     3,
                     4,
                     5
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Hitters",
@@ -3332,16 +3586,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 86,
         "name": "Temperature Sensor",
-        "image": "images/temperaturesensor.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/temperaturesensor.webp",
         "level": 5,
-        "unit": "Shooter",
+        "unit": "Shooters",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Shooters",
@@ -3351,7 +3606,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -3362,7 +3618,8 @@
                     3,
                     4,
                     5
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Shooters",
@@ -3372,16 +3629,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 87,
         "name": "Homing Cannon",
-        "image": "images/homingcannon.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/homingcannon.webp",
         "level": 5,
-        "unit": "Wall Breaker",
+        "unit": "Wall Breakers",
         "quality": "Legendary",
         "buff": {
             "name": "Attack of Wall Breakers",
@@ -3391,7 +3649,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -3402,7 +3661,8 @@
                     9,
                     12,
                     15
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Wall Breakers",
@@ -3412,16 +3672,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 88,
         "name": "Mag Shield",
-        "image": "images/magshield.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/magshield.webp",
         "level": 5,
-        "unit": "Wall Breaker",
+        "unit": "Wall Breakers",
         "quality": "Legendary",
         "buff": {
             "name": "Defense of Wall Breakers",
@@ -3431,7 +3692,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -3442,7 +3704,8 @@
                     9,
                     12,
                     15
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Wall Breakers",
@@ -3452,16 +3715,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 89,
         "name": "Onboard Locator",
-        "image": "images/onboardlocator.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/onboardlocator.webp",
         "level": 5,
-        "unit": "Wall Breaker",
+        "unit": "Wall Breakers",
         "quality": "Legendary",
         "buff": {
             "name": "Health of Wall Breakers",
@@ -3471,7 +3735,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -3482,7 +3747,8 @@
                     9,
                     12,
                     15
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Health of Wall Breakers",
@@ -3492,16 +3758,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 90,
         "name": "Moon Boots",
-        "image": "images/moonboots.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/moonboots.webp",
         "level": 5,
-        "unit": "Pilot",
+        "unit": "Pilots",
         "quality": "Super",
         "buff": {
             "name": "Attack of Pilots",
@@ -3511,7 +3778,8 @@
                 4,
                 5,
                 6
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -3522,7 +3790,8 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Pilots",
@@ -3532,16 +3801,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 91,
         "name": "Moon Landing Stamps",
-        "image": "images/moonlandingstamps.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/moonlandingstamps.webp",
         "level": 5,
-        "unit": "Pilot",
+        "unit": "Pilots",
         "quality": "Super",
         "buff": {
             "name": "Pilot Normal Attack Damage",
@@ -3551,7 +3821,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -3562,7 +3833,8 @@
                     18,
                     24,
                     30
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Pilot Normal Attack Damage",
@@ -3572,16 +3844,17 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 92,
         "name": "Moon Landing Footprint",
-        "image": "images/moonlandingfootprint.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/moonlandingfootprint.webp",
         "level": 5,
-        "unit": "Pilot",
+        "unit": "Pilots",
         "quality": "Super",
         "buff": {
             "name": "Defense of Pilots",
@@ -3591,7 +3864,8 @@
                 5,
                 6,
                 7
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -3602,7 +3876,8 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Pilots",
@@ -3612,16 +3887,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 93,
         "name": "Astronaut Figurine",
-        "image": "images/astronautfigurine.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/astronautfigurine.webp",
         "level": 5,
-        "unit": "Hitter",
+        "unit": "Hitters",
         "quality": "Super",
         "buff": {
             "name": "Attack of Hitters",
@@ -3631,7 +3907,8 @@
                 5,
                 6,
                 7
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -3642,7 +3919,8 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Hitters",
@@ -3652,16 +3930,17 @@
                     9,
                     12,
                     18
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 94,
         "name": "Space Magazine",
-        "image": "images/spacemagazine.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/spacemagazine.webp",
         "level": 5,
-        "unit": "Hitter",
+        "unit": "Hitters",
         "quality": "Super",
         "buff": {
             "name": "Hitter Normal Attack Damage",
@@ -3671,7 +3950,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -3682,7 +3962,8 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Hitter Normal Attack Damage",
@@ -3692,16 +3973,17 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 95,
         "name": "Toy Spaceship",
-        "image": "images/toyspaceship.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/toyspaceship.webp",
         "level": 5,
-        "unit": "Hitter",
+        "unit": "Hitters",
         "quality": "Super",
         "buff": {
             "name": "Defense of Hitters",
@@ -3711,7 +3993,8 @@
                 5,
                 6,
                 7
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -3722,7 +4005,8 @@
                     21,
                     28,
                     35
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Hitters",
@@ -3732,16 +4016,17 @@
                     9,
                     12,
                     18
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 96,
         "name": "Vintage Shirt",
-        "image": "images/vintageshirt.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/vintageshirt.webp",
         "level": 5,
-        "unit": "Shooter",
+        "unit": "Shooters",
         "quality": "Super",
         "buff": {
             "name": "Attack of Shooters",
@@ -3751,7 +4036,8 @@
                 5,
                 6,
                 7
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -3762,7 +4048,8 @@
                     18,
                     24,
                     30
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Shooters",
@@ -3772,16 +4059,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 97,
         "name": "Record Player",
-        "image": "images/recordplayer.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/recordplayer.webp",
         "level": 5,
-        "unit": "Shooter",
+        "unit": "Shooters",
         "quality": "Super",
         "buff": {
             "name": "Shooter Normal Attack Damage",
@@ -3791,7 +4079,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -3802,7 +4091,8 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Shooter Normal Attack Damage",
@@ -3812,16 +4102,17 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 98,
         "name": "Rock n' Roll Record",
-        "image": "images/rocknrollrecord.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/rocknrollrecord.webp",
         "level": 5,
-        "unit": "Shooter",
+        "unit": "Shooters",
         "quality": "Super",
         "buff": {
             "name": "Defense of Shooters",
@@ -3831,7 +4122,8 @@
                 5,
                 6,
                 7
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -3842,7 +4134,8 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Shooters",
@@ -3852,16 +4145,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 99,
         "name": "Telescope",
-        "image": "images/telescope.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/telescope.webp",
         "level": 5,
-        "unit": "Wall Breaker",
+        "unit": "Wall Breakers",
         "quality": "Super",
         "buff": {
             "name": "Attack of Wall Breakers",
@@ -3871,7 +4165,8 @@
                 5,
                 6,
                 7
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -3882,7 +4177,8 @@
                     18,
                     24,
                     30
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Wall Breakers",
@@ -3892,16 +4188,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 100,
         "name": "Satellite Phone",
-        "image": "images/satellitephone.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/satellitephone.webp",
         "level": 5,
-        "unit": "Wall Breaker",
+        "unit": "Wall Breakers",
         "quality": "Super",
         "buff": {
             "name": "Wall Breaker Normal Attack Damage",
@@ -3911,7 +4208,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -3922,7 +4220,8 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Wall Breaker Normal Attack Damage",
@@ -3932,16 +4231,17 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 101,
         "name": "Talk Box",
-        "image": "images/talkbox.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/talkbox.webp",
         "level": 5,
-        "unit": "Wall Breaker",
+        "unit": "Wall Breakers",
         "quality": "Super",
         "buff": {
             "name": "Defense of Wall Breakers",
@@ -3951,7 +4251,8 @@
                 4,
                 5,
                 6
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -3962,7 +4263,8 @@
                     18,
                     24,
                     30
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Wall Breakers",
@@ -3972,16 +4274,17 @@
                     9,
                     12,
                     15
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 102,
         "name": "Antique Camera",
-        "image": "images/antiquecamera.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/antiquecamera.webp",
         "level": 5,
-        "unit": "Pilot",
+        "unit": "Pilots",
         "quality": "Super",
         "buff": {
             "name": "Attack of Pilots",
@@ -3991,7 +4294,8 @@
                 6,
                 7,
                 8
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -4002,7 +4306,8 @@
                     4.5,
                     6,
                     8
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Pilots",
@@ -4012,16 +4317,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 103,
         "name": "Antique Television",
-        "image": "images/antiquetelevision.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/antiquetelevision.webp",
         "level": 5,
-        "unit": "Pilot",
+        "unit": "Pilots",
         "quality": "Super",
         "buff": {
             "name": "Defense of Pilots",
@@ -4031,7 +4337,8 @@
                 5,
                 6,
                 7
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -4042,7 +4349,8 @@
                     18,
                     24,
                     30
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Pilots",
@@ -4052,16 +4360,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 104,
         "name": "Antique Fan",
-        "image": "images/antiquefan.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/antiquefan.webp",
         "level": 5,
-        "unit": "Pilot",
+        "unit": "Pilots",
         "quality": "Super",
         "buff": {
             "name": "Skill Damage Up in All Pilot Troop",
@@ -4071,7 +4380,8 @@
                 4,
                 5,
                 6
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -4082,7 +4392,8 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Skill Damage Up in All Pilot Troop",
@@ -4092,16 +4403,17 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 105,
         "name": "Bread Maker",
-        "image": "images/breadmaker.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/breadmaker.webp",
         "level": 5,
-        "unit": "Hitter",
+        "unit": "Hitters",
         "quality": "Super",
         "buff": {
             "name": "Attack of Hitters",
@@ -4111,7 +4423,8 @@
                 5,
                 6,
                 7
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -4122,7 +4435,8 @@
                     4.5,
                     6,
                     8
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Hitters",
@@ -4132,16 +4446,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 106,
         "name": "Refrigerator",
-        "image": "images/refrigerator.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/refrigerator.webp",
         "level": 5,
-        "unit": "Hitter",
+        "unit": "Hitters",
         "quality": "Super",
         "buff": {
             "name": "Defense of Hitters",
@@ -4151,7 +4466,8 @@
                 5,
                 6,
                 7
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -4162,7 +4478,8 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Hitters",
@@ -4172,16 +4489,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 107,
         "name": "Microwave",
-        "image": "images/microwave.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/microwave.webp",
         "level": 5,
-        "unit": "Hitter",
+        "unit": "Hitters",
         "quality": "Super",
         "buff": {
             "name": "Skill Damage Up in All Hitter Troop",
@@ -4191,7 +4509,8 @@
                 4,
                 5,
                 6
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -4202,7 +4521,8 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Skill Damage Up in All Hitter Troop",
@@ -4212,16 +4532,17 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 108,
         "name": "Violin",
-        "image": "images/violin.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/violin.webp",
         "level": 5,
-        "unit": "Shooter",
+        "unit": "Shooters",
         "quality": "Super",
         "buff": {
             "name": "Attack of Shooters",
@@ -4231,7 +4552,8 @@
                 5,
                 6,
                 7
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -4242,7 +4564,8 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Shooters",
@@ -4252,16 +4575,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 109,
         "name": "Accordion",
-        "image": "images/accordion.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/accordion.webp",
         "level": 5,
-        "unit": "Shooter",
+        "unit": "Shooters",
         "quality": "Super",
         "buff": {
             "name": "Defense of Shooters",
@@ -4271,7 +4595,8 @@
                 5,
                 6,
                 7
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -4282,7 +4607,8 @@
                     4.5,
                     6,
                     8
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Shooters",
@@ -4292,16 +4618,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 110,
         "name": "Saxophone",
-        "image": "images/saxophone.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/saxophone.webp",
         "level": 5,
-        "unit": "Shooter",
+        "unit": "Shooters",
         "quality": "Super",
         "buff": {
             "name": "Skill Damage Up in All Shooter Troop",
@@ -4311,7 +4638,8 @@
                 4,
                 5,
                 6
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -4322,7 +4650,8 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Skill Damage Up in All Shooter Troop",
@@ -4332,16 +4661,17 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 111,
         "name": "Globe",
-        "image": "images/globe.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/globe.webp",
         "level": 5,
-        "unit": "Wall Breaker",
+        "unit": "Wall Breakers",
         "quality": "Super",
         "buff": {
             "name": "Attack of Wall Breakers",
@@ -4351,7 +4681,8 @@
                 5,
                 6,
                 7
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -4362,7 +4693,8 @@
                     18,
                     24,
                     30
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Wall Breakers",
@@ -4372,16 +4704,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 112,
         "name": "Microscope",
-        "image": "images/microscope.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/microscope.webp",
         "level": 5,
-        "unit": "Wall Breaker",
+        "unit": "Wall Breakers",
         "quality": "Super",
         "buff": {
             "name": "Defense of Wall Breakers",
@@ -4391,7 +4724,8 @@
                 5,
                 6,
                 7
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -4402,7 +4736,8 @@
                     4.5,
                     6,
                     8
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Wall Breakers",
@@ -4412,16 +4747,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 113,
         "name": "Perpetual Motion Machine",
-        "image": "images/perpetualmotionmachine.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/perpetualmotionmachine.webp",
         "level": 5,
-        "unit": "Wall Breaker",
+        "unit": "Wall Breakers",
         "quality": "Super",
         "buff": {
             "name": "Skill Damage Up in All Wall Breaker Troop",
@@ -4431,7 +4767,8 @@
                 4,
                 5,
                 6
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -4442,7 +4779,8 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Skill Damage Up in All Wall Breaker Troop",
@@ -4452,16 +4790,17 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 114,
         "name": "Watch",
-        "image": "images/watch.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/watch.webp",
         "level": 5,
-        "unit": "Pilot",
+        "unit": "Pilots",
         "quality": "Super",
         "buff": {
             "name": "Attack of Pilots",
@@ -4471,7 +4810,8 @@
                 5,
                 6,
                 7
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -4482,7 +4822,8 @@
                     39,
                     52,
                     65
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Pilots",
@@ -4492,16 +4833,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 115,
         "name": "Antique Clock",
-        "image": "images/antiqueclock.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/antiqueclock.webp",
         "level": 5,
-        "unit": "Pilot",
+        "unit": "Pilots",
         "quality": "Super",
         "buff": {
             "name": "Defense of Pilots",
@@ -4511,7 +4853,8 @@
                 5,
                 6,
                 7
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -4522,7 +4865,8 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Pilots",
@@ -4532,16 +4876,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 116,
         "name": "Alarm Clock",
-        "image": "images/alarmclock.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/alarmclock.webp",
         "level": 5,
-        "unit": "Pilot",
+        "unit": "Pilots",
         "quality": "Super",
         "buff": {
             "name": "Pilot Normal Attack Damage",
@@ -4551,7 +4896,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -4562,7 +4908,8 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Pilot Normal Attack Damage",
@@ -4572,16 +4919,17 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 117,
         "name": "Anti-Aging Drink",
-        "image": "images/antiagingdrink.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/antiagingdrink.webp",
         "level": 5,
-        "unit": "Hitter",
+        "unit": "Hitters",
         "quality": "Super",
         "buff": {
             "name": "Attack of Hitters",
@@ -4591,7 +4939,8 @@
                 5,
                 6,
                 7
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -4602,7 +4951,8 @@
                     39,
                     52,
                     65
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Hitters",
@@ -4612,16 +4962,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 118,
         "name": "Premium Canned Food",
-        "image": "images/premiumcannedfood.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/premiumcannedfood.webp",
         "level": 5,
-        "unit": "Hitter",
+        "unit": "Hitters",
         "quality": "Super",
         "buff": {
             "name": "Defense of Hitters",
@@ -4631,7 +4982,8 @@
                 5,
                 6,
                 7
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -4642,7 +4994,8 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Hitters",
@@ -4652,16 +5005,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 119,
         "name": "Emergency Biscuit",
-        "image": "images/emergencybiscuit.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/emergencybiscuit.webp",
         "level": 5,
-        "unit": "Hitter",
+        "unit": "Hitters",
         "quality": "Super",
         "buff": {
             "name": "Hitter Normal Attack Damage",
@@ -4671,7 +5025,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -4682,7 +5037,8 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Hitter Normal Attack Damage",
@@ -4692,16 +5048,17 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 120,
         "name": "Roland's Staff",
-        "image": "images/rolandsstaff.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/rolandsstaff.webp",
         "level": 5,
-        "unit": "Shooter",
+        "unit": "Shooters",
         "quality": "Super",
         "buff": {
             "name": "Attack of Shooters",
@@ -4711,7 +5068,8 @@
                 5,
                 6,
                 7
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -4722,7 +5080,8 @@
                     39,
                     52,
                     65
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Shooters",
@@ -4732,16 +5091,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 121,
         "name": "Roland's Cape",
-        "image": "images/rolandscape.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/rolandscape.webp",
         "level": 5,
-        "unit": "Shooter",
+        "unit": "Shooters",
         "quality": "Super",
         "buff": {
             "name": "Defense of Shooters",
@@ -4751,7 +5111,8 @@
                 5,
                 6,
                 7
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -4762,7 +5123,8 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Shooters",
@@ -4772,16 +5134,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 122,
         "name": "Roland's Crown",
-        "image": "images/rolandscrown.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/rolandscrown.webp",
         "level": 5,
-        "unit": "Shooter",
+        "unit": "Shooters",
         "quality": "Super",
         "buff": {
             "name": "Shooter Normal Attack Damage",
@@ -4791,7 +5154,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -4802,7 +5166,8 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Shooter Normal Attack Damage",
@@ -4812,16 +5177,17 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 123,
         "name": "Roland Poster",
-        "image": "images/rolandposter.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/rolandposter.webp",
         "level": 5,
-        "unit": "Wall Breaker",
+        "unit": "Wall Breakers",
         "quality": "Super",
         "buff": {
             "name": "Attack of Wall Breakers",
@@ -4831,7 +5197,8 @@
                 5,
                 6,
                 7
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -4842,7 +5209,8 @@
                     39,
                     52,
                     65
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Wall Breakers",
@@ -4852,16 +5220,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 124,
         "name": "Roland Statue",
-        "image": "images/rolandstatue.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/rolandstatue.webp",
         "level": 5,
-        "unit": "Wall Breaker",
+        "unit": "Wall Breakers",
         "quality": "Super",
         "buff": {
             "name": "Defense of Wall Breakers",
@@ -4871,7 +5240,8 @@
                 5,
                 6,
                 7
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -4882,7 +5252,8 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Wall Breakers",
@@ -4892,16 +5263,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 125,
         "name": "Space Ape Action Figure",
-        "image": "images/spaceapeactionfigure.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/spaceapeactionfigure.webp",
         "level": 5,
-        "unit": "Wall Breaker",
+        "unit": "Wall Breakers",
         "quality": "Super",
         "buff": {
             "name": "Wall Breaker Normal Attack Damage",
@@ -4911,7 +5283,8 @@
                 3,
                 4,
                 5
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -4922,7 +5295,8 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Wall Breaker Normal Attack Damage",
@@ -4932,16 +5306,17 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 126,
         "name": "Big Head Car",
-        "image": "images/bigheadcar.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/10/bigheadcar.webp",
         "level": 5,
-        "unit": "Pilot",
+        "unit": "Pilots",
         "quality": "Super",
         "buff": {
             "name": "Attack of Pilots",
@@ -4951,7 +5326,8 @@
                 5,
                 6,
                 7
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -4962,7 +5338,8 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Pilots",
@@ -4972,16 +5349,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 127,
         "name": "Slender Car",
-        "image": "images/slendercar.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/10/slendercar.webp",
         "level": 5,
-        "unit": "Pilot",
+        "unit": "Pilots",
         "quality": "Super",
         "buff": {
             "name": "Defense of Pilots",
@@ -4991,7 +5369,8 @@
                 5,
                 6,
                 7
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -5002,7 +5381,8 @@
                     27,
                     36,
                     45
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Pilots",
@@ -5012,16 +5392,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 128,
         "name": "Beetle Car",
-        "image": "images/beetlecar.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/10/beetlecar.webp",
         "level": 5,
-        "unit": "Pilot",
+        "unit": "Pilots",
         "quality": "Super",
         "buff": {
             "name": "Skill Damage Up in All Pilot Troop",
@@ -5031,7 +5412,8 @@
                 4,
                 5,
                 6
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -5042,7 +5424,8 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Skill Damage Up in All Pilot Troop",
@@ -5052,16 +5435,17 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 129,
         "name": "Antique Telephone",
-        "image": "images/antiquetelephone.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/10/antiquetelephone.webp",
         "level": 5,
-        "unit": "Hitter",
+        "unit": "Hitters",
         "quality": "Super",
         "buff": {
             "name": "Attack of Hitters",
@@ -5071,7 +5455,8 @@
                 5,
                 6,
                 7
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -5082,7 +5467,8 @@
                     27,
                     36,
                     45
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Hitters",
@@ -5092,16 +5478,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 130,
         "name": "Antique Telegraph",
-        "image": "images/antiquetelegraph.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/10/antiquetelegraph.webp",
         "level": 5,
-        "unit": "Hitter",
+        "unit": "Hitters",
         "quality": "Super",
         "buff": {
             "name": "Defense of Hitters",
@@ -5111,7 +5498,8 @@
                 5,
                 6,
                 7
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -5122,7 +5510,8 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Hitters",
@@ -5132,16 +5521,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 131,
         "name": "Antique Printing Press",
-        "image": "images/antiqueprintingpress.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/10/antiqueprintingpress.webp",
         "level": 5,
-        "unit": "Hitter",
+        "unit": "Hitters",
         "quality": "Super",
         "buff": {
             "name": "Skill Damage Up in All Hitter Troop",
@@ -5151,7 +5541,8 @@
                 4,
                 5,
                 6
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -5162,7 +5553,8 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Skill Damage Up in All Hitter Troop",
@@ -5172,16 +5564,17 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 132,
         "name": "Dartboard",
-        "image": "images/dartboard.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/10/dartboard.webp",
         "level": 5,
-        "unit": "Shooter",
+        "unit": "Shooters",
         "quality": "Super",
         "buff": {
             "name": "Attack of Shooters",
@@ -5191,7 +5584,8 @@
                 5,
                 6,
                 7
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -5202,7 +5596,8 @@
                     18,
                     24,
                     30
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Shooters",
@@ -5212,16 +5607,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 133,
         "name": "Game Console",
-        "image": "images/gameconsole.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/10/gameconsole.webp",
         "level": 5,
-        "unit": "Shooter",
+        "unit": "Shooters",
         "quality": "Super",
         "buff": {
             "name": "Defense of Shooters",
@@ -5231,7 +5627,8 @@
                 5,
                 6,
                 7
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -5242,7 +5639,8 @@
                     27,
                     36,
                     45
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Shooters",
@@ -5252,16 +5650,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 134,
         "name": "Gaming Merchandise",
-        "image": "images/gamingmerchandise.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/10/gamingmerchandise.webp",
         "level": 5,
-        "unit": "Shooter",
+        "unit": "Shooters",
         "quality": "Super",
         "buff": {
             "name": "Skill Damage Up in All Shooter Troop",
@@ -5271,7 +5670,8 @@
                 4,
                 5,
                 6
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -5282,7 +5682,8 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Skill Damage Up in All Shooter Troop",
@@ -5292,16 +5693,17 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 135,
         "name": "Alien Gun",
-        "image": "images/aliengun.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/10/aliengun.webp",
         "level": 5,
-        "unit": "Wall Breaker",
+        "unit": "Wall Breakers",
         "quality": "Super",
         "buff": {
             "name": "Attack of Wall Breakers",
@@ -5311,7 +5713,8 @@
                 5,
                 6,
                 7
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -5322,7 +5725,8 @@
                     18,
                     24,
                     30
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Attack of Wall Breakers",
@@ -5332,16 +5736,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 136,
         "name": "Unidentified Flying Object",
-        "image": "images/unidentifiedflyingobject.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/10/unidentifiedflyingobject.webp",
         "level": 5,
-        "unit": "Wall Breaker",
+        "unit": "Wall Breakers",
         "quality": "Super",
         "buff": {
             "name": "Defense of Wall Breakers",
@@ -5351,7 +5756,8 @@
                 5,
                 6,
                 7
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -5362,7 +5768,8 @@
                     27,
                     36,
                     45
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Defense of Wall Breakers",
@@ -5372,16 +5779,17 @@
                     12,
                     16,
                     20
-                ]
+                ],
+                "uom": "%"
             }
         ]
     },
     {
         "id": 137,
         "name": "Alien Doll",
-        "image": "images/aliendoll.webp",
+        "image": "https://ageofapesguides.com/wp-content/uploads/2024/10/aliendoll.webp",
         "level": 5,
-        "unit": "Wall Breaker",
+        "unit": "Wall Breakers",
         "quality": "Super",
         "buff": {
             "name": "Skill Damage Up in All Wall Breaker Troop",
@@ -5391,7 +5799,8 @@
                 4,
                 5,
                 6
-            ]
+            ],
+            "uom": "%"
         },
         "displayBuffs": [
             {
@@ -5402,7 +5811,8 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             },
             {
                 "name": "Skill Damage Up in All Wall Breaker Troop",
@@ -5412,7 +5822,8 @@
                     15,
                     20,
                     25
-                ]
+                ],
+                "uom": "%"
             }
         ]
     }

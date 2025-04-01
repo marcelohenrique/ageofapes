@@ -44,8 +44,9 @@ function updateRelicBuffs(relicElement, relic, level) {
     relic.displayBuffs.forEach((buff, index) => {
         if (buffElements[index]) {
             const value = level > 0 ? (buff.values[level - 1] ?? 0) : 0;
+            const uomDisplay = buff.uom === '%' ? buff.uom : '';
             buffElements[index].innerHTML = `
-                ${buff.name} <span class="buff-green">${value}%</span>
+                ${buff.name} <span class="buff-green">${value}${uomDisplay}</span>
             `;
         }
     });
@@ -257,13 +258,15 @@ function calculateTotalBuffs() {
             const level = loadLevelFromLocalStorage(relic);
 
             if (relic.buff) {
+                const buffKey = `${relic.buff.name}${relic.buff.uom ? ` (${relic.buff.uom})` : ''}`;
                 const buffValue = relic.buff.values[level - 1] || 0;
-                buffs[relic.buff.name] = (buffs[relic.buff.name] || 0) + buffValue;
+                buffs[buffKey] = (buffs[buffKey] || 0) + buffValue;
             }
 
             relic.displayBuffs?.forEach(displayBuff => {
+                const buffKey = `${displayBuff.name}${displayBuff.uom ? ` (${displayBuff.uom})` : ''}`;
                 const displayBuffValue = displayBuff.values[level - 1] || 0;
-                buffs[displayBuff.name] = (buffs[displayBuff.name] || 0) + displayBuffValue;
+                buffs[buffKey] = (buffs[buffKey] || 0) + displayBuffValue;
             });
         }
     });
@@ -294,7 +297,10 @@ function updateBuffSummary() {
 
         const valueSpan = document.createElement("span");
         valueSpan.classList.add("buff-summary-value");
-        valueSpan.textContent = `${buffs[buffName]}%`;
+        
+        // Check if the buff name ends with a unit of measure
+        const hasUOM = /\(([^)]+)\)$/.test(buffName);
+        valueSpan.textContent = buffs[buffName] + (hasUOM ? '' : '%');
 
         buffItem.appendChild(nameSpan);
         buffItem.appendChild(valueSpan);
