@@ -17,18 +17,6 @@
     <div class="container-fluid">
         <h1 class="text-center my-4">Relic Selection</h1>
 
-        <!-- Buff Summary Section -->
-        <div class="row justify-content-center mb-4">
-            <div class="col-md-10">
-                <div class="grid p-3 bg-light rounded shadow-sm">
-                    <h2 class="text-center mb-3">Cumulative Buffs</h2>
-                    <div id="buff-summary">
-                        <p class="text-muted">No relics selected.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Relic grids -->
         <div class="row justify-content-center">
             <!-- Selected Relics Grid -->
@@ -97,6 +85,22 @@
                     </select>
                 </div>
                 <button id="menu-reset-button" class="btn btn-secondary w-100">Reset Filters</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating buff summary button and menu -->
+    <div class="floating-buff-container">
+        <button id="floating-buff-button" class="btn btn-info floating-button">
+            <i class="fas fa-chart-bar"></i>
+        </button>
+        
+        <div id="buff-menu" class="buff-menu">
+            <div class="buff-menu-content p-3">
+                <h5>Cumulative Buffs</h5>
+                <div id="buff-summary">
+                    <p class="text-muted">No relics selected.</p>
+                </div>
             </div>
         </div>
     </div>

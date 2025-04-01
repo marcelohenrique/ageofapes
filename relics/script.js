@@ -257,6 +257,7 @@ function calculateTotalBuffs() {
             const relic = relics.find(r => r.id === relicId);
             const level = loadLevelFromLocalStorage(relic);
 
+            // Only process displayBuffs (ignore main relic.buff)
             relic.displayBuffs?.forEach(displayBuff => {
                 const buffKey = `${displayBuff.name}${displayBuff.uom ? ` (${displayBuff.uom})` : ''}`;
                 const displayBuffValue = displayBuff.values[level - 1] || 0;
@@ -327,11 +328,29 @@ const menuResetButton = document.getElementById('menu-reset-button');
 floatingFilterButton.addEventListener('click', (e) => {
     e.stopPropagation();
     filterMenu.classList.toggle('show');
+    
+    // Close buff menu if open
+    buffMenu.classList.remove('show');
+});
+
+// Buff Summary Floating Button Functionality
+const floatingBuffButton = document.getElementById('floating-buff-button');
+const buffMenu = document.getElementById('buff-menu');
+
+floatingBuffButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+    buffMenu.classList.toggle('show');
+    
+    // Close filter menu if open
+    filterMenu.classList.remove('show');
 });
 
 document.addEventListener('click', (e) => {
     if (!filterMenu.contains(e.target)) {
         filterMenu.classList.remove('show');
+    }
+    if (!buffMenu.contains(e.target)) {
+        buffMenu.classList.remove('show');
     }
 });
 
