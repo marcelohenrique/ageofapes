@@ -287,14 +287,29 @@ function updateBuffSummary() {
 
         const nameSpan = document.createElement("span");
         nameSpan.classList.add("buff-summary-name");
-        nameSpan.textContent = buffName;
+        
+        // Extract base buff name (remove parenthesized units if they exist)
+        const baseName = buffName.replace(/\s*\([^)]*\)$/, '');
+        nameSpan.textContent = baseName;
 
         const valueSpan = document.createElement("span");
         valueSpan.classList.add("buff-summary-value");
         
-        // Check if the buff name ends with a unit of measure
+        // Check if buffName ends with "(%)" to determine if we should show % symbol
+        const shouldShowPercent = buffName.endsWith("(%)");
+        // Or check if it has any parenthesized unit (for backward compatibility)
         const hasUOM = /\(([^)]+)\)$/.test(buffName);
-        valueSpan.textContent = buffs[buffName] + (hasUOM ? '' : '%');
+        
+        // Show unit only if it's % or if there are no parentheses (matching card behavior)
+        if (shouldShowPercent) {
+            valueSpan.textContent = buffs[buffName] + '%';
+        } else if (!hasUOM) {
+            // If no parentheses, show raw value (matching card behavior)
+            valueSpan.textContent = buffs[buffName];
+        } else {
+            // If has parentheses but not %, show raw value (matching card behavior)
+            valueSpan.textContent = buffs[buffName];
+        }
 
         buffItem.appendChild(nameSpan);
         buffItem.appendChild(valueSpan);
