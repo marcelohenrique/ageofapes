@@ -257,12 +257,6 @@ function calculateTotalBuffs() {
             const relic = relics.find(r => r.id === relicId);
             const level = loadLevelFromLocalStorage(relic);
 
-            if (relic.buff) {
-                const buffKey = `${relic.buff.name}${relic.buff.uom ? ` (${relic.buff.uom})` : ''}`;
-                const buffValue = relic.buff.values[level - 1] || 0;
-                buffs[buffKey] = (buffs[buffKey] || 0) + buffValue;
-            }
-
             relic.displayBuffs?.forEach(displayBuff => {
                 const buffKey = `${displayBuff.name}${displayBuff.uom ? ` (${displayBuff.uom})` : ''}`;
                 const displayBuffValue = displayBuff.values[level - 1] || 0;
