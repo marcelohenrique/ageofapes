@@ -203,25 +203,64 @@ function initializePlaceholders() {
 }
 
 function moveRelic(relic, targetGrid) {
-    if (!relic || !targetGrid) return;
-
+    const selectedGrid = document.getElementById('selected-relics-grid');
+    
+    // Verifica se está tentando adicionar além do limite
+    if (targetGrid === selectedGrid) {
+        const currentCount = selectedGrid.querySelectorAll('.relic[data-id]').length;
+        
+        if (currentCount >= 16) {
+            // Feedback visual
+            relic.classList.add('relic-shake');
+            setTimeout(() => {
+                relic.classList.remove('relic-shake');
+            }, 500);
+            
+            // Mostra alerta
+            showLimitAlert();
+            return;
+        }
+    }
+    
+    // Lógica original de mover relíquia
     const sourceGrid = relic.parentElement;
     if (sourceGrid === targetGrid) return;
 
     const placeholder = targetGrid.querySelector(".placeholder-card");
-
+    
     if (placeholder) {
         targetGrid.replaceChild(relic, placeholder);
     } else {
         targetGrid.appendChild(relic);
     }
 
-    if (sourceGrid.id === "selected-relics-grid" && targetGrid.id === "available-relics-grid") {
-        const newPlaceholder = createPlaceholder();
-        sourceGrid.appendChild(newPlaceholder);
-    }
-
     updateBuffSummary();
+    updatePlaceholders();
+}
+
+// ========== NOVAS FUNÇÕES ADICIONADAS ========== //
+function showLimitAlert() {
+    const existingAlert = document.querySelector('.limit-alert');
+    if (existingAlert) existingAlert.remove();
+    
+    const alert = document.createElement('div');
+    alert.className = 'limit-alert alert alert-warning';
+    alert.textContent = 'Limite de 16 relíquias atingido!';
+    document.body.appendChild(alert);
+    
+    setTimeout(() => {
+        alert.remove();
+    }, 2500);
+}
+
+function updatePlaceholders() {
+    const selectedCount = document.getElementById('selected-relics-grid')
+        .querySelectorAll('.relic[data-id]').length;
+    
+    document.querySelectorAll('.placeholder-card').forEach(ph => {
+        ph.style.opacity = selectedCount >= 16 ? '0.3' : '0.7';
+        ph.style.pointerEvents = selectedCount >= 16 ? 'none' : 'auto';
+    });
 }
 
 function filterRelics() {
@@ -316,6 +355,16 @@ function updateBuffSummary() {
         buffItem.appendChild(valueSpan);
         buffSummary.appendChild(buffItem);
     });
+    
+    // Atualiza o contador
+    const count = document.getElementById('selected-relics-grid')
+        .querySelectorAll('.relic[data-id]').length;
+    
+    const counter = document.getElementById('selected-count');
+    counter.textContent = count;
+    counter.style.color = count >= 16 ? '#dc3545' : '#28a745';
+    
+    updatePlaceholders();
 }
 
 // Floating Filter Functionality
@@ -545,6 +594,7 @@ function initializeGrids() {
         filterRelics();
         loadStateFromURL();
         setupShareButton();
+        updateBuffSummary(); // Inicializa o contador
     });
 }
 
