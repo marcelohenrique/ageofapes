@@ -209,8 +209,8 @@ function moveRelic(relic, targetGrid) {
     if (targetGrid === selectedGrid) {
         const currentCount = selectedGrid.querySelectorAll('.relic[data-id]').length;
         
-        if (currentCount >= 16) {
-            // Feedback visual
+        if (currentCount >= 18) {  // 
+            // Feedback visualAlterado aqui
             relic.classList.add('relic-shake');
             setTimeout(() => {
                 relic.classList.remove('relic-shake');
@@ -227,7 +227,7 @@ function moveRelic(relic, targetGrid) {
     if (sourceGrid === targetGrid) return;
 
     const placeholder = targetGrid.querySelector(".placeholder-card");
-    
+
     if (placeholder) {
         targetGrid.replaceChild(relic, placeholder);
     } else {
@@ -245,7 +245,7 @@ function showLimitAlert() {
     
     const alert = document.createElement('div');
     alert.className = 'limit-alert alert alert-warning';
-    alert.textContent = 'Limite de 16 relíquias atingido!';
+    alert.textContent = 'Limite de 18 relíquias atingido!';
     document.body.appendChild(alert);
     
     setTimeout(() => {
@@ -258,8 +258,8 @@ function updatePlaceholders() {
         .querySelectorAll('.relic[data-id]').length;
     
     document.querySelectorAll('.placeholder-card').forEach(ph => {
-        ph.style.opacity = selectedCount >= 16 ? '0.3' : '0.7';
-        ph.style.pointerEvents = selectedCount >= 16 ? 'none' : 'auto';
+        ph.style.opacity = selectedCount >= 18 ? '0.3' : '0.7';
+        ph.style.pointerEvents = selectedCount >= 18 ? 'none' : 'auto';
     });
 }
 
@@ -362,7 +362,7 @@ function updateBuffSummary() {
     
     const counter = document.getElementById('selected-count');
     counter.textContent = count;
-    counter.style.color = count >= 16 ? '#dc3545' : '#28a745';
+    counter.style.color = count >= 18 ? '#dc3545' : '#28a745';
     
     updatePlaceholders();
 }
