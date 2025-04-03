@@ -372,52 +372,17 @@ menuResetButton.addEventListener('click', () => {
 });
 
 // Função para codificar as relíquias selecionadas
-function encodeSelectedRelics(selectedIds, allRelics) {
-    // Criar um mapa de IDs para índices
-    const idToIndex = {};
-    allRelics.forEach((relic, index) => {
-        idToIndex[relic.id] = index;
-    });
-
-    // Criar array de bits (0 ou 1)
-    const bits = new Array(allRelics.length).fill(0);
-    selectedIds.forEach(id => {
-        if (idToIndex[id] !== undefined) {
-            bits[idToIndex[id]] = 1;
-        }
-    });
-
-    // Converter array de bits para string binária
-    const binaryString = bits.join('');
-
-    // Converter para Base64 (comprimindo)
-    const base64 = btoa(String.fromCharCode.apply(null, 
-        binaryString.match(/.{1,8}/g).map(byte => parseInt(byte, 2))
-    ));
-
-    return base64;
+function encodeSelectedRelics(selectedIds) {
+    // Converter para JSON e depois para Base64
+    const jsonString = JSON.stringify(selectedIds);
+    return btoa(unescape(encodeURIComponent(jsonString)));
 }
 
 // Função para decodificar
-function decodeSelectedRelics(base64, allRelics) {
+function decodeSelectedRelics(base64) {
     try {
-        // Converter Base64 para string binária
-        const binaryString = atob(base64).split('')
-            .map(char => char.charCodeAt(0).toString(2).padStart(8, '0'))
-            .join('');
-
-        // Extrair os bits relevantes (apenas o número de relíquias)
-        const bits = binaryString.slice(0, allRelics.length).split('');
-
-        // Converter para IDs selecionados
-        const selectedIds = [];
-        bits.forEach((bit, index) => {
-            if (bit === '1' && index < allRelics.length) {
-                selectedIds.push(allRelics[index].id);
-            }
-        });
-
-        return selectedIds;
+        const jsonString = decodeURIComponent(escape(atob(base64)));
+        return JSON.parse(jsonString);
     } catch (e) {
         console.error("Decoding error:", e);
         return [];
@@ -438,13 +403,13 @@ function setupShareButton() {
         document.getElementById('filter-menu').classList.remove('show');
         document.getElementById('buff-menu').classList.remove('show');
         
-        // Obter IDs das relíquias selecionadas
+        // Obter IDs das relíquias selecionadas EM ORDEM
         const selectedRelics = Array.from(document.getElementById('selected-relics-grid').children)
             .filter(el => !el.classList.contains('placeholder-card'))
             .map(el => parseInt(el.dataset.id));
         
         // Codificar para Base64
-        const encoded = encodeSelectedRelics(selectedRelics, relics);
+        const encoded = encodeSelectedRelics(selectedRelics);
         const shareUrl = `${window.location.origin}${window.location.pathname}?s=${encoded}`;
         shareUrlInput.value = shareUrl;
     });
@@ -467,13 +432,13 @@ function loadStateFromURL() {
     if (stateParam) {
         try {
             // Decodificar a string Base64
-            const selectedIds = decodeSelectedRelics(stateParam, relics);
+            const selectedIds = decodeSelectedRelics(stateParam);
             
             // Limpar seleções atuais
             const selectedGrid = document.getElementById('selected-relics-grid');
             selectedGrid.innerHTML = '';
             
-            // Carregar relíquias selecionadas
+            // Carregar relíquias selecionadas NA ORDEM CORRETA
             selectedIds.forEach(relicId => {
                 const relicData = relics.find(r => r.id === relicId);
                 if (relicData) {
@@ -482,7 +447,7 @@ function loadStateFromURL() {
             });
             
             // Preencher com placeholders se necessário
-            while (selectedGrid.children.length < 18) {
+            while (selectedGrid.children.length < 18) { // 16 seleções + 2 de buffer
                 selectedGrid.appendChild(createPlaceholder());
             }
             
