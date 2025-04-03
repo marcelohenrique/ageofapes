@@ -371,6 +371,59 @@ menuResetButton.addEventListener('click', () => {
     filterMenu.classList.remove('show');
 });
 
+// Função para codificar as relíquias selecionadas
+function encodeSelectedRelics(selectedIds, allRelics) {
+    // Criar um mapa de IDs para índices
+    const idToIndex = {};
+    allRelics.forEach((relic, index) => {
+        idToIndex[relic.id] = index;
+    });
+
+    // Criar array de bits (0 ou 1)
+    const bits = new Array(allRelics.length).fill(0);
+    selectedIds.forEach(id => {
+        if (idToIndex[id] !== undefined) {
+            bits[idToIndex[id]] = 1;
+        }
+    });
+
+    // Converter array de bits para string binária
+    const binaryString = bits.join('');
+
+    // Converter para Base64 (comprimindo)
+    const base64 = btoa(String.fromCharCode.apply(null, 
+        binaryString.match(/.{1,8}/g).map(byte => parseInt(byte, 2))
+    ));
+
+    return base64;
+}
+
+// Função para decodificar
+function decodeSelectedRelics(base64, allRelics) {
+    try {
+        // Converter Base64 para string binária
+        const binaryString = atob(base64).split('')
+            .map(char => char.charCodeAt(0).toString(2).padStart(8, '0'))
+            .join('');
+
+        // Extrair os bits relevantes (apenas o número de relíquias)
+        const bits = binaryString.slice(0, allRelics.length).split('');
+
+        // Converter para IDs selecionados
+        const selectedIds = [];
+        bits.forEach((bit, index) => {
+            if (bit === '1' && index < allRelics.length) {
+                selectedIds.push(allRelics[index].id);
+            }
+        });
+
+        return selectedIds;
+    } catch (e) {
+        console.error("Decoding error:", e);
+        return [];
+    }
+}
+
 // Share functionality
 function setupShareButton() {
     const shareButton = document.getElementById('floating-share-button');
@@ -385,24 +438,14 @@ function setupShareButton() {
         document.getElementById('filter-menu').classList.remove('show');
         document.getElementById('buff-menu').classList.remove('show');
         
-        // Get all relic IDs in their original order
-        const allRelicIds = relics.map(relic => relic.id);
-        const maxId = Math.max(...allRelicIds);
-        
-        // Create a binary representation
+        // Obter IDs das relíquias selecionadas
         const selectedRelics = Array.from(document.getElementById('selected-relics-grid').children)
             .filter(el => !el.classList.contains('placeholder-card'))
             .map(el => parseInt(el.dataset.id));
         
-        // Create binary mask (1 for selected, 0 for not selected)
-        let binaryValue = 0;
-        for (let i = 0; i < allRelicIds.length; i++) {
-            if (selectedRelics.includes(allRelicIds[i])) {
-                binaryValue |= (1 << i); // Set the bit at position i
-            }
-        }
-        
-        const shareUrl = `${window.location.origin}${window.location.pathname}?s=${binaryValue}`;
+        // Codificar para Base64
+        const encoded = encodeSelectedRelics(selectedRelics, relics);
+        const shareUrl = `${window.location.origin}${window.location.pathname}?s=${encoded}`;
         shareUrlInput.value = shareUrl;
     });
 
@@ -423,30 +466,22 @@ function loadStateFromURL() {
     
     if (stateParam) {
         try {
-            const binaryValue = parseInt(stateParam);
-            const allRelicIds = relics.map(relic => relic.id);
+            // Decodificar a string Base64
+            const selectedIds = decodeSelectedRelics(stateParam, relics);
             
-            // Clear current selections
+            // Limpar seleções atuais
             const selectedGrid = document.getElementById('selected-relics-grid');
             selectedGrid.innerHTML = '';
             
-            // Find which relics are selected
-            const selectedRelics = [];
-            for (let i = 0; i < allRelicIds.length; i++) {
-                if (binaryValue & (1 << i)) {
-                    selectedRelics.push(allRelicIds[i]);
-                }
-            }
-            
-            // Load selected relics
-            selectedRelics.forEach(relicId => {
+            // Carregar relíquias selecionadas
+            selectedIds.forEach(relicId => {
                 const relicData = relics.find(r => r.id === relicId);
                 if (relicData) {
                     createRelic(relicData, selectedGrid);
                 }
             });
             
-            // Fill with placeholders if needed
+            // Preencher com placeholders se necessário
             while (selectedGrid.children.length < 18) {
                 selectedGrid.appendChild(createPlaceholder());
             }
