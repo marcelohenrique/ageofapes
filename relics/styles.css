@@ -1,4 +1,3 @@
-/* Custom styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -179,6 +178,13 @@ h1 {
     z-index: 1000;
 }
 
+.floating-share-container {
+    position: fixed;
+    bottom: 160px;
+    right: 20px;
+    z-index: 1000;
+}
+
 .floating-button {
     width: 56px;
     height: 56px;
@@ -196,7 +202,8 @@ h1 {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
 }
 
-.filter-menu {
+/* Menus */
+.filter-menu, .buff-menu, .share-menu {
     position: absolute;
     bottom: 0;
     right: 70px;
@@ -211,45 +218,35 @@ h1 {
     z-index: 1001;
 }
 
-.buff-menu {
-    position: absolute;
-    bottom: 0;
-    right: 70px;
-    width: 280px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    transition: all 0.3s ease;
-    z-index: 1001;
-}
-
-.filter-menu.show, .buff-menu.show {
+.filter-menu.show, .buff-menu.show, .share-menu.show {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
-    right: 70px;
-    bottom: 0;
 }
 
-.filter-menu-content, .buff-menu-content {
+.filter-menu-content, .buff-menu-content, .share-menu-content {
     max-height: 70vh;
     overflow-y: auto;
 }
 
-@media (min-width: 768px) {
-    .filters {
-        display: none;
-    }
+/* Share menu specific styles */
+.share-url {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.share-buttons {
+    display: flex;
+    gap: 10px;
 }
 
 @media (max-width: 767px) {
-    .floating-filter-container, .floating-buff-container {
+    .floating-filter-container, 
+    .floating-buff-container,
+    .floating-share-container {
         display: none;
-    }
-    .filters {
-        display: block;
     }
 }

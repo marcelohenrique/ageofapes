@@ -1,13 +1,13 @@
-// Load relics data from external JSON file
 let relics = [];
 
 async function loadRelics() {
     try {
         const response = await fetch('converted_relics.json');
         relics = await response.json();
-        filterRelics();
+        return relics;
     } catch (error) {
         console.error("Error loading relics:", error);
+        return [];
     }
 }
 
@@ -371,10 +371,114 @@ menuResetButton.addEventListener('click', () => {
     filterMenu.classList.remove('show');
 });
 
+// Share functionality
+function setupShareButton() {
+    const shareButton = document.getElementById('floating-share-button');
+    const shareMenu = document.getElementById('share-menu');
+    const copyButton = document.getElementById('copy-share-link');
+    const closeButton = document.getElementById('close-share-menu');
+    const shareUrlInput = document.querySelector('.share-url');
+
+    shareButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        shareMenu.classList.toggle('show');
+        document.getElementById('filter-menu').classList.remove('show');
+        document.getElementById('buff-menu').classList.remove('show');
+        
+        // Get all relic IDs in their original order
+        const allRelicIds = relics.map(relic => relic.id);
+        const maxId = Math.max(...allRelicIds);
+        
+        // Create a binary representation
+        const selectedRelics = Array.from(document.getElementById('selected-relics-grid').children)
+            .filter(el => !el.classList.contains('placeholder-card'))
+            .map(el => parseInt(el.dataset.id));
+        
+        // Create binary mask (1 for selected, 0 for not selected)
+        let binaryValue = 0;
+        for (let i = 0; i < allRelicIds.length; i++) {
+            if (selectedRelics.includes(allRelicIds[i])) {
+                binaryValue |= (1 << i); // Set the bit at position i
+            }
+        }
+        
+        const shareUrl = `${window.location.origin}${window.location.pathname}?s=${binaryValue}`;
+        shareUrlInput.value = shareUrl;
+    });
+
+    copyButton.addEventListener('click', () => {
+        shareUrlInput.select();
+        document.execCommand('copy');
+        alert('Link copied to clipboard!');
+    });
+
+    closeButton.addEventListener('click', () => {
+        shareMenu.classList.remove('show');
+    });
+}
+
+function loadStateFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    const stateParam = params.get('s');
+    
+    if (stateParam) {
+        try {
+            const binaryValue = parseInt(stateParam);
+            const allRelicIds = relics.map(relic => relic.id);
+            
+            // Clear current selections
+            const selectedGrid = document.getElementById('selected-relics-grid');
+            selectedGrid.innerHTML = '';
+            
+            // Find which relics are selected
+            const selectedRelics = [];
+            for (let i = 0; i < allRelicIds.length; i++) {
+                if (binaryValue & (1 << i)) {
+                    selectedRelics.push(allRelicIds[i]);
+                }
+            }
+            
+            // Load selected relics
+            selectedRelics.forEach(relicId => {
+                const relicData = relics.find(r => r.id === relicId);
+                if (relicData) {
+                    createRelic(relicData, selectedGrid);
+                }
+            });
+            
+            // Fill with placeholders if needed
+            while (selectedGrid.children.length < 18) {
+                selectedGrid.appendChild(createPlaceholder());
+            }
+            
+            updateBuffSummary();
+        } catch (e) {
+            console.error('Error loading state:', e);
+        }
+    }
+}
+
+function setRelicLevel(element, level) {
+    const stars = element.querySelectorAll('.stars i');
+    stars.forEach((star, i) => {
+        star.classList.toggle('fas', i < level);
+        star.classList.toggle('far', i >= level);
+    });
+    
+    const relic = relics.find(r => r.id.toString() === element.dataset.id);
+    if (relic) {
+        saveLevelToLocalStorage(relic.id, level);
+        updateRelicBuffs(element, relic, level);
+    }
+}
+
 function initializeGrids() {
-    loadRelics();
-    initializePlaceholders();
-    filterRelics();
+    loadRelics().then(() => {
+        initializePlaceholders();
+        filterRelics();
+        loadStateFromURL();
+        setupShareButton();
+    });
 }
 
 window.onload = initializeGrids;
