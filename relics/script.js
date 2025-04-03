@@ -389,6 +389,56 @@ function decodeSelectedRelics(base64) {
     }
 }
 
+// Função para codificar todos os níveis
+function encodeAllLevels(relics) {
+    // Criar array de níveis (índice = ID da relíquia)
+    const maxId = Math.max(...relics.map(r => r.id));
+    const levelsArray = new Array(maxId + 1).fill(0);
+    
+    relics.forEach(relic => {
+        levelsArray[relic.id] = loadLevelFromLocalStorage(relic);
+    });
+
+    // Converter para string binária (3 bits por nível)
+    let binaryString = '';
+    levelsArray.forEach(level => {
+        binaryString += level.toString(2).padStart(3, '0');
+    });
+
+    // Converter para Base64
+    const bytes = [];
+    for (let i = 0; i < binaryString.length; i += 8) {
+        bytes.push(parseInt(binaryString.substr(i, 8), 2));
+    }
+    return btoa(String.fromCharCode(...bytes));
+}
+
+// Função para decodificar
+function decodeAllLevels(base64, relics) {
+    try {
+        // Converter Base64 para string binária
+        const binaryString = atob(base64).split('')
+            .map(char => char.charCodeAt(0).toString(2).padStart(8, '0'))
+            .join('');
+
+        // Extrair níveis (3 bits cada)
+        const levels = {};
+        for (let i = 0; i < binaryString.length; i += 3) {
+            const levelBits = binaryString.substr(i, 3);
+            if (levelBits.length === 3) {
+                const level = parseInt(levelBits, 2);
+                const relicId = Math.floor(i / 3);
+                levels[relicId] = level;
+            }
+        }
+
+        return levels;
+    } catch (e) {
+        console.error("Erro ao decodificar níveis:", e);
+        return {};
+    }
+}
+
 // Share functionality
 function setupShareButton() {
     const shareButton = document.getElementById('floating-share-button');
@@ -409,9 +459,13 @@ function setupShareButton() {
             .map(el => parseInt(el.dataset.id));
         
         // Codificar para Base64
-        const encoded = encodeSelectedRelics(selectedRelics);
-        const shareUrl = `${window.location.origin}${window.location.pathname}?s=${encoded}`;
-        shareUrlInput.value = shareUrl;
+        const params = new URLSearchParams();
+        if (selectedRelics.length > 0) {
+            params.set('s', encodeSelectedRelics(selectedRelics));
+        }
+        params.set('l', encodeAllLevels(relics));
+        
+        shareUrlInput.value = `${window.location.origin}${window.location.pathname}?${params.toString()}`;
     });
 
     copyButton.addEventListener('click', () => {
@@ -427,6 +481,19 @@ function setupShareButton() {
 
 function loadStateFromURL() {
     const params = new URLSearchParams(window.location.search);
+    
+    // Carregar níveis primeiro
+    const levelsParam = params.get('l');
+    if (levelsParam) {
+        const levels = decodeAllLevels(levelsParam, relics);
+        relics.forEach(relic => {
+            if (levels[relic.id] !== undefined) {
+                saveLevelToLocalStorage(relic.id, levels[relic.id]);
+            }
+        });
+    }
+
+    // Depois carregar seleções (código anterior)
     const stateParam = params.get('s');
     
     if (stateParam) {
