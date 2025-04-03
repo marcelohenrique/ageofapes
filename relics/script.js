@@ -204,6 +204,7 @@ function initializePlaceholders() {
 
 function moveRelic(relic, targetGrid) {
     const selectedGrid = document.getElementById('selected-relics-grid');
+    const availableGrid = document.getElementById('available-relics-grid');
     
     // Verifica se está tentando adicionar além do limite
     if (targetGrid === selectedGrid) {
@@ -212,9 +213,7 @@ function moveRelic(relic, targetGrid) {
         if (currentCount >= 18) {  // 
             // Feedback visualAlterado aqui
             relic.classList.add('relic-shake');
-            setTimeout(() => {
-                relic.classList.remove('relic-shake');
-            }, 500);
+            setTimeout(() => relic.classList.remove('relic-shake'), 500);
             
             // Mostra alerta
             showLimitAlert();
@@ -222,10 +221,14 @@ function moveRelic(relic, targetGrid) {
         }
     }
     
-    // Lógica original de mover relíquia
+    // Lógica de mover relíquia
     const sourceGrid = relic.parentElement;
     if (sourceGrid === targetGrid) return;
 
+    // Remove da grade de origem
+    sourceGrid.removeChild(relic);
+    
+    // Adiciona na grade de destino (substituindo placeholder se existir)
     const placeholder = targetGrid.querySelector(".placeholder-card");
 
     if (placeholder) {
@@ -233,7 +236,14 @@ function moveRelic(relic, targetGrid) {
     } else {
         targetGrid.appendChild(relic);
     }
-
+    
+    // Recria placeholder na grade de origem SE estiver saindo da grade selecionada
+    if (sourceGrid === selectedGrid) {
+        const newPlaceholder = createPlaceholder();
+        sourceGrid.appendChild(newPlaceholder);
+    }
+    
+    // Atualizações necessárias
     updateBuffSummary();
     updatePlaceholders();
 }
