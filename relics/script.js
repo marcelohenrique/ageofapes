@@ -319,6 +319,14 @@ function calculateTotalBuffs() {
 }
 
 function updateBuffSummary() {
+    // Atualiza o contador
+    const count = document.getElementById('selected-relics-grid')
+        .querySelectorAll('.relic[data-id]').length;
+    
+    const counter = document.getElementById('selected-count');
+    counter.textContent = count;
+    counter.style.color = count >= 18 ? '#dc3545' : '#28a745';
+
     const buffSummary = document.getElementById("buff-summary");
     const buffs = calculateTotalBuffs();
 
@@ -365,14 +373,6 @@ function updateBuffSummary() {
         buffItem.appendChild(valueSpan);
         buffSummary.appendChild(buffItem);
     });
-    
-    // Atualiza o contador
-    const count = document.getElementById('selected-relics-grid')
-        .querySelectorAll('.relic[data-id]').length;
-    
-    const counter = document.getElementById('selected-count');
-    counter.textContent = count;
-    counter.style.color = count >= 18 ? '#dc3545' : '#28a745';
     
     updatePlaceholders();
 }
