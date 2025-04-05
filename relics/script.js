@@ -248,14 +248,13 @@ function moveRelic(relic, targetGrid) {
     updatePlaceholders();
 }
 
-// ========== NOVAS FUNÇÕES ADICIONADAS ========== //
 function showLimitAlert() {
     const existingAlert = document.querySelector('.limit-alert');
     if (existingAlert) existingAlert.remove();
     
     const alert = document.createElement('div');
     alert.className = 'limit-alert alert alert-warning';
-    alert.textContent = 'Limite de 18 relíquias atingido!';
+    alert.textContent = 'Maximum of 18 relics reached!';
     document.body.appendChild(alert);
     
     setTimeout(() => {
@@ -319,7 +318,6 @@ function calculateTotalBuffs() {
 }
 
 function updateBuffSummary() {
-    // Atualiza o contador
     const count = document.getElementById('selected-relics-grid')
         .querySelectorAll('.relic[data-id]').length;
     

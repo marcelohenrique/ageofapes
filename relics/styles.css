@@ -267,7 +267,6 @@ h1 {
     75% { transform: translateX(10px); }
 }
 
-/* Alertas flutuantes */
 .limit-alert {
     position: fixed;
     top: 20px;
