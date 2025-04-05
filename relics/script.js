@@ -602,7 +602,39 @@ function initializeGrids() {
         filterRelics();
         loadStateFromURL();
         setupShareButton();
+        setupSectionToggles(); // Adicione esta linha
         updateBuffSummary(); // Inicializa o contador
+    });
+}
+
+function setupSectionToggles() {
+    document.querySelectorAll('.toggle-section').forEach(button => {
+        button.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-target');
+            const section = document.getElementById(targetId);
+            const icon = this.querySelector('i');
+            
+            section.classList.toggle('collapsed-section');
+            icon.classList.toggle('fa-chevron-up');
+            icon.classList.toggle('fa-chevron-down');
+            
+            // Salvar o estado no localStorage
+            localStorage.setItem(`section-${targetId}-collapsed`, section.classList.contains('collapsed-section'));
+        });
+    });
+    
+    // Carregar estados salvos
+    ['selected-section', 'available-section'].forEach(sectionId => {
+        const isCollapsed = localStorage.getItem(`section-${sectionId}-collapsed`) === 'true';
+        const section = document.getElementById(sectionId);
+        const button = document.querySelector(`.toggle-section[data-target="${sectionId}"]`);
+        const icon = button?.querySelector('i');
+        
+        if (isCollapsed && section && button && icon) {
+            section.classList.add('collapsed-section');
+            icon.classList.remove('fa-chevron-up');
+            icon.classList.add('fa-chevron-down');
+        }
     });
 }
 
