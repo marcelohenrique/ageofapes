@@ -307,34 +307,59 @@ h1 {
         display: none;
     }
 
+    /* Selected Relics Grid - Mobile */
+    .selected-grid-container {
+        gap: 10px;
+    }
+
     .selected-row {
+        display: grid;
+        grid-template-columns: 30px 1fr 1fr 1fr;
         gap: 8px;
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 5px;
     }
-    
+
     .row-label {
-        flex: 0 0 30px;
+        flex: 0 0 auto;
+        width: 30px;
+        height: auto;
+        align-self: center;
         font-size: 0.9em;
+        padding: 5px 0;
     }
-    
+
     .relic-slot {
-        min-width: calc((100% - 38px) / 3);
-        min-height: 100px;
+        min-width: 0;
+        width: 100%;
+        min-height: 110px;
     }
-    
+
     .relic {
-        padding: 8px;
+        padding: 6px;
+        min-height: 110px;
     }
-    
+
     .relic img {
         height: 40px;
+        margin-bottom: 5px;
     }
-    
+
     .relic h3 {
         font-size: 0.8em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
-    
+
     .relic p {
         font-size: 0.65em;
+        margin: 1px 0;
+    }
+
+    .stars i {
+        font-size: 0.8em;
     }
 
     /* Available relics section - 2 columns */
@@ -342,5 +367,10 @@ h1 {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 8px;
+    }
+
+    /* Garante que o container não ultrapasse a largura da tela */
+    .grid {
+        overflow: hidden;
     }
 }

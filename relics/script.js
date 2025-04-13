@@ -144,6 +144,15 @@ function createRelic(relic, grid) {
         moveRelic(relicElement, targetGrid);
     });
 
+    if (window.innerWidth < 768) {
+        relicElement.style.minHeight = '110px';
+        relicElement.style.padding = '6px';
+        const title = relicElement.querySelector('h3');
+        title.style.whiteSpace = 'nowrap';
+        title.style.overflow = 'hidden';
+        title.style.textOverflow = 'ellipsis';
+    }
+
     grid.appendChild(relicElement);
 }
 
