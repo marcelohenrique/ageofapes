@@ -149,7 +149,7 @@ function createRelic(relic, grid) {
 
 function createPlaceholder() {
     const placeholder = document.createElement("div");
-    placeholder.classList.add("col-md-4", "placeholder-card");
+    placeholder.classList.add("placeholder-card");
 
     const relicElement = document.createElement("div");
     relicElement.classList.add("relic", "placeholder");
@@ -195,81 +195,68 @@ function createPlaceholder() {
 }
 
 function initializePlaceholders() {
-    const selectedRelicsGrid = document.getElementById("selected-relics-grid");
-    for (let i = 0; i < 18; i++) {
-        const placeholder = createPlaceholder();
-        selectedRelicsGrid.appendChild(placeholder);
-    }
+    const selectedGrid = document.getElementById("selected-relics-grid");
+    selectedGrid.innerHTML = '';
+    
+    const labels = ['1A', '2B', '3C', '4D', '5E', '6F'];
+    
+    labels.forEach(label => {
+        const row = document.createElement('div');
+        row.className = 'selected-row';
+        
+        const labelDiv = document.createElement('div');
+        labelDiv.className = 'row-label';
+        labelDiv.textContent = label;
+        row.appendChild(labelDiv);
+        
+        // Create 3 relic slots per row
+        for (let i = 0; i < 3; i++) {
+            const slot = document.createElement('div');
+            slot.className = 'relic-slot';
+            slot.appendChild(createPlaceholder());
+            row.appendChild(slot);
+        }
+        
+        selectedGrid.appendChild(row);
+    });
 }
 
 function moveRelic(relic, targetGrid) {
     const selectedGrid = document.getElementById('selected-relics-grid');
     const availableGrid = document.getElementById('available-relics-grid');
     
-    // Verifica se está tentando adicionar além do limite
     if (targetGrid === selectedGrid) {
-        const currentCount = selectedGrid.querySelectorAll('.relic[data-id]').length;
-        
-        if (currentCount >= 18) {  // 
-            // Feedback visualAlterado aqui
+        const emptySlot = selectedGrid.querySelector('.relic-slot .placeholder-card');
+        if (emptySlot) {
+            emptySlot.parentElement.replaceChild(relic, emptySlot);
+        } else {
+            // Visual feedback for limit reached
             relic.classList.add('relic-shake');
             setTimeout(() => relic.classList.remove('relic-shake'), 500);
-            
-            // Mostra alerta
             showLimitAlert();
             return;
         }
-    }
-    
-    // Lógica de mover relíquia
-    const sourceGrid = relic.parentElement;
-    if (sourceGrid === targetGrid) return;
-
-    // Remove da grade de origem
-    sourceGrid.removeChild(relic);
-    
-    // Adiciona na grade de destino (substituindo placeholder se existir)
-    const placeholder = targetGrid.querySelector(".placeholder-card");
-
-    if (placeholder) {
-        targetGrid.replaceChild(relic, placeholder);
     } else {
-        targetGrid.appendChild(relic);
+        // Moving back to available grid
+        availableGrid.appendChild(relic);
     }
     
-    // Recria placeholder na grade de origem SE estiver saindo da grade selecionada
-    if (sourceGrid === selectedGrid) {
-        const newPlaceholder = createPlaceholder();
-        sourceGrid.appendChild(newPlaceholder);
-    }
-    
-    // Atualizações necessárias
     updateBuffSummary();
     updatePlaceholders();
 }
 
-function showLimitAlert() {
-    const existingAlert = document.querySelector('.limit-alert');
-    if (existingAlert) existingAlert.remove();
-    
-    const alert = document.createElement('div');
-    alert.className = 'limit-alert alert alert-warning';
-    alert.textContent = 'Maximum of 18 relics reached!';
-    document.body.appendChild(alert);
-    
-    setTimeout(() => {
-        alert.remove();
-    }, 2500);
-}
-
 function updatePlaceholders() {
     const selectedCount = document.getElementById('selected-relics-grid')
-        .querySelectorAll('.relic[data-id]').length;
+        .querySelectorAll('.relic:not(.placeholder)').length;
     
     document.querySelectorAll('.placeholder-card').forEach(ph => {
         ph.style.opacity = selectedCount >= 18 ? '0.3' : '0.7';
         ph.style.pointerEvents = selectedCount >= 18 ? 'none' : 'auto';
     });
+    
+    const counter = document.getElementById('selected-count');
+    counter.textContent = selectedCount;
+    counter.style.color = selectedCount >= 18 ? '#dc3545' : '#28a745';
 }
 
 function filterRelics() {

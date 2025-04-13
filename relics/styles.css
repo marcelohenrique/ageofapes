@@ -17,6 +17,36 @@ h1 {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+/* Selected Relics Grid */
+.selected-grid-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.selected-row {
+    display: flex;
+    gap: 10px;
+    align-items: stretch;
+}
+
+.row-label {
+    flex: 0 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    font-size: 1.1em;
+}
+
+.relic-slot {
+    flex: 1;
+    min-height: 120px;
+    position: relative;
+}
+
 .relic {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
@@ -26,10 +56,7 @@ h1 {
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
     color: #333;
-    margin-bottom: 10px;
     height: 100%;
-    position: relative;
-    z-index: 1;
 }
 
 .relic:hover {
@@ -127,21 +154,6 @@ h1 {
     color: #999;
     font-style: italic;
     font-size: 0.8em;
-}
-
-.labels-column {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-}
-
-.labels-column .label {
-    font-weight: bold;
-    text-align: center;
-    margin: 10px 0;
-    color: #555;
-    font-size: 0.9em;
 }
 
 .buff-summary-item {
@@ -243,14 +255,6 @@ h1 {
     gap: 10px;
 }
 
-@media (max-width: 767px) {
-    .floating-filter-container, 
-    .floating-buff-container,
-    .floating-share-container {
-        display: none;
-    }
-}
-
 .selected-counter {
     font-size: 1.1rem;
     padding: 8px 16px;
@@ -295,6 +299,48 @@ h1 {
     display: none;
 }
 
-.collapsed-section + .toggle-section i {
-    transform: rotate(180deg);
+/* Mobile styles */
+@media (max-width: 767px) {
+    .floating-filter-container, 
+    .floating-buff-container,
+    .floating-share-container {
+        display: none;
+    }
+
+    .selected-row {
+        gap: 8px;
+    }
+    
+    .row-label {
+        flex: 0 0 30px;
+        font-size: 0.9em;
+    }
+    
+    .relic-slot {
+        min-width: calc((100% - 38px) / 3);
+        min-height: 100px;
+    }
+    
+    .relic {
+        padding: 8px;
+    }
+    
+    .relic img {
+        height: 40px;
+    }
+    
+    .relic h3 {
+        font-size: 0.8em;
+    }
+    
+    .relic p {
+        font-size: 0.65em;
+    }
+
+    /* Available relics section - 2 columns */
+    #available-relics-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
 }
