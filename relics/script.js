@@ -55,10 +55,15 @@ function updateRelicBuffs(relicElement, relic, level) {
 function createRelic(relic, grid) {
     if (!grid) return;
 
+    const col = document.createElement("div");
+    col.className = "col-4";
+    grid.appendChild(col);
+
     const relicElement = document.createElement("div");
-    relicElement.classList.add("col-md-4", "relic");
+    relicElement.classList.add("relic");
     relicElement.style.backgroundColor = getQualityColor(relic.quality);
     relicElement.dataset.id = relic.id;
+    col.appendChild(relicElement);
 
     // Create relic image
     const img = document.createElement("img");
@@ -136,7 +141,7 @@ function createRelic(relic, grid) {
     relicElement.addEventListener('click', (event) => {
         if (event.target.closest('.stars')) return;
         
-        const currentGrid = relicElement.parentElement;
+        const currentGrid = relicElement.parentElement.parentElement;
         const targetGrid = currentGrid.id === "available-relics-grid" 
             ? document.getElementById("selected-relics-grid") 
             : document.getElementById("available-relics-grid");
@@ -153,7 +158,7 @@ function createRelic(relic, grid) {
         title.style.textOverflow = 'ellipsis';
     }
 
-    grid.appendChild(relicElement);
+    // grid.appendChild(relicElement);
 }
 
 function createPlaceholder() {
@@ -161,7 +166,7 @@ function createPlaceholder() {
     placeholder.classList.add("placeholder-card");
 
     const relicElement = document.createElement("div");
-    relicElement.classList.add("relic", "placeholder");
+    relicElement.classList.add("relic", "placeholder-relic");
 
     const placeholderCircle = document.createElement("div");
     placeholderCircle.classList.add("placeholder-circle");
@@ -207,26 +212,41 @@ function initializePlaceholders() {
     const selectedGrid = document.getElementById("selected-relics-grid");
     selectedGrid.innerHTML = '';
     
-    const labels = ['1A', '2B', '3C', '4D', '5E', '6F'];
+    const labels = ['6F', '5F', '4F', '3F', '2F', '1F'];
     
     labels.forEach(label => {
+        // const col = document.createElement('div');
+        // col.className = 'col';
+        // selectedGrid.appendChild(col);
+        
         const row = document.createElement('div');
-        row.className = 'selected-row';
+        // row.className = 'selected-row';
+        row.className = 'row';
+        // col.appendChild(row);
+        selectedGrid.appendChild(row);
         
         const labelDiv = document.createElement('div');
-        labelDiv.className = 'row-label';
+        labelDiv.className = 'col-1';
         labelDiv.textContent = label;
         row.appendChild(labelDiv);
-        
+
+        const relicsDiv = document.createElement('div');
+        relicsDiv.className = 'col-11';
+        row.appendChild(relicsDiv);
+
+        const relicRow = document.createElement('div');
+        relicRow.className = 'row';
+        relicsDiv.appendChild(relicRow);
+       
         // Create 3 relic slots per row
         for (let i = 0; i < 3; i++) {
             const slot = document.createElement('div');
-            slot.className = 'relic-slot';
+            // slot.className = 'relic-slot';
+            slot.className = 'col relic-slot';
             slot.appendChild(createPlaceholder());
-            row.appendChild(slot);
+            // row.appendChild(slot);
+            relicRow.appendChild(slot);
         }
-        
-        selectedGrid.appendChild(row);
     });
 }
 
@@ -256,7 +276,7 @@ function moveRelic(relic, targetGrid) {
 
 function updatePlaceholders() {
     const selectedCount = document.getElementById('selected-relics-grid')
-        .querySelectorAll('.relic:not(.placeholder)').length;
+        .querySelectorAll('.relic:not(.placeholder-relic)').length;
     
     document.querySelectorAll('.placeholder-card').forEach(ph => {
         ph.style.opacity = selectedCount >= 18 ? '0.3' : '0.7';

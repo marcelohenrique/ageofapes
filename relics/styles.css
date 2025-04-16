@@ -18,19 +18,25 @@ h1 {
 }
 
 /* Selected Relics Grid */
+#selected-relics-grid {
+    display: grid;
+    /* grid-template-columns: repeat(3, 1fr); */
+    gap: 10px;
+}
+
 .selected-grid-container {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-.selected-row {
+/* .selected-row {
     display: flex;
     gap: 10px;
     align-items: stretch;
-}
+} */
 
-.row-label {
+/* .row-label {
     flex: 0 0 40px;
     display: flex;
     align-items: center;
@@ -39,13 +45,13 @@ h1 {
     background-color: #f0f0f0;
     border-radius: 4px;
     font-size: 1.1em;
-}
+} */
 
-.relic-slot {
+/* .relic-slot {
     flex: 1;
     min-height: 120px;
     position: relative;
-}
+} */
 
 .relic {
     background-color: #f9f9f9;
@@ -123,7 +129,7 @@ h1 {
     font-weight: bold;
 }
 
-.placeholder-card .relic.placeholder {
+.placeholder-card .relic.placeholder-relic {
     background-color: #e9ecef;
     opacity: 0.7;
     cursor: default;
