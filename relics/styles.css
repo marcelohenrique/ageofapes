@@ -369,11 +369,11 @@ h1 {
     }
 
     /* Available relics section - 2 columns */
-    #available-relics-grid {
+    /* #available-relics-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 8px;
-    }
+    } */
 
     /* Garante que o container não ultrapasse a largura da tela */
     .grid {
