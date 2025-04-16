@@ -417,6 +417,7 @@ floatingFilterButton.addEventListener('click', (e) => {
     if (filterMenu.classList.contains('show')) {
         buffMenu.classList.remove('show');
     }
+    updateMenuPositions();
 });
 
 // Buff Summary Floating Button Functionality
@@ -429,6 +430,7 @@ floatingBuffButton.addEventListener('click', (e) => {
     if (buffMenu.classList.contains('show')) {
         filterMenu.classList.remove('show');
     }
+    updateMenuPositions();
 });
 
 document.addEventListener('click', (e) => {
@@ -538,6 +540,8 @@ function setupShareButton() {
         shareMenu.classList.toggle('show');
         document.getElementById('filter-menu').classList.remove('show');
         document.getElementById('buff-menu').classList.remove('show');
+
+        updateMenuPositions();
         
         // Obter IDs das relíquias selecionadas EM ORDEM
         const selectedRelics = Array.from(document.getElementById('selected-relics-grid').children)
@@ -634,6 +638,8 @@ function initializeGrids() {
         setupSectionToggles(); // Adicione esta linha
         updateBuffSummary(); // Inicializa o contador
     });
+    window.addEventListener('scroll', updateMenuPositions);
+    window.addEventListener('resize', updateMenuPositions);
 }
 
 function setupSectionToggles() {
@@ -663,6 +669,19 @@ function setupSectionToggles() {
             section.classList.add('collapsed-section');
             icon.classList.remove('fa-chevron-up');
             icon.classList.add('fa-chevron-down');
+        }
+    });
+}
+
+function updateMenuPositions() {
+    const menus = [filterMenu, buffMenu, shareMenu];
+    const buttons = [floatingFilterButton, floatingBuffButton, floatingShareButton];
+    
+    menus.forEach((menu, index) => {
+        if (menu.classList.contains('show')) {
+            const buttonRect = buttons[index].getBoundingClientRect();
+            menu.style.bottom = `${window.innerHeight - buttonRect.top}px`;
+            menu.style.right = `${window.innerWidth - buttonRect.right + 60}px`;
         }
     });
 }

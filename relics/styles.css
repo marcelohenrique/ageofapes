@@ -222,9 +222,9 @@ h1 {
 
 /* Menus */
 .filter-menu, .buff-menu, .share-menu {
-    position: absolute;
-    bottom: 0;
-    right: 70px;
+    position: fixed;
+    bottom: 20px;
+    right: 80px;
     width: 280px;
     background-color: white;
     border-radius: 8px;
@@ -234,6 +234,21 @@ h1 {
     transform: translateY(10px);
     transition: all 0.3s ease;
     z-index: 1001;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+/* Ajuste específico para cada modal para evitar sobreposição */
+.filter-menu {
+    bottom: 20px;
+}
+
+.buff-menu {
+    bottom: 90px;
+}
+
+.share-menu {
+    bottom: 160px;
 }
 
 .filter-menu.show, .buff-menu.show, .share-menu.show {
@@ -242,10 +257,10 @@ h1 {
     transform: translateY(0);
 }
 
-.filter-menu-content, .buff-menu-content, .share-menu-content {
+/* .filter-menu-content, .buff-menu-content, .share-menu-content {
     max-height: 70vh;
     overflow-y: auto;
-}
+} */
 
 /* Share menu specific styles */
 .share-url {
