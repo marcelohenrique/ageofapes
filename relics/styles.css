@@ -261,11 +261,11 @@ h1 {
     gap: 10px;
 }
 
-.selected-counter {
+/* .selected-counter {
     font-size: 1.1rem;
     padding: 8px 16px;
     border-radius: 20px;
-}
+} */
 
 .relic-shake {
     animation: shake 0.5s ease-in-out;
@@ -379,4 +379,25 @@ h1 {
     .grid {
         overflow: hidden;
     }
+}
+
+/* Floating Counter */
+.floating-counter-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.selected-counter {
+    font-size: 1.1rem;
+    padding: 8px 16px;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.selected-counter:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
