@@ -544,8 +544,8 @@ function setupShareButton() {
         updateMenuPositions();
         
         // Obter IDs das relíquias selecionadas EM ORDEM
-        const selectedRelics = Array.from(document.getElementById('selected-relics-grid').children)
-            .filter(el => !el.classList.contains('placeholder-card'))
+        const selectedRelics = Array.from(document.querySelectorAll('#selected-relics-grid .relic[data-id]'))
+            .filter(el => !el.classList.contains('placeholder-relic'))
             .map(el => parseInt(el.dataset.id));
         
         // Codificar para Base64
@@ -593,14 +593,17 @@ function loadStateFromURL() {
             
             // Limpar seleções atuais
             const selectedGrid = document.getElementById('selected-relics-grid');
-            selectedGrid.innerHTML = '';
+            // selectedGrid.innerHTML = '';
             
             // Carregar relíquias selecionadas NA ORDEM CORRETA
             selectedIds.forEach(relicId => {
-                const relicData = relics.find(r => r.id === relicId);
-                if (relicData) {
-                    createRelic(relicData, selectedGrid);
-                }
+                const relicDiv = document.querySelector(`.relic[data-id="${relicId}"]`);
+                moveRelic(relicDiv, selectedGrid);
+
+                // const relicData = relics.find(r => r.id === relicId);
+                // if (relicData) {
+                //     createRelic(relicData, selectedGrid);
+                // }
             });
             
             // Preencher com placeholders se necessário
