@@ -257,6 +257,12 @@ function moveRelic(relic, targetGrid) {
     if (targetGrid === selectedGrid) {
         const emptySlot = selectedGrid.querySelector('.relic-slot .placeholder-card');
         if (emptySlot) {
+            // Remove a col-4 vazia da grade disponível
+            const emptyCol = relic.parentElement;
+            if (emptyCol && emptyCol.classList.contains('col-4')) {
+                emptyCol.remove();
+            }
+            
             emptySlot.parentElement.replaceChild(relic, emptySlot);
         } else {
             // Visual feedback for limit reached
@@ -266,8 +272,15 @@ function moveRelic(relic, targetGrid) {
             return;
         }
     } else {
+        const availableGridEmptyCol = relic.parentElement;
+        availableGridEmptyCol.appendChild(createPlaceholder());
+
         // Moving back to available grid
-        availableGrid.appendChild(relic);
+        // Criamos uma nova col-4 para a relíquia
+        const col = document.createElement("div");
+        col.className = "col-4";
+        col.appendChild(relic);
+        availableGrid.appendChild(col);
     }
     
     updateBuffSummary();
