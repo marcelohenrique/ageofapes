@@ -528,14 +528,14 @@ function decodeAllLevels(base64, relics) {
 }
 
 // Share functionality
+const floatingShareButton = document.getElementById('floating-share-button');
+const shareMenu = document.getElementById('share-menu');
 function setupShareButton() {
-    const shareButton = document.getElementById('floating-share-button');
-    const shareMenu = document.getElementById('share-menu');
     const copyButton = document.getElementById('copy-share-link');
     const closeButton = document.getElementById('close-share-menu');
     const shareUrlInput = document.querySelector('.share-url');
 
-    shareButton.addEventListener('click', (e) => {
+    floatingShareButton.addEventListener('click', (e) => {
         e.stopPropagation();
         shareMenu.classList.toggle('show');
         document.getElementById('filter-menu').classList.remove('show');
