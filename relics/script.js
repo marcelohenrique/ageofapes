@@ -288,8 +288,7 @@ function moveRelic(relic, targetGrid) {
 }
 
 function updatePlaceholders() {
-    const selectedCount = document.getElementById('selected-relics-grid')
-        .querySelectorAll('.relic:not(.placeholder-relic)').length;
+    const selectedCount = document.querySelectorAll('#selected-relics-grid .relic-slot .relic[data-id]').length;
     
     document.querySelectorAll('.placeholder-card').forEach(ph => {
         ph.style.opacity = selectedCount >= 18 ? '0.3' : '0.7';
@@ -328,18 +327,29 @@ function calculateTotalBuffs() {
     const selectedRelicsGrid = document.getElementById("selected-relics-grid");
     const buffs = {};
 
-    Array.from(selectedRelicsGrid.children).forEach(relicElement => {
-        if (!relicElement.classList.contains("placeholder-card") && relicElement.dataset.id) {
-            const relicId = parseInt(relicElement.dataset.id);
-            const relic = relics.find(r => r.id === relicId);
+    // Percorre todos os slots de relíquias selecionadas
+    selectedRelicsGrid.querySelectorAll('.relic-slot .relic[data-id]').forEach(relicElement => {
+        const relicId = parseInt(relicElement.dataset.id);
+        const relic = relics.find(r => r.id === relicId);
+        
+        if (relic) {
             const level = loadLevelFromLocalStorage(relic);
-
-            // Only process displayBuffs (ignore main relic.buff)
-            relic.displayBuffs?.forEach(displayBuff => {
-                const buffKey = `${displayBuff.name}${displayBuff.uom ? ` (${displayBuff.uom})` : ''}`;
-                const displayBuffValue = displayBuff.values[level - 1] || 0;
-                buffs[buffKey] = (buffs[buffKey] || 0) + displayBuffValue;
-            });
+            
+            // Processa os displayBuffs
+            if (relic.displayBuffs) {
+                relic.displayBuffs.forEach(displayBuff => {
+                    const buffKey = displayBuff.name + (displayBuff.uom ? ` (${displayBuff.uom})` : '');
+                    const buffValue = level > 0 ? (displayBuff.values[level - 1] || 0) : 0;
+                    
+                    if (buffValue !== 0) {
+                        if (buffs[buffKey]) {
+                            buffs[buffKey] += buffValue;
+                        } else {
+                            buffs[buffKey] = buffValue;
+                        }
+                    }
+                });
+            }
         }
     });
 
@@ -347,8 +357,7 @@ function calculateTotalBuffs() {
 }
 
 function updateBuffSummary() {
-    const count = document.getElementById('selected-relics-grid')
-        .querySelectorAll('.relic[data-id]').length;
+    const count = document.querySelectorAll('#selected-relics-grid .relic-slot .relic[data-id]').length;
     
     const counter = document.getElementById('selected-count');
     counter.textContent = count;
@@ -364,37 +373,23 @@ function updateBuffSummary() {
         return;
     }
 
-    const sortedBuffs = Object.keys(buffs).sort();
+    // Ordena os buffs por nome
+    const sortedBuffNames = Object.keys(buffs).sort();
 
-    sortedBuffs.forEach(buffName => {
+    sortedBuffNames.forEach(buffName => {
         const buffItem = document.createElement("div");
         buffItem.classList.add("buff-summary-item");
 
         const nameSpan = document.createElement("span");
         nameSpan.classList.add("buff-summary-name");
-        
-        // Extract base buff name (remove parenthesized units if they exist)
-        const baseName = buffName.replace(/\s*\([^)]*\)$/, '');
-        nameSpan.textContent = baseName;
+        nameSpan.textContent = buffName.replace(/ \(.*\)$/, ''); // Remove a unidade do nome
 
         const valueSpan = document.createElement("span");
         valueSpan.classList.add("buff-summary-value");
         
-        // Check if buffName ends with "(%)" to determine if we should show % symbol
-        const shouldShowPercent = buffName.endsWith("(%)");
-        // Or check if it has any parenthesized unit (for backward compatibility)
-        const hasUOM = /\(([^)]+)\)$/.test(buffName);
-        
-        // Show unit only if it's % or if there are no parentheses (matching card behavior)
-        if (shouldShowPercent) {
-            valueSpan.textContent = buffs[buffName] + '%';
-        } else if (!hasUOM) {
-            // If no parentheses, show raw value (matching card behavior)
-            valueSpan.textContent = buffs[buffName];
-        } else {
-            // If has parentheses but not %, show raw value (matching card behavior)
-            valueSpan.textContent = buffs[buffName];
-        }
+        // Verifica se é um buff com porcentagem
+        const isPercentage = buffName.includes('(%)');
+        valueSpan.textContent = isPercentage ? `${buffs[buffName]}%` : buffs[buffName];
 
         buffItem.appendChild(nameSpan);
         buffItem.appendChild(valueSpan);
