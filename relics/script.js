@@ -601,10 +601,12 @@ function loadStateFromURL() {
                 // }
             });
             
-            // Preencher com placeholders se necessário
-            while (selectedGrid.children.length < 18) { // 16 seleções + 2 de buffer
-                selectedGrid.appendChild(createPlaceholder());
-            }
+            // // Preencher com placeholders se necessário
+            // // Conta quantos slots de relíquias existem
+            // const slotCount = document.querySelectorAll('#selected-relics-grid .relic-slot').length;
+            // while (slotCount < 18) {
+            //     selectedGrid.appendChild(createPlaceholder());
+            // }
             
             updateBuffSummary();
         } catch (e) {
