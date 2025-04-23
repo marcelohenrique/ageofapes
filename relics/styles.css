@@ -322,10 +322,34 @@ h1 {
 
 /* Mobile styles */
 @media (max-width: 767px) {
-    .floating-filter-container, 
+    /* Estilos para os botões flutuantes em mobile */
+    .floating-filter-container,
     .floating-buff-container,
     .floating-share-container {
-        display: none;
+        bottom: 10px;
+        right: 10px;
+    }
+    
+    .floating-buff-container {
+        bottom: 70px;
+    }
+    
+    .floating-share-container {
+        bottom: 130px;
+    }
+    
+    .floating-button {
+        width: 48px;
+        height: 48px;
+        font-size: 1.3rem;
+    }
+    
+    /* Ajuste os menus para caber na tela */
+    .filter-menu, .buff-menu, .share-menu {
+        width: 90%;
+        max-width: 280px;
+        right: 10px;
+        left: auto;
     }
 
     /* Selected Relics Grid - Mobile */
