@@ -5998,5 +5998,48 @@
                 "uom": "%"
             }
         ]
+    },
+    {
+        "id": 142,
+        "name": "Amber",
+        "image": "images/amber.png",
+        "level": 5,
+        "unit": "Hitters",
+        "quality": "Super",
+        "buff": {
+            "name": "Defense of Hitters",
+            "values": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "uom": "%"
+        },
+        "displayBuffs": [
+            {
+                "name": "Damage dealt by Hitters against Pilots",
+                "values": [
+                    6,
+                    12,
+                    18,
+                    24,
+                    30
+                ],
+                "uom": "%"
+            },
+            {
+                "name": "Defense of Hitters",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ],
+                "uom": "%"
+            }
+        ]
     }
 ]
