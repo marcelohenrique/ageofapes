@@ -242,7 +242,7 @@ function initializePlaceholders() {
         for (let i = 0; i < 3; i++) {
             const slot = document.createElement('div');
             // slot.className = 'relic-slot';
-            slot.className = 'col relic-slot';
+            slot.className = 'col-4 relic-slot';
             slot.appendChild(createPlaceholder());
             // row.appendChild(slot);
             relicRow.appendChild(slot);
