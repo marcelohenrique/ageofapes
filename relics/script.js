@@ -167,6 +167,19 @@ function createPlaceholder() {
 
     const relicElement = document.createElement("div");
     relicElement.classList.add("relic", "placeholder-relic");
+    
+    // Adicionar botão de bloqueio
+    const lockButton = document.createElement("button");
+    lockButton.classList.add("lock-button", "btn", "btn-sm");
+    lockButton.innerHTML = '<i class="fas fa-lock-open"></i>';
+    lockButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        placeholder.classList.toggle('locked');
+        lockButton.querySelector('i').classList.toggle('fa-lock');
+        lockButton.querySelector('i').classList.toggle('fa-lock-open');
+        saveLockState(placeholder.dataset.slotId, placeholder.classList.contains('locked'));
+    });
+    relicElement.appendChild(lockButton);
 
     const placeholderCircle = document.createElement("div");
     placeholderCircle.classList.add("placeholder-circle");
@@ -214,15 +227,9 @@ function initializePlaceholders() {
     
     const labels = ['6F', '5F', '4F', '3F', '2F', '1F'];
     
-    labels.forEach(label => {
-        // const col = document.createElement('div');
-        // col.className = 'col';
-        // selectedGrid.appendChild(col);
-        
+    labels.forEach((label, rowIndex) => {
         const row = document.createElement('div');
-        // row.className = 'selected-row';
         row.className = 'row';
-        // col.appendChild(row);
         selectedGrid.appendChild(row);
         
         const labelDiv = document.createElement('div');
@@ -238,13 +245,17 @@ function initializePlaceholders() {
         relicRow.className = 'row';
         relicsDiv.appendChild(relicRow);
        
-        // Create 3 relic slots per row
         for (let i = 0; i < 3; i++) {
             const slot = document.createElement('div');
-            // slot.className = 'relic-slot';
             slot.className = 'col-4 relic-slot';
-            slot.appendChild(createPlaceholder());
-            // row.appendChild(slot);
+            const placeholder = createPlaceholder();
+            placeholder.dataset.slotId = `slot-${rowIndex}-${i}`; // ID único para cada slot
+            if (loadLockState(placeholder.dataset.slotId)) {
+                placeholder.classList.add('locked');
+                placeholder.querySelector('.lock-button i').classList.remove('fa-lock-open');
+                placeholder.querySelector('.lock-button i').classList.add('fa-lock');
+            }
+            slot.appendChild(placeholder);
             relicRow.appendChild(slot);
         }
     });
@@ -255,7 +266,7 @@ function moveRelic(relic, targetGrid) {
     const availableGrid = document.getElementById('available-relics-grid');
     
     if (targetGrid === selectedGrid) {
-        const emptySlot = selectedGrid.querySelector('.relic-slot .placeholder-card');
+        const emptySlot = selectedGrid.querySelector('.relic-slot .placeholder-card:not(.locked)');
         if (emptySlot) {
             // Remove a col-4 vazia da grade disponível
             const emptyCol = relic.parentElement;
@@ -265,7 +276,7 @@ function moveRelic(relic, targetGrid) {
             
             emptySlot.parentElement.replaceChild(relic, emptySlot);
         } else {
-            // Visual feedback for limit reached
+            // Visual feedback for limit reached or all slots locked
             relic.classList.add('relic-shake');
             setTimeout(() => relic.classList.remove('relic-shake'), 500);
             showLimitAlert();
@@ -285,6 +296,14 @@ function moveRelic(relic, targetGrid) {
     
     updateBuffSummary();
     updatePlaceholders();
+}
+
+function saveLockState(slotId, isLocked) {
+    localStorage.setItem(`slot-${slotId}-locked`, isLocked);
+}
+
+function loadLockState(slotId) {
+    return localStorage.getItem(`slot-${slotId}-locked`) === 'true';
 }
 
 function updatePlaceholders() {

@@ -504,3 +504,47 @@ h1 {
 .buff-menu-content {
     padding: 15px;
 }
+
+/* Estilos para o botão de bloqueio no placeholder */
+.placeholder-card .lock-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.placeholder-card:hover .lock-button {
+    opacity: 1;
+}
+
+.placeholder-card.locked {
+    position: relative;
+    border: 2px solid #dc3545;
+}
+
+.placeholder-card.locked::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(220, 53, 69, 0.1);
+    pointer-events: none;
+    border-radius: 8px;
+}
+
+.placeholder-card.locked .placeholder-circle {
+    background-color: #dc3545;
+}
+
+.placeholder-card.locked .placeholder-text {
+    color: #dc3545;
+}
