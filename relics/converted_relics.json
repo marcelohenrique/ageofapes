@@ -6041,5 +6041,48 @@
                 "uom": "%"
             }
         ]
+    },
+    {
+        "id": 143,
+        "name": "Time Capsule",
+        "image": "images/timecapsule.png",
+        "level": 5,
+        "unit": "Hitters",
+        "quality": "Super",
+        "buff": {
+            "name": "Hitter Normal Attack Damage",
+            "values": [
+                2,
+                4,
+                6,
+                8,
+                10
+            ],
+            "uom": "%"
+        },
+        "displayBuffs": [
+            {
+                "name": "Hitter Defense with the Mech",
+                "values": [
+                    6,
+                    12,
+                    18,
+                    24,
+                    30
+                ],
+                "uom": "%"
+            },
+            {
+                "name": "Hitter Normal Attack Damage",
+                "values": [
+                    6,
+                    12,
+                    18,
+                    24,
+                    30
+                ],
+                "uom": "%"
+            }
+        ]
     }
 ]
