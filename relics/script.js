@@ -178,6 +178,7 @@ function createPlaceholder() {
         lockButton.querySelector('i').classList.toggle('fa-lock');
         lockButton.querySelector('i').classList.toggle('fa-lock-open');
         saveLockState(placeholder.dataset.slotId, placeholder.classList.contains('locked'));
+        updatePlaceholders(); // Atualiza o contador quando o estado muda
     });
     relicElement.appendChild(lockButton);
 
@@ -259,13 +260,25 @@ function initializePlaceholders() {
             relicRow.appendChild(slot);
         }
     });
+
+    updatePlaceholders(); // Atualiza o contador com os valores iniciais
 }
 
 function moveRelic(relic, targetGrid) {
     const selectedGrid = document.getElementById('selected-relics-grid');
     const availableGrid = document.getElementById('available-relics-grid');
-    
+
     if (targetGrid === selectedGrid) {
+        const availableSlots = countAvailableSlots();
+        const selectedCount = document.querySelectorAll('#selected-relics-grid .relic-slot .relic[data-id]').length;
+        
+        if (selectedCount >= availableSlots) {
+            relic.classList.add('relic-shake');
+            setTimeout(() => relic.classList.remove('relic-shake'), 500);
+            showLimitAlert();
+            return;
+        }
+        
         const emptySlot = selectedGrid.querySelector('.relic-slot .placeholder-card:not(.locked)');
         if (emptySlot) {
             // Remove a col-4 vazia da grade disponível
@@ -276,7 +289,7 @@ function moveRelic(relic, targetGrid) {
             
             emptySlot.parentElement.replaceChild(relic, emptySlot);
         } else {
-            // Visual feedback for limit reached or all slots locked
+            // Visual feedback for no available slots
             relic.classList.add('relic-shake');
             setTimeout(() => relic.classList.remove('relic-shake'), 500);
             showLimitAlert();
@@ -306,17 +319,28 @@ function loadLockState(slotId) {
     return localStorage.getItem(`slot-${slotId}-locked`) === 'true';
 }
 
+function countAvailableSlots() {
+    const totalSlots = 18;
+    const lockedSlots = document.querySelectorAll('.placeholder-card.locked').length;
+    return totalSlots - lockedSlots;
+}
+
 function updatePlaceholders() {
     const selectedCount = document.querySelectorAll('#selected-relics-grid .relic-slot .relic[data-id]').length;
+    const availableSlots = countAvailableSlots();
     
     document.querySelectorAll('.placeholder-card').forEach(ph => {
-        ph.style.opacity = selectedCount >= 18 ? '0.3' : '0.7';
-        ph.style.pointerEvents = selectedCount >= 18 ? 'none' : 'auto';
+        ph.style.opacity = selectedCount >= availableSlots ? '0.3' : '0.7';
+        ph.style.pointerEvents = selectedCount >= availableSlots ? 'none' : 'auto';
     });
     
     const counter = document.getElementById('selected-count');
+    const maxSlots = document.getElementById('max-slots');
+    
     counter.textContent = selectedCount;
-    counter.style.color = selectedCount >= 18 ? '#dc3545' : '#28a745';
+    maxSlots.textContent = availableSlots;
+    
+    counter.style.color = selectedCount >= availableSlots ? '#dc3545' : '#28a745';
 }
 
 function filterRelics() {
