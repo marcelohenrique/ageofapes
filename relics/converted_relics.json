@@ -5912,5 +5912,48 @@
                 "uom": "%"
             }
         ]
+    },
+    {
+        "id": 140,
+        "name": "Igloo Model",
+        "image": "images/igloomodel.png",
+        "level": 5,
+        "unit": "Pilots",
+        "quality": "Super",
+        "buff": {
+            "name": "Pilot Normal Attack Damage",
+            "values": [
+                2,
+                4,
+                6,
+                8,
+                10
+            ],
+            "uom": "%"
+        },
+        "displayBuffs": [
+            {
+                "name": "Pilots Defense with the Mech",
+                "values": [
+                    6,
+                    12,
+                    18,
+                    24,
+                    30
+                ],
+                "uom": "%"
+            },
+            {
+                "name": "Pilot Normal Attack Damage",
+                "values": [
+                    6,
+                    12,
+                    18,
+                    24,
+                    30
+                ],
+                "uom": "%"
+            }
+        ]
     }
 ]
