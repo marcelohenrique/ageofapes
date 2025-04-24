@@ -5955,5 +5955,48 @@
                 "uom": "%"
             }
         ]
+    },
+    {
+        "id": 141,
+        "name": "Everlasting Flower",
+        "image": "images/everlastingflower.png",
+        "level": 5,
+        "unit": "Hitters",
+        "quality": "Super",
+        "buff": {
+            "name": "Attack of Hitters",
+            "values": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "uom": "%"
+        },
+        "displayBuffs": [
+            {
+                "name": "Hitter Attack vs. Mechs",
+                "values": [
+                    10,
+                    20,
+                    30,
+                    40,
+                    50
+                ],
+                "uom": "%"
+            },
+            {
+                "name": "Attack of Hitters",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ],
+                "uom": "%"
+            }
+        ]
     }
 ]
