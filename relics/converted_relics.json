@@ -2,7 +2,7 @@
     {
         "id": 1,
         "name": "Banana",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/banana.webp",
+        "image": "images/banana.webp",
         "level": 4,
         "unit": "Utility",
         "quality": "Rare",
@@ -42,7 +42,7 @@
     {
         "id": 2,
         "name": "Space Helmet",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/spacehelmet.webp",
+        "image": "images/spacehelmet.webp",
         "level": 4,
         "unit": "Mutants",
         "quality": "Rare",
@@ -82,7 +82,7 @@
     {
         "id": 3,
         "name": "Lakeside Cushion",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/lakesidecushion.webp",
+        "image": "images/lakesidecushion.webp",
         "level": 5,
         "unit": "Utility",
         "quality": "Legendary",
@@ -125,7 +125,7 @@
     {
         "id": 4,
         "name": "Fishing Net",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/fishingnet.webp",
+        "image": "images/fishingnet.webp",
         "level": 5,
         "unit": "Gathering",
         "quality": "Epic",
@@ -168,7 +168,7 @@
     {
         "id": 5,
         "name": "Fishing Pole",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/fishingpole.webp",
+        "image": "images/fishingpole.webp",
         "level": 5,
         "unit": "Gathering",
         "quality": "Epic",
@@ -211,7 +211,7 @@
     {
         "id": 6,
         "name": "Figurine",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/figurine.webp",
+        "image": "images/figurine.webp",
         "level": 5,
         "unit": "Hitters",
         "quality": "Legendary",
@@ -254,7 +254,7 @@
     {
         "id": 7,
         "name": "Polypod Toy",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/polypodtoy.webp",
+        "image": "images/polypodtoy.webp",
         "level": 5,
         "unit": "Pilots",
         "quality": "Legendary",
@@ -297,7 +297,7 @@
     {
         "id": 8,
         "name": "Shush Machine",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/shushmachine.webp",
+        "image": "images/shushmachine.webp",
         "level": 5,
         "unit": "Shooters",
         "quality": "Legendary",
@@ -340,7 +340,7 @@
     {
         "id": 9,
         "name": "Scuba Mask",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/scubamask.webp",
+        "image": "images/scubamask.webp",
         "level": 5,
         "unit": "Shooters",
         "quality": "Epic",
@@ -383,7 +383,7 @@
     {
         "id": 10,
         "name": "Sunblocker",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/sunblocker.webp",
+        "image": "images/sunblocker.webp",
         "level": 5,
         "unit": "Pilots",
         "quality": "Epic",
@@ -426,7 +426,7 @@
     {
         "id": 11,
         "name": "Beach Shield",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/beachshield.webp",
+        "image": "images/beachshield.webp",
         "level": 5,
         "unit": "Hitters",
         "quality": "Epic",
@@ -469,7 +469,7 @@
     {
         "id": 12,
         "name": "Life Preserver",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/lifepreserver.webp",
+        "image": "images/lifepreserver.webp",
         "level": 5,
         "unit": "Wall Breakers",
         "quality": "Epic",
@@ -512,7 +512,7 @@
     {
         "id": 13,
         "name": "Medical Notes",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/medicalnotes.webp",
+        "image": "images/medicalnotes.webp",
         "level": 3,
         "unit": "Utility",
         "quality": "Basic",
@@ -549,7 +549,7 @@
     {
         "id": 14,
         "name": "Primitive Injector",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/primitiveinjector.webp",
+        "image": "images/primitiveinjector.webp",
         "level": 3,
         "unit": "Mutants",
         "quality": "Basic",
@@ -586,7 +586,7 @@
     {
         "id": 15,
         "name": "Bitcoin",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/bitcoin.webp",
+        "image": "images/bitcoin.webp",
         "level": 5,
         "unit": "Hitters",
         "quality": "Legendary",
@@ -629,7 +629,7 @@
     {
         "id": 16,
         "name": "Red Arrowhead",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/redarrowhead.webp",
+        "image": "images/redarrowhead.webp",
         "level": 5,
         "unit": "Pilots",
         "quality": "Legendary",
@@ -672,7 +672,7 @@
     {
         "id": 17,
         "name": "Gold Bars",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/goldbars.webp",
+        "image": "images/goldbars.webp",
         "level": 5,
         "unit": "Shooters",
         "quality": "Epic",
@@ -715,7 +715,7 @@
     {
         "id": 18,
         "name": "Oral Massager",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/oralmassager.webp",
+        "image": "images/oralmassager.webp",
         "level": 5,
         "unit": "Utility",
         "quality": "Epic",
@@ -758,7 +758,7 @@
     {
         "id": 19,
         "name": "Mad Cap",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/madcap.webp",
+        "image": "images/madcap.webp",
         "level": 5,
         "unit": "Utility",
         "quality": "Epic",
@@ -801,7 +801,7 @@
     {
         "id": 20,
         "name": "Inflatable Ball",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/inflatableball.webp",
+        "image": "images/inflatableball.webp",
         "level": 5,
         "unit": "Utility",
         "quality": "Epic",
@@ -844,7 +844,7 @@
     {
         "id": 21,
         "name": "Zombie Stick",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/zombiestick.webp",
+        "image": "images/zombiestick.webp",
         "level": 5,
         "unit": "Hitters",
         "quality": "Legendary",
@@ -887,7 +887,7 @@
     {
         "id": 22,
         "name": "Rage Ball",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/rageball.webp",
+        "image": "images/rageball.webp",
         "level": 5,
         "unit": "Shooters",
         "quality": "Legendary",
@@ -930,7 +930,7 @@
     {
         "id": 23,
         "name": "Oversized Wallet",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/oversizedwallet.webp",
+        "image": "images/oversizedwallet.webp",
         "level": 5,
         "unit": "Wall Breakers",
         "quality": "Legendary",
@@ -973,7 +973,7 @@
     {
         "id": 24,
         "name": "Wearable Umbrella",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/wearableumbrella.webp",
+        "image": "images/wearableumbrella.webp",
         "level": 5,
         "unit": "Pilots",
         "quality": "Legendary",
@@ -1016,7 +1016,7 @@
     {
         "id": 25,
         "name": "House/Car Model",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/housecarmodel.webp",
+        "image": "images/housecarmodel.webp",
         "level": 5,
         "unit": "Utility",
         "quality": "Epic",
@@ -1059,7 +1059,7 @@
     {
         "id": 26,
         "name": "Instruction Tool",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/instructiontool.webp",
+        "image": "images/instructiontool.webp",
         "level": 5,
         "unit": "Utility",
         "quality": "Epic",
@@ -1102,7 +1102,7 @@
     {
         "id": 27,
         "name": "Metal Drum",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/metaldrum.webp",
+        "image": "images/metaldrum.webp",
         "level": 4,
         "unit": "Pilots",
         "quality": "Rare",
@@ -1142,7 +1142,7 @@
     {
         "id": 28,
         "name": "Magic Box",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/magicbox.webp",
+        "image": "images/magicbox.webp",
         "level": 4,
         "unit": "Hitters",
         "quality": "Rare",
@@ -1182,7 +1182,7 @@
     {
         "id": 29,
         "name": "Wasabi Can",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/wasabican.webp",
+        "image": "images/wasabican.webp",
         "level": 4,
         "unit": "Shooters",
         "quality": "Rare",
@@ -1222,7 +1222,7 @@
     {
         "id": 30,
         "name": "Rope",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/rope.webp",
+        "image": "images/rope.webp",
         "level": 5,
         "unit": "Hitters",
         "quality": "Legendary",
@@ -1265,7 +1265,7 @@
     {
         "id": 31,
         "name": "Lifesaving Wheel",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/lifesavingwheel.webp",
+        "image": "images/lifesavingwheel.webp",
         "level": 5,
         "unit": "Pilots",
         "quality": "Legendary",
@@ -1308,7 +1308,7 @@
     {
         "id": 32,
         "name": "Lantern",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/lantern.webp",
+        "image": "images/lantern.webp",
         "level": 5,
         "unit": "Shooters",
         "quality": "Legendary",
@@ -1351,7 +1351,7 @@
     {
         "id": 33,
         "name": "Vegetable Mask",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/vegetablemask.webp",
+        "image": "images/vegetablemask.webp",
         "level": 5,
         "unit": "Utility",
         "quality": "Epic",
@@ -1394,7 +1394,7 @@
     {
         "id": 34,
         "name": "Surprised Totem",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/surprisedtotem.webp",
+        "image": "images/surprisedtotem.webp",
         "level": 5,
         "unit": "Utility",
         "quality": "Epic",
@@ -1437,7 +1437,7 @@
     {
         "id": 35,
         "name": "Bench Totem",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/benchtotem.webp",
+        "image": "images/benchtotem.webp",
         "level": 5,
         "unit": "Utility",
         "quality": "Epic",
@@ -1480,7 +1480,7 @@
     {
         "id": 36,
         "name": "Long-Nosed Totem",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/longnosedtotem.webp",
+        "image": "images/longnosedtotem.webp",
         "level": 5,
         "unit": "Utility",
         "quality": "Epic",
@@ -1523,7 +1523,7 @@
     {
         "id": 37,
         "name": "Watercolor Brush",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/watercolorbrush.webp",
+        "image": "images/watercolorbrush.webp",
         "level": 5,
         "unit": "Shooters",
         "quality": "Epic",
@@ -1566,7 +1566,7 @@
     {
         "id": 38,
         "name": "Bulletin Board",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/bulletinboard.webp",
+        "image": "images/bulletinboard.webp",
         "level": 5,
         "unit": "Wall Breakers",
         "quality": "Epic",
@@ -1609,7 +1609,7 @@
     {
         "id": 39,
         "name": "Splash-Proof Helmet",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/splashproofhelmet.webp",
+        "image": "images/splashproofhelmet.webp",
         "level": 5,
         "unit": "Hitters",
         "quality": "Epic",
@@ -1652,7 +1652,7 @@
     {
         "id": 40,
         "name": "Wooden Cup",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/woodencup.webp",
+        "image": "images/woodencup.webp",
         "level": 4,
         "unit": "Shooters",
         "quality": "Rare",
@@ -1692,7 +1692,7 @@
     {
         "id": 41,
         "name": "Baby Stroller",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/babystroller.webp",
+        "image": "images/babystroller.webp",
         "level": 4,
         "unit": "Hitters",
         "quality": "Rare",
@@ -1732,7 +1732,7 @@
     {
         "id": 42,
         "name": "Alarm Bell",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/alarmbell.webp",
+        "image": "images/alarmbell.webp",
         "level": 4,
         "unit": "Pilots",
         "quality": "Rare",
@@ -1772,7 +1772,7 @@
     {
         "id": 43,
         "name": "Wooden Shield",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/woodenshield.webp",
+        "image": "images/woodenshield.webp",
         "level": 4,
         "unit": "Wall Breakers",
         "quality": "Rare",
@@ -1812,7 +1812,7 @@
     {
         "id": 44,
         "name": "Surgical Knife",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/surgicalknife.webp",
+        "image": "images/surgicalknife.webp",
         "level": 4,
         "unit": "Hitters",
         "quality": "Rare",
@@ -1852,7 +1852,7 @@
     {
         "id": 45,
         "name": "Bloodletter Axe",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/bloodletteraxe.webp",
+        "image": "images/bloodletteraxe.webp",
         "level": 4,
         "unit": "Pilots",
         "quality": "Rare",
@@ -1892,7 +1892,7 @@
     {
         "id": 46,
         "name": "Dental Picker",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/dentalpicker.webp",
+        "image": "images/dentalpicker.webp",
         "level": 4,
         "unit": "Mutants",
         "quality": "Rare",
@@ -1932,7 +1932,7 @@
     {
         "id": 47,
         "name": "Orthopedic Hammer",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/orthopedichammer.webp",
+        "image": "images/orthopedichammer.webp",
         "level": 4,
         "unit": "Pilots",
         "quality": "Rare",
@@ -1972,7 +1972,7 @@
     {
         "id": 48,
         "name": "Street Totem",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/streettotem.webp",
+        "image": "images/streettotem.webp",
         "level": 4,
         "unit": "Pilots",
         "quality": "Rare",
@@ -2012,7 +2012,7 @@
     {
         "id": 49,
         "name": "Street Light",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/streetlight.webp",
+        "image": "images/streetlight.webp",
         "level": 4,
         "unit": "Wall Breakers",
         "quality": "Rare",
@@ -2052,7 +2052,7 @@
     {
         "id": 50,
         "name": "Street Blocker",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/streetblocker.webp",
+        "image": "images/streetblocker.webp",
         "level": 4,
         "unit": "Hitters",
         "quality": "Rare",
@@ -2092,7 +2092,7 @@
     {
         "id": 51,
         "name": "Street Water Fountain",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/streetwaterfountain.webp",
+        "image": "images/streetwaterfountain.webp",
         "level": 4,
         "unit": "Shooters",
         "quality": "Rare",
@@ -2132,7 +2132,7 @@
     {
         "id": 52,
         "name": "Throat Protector",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/throatprotector.webp",
+        "image": "images/throatprotector.webp",
         "level": 5,
         "unit": "Gathering",
         "quality": "Epic",
@@ -2175,7 +2175,7 @@
     {
         "id": 53,
         "name": "Oral Protector",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/oralprotector.webp",
+        "image": "images/oralprotector.webp",
         "level": 5,
         "unit": "Gathering",
         "quality": "Epic",
@@ -2218,7 +2218,7 @@
     {
         "id": 54,
         "name": "Fishing Machine",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/fishingmachine.webp",
+        "image": "images/fishingmachine.webp",
         "level": 5,
         "unit": "Pilots",
         "quality": "Legendary",
@@ -2261,7 +2261,7 @@
     {
         "id": 55,
         "name": "Pesticide Sprayer",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/pesticidesprayer.webp",
+        "image": "images/pesticidesprayer.webp",
         "level": 5,
         "unit": "Hitters",
         "quality": "Legendary",
@@ -2304,7 +2304,7 @@
     {
         "id": 56,
         "name": "Aerial Net Puller",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/aerialnetpuller.webp",
+        "image": "images/aerialnetpuller.webp",
         "level": 5,
         "unit": "Shooters",
         "quality": "Legendary",
@@ -2347,7 +2347,7 @@
     {
         "id": 57,
         "name": "Starfish",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/starfish.webp",
+        "image": "images/starfish.webp",
         "level": 5,
         "unit": "Pilots",
         "quality": "Legendary",
@@ -2390,7 +2390,7 @@
     {
         "id": 58,
         "name": "Fantasy Crown",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/fantasycrown.webp",
+        "image": "images/fantasycrown.webp",
         "level": 5,
         "unit": "Hitters",
         "quality": "Legendary",
@@ -2433,7 +2433,7 @@
     {
         "id": 59,
         "name": "Doctor Octopus",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/doctoroctopus.webp",
+        "image": "images/doctoroctopus.webp",
         "level": 5,
         "unit": "Shooters",
         "quality": "Legendary",
@@ -2476,7 +2476,7 @@
     {
         "id": 60,
         "name": "Butterfly Helmet",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/butterflyhelmet.webp",
+        "image": "images/butterflyhelmet.webp",
         "level": 5,
         "unit": "Pilots",
         "quality": "Legendary",
@@ -2519,7 +2519,7 @@
     {
         "id": 61,
         "name": "Rubber Soldier",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/rubbersoldier.webp",
+        "image": "images/rubbersoldier.webp",
         "level": 5,
         "unit": "Hitters",
         "quality": "Legendary",
@@ -2562,7 +2562,7 @@
     {
         "id": 62,
         "name": "Neon Billboard",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/neonbillboard.webp",
+        "image": "images/neonbillboard.webp",
         "level": 5,
         "unit": "Shooters",
         "quality": "Legendary",
@@ -2605,7 +2605,7 @@
     {
         "id": 63,
         "name": "Camera",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/camera.webp",
+        "image": "images/camera.webp",
         "level": 5,
         "unit": "Pilots",
         "quality": "Legendary",
@@ -2648,7 +2648,7 @@
     {
         "id": 64,
         "name": "Time Shield",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/timeshield.webp",
+        "image": "images/timeshield.webp",
         "level": 5,
         "unit": "Hitters",
         "quality": "Legendary",
@@ -2691,7 +2691,7 @@
     {
         "id": 65,
         "name": "Light Summoner",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/lightsummoner.webp",
+        "image": "images/lightsummoner.webp",
         "level": 5,
         "unit": "Shooters",
         "quality": "Legendary",
@@ -2734,7 +2734,7 @@
     {
         "id": 66,
         "name": "Roasting Trident",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/roastingtrident.webp",
+        "image": "images/roastingtrident.webp",
         "level": 5,
         "unit": "Pilots",
         "quality": "Legendary",
@@ -2777,7 +2777,7 @@
     {
         "id": 67,
         "name": "Booby Trap",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/boobytrap.webp",
+        "image": "images/boobytrap.webp",
         "level": 5,
         "unit": "Hitters",
         "quality": "Legendary",
@@ -2820,7 +2820,7 @@
     {
         "id": 68,
         "name": "Silent Dart",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/silentdart.webp",
+        "image": "images/silentdart.webp",
         "level": 5,
         "unit": "Shooters",
         "quality": "Legendary",
@@ -2863,7 +2863,7 @@
     {
         "id": 69,
         "name": "Rocksplitter",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/rocksplitter.webp",
+        "image": "images/rocksplitter.webp",
         "level": 5,
         "unit": "Pilots",
         "quality": "Legendary",
@@ -2906,7 +2906,7 @@
     {
         "id": 70,
         "name": "Center-Earth Transporter",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/centerearthtransporter.webp",
+        "image": "images/centerearthtransporter.webp",
         "level": 5,
         "unit": "Hitters",
         "quality": "Legendary",
@@ -2949,7 +2949,7 @@
     {
         "id": 71,
         "name": "Spiral Gun",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/spiralgun.webp",
+        "image": "images/spiralgun.webp",
         "level": 5,
         "unit": "Shooters",
         "quality": "Legendary",
@@ -2992,7 +2992,7 @@
     {
         "id": 72,
         "name": "Drill Bit",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/drillbit.webp",
+        "image": "images/drillbit.webp",
         "level": 5,
         "unit": "Wall Breakers",
         "quality": "Legendary",
@@ -3035,7 +3035,7 @@
     {
         "id": 73,
         "name": "Spike Barrel",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/spikebarrel.webp",
+        "image": "images/spikebarrel.webp",
         "level": 5,
         "unit": "Wall Breakers",
         "quality": "Legendary",
@@ -3078,7 +3078,7 @@
     {
         "id": 74,
         "name": "Portable Cannon",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/portablecannon.webp",
+        "image": "images/portablecannon.webp",
         "level": 5,
         "unit": "Wall Breakers",
         "quality": "Legendary",
@@ -3121,7 +3121,7 @@
     {
         "id": 75,
         "name": "Gold Candlestick",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/goldcandlestick.webp",
+        "image": "images/goldcandlestick.webp",
         "level": 5,
         "unit": "Wall Breakers",
         "quality": "Legendary",
@@ -3164,7 +3164,7 @@
     {
         "id": 76,
         "name": "Gold Pocket Watch",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/goldpocketwatch.webp",
+        "image": "images/goldpocketwatch.webp",
         "level": 5,
         "unit": "Wall Breakers",
         "quality": "Legendary",
@@ -3207,7 +3207,7 @@
     {
         "id": 77,
         "name": "Gold Scale",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/goldscale.webp",
+        "image": "images/goldscale.webp",
         "level": 5,
         "unit": "Wall Breakers",
         "quality": "Legendary",
@@ -3250,7 +3250,7 @@
     {
         "id": 78,
         "name": "Double Hammer",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/doublehammer.webp",
+        "image": "images/doublehammer.webp",
         "level": 5,
         "unit": "Pilots",
         "quality": "Legendary",
@@ -3293,7 +3293,7 @@
     {
         "id": 79,
         "name": "Leather Gloves",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/leathergloves.webp",
+        "image": "images/leathergloves.webp",
         "level": 5,
         "unit": "Hitters",
         "quality": "Legendary",
@@ -3336,7 +3336,7 @@
     {
         "id": 80,
         "name": "Football",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/football.webp",
+        "image": "images/football.webp",
         "level": 5,
         "unit": "Shooters",
         "quality": "Legendary",
@@ -3379,7 +3379,7 @@
     {
         "id": 81,
         "name": "Riding Vest",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/ridingvest.webp",
+        "image": "images/ridingvest.webp",
         "level": 5,
         "unit": "Pilots",
         "quality": "Legendary",
@@ -3422,7 +3422,7 @@
     {
         "id": 82,
         "name": "Social Divider",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/socialdivider.webp",
+        "image": "images/socialdivider.webp",
         "level": 5,
         "unit": "Hitters",
         "quality": "Legendary",
@@ -3465,7 +3465,7 @@
     {
         "id": 83,
         "name": "Goggles",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/goggles.webp",
+        "image": "images/goggles.webp",
         "level": 5,
         "unit": "Shooters",
         "quality": "Legendary",
@@ -3508,7 +3508,7 @@
     {
         "id": 84,
         "name": "Ambulance Bed",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/ambulancebed.webp",
+        "image": "images/ambulancebed.webp",
         "level": 5,
         "unit": "Pilots",
         "quality": "Legendary",
@@ -3551,7 +3551,7 @@
     {
         "id": 85,
         "name": "Massage Gun",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/massagegun.webp",
+        "image": "images/massagegun.webp",
         "level": 5,
         "unit": "Hitters",
         "quality": "Legendary",
@@ -3594,7 +3594,7 @@
     {
         "id": 86,
         "name": "Temperature Sensor",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/temperaturesensor.webp",
+        "image": "images/temperaturesensor.webp",
         "level": 5,
         "unit": "Shooters",
         "quality": "Legendary",
@@ -3637,7 +3637,7 @@
     {
         "id": 87,
         "name": "Homing Cannon",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/homingcannon.webp",
+        "image": "images/homingcannon.webp",
         "level": 5,
         "unit": "Wall Breakers",
         "quality": "Legendary",
@@ -3680,7 +3680,7 @@
     {
         "id": 88,
         "name": "Mag Shield",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/magshield.webp",
+        "image": "images/magshield.webp",
         "level": 5,
         "unit": "Wall Breakers",
         "quality": "Legendary",
@@ -3723,7 +3723,7 @@
     {
         "id": 89,
         "name": "Onboard Locator",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/onboardlocator.webp",
+        "image": "images/onboardlocator.webp",
         "level": 5,
         "unit": "Wall Breakers",
         "quality": "Legendary",
@@ -3766,7 +3766,7 @@
     {
         "id": 90,
         "name": "Moon Boots",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/moonboots.webp",
+        "image": "images/moonboots.webp",
         "level": 5,
         "unit": "Pilots",
         "quality": "Super",
@@ -3809,7 +3809,7 @@
     {
         "id": 91,
         "name": "Moon Landing Stamps",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/moonlandingstamps.webp",
+        "image": "images/moonlandingstamps.webp",
         "level": 5,
         "unit": "Pilots",
         "quality": "Super",
@@ -3852,7 +3852,7 @@
     {
         "id": 92,
         "name": "Moon Landing Footprint",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/moonlandingfootprint.webp",
+        "image": "images/moonlandingfootprint.webp",
         "level": 5,
         "unit": "Pilots",
         "quality": "Super",
@@ -3895,7 +3895,7 @@
     {
         "id": 93,
         "name": "Astronaut Figurine",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/astronautfigurine.webp",
+        "image": "images/astronautfigurine.webp",
         "level": 5,
         "unit": "Hitters",
         "quality": "Super",
@@ -3938,7 +3938,7 @@
     {
         "id": 94,
         "name": "Space Magazine",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/spacemagazine.webp",
+        "image": "images/spacemagazine.webp",
         "level": 5,
         "unit": "Hitters",
         "quality": "Super",
@@ -3981,7 +3981,7 @@
     {
         "id": 95,
         "name": "Toy Spaceship",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/toyspaceship.webp",
+        "image": "images/toyspaceship.webp",
         "level": 5,
         "unit": "Hitters",
         "quality": "Super",
@@ -4024,7 +4024,7 @@
     {
         "id": 96,
         "name": "Vintage Shirt",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/vintageshirt.webp",
+        "image": "images/vintageshirt.webp",
         "level": 5,
         "unit": "Shooters",
         "quality": "Super",
@@ -4067,7 +4067,7 @@
     {
         "id": 97,
         "name": "Record Player",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/recordplayer.webp",
+        "image": "images/recordplayer.webp",
         "level": 5,
         "unit": "Shooters",
         "quality": "Super",
@@ -4110,7 +4110,7 @@
     {
         "id": 98,
         "name": "Rock n' Roll Record",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/rocknrollrecord.webp",
+        "image": "images/rocknrollrecord.webp",
         "level": 5,
         "unit": "Shooters",
         "quality": "Super",
@@ -4153,7 +4153,7 @@
     {
         "id": 99,
         "name": "Telescope",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/telescope.webp",
+        "image": "images/telescope.webp",
         "level": 5,
         "unit": "Wall Breakers",
         "quality": "Super",
@@ -4196,7 +4196,7 @@
     {
         "id": 100,
         "name": "Satellite Phone",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/satellitephone.webp",
+        "image": "images/satellitephone.webp",
         "level": 5,
         "unit": "Wall Breakers",
         "quality": "Super",
@@ -4239,7 +4239,7 @@
     {
         "id": 101,
         "name": "Talk Box",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/talkbox.webp",
+        "image": "images/talkbox.webp",
         "level": 5,
         "unit": "Wall Breakers",
         "quality": "Super",
@@ -4282,7 +4282,7 @@
     {
         "id": 102,
         "name": "Antique Camera",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/antiquecamera.webp",
+        "image": "images/antiquecamera.webp",
         "level": 5,
         "unit": "Pilots",
         "quality": "Super",
@@ -4325,7 +4325,7 @@
     {
         "id": 103,
         "name": "Antique Television",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/antiquetelevision.webp",
+        "image": "images/antiquetelevision.webp",
         "level": 5,
         "unit": "Pilots",
         "quality": "Super",
@@ -4368,7 +4368,7 @@
     {
         "id": 104,
         "name": "Antique Fan",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/antiquefan.webp",
+        "image": "images/antiquefan.webp",
         "level": 5,
         "unit": "Pilots",
         "quality": "Super",
@@ -4411,7 +4411,7 @@
     {
         "id": 105,
         "name": "Bread Maker",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/breadmaker.webp",
+        "image": "images/breadmaker.webp",
         "level": 5,
         "unit": "Hitters",
         "quality": "Super",
@@ -4454,7 +4454,7 @@
     {
         "id": 106,
         "name": "Refrigerator",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/refrigerator.webp",
+        "image": "images/refrigerator.webp",
         "level": 5,
         "unit": "Hitters",
         "quality": "Super",
@@ -4497,7 +4497,7 @@
     {
         "id": 107,
         "name": "Microwave",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/microwave.webp",
+        "image": "images/microwave.webp",
         "level": 5,
         "unit": "Hitters",
         "quality": "Super",
@@ -4540,7 +4540,7 @@
     {
         "id": 108,
         "name": "Violin",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/violin.webp",
+        "image": "images/violin.webp",
         "level": 5,
         "unit": "Shooters",
         "quality": "Super",
@@ -4583,7 +4583,7 @@
     {
         "id": 109,
         "name": "Accordion",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/accordion.webp",
+        "image": "images/accordion.webp",
         "level": 5,
         "unit": "Shooters",
         "quality": "Super",
@@ -4626,7 +4626,7 @@
     {
         "id": 110,
         "name": "Saxophone",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/saxophone.webp",
+        "image": "images/saxophone.webp",
         "level": 5,
         "unit": "Shooters",
         "quality": "Super",
@@ -4669,7 +4669,7 @@
     {
         "id": 111,
         "name": "Globe",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/globe.webp",
+        "image": "images/globe.webp",
         "level": 5,
         "unit": "Wall Breakers",
         "quality": "Super",
@@ -4712,7 +4712,7 @@
     {
         "id": 112,
         "name": "Microscope",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/microscope.webp",
+        "image": "images/microscope.webp",
         "level": 5,
         "unit": "Wall Breakers",
         "quality": "Super",
@@ -4755,7 +4755,7 @@
     {
         "id": 113,
         "name": "Perpetual Motion Machine",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/perpetualmotionmachine.webp",
+        "image": "images/perpetualmotionmachine.webp",
         "level": 5,
         "unit": "Wall Breakers",
         "quality": "Super",
@@ -4798,7 +4798,7 @@
     {
         "id": 114,
         "name": "Watch",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/watch.webp",
+        "image": "images/watch.webp",
         "level": 5,
         "unit": "Pilots",
         "quality": "Super",
@@ -4841,7 +4841,7 @@
     {
         "id": 115,
         "name": "Antique Clock",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/antiqueclock.webp",
+        "image": "images/antiqueclock.webp",
         "level": 5,
         "unit": "Pilots",
         "quality": "Super",
@@ -4884,7 +4884,7 @@
     {
         "id": 116,
         "name": "Alarm Clock",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/alarmclock.webp",
+        "image": "images/alarmclock.webp",
         "level": 5,
         "unit": "Pilots",
         "quality": "Super",
@@ -4927,7 +4927,7 @@
     {
         "id": 117,
         "name": "Anti-Aging Drink",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/antiagingdrink.webp",
+        "image": "images/antiagingdrink.webp",
         "level": 5,
         "unit": "Hitters",
         "quality": "Super",
@@ -4970,7 +4970,7 @@
     {
         "id": 118,
         "name": "Premium Canned Food",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/premiumcannedfood.webp",
+        "image": "images/premiumcannedfood.webp",
         "level": 5,
         "unit": "Hitters",
         "quality": "Super",
@@ -5013,7 +5013,7 @@
     {
         "id": 119,
         "name": "Emergency Biscuit",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/emergencybiscuit.webp",
+        "image": "images/emergencybiscuit.webp",
         "level": 5,
         "unit": "Hitters",
         "quality": "Super",
@@ -5056,7 +5056,7 @@
     {
         "id": 120,
         "name": "Roland's Staff",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/rolandsstaff.webp",
+        "image": "images/rolandsstaff.webp",
         "level": 5,
         "unit": "Shooters",
         "quality": "Super",
@@ -5099,7 +5099,7 @@
     {
         "id": 121,
         "name": "Roland's Cape",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/rolandscape.webp",
+        "image": "images/rolandscape.webp",
         "level": 5,
         "unit": "Shooters",
         "quality": "Super",
@@ -5142,7 +5142,7 @@
     {
         "id": 122,
         "name": "Roland's Crown",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/rolandscrown.webp",
+        "image": "images/rolandscrown.webp",
         "level": 5,
         "unit": "Shooters",
         "quality": "Super",
@@ -5185,7 +5185,7 @@
     {
         "id": 123,
         "name": "Roland Poster",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/rolandposter.webp",
+        "image": "images/rolandposter.webp",
         "level": 5,
         "unit": "Wall Breakers",
         "quality": "Super",
@@ -5228,7 +5228,7 @@
     {
         "id": 124,
         "name": "Roland Statue",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/rolandstatue.webp",
+        "image": "images/rolandstatue.webp",
         "level": 5,
         "unit": "Wall Breakers",
         "quality": "Super",
@@ -5271,7 +5271,7 @@
     {
         "id": 125,
         "name": "Space Ape Action Figure",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/09/spaceapeactionfigure.webp",
+        "image": "images/spaceapeactionfigure.webp",
         "level": 5,
         "unit": "Wall Breakers",
         "quality": "Super",
@@ -5314,7 +5314,7 @@
     {
         "id": 126,
         "name": "Big Head Car",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/10/bigheadcar.webp",
+        "image": "images/bigheadcar.webp",
         "level": 5,
         "unit": "Pilots",
         "quality": "Super",
@@ -5357,7 +5357,7 @@
     {
         "id": 127,
         "name": "Slender Car",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/10/slendercar.webp",
+        "image": "images/slendercar.webp",
         "level": 5,
         "unit": "Pilots",
         "quality": "Super",
@@ -5400,7 +5400,7 @@
     {
         "id": 128,
         "name": "Beetle Car",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/10/beetlecar.webp",
+        "image": "images/beetlecar.webp",
         "level": 5,
         "unit": "Pilots",
         "quality": "Super",
@@ -5443,7 +5443,7 @@
     {
         "id": 129,
         "name": "Antique Telephone",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/10/antiquetelephone.webp",
+        "image": "images/antiquetelephone.webp",
         "level": 5,
         "unit": "Hitters",
         "quality": "Super",
@@ -5486,7 +5486,7 @@
     {
         "id": 130,
         "name": "Antique Telegraph",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/10/antiquetelegraph.webp",
+        "image": "images/antiquetelegraph.webp",
         "level": 5,
         "unit": "Hitters",
         "quality": "Super",
@@ -5529,7 +5529,7 @@
     {
         "id": 131,
         "name": "Antique Printing Press",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/10/antiqueprintingpress.webp",
+        "image": "images/antiqueprintingpress.webp",
         "level": 5,
         "unit": "Hitters",
         "quality": "Super",
@@ -5572,7 +5572,7 @@
     {
         "id": 132,
         "name": "Dartboard",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/10/dartboard.webp",
+        "image": "images/dartboard.webp",
         "level": 5,
         "unit": "Shooters",
         "quality": "Super",
@@ -5615,7 +5615,7 @@
     {
         "id": 133,
         "name": "Game Console",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/10/gameconsole.webp",
+        "image": "images/gameconsole.webp",
         "level": 5,
         "unit": "Shooters",
         "quality": "Super",
@@ -5658,7 +5658,7 @@
     {
         "id": 134,
         "name": "Gaming Merchandise",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/10/gamingmerchandise.webp",
+        "image": "images/gamingmerchandise.webp",
         "level": 5,
         "unit": "Shooters",
         "quality": "Super",
@@ -5701,7 +5701,7 @@
     {
         "id": 135,
         "name": "Alien Gun",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/10/aliengun.webp",
+        "image": "images/aliengun.webp",
         "level": 5,
         "unit": "Wall Breakers",
         "quality": "Super",
@@ -5744,7 +5744,7 @@
     {
         "id": 136,
         "name": "Unidentified Flying Object",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/10/unidentifiedflyingobject.webp",
+        "image": "images/unidentifiedflyingobject.webp",
         "level": 5,
         "unit": "Wall Breakers",
         "quality": "Super",
@@ -5787,7 +5787,7 @@
     {
         "id": 137,
         "name": "Alien Doll",
-        "image": "https://ageofapesguides.com/wp-content/uploads/2024/10/aliendoll.webp",
+        "image": "images/aliendoll.webp",
         "level": 5,
         "unit": "Wall Breakers",
         "quality": "Super",
@@ -5816,6 +5816,49 @@
             },
             {
                 "name": "Skill Damage Up in All Wall Breaker Troop",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ],
+                "uom": "%"
+            }
+        ]
+    },
+    {
+        "id": 138,
+        "name": "Icebreaker Model",
+        "image": "images/icebreakermodel.png",
+        "level": 5,
+        "unit": "Pilots",
+        "quality": "Super",
+        "buff": {
+            "name": "Attack of Pilots",
+            "values": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "uom": "%"
+        },
+        "displayBuffs": [
+            {
+                "name": "Damage dealt by Pilots against Shooters",
+                "values": [
+                    6,
+                    12,
+                    18,
+                    24,
+                    30
+                ],
+                "uom": "%"
+            },
+            {
+                "name": "Attack of Pilots",
                 "values": [
                     5,
                     10,
