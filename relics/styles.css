@@ -20,7 +20,6 @@ h1 {
 /* Selected Relics Grid */
 #selected-relics-grid {
     display: grid;
-    /* grid-template-columns: repeat(3, 1fr); */
     gap: 10px;
 }
 
@@ -29,29 +28,6 @@ h1 {
     flex-direction: column;
     gap: 15px;
 }
-
-/* .selected-row {
-    display: flex;
-    gap: 10px;
-    align-items: stretch;
-} */
-
-/* .row-label {
-    flex: 0 0 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    background-color: #f0f0f0;
-    border-radius: 4px;
-    font-size: 1.1em;
-} */
-
-/* .relic-slot {
-    flex: 1;
-    min-height: 120px;
-    position: relative;
-} */
 
 .relic {
     background-color: #f9f9f9;
@@ -133,6 +109,8 @@ h1 {
     background-color: #e9ecef;
     opacity: 0.7;
     cursor: default;
+    position: relative;
+    padding-top: 30px; /* Espaço para o botão de bloqueio */
 }
 
 .placeholder-card .placeholder-circle {
@@ -257,12 +235,6 @@ h1 {
     transform: translateY(0);
 }
 
-/* .filter-menu-content, .buff-menu-content, .share-menu-content {
-    max-height: 70vh;
-    overflow-y: auto;
-} */
-
-/* Share menu specific styles */
 .share-url {
     width: 100%;
     padding: 8px;
@@ -275,12 +247,6 @@ h1 {
     display: flex;
     gap: 10px;
 }
-
-/* .selected-counter {
-    font-size: 1.1rem;
-    padding: 8px 16px;
-    border-radius: 20px;
-} */
 
 .relic-shake {
     animation: shake 0.5s ease-in-out;
@@ -318,6 +284,114 @@ h1 {
 
 .collapsed-section {
     display: none;
+}
+
+/* Estilos para o botão de bloqueio no placeholder - SEMPRE VISÍVEL */
+.placeholder-card .lock-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 10;
+    opacity: 1;
+    border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: transform 0.2s, background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.placeholder-card .lock-button:hover {
+    transform: scale(1.1);
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.placeholder-card.locked .lock-button {
+    background-color: rgba(220, 53, 69, 0.9);
+    color: white;
+}
+
+.placeholder-card.locked {
+    position: relative;
+    border: 2px solid #dc3545;
+}
+
+.placeholder-card.locked::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(220, 53, 69, 0.1);
+    pointer-events: none;
+    border-radius: 8px;
+}
+
+.placeholder-card.locked .placeholder-circle {
+    background-color: #dc3545;
+}
+
+.placeholder-card.locked .placeholder-text {
+    color: #dc3545;
+}
+
+/* Floating Counter */
+.floating-counter-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.selected-counter {
+    font-size: 1.1rem;
+    padding: 8px 16px;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.selected-counter:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.buff-menu-content {
+    padding: 15px;
+}
+
+#buff-summary {
+    max-height: 60vh;
+    overflow-y: auto;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+.buff-summary-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    margin-bottom: 5px;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.buff-summary-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.buff-summary-value {
+    color: #28a745;
+    font-weight: bold;
 }
 
 /* Mobile styles */
@@ -377,7 +451,6 @@ h1 {
 
     .relic-slot {
         min-width: 0;
-        /* width: 100%; */
         min-height: 110px;
     }
 
@@ -407,144 +480,14 @@ h1 {
         font-size: 0.8em;
     }
 
-    /* Available relics section - 2 columns */
-    /* #available-relics-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
-    } */
-
-    /* Garante que o container não ultrapasse a largura da tela */
-    .grid {
-        overflow: hidden;
+    /* Ajuste adicional para o placeholder em mobile */
+    .placeholder-card .relic.placeholder-relic {
+        padding-top: 25px;
     }
-}
-
-/* Floating Counter */
-.floating-counter-container {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    z-index: 1000;
-}
-
-.selected-counter {
-    font-size: 1.1rem;
-    padding: 8px 16px;
-    border-radius: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-}
-
-.selected-counter:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.buff-menu-content {
-    padding: 15px;
-}
-
-#buff-summary {
-    max-height: 60vh;
-    overflow-y: auto;
-    padding: 10px;
-    background-color: #f8f9fa;
-    border-radius: 5px;
-}
-
-.buff-summary-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px;
-    margin-bottom: 5px;
-    background-color: white;
-    border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
-
-.buff-summary-name {
-    font-weight: bold;
-    color: #333;
-}
-
-.buff-summary-value {
-    color: #28a745;
-    font-weight: bold;
-}
-
-#buff-summary {
-    max-height: 60vh;
-    overflow-y: auto;
-    padding: 10px;
-    background-color: #f8f9fa;
-    border-radius: 5px;
-}
-
-.buff-summary-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px;
-    margin-bottom: 5px;
-    background-color: white;
-    border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
-
-.buff-summary-name {
-    font-weight: bold;
-    color: #333;
-}
-
-.buff-summary-value {
-    color: #28a745;
-    font-weight: bold;
-}
-
-.buff-menu-content {
-    padding: 15px;
-}
-
-/* Estilos para o botão de bloqueio no placeholder */
-.placeholder-card .lock-button {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    width: 24px;
-    height: 24px;
-    padding: 0;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.8);
-    z-index: 10;
-    opacity: 0;
-    transition: opacity 0.2s;
-}
-
-.placeholder-card:hover .lock-button {
-    opacity: 1;
-}
-
-.placeholder-card.locked {
-    position: relative;
-    border: 2px solid #dc3545;
-}
-
-.placeholder-card.locked::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(220, 53, 69, 0.1);
-    pointer-events: none;
-    border-radius: 8px;
-}
-
-.placeholder-card.locked .placeholder-circle {
-    background-color: #dc3545;
-}
-
-.placeholder-card.locked .placeholder-text {
-    color: #dc3545;
+    
+    .placeholder-card .lock-button {
+        width: 24px;
+        height: 24px;
+        font-size: 0.8em;
+    }
 }
