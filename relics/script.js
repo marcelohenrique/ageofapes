@@ -534,51 +534,29 @@ function decodeSelectedRelics(base64) {
 }
 
 // Função para codificar todos os níveis
-function encodeAllLevels(relics) {
-    // Criar array de níveis (índice = ID da relíquia)
-    const maxId = Math.max(...relics.map(r => r.id));
-    const levelsArray = new Array(maxId + 1).fill(0);
+function encodeAllLevels() {
+    const levels = {};
     
+    // Percorrer todas as relíquias e verificar se o nível foi alterado
     relics.forEach(relic => {
-        levelsArray[relic.id] = loadLevelFromLocalStorage(relic);
+        const storedLevel = localStorage.getItem(`relic-${relic.id}-level`);
+        if (storedLevel !== null) {
+            levels[relic.id] = parseInt(storedLevel);
+        }
     });
 
-    // Converter para string binária (3 bits por nível)
-    let binaryString = '';
-    levelsArray.forEach(level => {
-        binaryString += level.toString(2).padStart(3, '0');
-    });
-
-    // Converter para Base64
-    const bytes = [];
-    for (let i = 0; i < binaryString.length; i += 8) {
-        bytes.push(parseInt(binaryString.substr(i, 8), 2));
-    }
-    return btoa(String.fromCharCode(...bytes));
+    // Converter para JSON e depois para Base64
+    const jsonString = JSON.stringify(levels);
+    return btoa(unescape(encodeURIComponent(jsonString)));
 }
 
 // Função para decodificar
-function decodeAllLevels(base64, relics) {
+function decodeAllLevels(base64) {
     try {
-        // Converter Base64 para string binária
-        const binaryString = atob(base64).split('')
-            .map(char => char.charCodeAt(0).toString(2).padStart(8, '0'))
-            .join('');
-
-        // Extrair níveis (3 bits cada)
-        const levels = {};
-        for (let i = 0; i < binaryString.length; i += 3) {
-            const levelBits = binaryString.substr(i, 3);
-            if (levelBits.length === 3) {
-                const level = parseInt(levelBits, 2);
-                const relicId = Math.floor(i / 3);
-                levels[relicId] = level;
-            }
-        }
-
-        return levels;
+        const jsonString = decodeURIComponent(escape(atob(base64)));
+        return JSON.parse(jsonString);
     } catch (e) {
-        console.error("Erro ao decodificar níveis:", e);
+        console.error("Error decoding levels:", e);
         return {};
     }
 }
@@ -620,15 +598,21 @@ function setupShareButton() {
 function loadStateFromURL() {
     const params = new URLSearchParams(window.location.search);
     
-    // Carregar níveis primeiro
+    // Carregar níveis
     const levelsParam = params.get('l');
     if (levelsParam) {
-        const levels = decodeAllLevels(levelsParam, relics);
-        relics.forEach(relic => {
-            if (levels[relic.id] !== undefined) {
-                saveLevelToLocalStorage(relic.id, levels[relic.id]);
+        const levels = decodeAllLevels(levelsParam);
+        
+        // Aplicar apenas os níveis que estão na URL (não resetar os outros)
+        for (const [relicId, level] of Object.entries(levels)) {
+            saveLevelToLocalStorage(parseInt(relicId), level);
+            
+            // Atualizar visualmente as estrelas
+            const relicElement = document.querySelector(`.relic[data-id="${relicId}"]`);
+            if (relicElement) {
+                setRelicLevel(relicElement, level);
             }
-        });
+        }
     }
 
     // Carregar seleções
@@ -690,14 +674,20 @@ function loadStateFromURL() {
 
 function setRelicLevel(element, level) {
     const stars = element.querySelectorAll('.stars i');
+    const maxStars = stars.length;
+    
+    // Garantir que o nível não exceda o máximo de estrelas
+    level = Math.min(level, maxStars);
+    
     stars.forEach((star, i) => {
         star.classList.toggle('fas', i < level);
         star.classList.toggle('far', i >= level);
     });
     
-    const relic = relics.find(r => r.id.toString() === element.dataset.id);
+    const relicId = parseInt(element.dataset.id);
+    const relic = relics.find(r => r.id === relicId);
     if (relic) {
-        saveLevelToLocalStorage(relic.id, level);
+        saveLevelToLocalStorage(relicId, level);
         updateRelicBuffs(element, relic, level);
     }
 }
