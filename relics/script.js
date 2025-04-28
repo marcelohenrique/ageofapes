@@ -498,10 +498,28 @@ menuResetButton.addEventListener('click', () => {
 });
 
 // Função para codificar as relíquias selecionadas
-function encodeSelectedRelics(selectedIds) {
-    // Converter para JSON e depois para Base64
-    const jsonString = JSON.stringify(selectedIds);
-    return btoa(unescape(encodeURIComponent(jsonString)));
+function encodeSelectedRelics() {
+    const selectedGrid = document.getElementById('selected-relics-grid');
+    const slots = selectedGrid.querySelectorAll('.relic-slot');
+    const selectedIds = [];
+    
+    slots.forEach(slot => {
+        const placeholder = slot.querySelector('.placeholder-card');
+        const relic = slot.querySelector('.relic[data-id]');
+        
+        if (placeholder && placeholder.classList.contains('locked')) {
+            // Slot bloqueado vazio - ID 0
+            selectedIds.push(0);
+        } else if (relic) {
+            // Relíquia selecionada - ID normal
+            selectedIds.push(parseInt(relic.dataset.id));
+        } else {
+            // Slot não bloqueado vazio - null (será tratado como vazio)
+            selectedIds.push(null);
+        }
+    });
+    
+    return btoa(unescape(encodeURIComponent(JSON.stringify(selectedIds))));
 }
 
 // Função para decodificar
@@ -581,16 +599,8 @@ function setupShareButton() {
 
         updateMenuPositions();
         
-        // Obter IDs das relíquias selecionadas EM ORDEM
-        const selectedRelics = Array.from(document.querySelectorAll('#selected-relics-grid .relic[data-id]'))
-            .filter(el => !el.classList.contains('placeholder-relic'))
-            .map(el => parseInt(el.dataset.id));
-        
-        // Codificar para Base64
         const params = new URLSearchParams();
-        if (selectedRelics.length > 0) {
-            params.set('s', encodeSelectedRelics(selectedRelics));
-        }
+        params.set('s', encodeSelectedRelics());
         params.set('l', encodeAllLevels(relics));
         
         shareUrlInput.value = `${window.location.origin}${window.location.pathname}?${params.toString()}`;
@@ -621,37 +631,57 @@ function loadStateFromURL() {
         });
     }
 
-    // Depois carregar seleções (código anterior)
+    // Carregar seleções
     const stateParam = params.get('s');
-    
     if (stateParam) {
         try {
-            // Decodificar a string Base64
             const selectedIds = decodeSelectedRelics(stateParam);
-            
-            // Limpar seleções atuais
             const selectedGrid = document.getElementById('selected-relics-grid');
-            // selectedGrid.innerHTML = '';
+            const slots = selectedGrid.querySelectorAll('.relic-slot');
             
-            // Carregar relíquias selecionadas NA ORDEM CORRETA
-            selectedIds.forEach(relicId => {
-                const relicDiv = document.querySelector(`.relic[data-id="${relicId}"]`);
-                moveRelic(relicDiv, selectedGrid);
-
-                // const relicData = relics.find(r => r.id === relicId);
-                // if (relicData) {
-                //     createRelic(relicData, selectedGrid);
-                // }
+            // Reset all slots to unlocked and empty first
+            slots.forEach(slot => {
+                const placeholder = slot.querySelector('.placeholder-card');
+                if (placeholder) {
+                    placeholder.classList.remove('locked');
+                    placeholder.querySelector('.lock-button i').classList.remove('fa-lock');
+                    placeholder.querySelector('.lock-button i').classList.add('fa-lock-open');
+                }
+                
+                // Remove any existing relics
+                const existingRelic = slot.querySelector('.relic[data-id]');
+                if (existingRelic) {
+                    const availableGrid = document.getElementById('available-relics-grid');
+                    moveRelic(existingRelic, availableGrid);
+                }
             });
             
-            // // Preencher com placeholders se necessário
-            // // Conta quantos slots de relíquias existem
-            // const slotCount = document.querySelectorAll('#selected-relics-grid .relic-slot').length;
-            // while (slotCount < 18) {
-            //     selectedGrid.appendChild(createPlaceholder());
-            // }
+            // Process each slot from the URL
+            selectedIds.forEach((relicId, index) => {
+                if (index >= slots.length) return;
+                
+                const slot = slots[index];
+                const placeholder = slot.querySelector('.placeholder-card');
+                
+                if (relicId === 0) {
+                    // Slot bloqueado
+                    if (placeholder) {
+                        placeholder.classList.add('locked');
+                        placeholder.querySelector('.lock-button i').classList.remove('fa-lock-open');
+                        placeholder.querySelector('.lock-button i').classList.add('fa-lock');
+                        saveLockState(placeholder.dataset.slotId, true);
+                    }
+                } else if (relicId) {
+                    // Relíquia normal
+                    const relicElement = document.querySelector(`.relic[data-id="${relicId}"]`);
+                    if (relicElement) {
+                        moveRelic(relicElement, selectedGrid);
+                    }
+                }
+            });
             
             updateBuffSummary();
+            updatePlaceholders();
         } catch (e) {
             console.error('Error loading state:', e);
         }
