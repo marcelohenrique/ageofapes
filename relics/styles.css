@@ -491,3 +491,7 @@ h1 {
         font-size: 0.8em;
     }
 }
+
+.lock-button {
+    pointer-events: auto !important;
+}

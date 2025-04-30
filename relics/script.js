@@ -330,8 +330,17 @@ function updatePlaceholders() {
     const availableSlots = countAvailableSlots();
     
     document.querySelectorAll('.placeholder-card').forEach(ph => {
-        ph.style.opacity = selectedCount >= availableSlots ? '0.3' : '0.7';
-        ph.style.pointerEvents = selectedCount >= availableSlots ? 'none' : 'auto';
+        // Aplica opacidade apenas nos placeholders não bloqueados
+        if (!ph.classList.contains('locked')) {
+            ph.style.opacity = selectedCount >= availableSlots ? '0.3' : '0.7';
+            ph.style.pointerEvents = selectedCount >= availableSlots ? 'none' : 'auto';
+        }
+        
+        // Mantém os botões de bloqueio sempre clicáveis
+        const lockButton = ph.querySelector('.lock-button');
+        if (lockButton) {
+            lockButton.style.pointerEvents = 'auto';
+        }
     });
     
     const counter = document.getElementById('selected-count');
