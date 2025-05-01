@@ -490,8 +490,58 @@ h1 {
         height: 24px;
         font-size: 0.8em;
     }
+
+    
+    .grid-container {
+        max-height: 60vh; /* Altura menor em dispositivos móveis */
+    }
+    
+    #selected-relics-grid {
+        display: block; /* Muda o layout para mobile */
+    }
 }
 
 .lock-button {
     pointer-events: auto !important;
+}
+
+/* Container para as grades com rolagem */
+.grid-container {
+    max-height: 70vh; /* Ajuste conforme necessário */
+    overflow-y: auto;
+    padding-right: 8px; /* Espaço para a barra de rolagem */
+    margin-bottom: 15px;
+}
+
+/* Estilização da barra de rolagem */
+.grid-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.grid-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.grid-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.grid-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+#selected-relics-grid, #available-relics-grid {
+    min-height: 100px; /* Altura mínima para evitar que fique muito pequeno */
+}
+
+.grid > .d-flex {
+    position: sticky;
+    top: 0;
+    background-color: #f8f9fa;
+    z-index: 10;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #dee2e6;
 }
