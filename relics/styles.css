@@ -451,7 +451,7 @@ h1 {
 
     .relic-slot {
         min-width: 0;
-        min-height: 110px;
+        max-width: 100%;
     }
 
     .relic {
@@ -494,6 +494,7 @@ h1 {
     
     .grid-container {
         max-height: 60vh; /* Altura menor em dispositivos móveis */
+        padding-right: 4px;
     }
     
     #selected-relics-grid {
@@ -505,10 +506,11 @@ h1 {
     pointer-events: auto !important;
 }
 
-/* Container para as grades com rolagem */
+/* Container principal das grades */
 .grid-container {
-    max-height: 70vh; /* Ajuste conforme necessário */
-    overflow-y: auto;
+    max-height: 70vh; /* Ajuste esta altura conforme necessário */
+    overflow-y: auto; /* Somente rolagem vertical */
+    overflow-x: hidden; /* Remove a rolagem horizontal */
     padding-right: 8px; /* Espaço para a barra de rolagem */
     margin-bottom: 15px;
 }
@@ -533,7 +535,8 @@ h1 {
 }
 
 #selected-relics-grid, #available-relics-grid {
-    min-height: 100px; /* Altura mínima para evitar que fique muito pequeno */
+    width: 100%;
+    overflow-x: hidden;
 }
 
 .grid > .d-flex {
@@ -544,4 +547,15 @@ h1 {
     padding-top: 15px;
     padding-bottom: 15px;
     border-bottom: 1px solid #dee2e6;
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.col-1, .col-2, .col-3, .col-4, .col-6, .col-11, .col-12 {
+    padding-left: 8px;
+    padding-right: 8px;
+    box-sizing: border-box;
 }
