@@ -6084,5 +6084,392 @@
                 "uom": "%"
             }
         ]
+    },
+    {
+        "id": 144,
+        "name": "Roulette",
+        "image": "",
+        "level": 5,
+        "unit": "Shooters",
+        "quality": "Super",
+        "buff": {
+            "name": "Attack of Shooters",
+            "values": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "uom": "%"
+        },
+        "displayBuffs": [
+            {
+                "name": "Shooter Attack vs. Mechs",
+                "values": [
+                    10,
+                    20,
+                    30,
+                    40,
+                    50
+                ],
+                "uom": "%"
+            },
+            {
+                "name": "Attack of Shooters",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ],
+                "uom": "%"
+            }
+        ]
+    },
+    {
+        "id": 145,
+        "name": "Chips",
+        "image": "",
+        "level": 5,
+        "unit": "Shooters",
+        "quality": "Super",
+        "buff": {
+            "name": "Defense of Shooters",
+            "values": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "uom": "%"
+        },
+        "displayBuffs": [
+            {
+                "name": "Shooter Defense with the Mech",
+                "values": [
+                    6,
+                    12,
+                    18,
+                    24,
+                    30
+                ],
+                "uom": "%"
+            },
+            {
+                "name": "Defense of Shooters",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ],
+                "uom": "%"
+            }
+        ]
+    },
+    {
+        "id": 146,
+        "name": "Cigar Box",
+        "image": "",
+        "level": 5,
+        "unit": "Shooters",
+        "quality": "Super",
+        "buff": {
+            "name": "Shooter Normal Attack Damage",
+            "values": [
+                2,
+                4,
+                6,
+                8,
+                10
+            ],
+            "uom": "%"
+        },
+        "displayBuffs": [
+            {
+                "name": "Damage dealt by Shooters against Hitters",
+                "values": [
+                    6,
+                    12,
+                    18,
+                    24,
+                    30
+                ],
+                "uom": "%"
+            },
+            {
+                "name": "Shooter Normal Attack Damage",
+                "values": [
+                    6,
+                    12,
+                    18,
+                    24,
+                    30
+                ],
+                "uom": "%"
+            }
+        ]
+    },
+    {
+        "id": 147,
+        "name": "Metronome",
+        "image": "",
+        "level": 5,
+        "unit": "Pilots",
+        "quality": "Super",
+        "buff": {
+            "name": "Attack of Pilots",
+            "values": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "uom": "%"
+        },
+        "displayBuffs": [
+            {
+                "name": "Pilots Defense vs. Mechs",
+                "values": [
+                    10,
+                    20,
+                    30,
+                    40,
+                    50
+                ],
+                "uom": "%"
+            },
+            {
+                "name": "Attack of Pilots",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ],
+                "uom": "%"
+            }
+        ]
+    },
+    {
+        "id": 148,
+        "name": "Hand-Crank Music Box",
+        "image": "",
+        "level": 5,
+        "unit": "Pilots",
+        "quality": "Super",
+        "buff": {
+            "name": "Defense of Pilots",
+            "values": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "uom": "%"
+        },
+        "displayBuffs": [
+            {
+                "name": "Pilots Attack with the Mech",
+                "values": [
+                    6,
+                    12,
+                    18,
+                    24,
+                    30
+                ],
+                "uom": "%"
+            },
+            {
+                "name": "Defense of Pilots",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ],
+                "uom": "%"
+            }
+        ]
+    },
+    {
+        "id": 149,
+        "name": "MP3 Player",
+        "image": "",
+        "level": 5,
+        "unit": "Pilots",
+        "quality": "Super",
+        "buff": {
+            "name": "Pilots Skill Damage",
+            "values": [
+                4,
+                6,
+                8,
+                10,
+                12
+            ],
+            "uom": "%"
+        },
+        "displayBuffs": [
+            {
+                "name": "Pilot Damage to Pilots",
+                "values": [
+                    6,
+                    12,
+                    18,
+                    24,
+                    30
+                ],
+                "uom": "%"
+            },
+            {
+                "name": "Pilots Skill Damage",
+                "values": [
+                    6,
+                    12,
+                    18,
+                    24,
+                    30
+                ],
+                "uom": "%"
+            }
+        ]
+    },
+    {
+        "id": 150,
+        "name": "Projector",
+        "image": "",
+        "level": 5,
+        "unit": "Hitters",
+        "quality": "Super",
+        "buff": {
+            "name": "Attack of Hitters",
+            "values": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "uom": "%"
+        },
+        "displayBuffs": [
+            {
+                "name": "Hitter Damage to Hitters",
+                "values": [
+                    6,
+                    12,
+                    18,
+                    24,
+                    30
+                ],
+                "uom": "%"
+            },
+            {
+                "name": "Attack of Hitters",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ],
+                "uom": "%"
+            }
+        ]
+    },
+    {
+        "id": 151,
+        "name": "Popcorn Machine",
+        "image": "",
+        "level": 5,
+        "unit": "Hitters",
+        "quality": "Super",
+        "buff": {
+            "name": "Defense of Hitters",
+            "values": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "uom": "%"
+        },
+        "displayBuffs": [
+            {
+                "name": "Hitter Attack with the Mech",
+                "values": [
+                    6,
+                    12,
+                    18,
+                    24,
+                    30
+                ],
+                "uom": "%"
+            },
+            {
+                "name": "Defense of Hitters",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ],
+                "uom": "%"
+            }
+        ]
+    },
+    {
+        "id": 152,
+        "name": "3D Glasses",
+        "image": "",
+        "level": 5,
+        "unit": "Hitters",
+        "quality": "Super",
+        "buff": {
+            "name": "Hitter Skill Damage",
+            "values": [
+                4,
+                6,
+                8,
+                10,
+                12
+            ],
+            "uom": "%"
+        },
+        "displayBuffs": [
+            {
+                "name": "Hitter Defense vs. Mechs",
+                "values": [
+                    10,
+                    20,
+                    30,
+                    40,
+                    50
+                ],
+                "uom": "%"
+            },
+            {
+                "name": "Hitter Skill Damage",
+                "values": [
+                    6,
+                    12,
+                    18,
+                    24,
+                    30
+                ],
+                "uom": "%"
+            }
+        ]
     }
 ]
