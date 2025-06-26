@@ -366,8 +366,8 @@ function filterRelics() {
         const matchesQuality = menuQualityFilter === "all" || relic.quality === menuQualityFilter;
 
         if (matchesUnit && matchesQuality) {
-            const isSelected = Array.from(selectedRelicsGrid.children).some(child => 
-                child.dataset.id === relic.id.toString());
+            // Verifica se a relíquia já está selecionada
+            const isSelected = selectedRelicsGrid.querySelector(`.relic-slot .relic[data-id="${relic.id}"]`) !== null;
             if (!isSelected) {
                 createRelic(relic, availableRelicsGrid);
             }
