@@ -6471,5 +6471,134 @@
                 "uom": "%"
             }
         ]
+    },
+    {
+        "id": 153,
+        "name": "Top Hat",
+        "image": "images/shooter-tophat.png",
+        "level": 5,
+        "unit": "Shooters",
+        "quality": "Super",
+        "buff": {
+            "name": "Attack of Shooters",
+            "values": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "uom": "%"
+        },
+        "displayBuffs": [
+            {
+                "name": "Shooter Attack with the Mech",
+                "values": [
+                    6,
+                    12,
+                    18,
+                    24,
+                    30
+                ],
+                "uom": "%"
+            },
+            {
+                "name": "Attack of Shooters",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ],
+                "uom": "%"
+            }
+        ]
+    },
+    {
+        "id": 154,
+        "name": "Mask",
+        "image": "images/shooter-mask.png",
+        "level": 5,
+        "unit": "Shooters",
+        "quality": "Super",
+        "buff": {
+            "name": "Defense of Shooters",
+            "values": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "uom": "%"
+        },
+        "displayBuffs": [
+            {
+                "name": "Shooter Damage to Shooters",
+                "values": [
+                    6,
+                    12,
+                    18,
+                    24,
+                    30
+                ],
+                "uom": "%"
+            },
+            {
+                "name": "Defense of Shooters",
+                "values": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25
+                ],
+                "uom": "%"
+            }
+        ]
+    },
+    {
+        "id": 155,
+        "name": "Perfume Spray",
+        "image": "images/shooter-perfumespray.png",
+        "level": 5,
+        "unit": "Shooters",
+        "quality": "Super",
+        "buff": {
+            "name": "Shooter Skill Damage",
+            "values": [
+                4,
+                6,
+                8,
+                10,
+                12
+            ],
+            "uom": "%"
+        },
+        "displayBuffs": [
+            {
+                "name": "Shooter Defense vs. Mechs",
+                "values": [
+                    10,
+                    20,
+                    30,
+                    40,
+                    50
+                ],
+                "uom": "%"
+            },
+            {
+                "name": "Shooter Skill Damage",
+                "values": [
+                    6,
+                    12,
+                    18,
+                    24,
+                    30
+                ],
+                "uom": "%"
+            }
+        ]
     }
 ]
