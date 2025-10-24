@@ -1,5 +1,5 @@
 from time import sleep
-from util import tap, list_devices
+from util import press_back, tap, list_devices
 
 # Coordenadas dos botões — ajuste conforme sua resolução ou emulador
 COORDS = {
@@ -14,72 +14,74 @@ COORDS = {
 }
 
 def click_search(device):
-    """Clica no botão de busca."""
+    print("Clica no botão de busca.")
     x, y = COORDS["first_search_button"]
     tap(device, x, y)
 
 def click_giganto(device):
-    """Clica no botão Giganto Mutant."""
+    print("Clica no botão Giganto.")
     x, y = COORDS["giganto_search_button"]
     tap(device, x, y)
 
 def click_reduce_search_level(device):
-    """Clica no botão para reduzir o nível de busca."""
+    print("Clica no botão para reduzir o nível de busca.")
     x, y = COORDS["reduce_search_level"]
     tap(device, x, y)
 
 def click_second_search(device):
-    """Clica no segundo botão de busca."""
+    print("Clica no segundo botão de busca.")
     x, y = COORDS["second_search_button"]
     tap(device, x, y)
 
 def click_small_mutants(device):
-    """Clica no botão Small Mutants."""
+    print("Clica no botão Small Mutants.")
     x, y = COORDS["small_mutants"]
     tap(device, x, y)
 
 # Exemplo de ação combinada (encadeada)
 def ataque_mutantes(device):
-    """Executa uma sequência de ações comum."""
+    print("Executa uma sequência de ações comum.")
     click_search(device)
     click_giganto(device)
     click_small_mutants(device)
 
 def click_first_rally(device):
-    """Clica no primeiro botão de rally."""
+    print("Clica no primeiro botão de rally.")
     x, y = COORDS["first_rally_button"]
     tap(device, x, y)
 
 def click_second_rally(device):
-    """Clica no segundo botão de rally."""
+    print("Clica no segundo botão de rally.")
     x, y = COORDS["second_rally_button"]
     tap(device, x, y)
 
 def click_march(device):
-    """Clica no botão de marcha."""
+    print("Clica no botão de marcha.")
     x, y = COORDS["march_button"]
     tap(device, x, y)
 
 def kill_giganto(device):
     click_search(device)
-    sleep(1)  # aguarda 1 segundos
-    click_giganto(device)
-    sleep(1)  # aguarda 1 segundos
-    click_reduce_search_level(device)
-    sleep(1)  # aguarda 1 segundos
-    click_reduce_search_level(device)
-    sleep(1)  # aguarda 1 segundos
-    click_reduce_search_level(device)
-    sleep(1)  # aguarda 1 segundos
-    click_reduce_search_level(device)
-    sleep(1)  # aguarda 1 segundos
-    click_second_search(device)
     sleep(2)
+    click_giganto(device)
+    sleep(1)
+    click_reduce_search_level(device)
+    sleep(1)
+    click_reduce_search_level(device)
+    sleep(1)
+    click_reduce_search_level(device)
+    sleep(1)
+    click_reduce_search_level(device)
+    sleep(1)
+    click_second_search(device)
+    sleep(5)
     click_first_rally(device)
-    sleep(1)
+    sleep(2)
     click_second_rally(device)
-    sleep(1)
+    sleep(5)
     click_march(device)
+    sleep(2)
+    press_back(device)
 
 if __name__ == "__main__":
     devices = list_devices()
