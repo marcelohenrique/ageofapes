@@ -1,50 +1,51 @@
 import time
-from util import list_devices
 from actions import kill_giganto
+from util import discover_bluestacks_instances, connect_all_known_ports, list_devices_with_ports
 
-# Tempo de verificação de novos dispositivos (em segundos)
-SCAN_INTERVAL = 5*60
-
-# Tempo entre ações para cada dispositivo
+SCAN_INTERVAL = 5*60  # 5 minutes
 ACTION_DELAY = 3
 
-# Dicionário para rastrear dispositivos ativos e evitar repetição
 active_devices = {}
 
-def handle_new_device(device_id):
-    print(f"[+] Novo dispositivo detectado: {device_id}")
-    active_devices[device_id] = {"last_action": 0}
+def handle_new_device(device):
+    print(f"[+] Novo dispositivo detectado: {device['display_name']} ({device['id']})")
+    active_devices[device['id']] = device
 
-def perform_actions(device_id):
-    print(f"[>] Executando ações em {device_id}")
-    kill_giganto(device_id)
+def handle_disconnect(device_id):
+    print(f"[-] Dispositivo desconectado: {device_id}")
+    del active_devices[device_id]
+
+def perform_actions(device):
+    # Exemplo de ação recorrente
+    print(f"[>] Executando ações em {device['display_name']} - ID {device['id']}")
+    kill_giganto(device['id'])
     time.sleep(ACTION_DELAY)
 
 def main():
     print("Monitor de dispositivos ADB ativo. Pressione Ctrl+C para sair.\n")
 
+    # Etapa inicial: detecta e conecta uma vez
+    instances = discover_bluestacks_instances()
+    connect_all_known_ports(instances)
+
     try:
         while True:
-            # Verifica dispositivos conectados
-            devices = list_devices()
+            devices = list_devices_with_ports(instances)
 
-            # Identifica novos dispositivos
+            # Detectar novos dispositivos
             for dev in devices:
-                device_id = dev["id"]
-                if device_id not in active_devices:
-                    handle_new_device(device_id)
+                if dev["id"] not in active_devices:
+                    handle_new_device(dev)
 
-            # Remove dispositivos desconectados
-            for known_id in list(active_devices.keys()):
-                if known_id not in devices:
-                    print(f"[-] Dispositivo desconectado: {known_id}")
-                    del active_devices[known_id]
+            # Detectar desconexões
+            for d_id in list(active_devices.keys()):
+                if not any(dev["id"] == d_id for dev in devices):
+                    handle_disconnect(d_id)
 
-            # Executa ações básicas para cada dispositivo ativo
-            for device_id in active_devices:
-                perform_actions(device_id)
+            # Realizar ações em todos os conectados
+            for dev in active_devices.values():
+                perform_actions(dev)
 
-            # Espera antes de nova varredura
             time.sleep(SCAN_INTERVAL)
 
     except KeyboardInterrupt:
