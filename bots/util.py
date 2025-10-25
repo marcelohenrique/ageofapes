@@ -10,22 +10,22 @@ ADB_BLUESTACKS = r"C:\Program Files\BlueStacks_nxt\HD-Adb.exe"
 BLUESTACKS_CONF_PATH = r"C:\ProgramData\BlueStacks_nxt\bluestacks.conf"
 
 
-# ===============================
-# Funções utilitárias básicas
-# ===============================
+# =====================================================
+# Execução ADB
+# =====================================================
 
 def run_adb_command(cmd):
-    """Executa comandos via HD-Adb do BlueStacks."""
+    """Executa comando via HD-Adb do BlueStacks."""
     result = subprocess.run(f'"{ADB_BLUESTACKS}" {cmd}', shell=True, capture_output=True, text=True)
     return result.stdout.strip()
 
 
-# ===============================
-# Gerenciamento de conexões
-# ===============================
+# =====================================================
+# Descoberta e mapeamento de instâncias BlueStacks
+# =====================================================
 
 def discover_bluestacks_instances():
-    """Lê o arquivo bluestacks.conf e descobre automaticamente as instâncias e portas ADB."""
+    """Lê o bluestacks.conf e descobre instâncias com porta e display_name."""
     instances = {}
 
     if not os.path.exists(BLUESTACKS_CONF_PATH):
@@ -36,41 +36,33 @@ def discover_bluestacks_instances():
     try:
         with open(BLUESTACKS_CONF_PATH, "r", encoding="utf-8") as conf:
             content = conf.read()
-        matches = re.findall(r'bst\.instance\.([^.]+)\.status\.adb_port="(\d+)"', content)
-        for name, port in matches:
+
+        # Encontrar todos os nomes internos e suas portas
+        ports = re.findall(r'bst\.instance\.([^.]+)\.status\.adb_port="(\d+)"', content)
+        # Encontrar display_names
+        display_names = dict(re.findall(r'bst\.instance\.([^.]+)\.display_name="([^"]+)"', content))
+
+        for inst_name, port in ports:
             port = int(port)
-            instances[port] = name
-            print(f"  Descoberto: {name} -> porta {port}")
+            display_name = display_names.get(inst_name, inst_name)
+            instances[port] = {
+                "internal_name": inst_name,
+                "display_name": display_name,
+            }
+            print(f"  Descoberto: {display_name} (interno: {inst_name}) -> porta {port}")
+
     except Exception as e:
         print(f"Erro ao ler bluestacks.conf: {e}")
 
     return instances
 
 
-def connect_all_known_ports(instance_mapping):
-    """Conecta apenas instâncias ainda não conectadas (ignora as que já estão atachadas automaticamente pelo BlueStacks)."""
-    print("\nConectando apenas instâncias ainda não conectadas...")
-
-    # Obter lista atual de dispositivos conectados
-    output = run_adb_command("devices")
-    connected_ids = [line.split()[0] for line in output.splitlines() if "device" in line]
-
-    for port, name in instance_mapping.items():
-        port_str = f"127.0.0.1:{port}"
-        emulator_id = f"emulator-{port - 1}"  # Relação comum 5555 <-> emulator-5554
-
-        # Evita reconectar se a instância já estiver anexada via ADB automático
-        if any(port_str in dev or emulator_id in dev for dev in connected_ids):
-            print(f"  {name:20} (porta {port}): já conectada (ignorada).")
-            continue
-
-        result = subprocess.run(f'"{ADB_BLUESTACKS}" connect {port_str}',
-                                shell=True, capture_output=True, text=True)
-        print(f"  {name:20} (porta {port}): {result.stdout.strip()}")
-
+# =====================================================
+# Gerenciamento de conexões
+# =====================================================
 
 def disconnect_emulator_instances():
-    """Remove conexões locais emulator-* para evitar listagem duplicada."""
+    """Remove conexões 'emulator-*' para limpar duplicados."""
     print("Limpando conexões locais 'emulator-*' duplicadas...")
     output = run_adb_command("devices")
     for line in output.splitlines():
@@ -80,12 +72,35 @@ def disconnect_emulator_instances():
             print(f"Desconectado duplicado: {dev}")
 
 
-# ===============================
-# Listagem e mapeamento
-# ===============================
+def connect_all_known_ports(instance_mapping):
+    """Conecta apenas instâncias não conectadas (ignora as autoanexadas pelo BlueStacks)."""
+    print("\nConectando apenas instâncias ainda não conectadas...")
+
+    # Lista de dispositivos já conectados
+    output = run_adb_command("devices")
+    connected_ids = [line.split()[0] for line in output.splitlines() if "device" in line]
+
+    for port, info in instance_mapping.items():
+        name = info["display_name"]
+        port_str = f"127.0.0.1:{port}"
+        emulator_match = f"emulator-{port - 1}"  # Relação típica porta 5555 <-> 5554
+
+        # Evita reconectar se já conectado
+        if any(port_str in dev or emulator_match in dev for dev in connected_ids):
+            print(f"  {name:20} (porta {port}): já conectada (ignorada).")
+            continue
+
+        result = subprocess.run(f'"{ADB_BLUESTACKS}" connect {port_str}',
+                                shell=True, capture_output=True, text=True)
+        print(f"  {name:20} (porta {port}): {result.stdout.strip()}")
+
+
+# =====================================================
+# Listagem de dispositivos com metadados
+# =====================================================
 
 def list_devices_with_ports(instance_mapping):
-    """Lista todas as conexões ADB ativas (ignorando duplicações emulator-*)."""
+    """Lista conexões ADB ativas e faz correspondência com nomes amigáveis."""
     output = run_adb_command("devices -l")
     lines = output.splitlines()[1:]
     devices = []
@@ -96,19 +111,24 @@ def list_devices_with_ports(instance_mapping):
 
         device_id = line.split()[0]
         port = int(device_id.split(":")[1])
-        name = instance_mapping.get(port, f"Desconhecido (porta {port})")
+
+        entry = instance_mapping.get(
+            port,
+            {"display_name": f"Desconhecido (porta {port})", "internal_name": ""}
+        )
 
         devices.append({
             "id": device_id,
             "port": port,
-            "name": name
+            "display_name": entry["display_name"],
+            "internal": entry["internal_name"],
         })
 
     return devices
 
 
 def list_devices():
-    """Fluxo completo: descobre instâncias, limpa duplicados e conecta apenas o necessário."""
+    """Executa fluxo completo: detectar -> conectar -> listar."""
     disconnect_emulator_instances()
     instances = discover_bluestacks_instances()
     connect_all_known_ports(instances)
@@ -116,28 +136,25 @@ def list_devices():
     return devices
 
 
-# ===============================
-# Ações ADB genéricas
-# ===============================
+# =====================================================
+# Ações ADB Genéricas
+# =====================================================
 
 def tap(device, x, y):
-    """Simula toque na tela."""
     run_adb_command(f'-s {device} shell input tap {x} {y}')
 
 
 def swipe(device, x1, y1, x2, y2, duration=500):
-    """Simula gesto de deslizar."""
     run_adb_command(f'-s {device} shell input swipe {x1} {y1} {x2} {y2} {duration}')
 
 
 def press_back(device):
-    """Simula o botão VOLTAR (ESC)."""
     run_adb_command(f'-s {device} shell input keyevent 4')
 
 
-# ===============================
+# =====================================================
 # Execução direta
-# ===============================
+# =====================================================
 
 if __name__ == "__main__":
     devices = list_devices()
@@ -146,4 +163,4 @@ if __name__ == "__main__":
         print("Nenhum dispositivo conectado.\n")
     else:
         for d in devices:
-            print(f"  {d['name']:20} | ID: {d['id']:20} | Porta: {d['port']}")
+            print(f"  {d['display_name']:20} | Porta: {d['port']} | ID: {d['id']}")
