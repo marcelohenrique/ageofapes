@@ -29,7 +29,8 @@ def main():
             devices = list_devices()
 
             # Identifica novos dispositivos
-            for device_id in devices:
+            for dev in devices:
+                device_id = dev["id"]
                 if device_id not in active_devices:
                     handle_new_device(device_id)
 
