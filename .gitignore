@@ -7,3 +7,4 @@ research/merged_weapons_research.json
 research/research_after_t6.json
 research/research-merge.py
 research/t6_research.json
+bots/__pycache__/*.pyc
