@@ -1,48 +1,51 @@
 import time
-from actions import kill_giganto
-from util import discover_bluestacks_instances, connect_all_known_ports, list_devices_with_ports
+from util import list_devices
+from actions import kill_giganto  # ← importa a função que realiza a ação
 
-SCAN_INTERVAL = 5*60  # 5 minutes
-ACTION_DELAY = 3
+SCAN_INTERVAL = 5*60  # segundos entre varreduras do ADB
+ACTION_DELAY = 2   # segundos entre ações nos dispositivos
 
 active_devices = {}
 
 def handle_new_device(device):
-    print(f"[+] Novo dispositivo detectado: {device['display_name']} ({device['id']})")
+    print(f"[+] Novo dispositivo detectado: {device['display_name']} ({device['id']}) [{device['type']}]")
     active_devices[device['id']] = device
 
 def handle_disconnect(device_id):
-    print(f"[-] Dispositivo desconectado: {device_id}")
-    del active_devices[device_id]
+    device = active_devices.pop(device_id, None)
+    if device:
+        print(f"[-] Dispositivo desconectado: {device['display_name']} ({device_id}) [{device['type']}]")
 
 def perform_actions(device):
-    # Exemplo de ação recorrente
-    print(f"[>] Executando ações em {device['display_name']} - ID {device['id']}")
-    kill_giganto(device['id'])
+    """Executa a ação kill_giganto no dispositivo detectado."""
+    adb_path = device["adb_path"]
+    display_name = device["display_name"]
+    device_id = device["id"]
+
+    print(f"[>] Executando kill_giganto em {display_name} ({device_id}) [{device['type']}]")
+    try:
+        kill_giganto(device_id, adb_path)  # passa ID e caminho do adb (compatível com util.py)
+    except Exception as e:
+        print(f"[!] Erro ao executar kill_giganto em {display_name}: {e}")
+
     time.sleep(ACTION_DELAY)
 
 def main():
     print("Monitor de dispositivos ADB ativo. Pressione Ctrl+C para sair.\n")
 
-    # Etapa inicial: detecta e conecta uma vez
-    instances = discover_bluestacks_instances()
-    connect_all_known_ports(instances)
-
     try:
         while True:
-            devices = list_devices_with_ports(instances)
+            devices = list_devices()
+            current_ids = [d["id"] for d in devices]
 
-            # Detectar novos dispositivos
             for dev in devices:
                 if dev["id"] not in active_devices:
                     handle_new_device(dev)
 
-            # Detectar desconexões
             for d_id in list(active_devices.keys()):
-                if not any(dev["id"] == d_id for dev in devices):
+                if d_id not in current_ids:
                     handle_disconnect(d_id)
 
-            # Realizar ações em todos os conectados
             for dev in active_devices.values():
                 perform_actions(dev)
 

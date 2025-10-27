@@ -3,8 +3,8 @@ from util import press_back, tap, list_devices
 
 # Coordenadas dos botões — ajuste conforme sua resolução ou emulador
 COORDS = {
-    "first_search_button": (60, 540),       # exemplo: botão de busca no topo
-    "giganto_search_button": (480, 480),     # exemplo: botão Giganto Mutant
+    "first_search_button": (60, 540),  # exemplo: botão de busca no topo
+    "giganto_search_button": (480, 480),  # exemplo: botão Giganto Mutant
     "reduce_search_level": (83, 642),
     "second_search_button": (1104, 646),
     "first_rally_button": (998, 549),
@@ -13,82 +13,71 @@ COORDS = {
     "small_mutants": (800, 500)  # exemplo: botão Small Mutants
 }
 
-def click_search(device):
+def click_search(device_id, adb_path):
     print("Clica no botão de busca.")
     x, y = COORDS["first_search_button"]
-    tap(device, x, y)
+    tap(device_id, adb_path, x, y)
 
-def click_giganto(device):
+def click_giganto(device_id, adb_path):
     print("Clica no botão Giganto.")
     x, y = COORDS["giganto_search_button"]
-    tap(device, x, y)
+    tap(device_id, adb_path, x, y)
 
-def click_reduce_search_level(device):
+def click_reduce_search_level(device_id, adb_path):
     print("Clica no botão para reduzir o nível de busca.")
     x, y = COORDS["reduce_search_level"]
-    tap(device, x, y)
+    tap(device_id, adb_path, x, y)
 
-def click_second_search(device):
+def click_second_search(device_id, adb_path):
     print("Clica no segundo botão de busca.")
     x, y = COORDS["second_search_button"]
-    tap(device, x, y)
+    tap(device_id, adb_path, x, y)
 
-def click_small_mutants(device):
+def click_small_mutants(device_id, adb_path):
     print("Clica no botão Small Mutants.")
     x, y = COORDS["small_mutants"]
-    tap(device, x, y)
+    tap(device_id, adb_path, x, y)
 
-# Exemplo de ação combinada (encadeada)
-def ataque_mutantes(device):
-    print("Executa uma sequência de ações comum.")
-    click_search(device)
-    click_giganto(device)
-    click_small_mutants(device)
-
-def click_first_rally(device):
+def click_first_rally(device_id, adb_path):
     print("Clica no primeiro botão de rally.")
     x, y = COORDS["first_rally_button"]
-    tap(device, x, y)
+    tap(device_id, adb_path, x, y)
 
-def click_second_rally(device):
+def click_second_rally(device_id, adb_path):
     print("Clica no segundo botão de rally.")
     x, y = COORDS["second_rally_button"]
-    tap(device, x, y)
+    tap(device_id, adb_path, x, y)
 
-def click_march(device):
+def click_march(device_id, adb_path):
     print("Clica no botão de marcha.")
     x, y = COORDS["march_button"]
-    tap(device, x, y)
+    tap(device_id, adb_path, x, y)
 
-def kill_giganto(device):
-    click_search(device)
+# Função principal compatível com monitor.py
+def kill_giganto(device_id, adb_path):
+    """Executa uma sequência automatizada para atacar um Giganto."""
+    click_search(device_id, adb_path)
     sleep(2)
-    click_giganto(device)
+    click_giganto(device_id, adb_path)
     sleep(1)
-    click_reduce_search_level(device)
-    sleep(1)
-    click_reduce_search_level(device)
-    sleep(1)
-    click_reduce_search_level(device)
-    sleep(1)
-    click_reduce_search_level(device)
-    sleep(1)
-    click_second_search(device)
+    for _ in range(4):
+        click_reduce_search_level(device_id, adb_path)
+        sleep(1)
+    click_second_search(device_id, adb_path)
     sleep(5)
-    click_first_rally(device)
+    click_first_rally(device_id, adb_path)
     sleep(2)
-    click_second_rally(device)
+    click_second_rally(device_id, adb_path)
     sleep(5)
-    click_march(device)
+    click_march(device_id, adb_path)
     sleep(2)
-    press_back(device)
+    press_back(device_id, adb_path)
 
 if __name__ == "__main__":
     devices = list_devices()
     if devices:
         device = devices[0]
-        print(f"Usando dispositivo {device}")
-        # ataque_mutantes(device)
-        kill_giganto(device)
+        print(f"Usando dispositivo {device['display_name']} ({device['id']}) [{device['type']}]")
+        kill_giganto(device["id"], device["adb_path"])
     else:
         print("Nenhum dispositivo conectado.")
