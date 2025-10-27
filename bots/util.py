@@ -1,166 +1,199 @@
 import subprocess
-import time
+# import time
 import os
 import re
 
-# Caminho para o HD-Adb (BlueStacks)
+ADB_DEFAULT = "adb"  # LDPlayer e genérico
 ADB_BLUESTACKS = r"C:\Program Files\BlueStacks_nxt\HD-Adb.exe"
-
-# Caminho para o arquivo de configuração do BlueStacks 5
 BLUESTACKS_CONF_PATH = r"C:\ProgramData\BlueStacks_nxt\bluestacks.conf"
 
+# # ==================================================================
+# # Inicia o daemon na porta correta se ainda não estiver ativo
+# # ==================================================================
+# def start_adb_server(adb_path, server_port):
+#     env = os.environ.copy()
+#     # Testa servidor usando 'adb devices' (não mata nem interfere)
+#     test_cmd = f'"{adb_path}" -P {server_port} devices'
+#     result = subprocess.run(test_cmd, shell=True, capture_output=True, text=True, env=env)
+#     # Se falhar, tenta iniciar servidor
+#     if "cannot connect" in result.stderr or result.returncode != 0:
+#         start_cmd = f'"{adb_path}" start-server -P {server_port}'
+#         subprocess.run(start_cmd, shell=True, capture_output=True, text=True, env=env)
 
-# =====================================================
-# Execução ADB
-# =====================================================
-
-def run_adb_command(cmd):
-    """Executa comando via HD-Adb do BlueStacks."""
-    result = subprocess.run(f'"{ADB_BLUESTACKS}" {cmd}', shell=True, capture_output=True, text=True)
+# ==================================================================
+# Execução genérica de comandos ADB, isolando servidores
+# ==================================================================
+def run_adb_command(adb_path, cmd):
+    env = os.environ.copy()
+    # Porta isolada para cada adb
+    if "BlueStacks_nxt" in adb_path:
+        server_port = "5037"
+        env["ADB_SERVER_SOCKET"] = f"tcp:127.0.0.1:{server_port}"
+    else:
+        server_port = "5038"
+        env["ADB_SERVER_SOCKET"] = f"tcp:127.0.0.1:{server_port}"
+    # start_adb_server(adb_path, server_port)
+    full_cmd = f'"{adb_path}" -P {server_port} {cmd}'
+    # full_cmd = f'"{adb_path}" {cmd}'
+    result = subprocess.run(full_cmd, shell=True, capture_output=True, text=True, env=env)
+    if result.stderr.strip():
+        print(f"[ADB ERR] {result.stderr.strip()}")
     return result.stdout.strip()
 
-
-# =====================================================
-# Descoberta e mapeamento de instâncias BlueStacks
-# =====================================================
-
+# ==================================================================
+# Descoberta BlueStacks (conf e fallback via HD-Adb)
+# ==================================================================
 def discover_bluestacks_instances():
-    """Lê o bluestacks.conf e descobre instâncias com porta e display_name."""
     instances = {}
-
-    if not os.path.exists(BLUESTACKS_CONF_PATH):
-        print(f"Aviso: {BLUESTACKS_CONF_PATH} não encontrado.")
-        return instances
-
     print("=== Descobrindo instâncias BlueStacks ===")
-    try:
-        with open(BLUESTACKS_CONF_PATH, "r", encoding="utf-8") as conf:
-            content = conf.read()
 
-        # Encontrar todos os nomes internos e suas portas
-        ports = re.findall(r'bst\.instance\.([^.]+)\.status\.adb_port="(\d+)"', content)
-        # Encontrar display_names
-        display_names = dict(re.findall(r'bst\.instance\.([^.]+)\.display_name="([^"]+)"', content))
+    # Verifica existência do arquivo bluestacks.conf
+    if not os.path.exists(BLUESTACKS_CONF_PATH):
+        print(f"[DEBUG] Arquivo bluestacks.conf não encontrado em: {BLUESTACKS_CONF_PATH}")
+    else:
+        try:
+            # with open(BLUESTACKS_CONF_PATH, "r", encoding="utf-8") as f:
+            #     data = f.read()
+            # print(f"[DEBUG] Conteúdo do bluestacks.conf lido, tamanho: {len(data)} caracteres")
 
-        for inst_name, port in ports:
-            port = int(port)
-            display_name = display_names.get(inst_name, inst_name)
-            instances[port] = {
-                "internal_name": inst_name,
-                "display_name": display_name,
-            }
-            print(f"  Descoberto: {display_name} (interno: {inst_name}) -> porta {port}")
+            # matches = re.findall(r'bst.instance.Names=.*?\n', data)
+            # print(f"[DEBUG] Linhas de instâncias encontradas: {len(matches)}")
 
-    except Exception as e:
-        print(f"Erro ao ler bluestacks.conf: {e}")
+            # for match in matches:
+            #     name = match.split("=")[-1].strip()
+            #     port_match = re.search(rf"bst.instance.{name}.status.adb_port=(\d+)", data)
+            #     if port_match:
+            #         port = port_match.group(1)
+            #         device_id = f"127.0.0.1:{port}"
+            #         instances[device_id] = {
+            #             "id": device_id,
+            #             "display_name": name,
+            #             "adb_path": ADB_BLUESTACKS,
+            #             "type": "BlueStacks",
+            #             "port": port
+            #         }
+            #         print(f"[DEBUG] Instância detectada -> {name} na porta {port}")
+            #     else:
+            #         print(f"[DEBUG] Porta ADB não encontrada para instância {name}")
+            
+            insts_raw = discover_bluestacks_instances_from_conf(BLUESTACKS_CONF_PATH)
+            # Adiciona info padrão que outros métodos do util usam
+            instances = {}
+            for info in insts_raw:
+                instances[info["id"]] = {
+                    "id": info["id"],
+                    "display_name": info["display_name"],
+                    "adb_path": ADB_BLUESTACKS,
+                    "type": "BlueStacks",
+                    "port": info["adb_port"]
+                }
+            return instances
+        except Exception as e:
+            print(f"[ERRO] Exceção ao ler bluestacks.conf: {e}")
 
+    # Se nenhuma instância identificada via conf, tenta via comando adb devices
+    if not instances:
+        print("[DEBUG] Nenhuma instância detectada pelo conf bluestacks, tentando via adb devices...")
+        result = run_adb_command(ADB_BLUESTACKS, "devices")
+        print(f"[DEBUG] Resultado do comando 'adb devices':\n{result}")
+        for line in result.splitlines():
+            print(f"[DEBUG] Linha analisada: '{line}'")
+            if "device" in line and ("127.0.0.1:" in line or "emulator-" in line):
+                device_id = line.split()[0].strip()
+                if ":" in device_id:
+                    port = device_id.split(":")[1]
+                else:
+                    port = device_id.split("-")[-1]
+                instances[device_id] = {
+                    "id": device_id,
+                    "display_name": f"BlueStacks-{port}",
+                    "adb_path": ADB_BLUESTACKS,
+                    "type": "BlueStacks",
+                    "port": port
+                }
+                print(f"[DEBUG] Instância detectada via adb: {device_id} na porta {port}")
+
+    print(f"[DEBUG] Total de instâncias BlueStacks detectadas: {len(instances)}")
     return instances
 
+def discover_bluestacks_instances_from_conf(conf_path):
+    with open(conf_path, "r", encoding="utf-8") as f:
+        data = f.read()
 
-# =====================================================
-# Gerenciamento de conexões
-# =====================================================
+    instance_re = re.compile(r'bst\.instance\.([^.=\n]+)\.display_name="([^"\n]*)"')
+    port_re = re.compile(r'bst\.instance\.([^.=\n]+)\.status\.adb_port="(\d+)"')
+    
+    # Mapeia instância → display_name
+    names = {m.group(1): m.group(2) for m in instance_re.finditer(data)}
+    # Mapeia instância → porta
+    ports = {m.group(1): m.group(2) for m in port_re.finditer(data)}
 
-def disconnect_emulator_instances():
-    """Remove conexões 'emulator-*' para limpar duplicados."""
-    print("Limpando conexões locais 'emulator-*' duplicadas...")
-    output = run_adb_command("devices")
-    for line in output.splitlines():
-        if line.startswith("emulator-"):
-            dev = line.split()[0]
-            subprocess.run(f'"{ADB_BLUESTACKS}" disconnect {dev}', shell=True, capture_output=True, text=True)
-            print(f"Desconectado duplicado: {dev}")
+    print(f"[DEBUG] Instâncias encontradas no conf: {list(names.keys())}")
+    print(f"[DEBUG] Atribuições display_name: {names}")
+    print(f"[DEBUG] Atribuições adb_port: {ports}")
 
+    result = []
+    for instance, display_name in names.items():
+        if instance in ports and display_name:
+            adb_port = ports[instance]
+            print(f"[DEBUG] Instância '{display_name}' ({instance}) porta {adb_port}")
+            result.append({"display_name": display_name, "adb_port": adb_port, "id": f"127.0.0.1:{adb_port}"})
+        else:
+            print(f"[DEBUG] Instância incompleta (sem porta ou nome): {instance}")
 
-def connect_all_known_ports(instance_mapping):
-    """Conecta apenas instâncias não conectadas (ignora as autoanexadas pelo BlueStacks)."""
-    print("\nConectando apenas instâncias ainda não conectadas...")
+    print(f"[DEBUG] Total instâncias válidas: {len(result)}")
+    return result
 
-    # Lista de dispositivos já conectados
-    output = run_adb_command("devices")
-    connected_ids = [line.split()[0] for line in output.splitlines() if "device" in line]
+# ==================================================================
+# Descoberta instâncias LDPlayer
+# ==================================================================
+def discover_ldplayer_instances():
+    print("=== Descobrindo instâncias LDPlayer ===")
+    instances = {}
+    result = run_adb_command(ADB_DEFAULT, "devices")
+    for line in result.splitlines():
+        if "\tdevice" in line and "127.0.0.1:" in line:
+            device_id = line.split("\t")[0].strip()
+            port = device_id.split(":")[1]
+            instances[device_id] = {
+                "id": device_id,
+                "display_name": f"LDPlayer-{port}",
+                "adb_path": ADB_DEFAULT,
+                "type": "LDPlayer",
+                "port": port
+            }
+    return instances
 
-    for port, info in instance_mapping.items():
-        name = info["display_name"]
-        port_str = f"127.0.0.1:{port}"
-        emulator_match = f"emulator-{port - 1}"  # Relação típica porta 5555 <-> 5554
-
-        # Evita reconectar se já conectado
-        if any(port_str in dev or emulator_match in dev for dev in connected_ids):
-            print(f"  {name:20} (porta {port}): já conectada (ignorada).")
-            continue
-
-        result = subprocess.run(f'"{ADB_BLUESTACKS}" connect {port_str}',
-                                shell=True, capture_output=True, text=True)
-        print(f"  {name:20} (porta {port}): {result.stdout.strip()}")
-
-
-# =====================================================
-# Listagem de dispositivos com metadados
-# =====================================================
-
-def list_devices_with_ports(instance_mapping):
-    """Lista conexões ADB ativas e faz correspondência com nomes amigáveis."""
-    output = run_adb_command("devices -l")
-    lines = output.splitlines()[1:]
-    devices = []
-
-    for line in lines:
-        if "device" not in line or "127.0.0.1" not in line:
-            continue
-
-        device_id = line.split()[0]
-        port = int(device_id.split(":")[1])
-
-        entry = instance_mapping.get(
-            port,
-            {"display_name": f"Desconhecido (porta {port})", "internal_name": ""}
-        )
-
-        devices.append({
-            "id": device_id,
-            "port": port,
-            "display_name": entry["display_name"],
-            "internal": entry["internal_name"],
-        })
-
-    return devices
-
-
+# ==================================================================
+# Combina todos conectados para uso
+# ==================================================================
 def list_devices():
-    """Executa fluxo completo: detectar -> conectar -> listar."""
-    disconnect_emulator_instances()
-    instances = discover_bluestacks_instances()
-    connect_all_known_ports(instances)
-    devices = list_devices_with_ports(instances)
-    return devices
+    devices = {}
+    bs = discover_bluestacks_instances()
+    ld = discover_ldplayer_instances()
+    devices.update(bs)
+    devices.update(ld)
+    print("\nConectando apenas instâncias ainda não conectadas...")
+    for device_id, info in devices.items():
+        output = run_adb_command(info["adb_path"], f"connect {device_id}")
+        print(f"  {info['display_name']:<20} (porta {info['port']}): {output}")
+    print(f"\nTotal de dispositivos conectados: {len(devices)}")
+    return list(devices.values())
 
+# ==================================================================
+# TAP e BACK genéricos usando o ADB correto
+# ==================================================================
+def tap(device_id, adb_path, x, y):
+    cmd = f'-s "{device_id}" shell input tap {x} {y}'
+    print(f"[ADB] TAP -> {cmd}")
+    run_adb_command(adb_path, cmd)
 
-# =====================================================
-# Ações ADB Genéricas
-# =====================================================
-
-def tap(device, x, y):
-    run_adb_command(f'-s {device} shell input tap {x} {y}')
-
-
-def swipe(device, x1, y1, x2, y2, duration=500):
-    run_adb_command(f'-s {device} shell input swipe {x1} {y1} {x2} {y2} {duration}')
-
-
-def press_back(device):
-    run_adb_command(f'-s {device} shell input keyevent 4')
-
-
-# =====================================================
-# Execução direta
-# =====================================================
+def press_back(device_id, adb_path):
+    cmd = f'-s "{device_id}" shell input keyevent 4'
+    print(f"[ADB] BACK -> {cmd}")
+    run_adb_command(adb_path, cmd)
 
 if __name__ == "__main__":
     devices = list_devices()
-    print("\n=== Dispositivos conectados ===")
-    if not devices:
-        print("Nenhum dispositivo conectado.\n")
-    else:
-        for d in devices:
-            print(f"  {d['display_name']:20} | Porta: {d['port']} | ID: {d['id']}")
+    for device in devices:
+        print(f"Dispositivo: {device['display_name']} ({device['id']}) [{device['type']}]")
