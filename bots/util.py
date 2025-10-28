@@ -30,7 +30,8 @@ def run_adb_command(adb_path, cmd):
         server_port = "5037"
         env["ADB_SERVER_SOCKET"] = f"tcp:127.0.0.1:{server_port}"
     else:
-        server_port = "5038"
+        # server_port = "5038"
+        server_port = "5037"
         env["ADB_SERVER_SOCKET"] = f"tcp:127.0.0.1:{server_port}"
     # start_adb_server(adb_path, server_port)
     full_cmd = f'"{adb_path}" -P {server_port} {cmd}'
@@ -47,49 +48,25 @@ def discover_bluestacks_instances():
     instances = {}
     print("=== Descobrindo instâncias BlueStacks ===")
 
-    # Verifica existência do arquivo bluestacks.conf
-    if not os.path.exists(BLUESTACKS_CONF_PATH):
-        print(f"[DEBUG] Arquivo bluestacks.conf não encontrado em: {BLUESTACKS_CONF_PATH}")
-    else:
-        try:
-            # with open(BLUESTACKS_CONF_PATH, "r", encoding="utf-8") as f:
-            #     data = f.read()
-            # print(f"[DEBUG] Conteúdo do bluestacks.conf lido, tamanho: {len(data)} caracteres")
-
-            # matches = re.findall(r'bst.instance.Names=.*?\n', data)
-            # print(f"[DEBUG] Linhas de instâncias encontradas: {len(matches)}")
-
-            # for match in matches:
-            #     name = match.split("=")[-1].strip()
-            #     port_match = re.search(rf"bst.instance.{name}.status.adb_port=(\d+)", data)
-            #     if port_match:
-            #         port = port_match.group(1)
-            #         device_id = f"127.0.0.1:{port}"
-            #         instances[device_id] = {
-            #             "id": device_id,
-            #             "display_name": name,
-            #             "adb_path": ADB_BLUESTACKS,
-            #             "type": "BlueStacks",
-            #             "port": port
-            #         }
-            #         print(f"[DEBUG] Instância detectada -> {name} na porta {port}")
-            #     else:
-            #         print(f"[DEBUG] Porta ADB não encontrada para instância {name}")
-            
-            insts_raw = discover_bluestacks_instances_from_conf(BLUESTACKS_CONF_PATH)
-            # Adiciona info padrão que outros métodos do util usam
-            instances = {}
-            for info in insts_raw:
-                instances[info["id"]] = {
-                    "id": info["id"],
-                    "display_name": info["display_name"],
-                    "adb_path": ADB_BLUESTACKS,
-                    "type": "BlueStacks",
-                    "port": info["adb_port"]
-                }
-            return instances
-        except Exception as e:
-            print(f"[ERRO] Exceção ao ler bluestacks.conf: {e}")
+    # # Verifica existência do arquivo bluestacks.conf
+    # if not os.path.exists(BLUESTACKS_CONF_PATH):
+    #     print(f"[DEBUG] Arquivo bluestacks.conf não encontrado em: {BLUESTACKS_CONF_PATH}")
+    # else:
+    #     try:
+    #         insts_raw = discover_bluestacks_instances_from_conf(BLUESTACKS_CONF_PATH)
+    #         # Adiciona info padrão que outros métodos do util usam
+    #         instances = {}
+    #         for info in insts_raw:
+    #             instances[info["id"]] = {
+    #                 "id": info["id"],
+    #                 "display_name": info["display_name"],
+    #                 "adb_path": ADB_BLUESTACKS,
+    #                 "type": "BlueStacks",
+    #                 "port": info["adb_port"]
+    #             }
+    #         return instances
+    #     except Exception as e:
+    #         print(f"[ERRO] Exceção ao ler bluestacks.conf: {e}")
 
     # Se nenhuma instância identificada via conf, tenta via comando adb devices
     if not instances:
@@ -152,9 +129,15 @@ def discover_ldplayer_instances():
     instances = {}
     result = run_adb_command(ADB_DEFAULT, "devices")
     for line in result.splitlines():
-        if "\tdevice" in line and "127.0.0.1:" in line:
+        if "\tdevice" in line:
             device_id = line.split("\t")[0].strip()
-            port = device_id.split(":")[1]
+            # Extrai 'porta' se device_id for no formato emulator-5554 ou 127.0.0.1:5555
+            if ":" in device_id:
+                port = device_id.split(":")[1]
+            elif "-" in device_id:
+                port = device_id.split("-")[1]
+            else:
+                port = device_id  # fallback para device_id
             instances[device_id] = {
                 "id": device_id,
                 "display_name": f"LDPlayer-{port}",
@@ -164,15 +147,16 @@ def discover_ldplayer_instances():
             }
     return instances
 
+
 # ==================================================================
 # Combina todos conectados para uso
 # ==================================================================
 def list_devices():
     devices = {}
     bs = discover_bluestacks_instances()
-    ld = discover_ldplayer_instances()
     devices.update(bs)
-    devices.update(ld)
+    # ld = discover_ldplayer_instances()
+    # devices.update(ld)
     print("\nConectando apenas instâncias ainda não conectadas...")
     for device_id, info in devices.items():
         output = run_adb_command(info["adb_path"], f"connect {device_id}")
