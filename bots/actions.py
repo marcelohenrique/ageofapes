@@ -53,6 +53,11 @@ def click_march(device_id, adb_path):
     x, y = COORDS["march_button"]
     tap(device_id, adb_path, x, y)
 
+def click_help_gang(device_id, adb_path):
+    print("Clica no botão de ajuda/gangue.")
+    x, y = (980, 670)
+    tap(device_id, adb_path, x, y)
+
 # Função principal compatível com monitor.py
 def kill_giganto(device_id, adb_path):
     """Executa uma sequência automatizada para atacar um Giganto."""
@@ -73,11 +78,20 @@ def kill_giganto(device_id, adb_path):
     sleep(2)
     press_back(device_id, adb_path)
 
+def press_help_button(device_id, adb_path):
+    """Clica no botão de ajuda/gangue."""
+    press_back(device_id, adb_path)
+    sleep(2)
+    click_help_gang(device_id, adb_path)
+    sleep(2)
+    press_back(device_id, adb_path)
+
 if __name__ == "__main__":
     devices = list_devices()
     if devices:
         device = devices[0]
         print(f"Usando dispositivo {device['display_name']} ({device['id']}) [{device['type']}]")
-        kill_giganto(device["id"], device["adb_path"])
+        # kill_giganto(device["id"], device["adb_path"])
+        press_help_button(device["id"], device["adb_path"])
     else:
         print("Nenhum dispositivo conectado.")
