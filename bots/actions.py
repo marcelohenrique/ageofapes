@@ -80,7 +80,7 @@ def kill_giganto(device_id, adb_path):
 
 def press_help_button(device_id, adb_path):
     """Clica no botão de ajuda/gangue."""
-    press_back(device_id, adb_path)
+    # press_back(device_id, adb_path)
     sleep(2)
     click_help_gang(device_id, adb_path)
     sleep(2)
