@@ -1,6 +1,6 @@
 import time
 from util import list_devices
-from actions import kill_giganto  # ← importa a função que realiza a ação
+from actions import kill_giganto, press_help_button  # ← importa a função que realiza a ação
 
 SCAN_INTERVAL = 5*60  # segundos entre varreduras do ADB
 ACTION_DELAY = 2   # segundos entre ações nos dispositivos
@@ -34,6 +34,7 @@ def main():
     print("Monitor de dispositivos ADB ativo. Pressione Ctrl+C para sair.\n")
 
     try:
+        help_button_interval = 1  # Intervalo para pressionar o botão de ajuda
         while True:
             start = time.time()
             devices = list_devices()
@@ -52,7 +53,13 @@ def main():
 
             duration = time.time() - start
             sleep_time = max(0, SCAN_INTERVAL - duration)
-            time.sleep(sleep_time)
+            # time.sleep(sleep_time)
+            end_wait = time.time() + sleep_time
+            while time.time() < end_wait:
+                for dev in active_devices.values():
+                    press_help_button(dev)  # Adapte os argumentos conforme assinatura correta!
+                    time.sleep(help_button_interval)  # Defina um intervalo curto para não sobrecarregar
+
 
     except KeyboardInterrupt:
         print("\nEncerrando monitor de dispositivos...")
