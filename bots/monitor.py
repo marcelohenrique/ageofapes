@@ -25,6 +25,7 @@ def perform_actions(device):
     print(f"[>] Executando kill_giganto em {display_name} ({device_id}) [{device['type']}]")
     try:
         kill_giganto(device_id, adb_path)  # passa ID e caminho do adb (compatível com util.py)
+        press_help_button(device_id, adb_path)
     except Exception as e:
         print(f"[!] Erro ao executar kill_giganto em {display_name}: {e}")
 
@@ -57,7 +58,7 @@ def main():
             end_wait = time.time() + sleep_time
             while time.time() < end_wait:
                 for dev in active_devices.values():
-                    press_help_button(dev)  # Adapte os argumentos conforme assinatura correta!
+                    press_help_button(dev['id'], dev['adb_path'])  # Adapte os argumentos conforme assinatura correta!
                     time.sleep(help_button_interval)  # Defina um intervalo curto para não sobrecarregar
 
 
