@@ -35,6 +35,7 @@ def main():
 
     try:
         while True:
+            start = time.time()
             devices = list_devices()
             current_ids = [d["id"] for d in devices]
 
@@ -49,7 +50,9 @@ def main():
             for dev in active_devices.values():
                 perform_actions(dev)
 
-            time.sleep(SCAN_INTERVAL)
+            duration = time.time() - start
+            sleep_time = max(0, SCAN_INTERVAL - duration)
+            time.sleep(sleep_time)
 
     except KeyboardInterrupt:
         print("\nEncerrando monitor de dispositivos...")
