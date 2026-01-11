@@ -151,12 +151,24 @@ def discover_ldplayer_instances():
 # ==================================================================
 # Combina todos conectados para uso
 # ==================================================================
-def list_devices():
+def list_devices(target=None):
+    """
+    Combina dispositivos conectados.
+    target: None|'bluestacks'|'ldplayer' - filtra descoberta conforme solicitado.
+    """
     devices = {}
-    bs = discover_bluestacks_instances()
-    devices.update(bs)
-    # ld = discover_ldplayer_instances()
-    # devices.update(ld)
+    if target == "bluestacks":
+        bs = discover_bluestacks_instances()
+        devices.update(bs)
+    elif target == "ldplayer":
+        ld = discover_ldplayer_instances()
+        devices.update(ld)
+    else:
+        bs = discover_bluestacks_instances()
+        devices.update(bs)
+        ld = discover_ldplayer_instances()
+        devices.update(ld)
+
     print("\nConectando apenas instâncias ainda não conectadas...")
     for device_id, info in devices.items():
         output = run_adb_command(info["adb_path"], f"connect {device_id}")
