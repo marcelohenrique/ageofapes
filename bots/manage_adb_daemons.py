@@ -1,5 +1,6 @@
 import subprocess
 import os
+import sys
 
 def stop_adb_server(adb_path, server_port):
     """Para o daemon adb associando ao executável"""
@@ -37,7 +38,19 @@ if __name__ == "__main__":
     ADB_DEFAULT = "adb"
 
     stop_adb_server(ADB_BLUESTACKS, 5037)
+    stop_adb_server(ADB_DEFAULT, 5037)
     stop_adb_server(ADB_DEFAULT, 5038)
 
-    start_adb_server(ADB_BLUESTACKS, 5037)
-    start_adb_server(ADB_DEFAULT, 5038)
+    # Recebe um parâmetro: "bluestacks" ou "ldplayer"
+    if len(sys.argv) < 2:
+        print("Uso: manage_adb_daemons.py <bluestacks|ldplayer>")
+        sys.exit(1)
+
+    target = sys.argv[1].lower()
+    if target == "bluestacks":
+        start_adb_server(ADB_BLUESTACKS, 5037)
+    elif target == "ldplayer":
+        start_adb_server(ADB_DEFAULT, 5037)
+    else:
+        print("Parâmetro inválido. Use 'bluestacks' ou 'ldplayer'.")
+        sys.exit(1)

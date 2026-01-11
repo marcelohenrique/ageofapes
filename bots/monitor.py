@@ -1,9 +1,35 @@
 import time
+import sys
 from util import list_devices
 from actions import kill_giganto, press_help_button  # ← importa a função que realiza a ação
 
-SCAN_INTERVAL = 5*60  # segundos entre varreduras do ADB
+SCAN_INTERVAL = 5 # 5*60  # segundos entre varreduras do ADB
 ACTION_DELAY = 2   # segundos entre ações nos dispositivos
+
+WHITELIST_IDS = { # Preencha com os deviceids que quer isolar
+    ''
+    # , 'emulator-5560' # FarmerApe05
+    # , 'emulator-5558' # FarmerApe08
+    # , ''
+    # bluestacks
+    # , 'emulator-5554' # minion01
+    # , 'emulator-5564' # minion02
+}
+
+DONT_KILL_GIGANTO_ID_LIST = {
+    ''
+    # , 'emulator-5554'  # FarmerApe04
+    # , 'emulator-5554'  # FarmerApe05
+    # , 'emulator-5554'  # FarmerApe06
+    # , 'emulator-5554'  # FarmerApe07
+    # , 'emulator-5554'  # FarmerApe08
+    # bluestacks
+    # , 'emulator-5554' # minion01
+    # , 'emulator-5564' # minion02
+    # , '127.0.0.1:5556' # minion03
+}
+
+KILL_GIGANTO = False
 
 active_devices = {}
 
@@ -24,7 +50,8 @@ def perform_actions(device):
 
     print(f"[>] Executando kill_giganto em {display_name} ({device_id}) [{device['type']}]")
     try:
-        kill_giganto(device_id, adb_path)  # passa ID e caminho do adb (compatível com util.py)
+        if KILL_GIGANTO or ( device_id not in DONT_KILL_GIGANTO_ID_LIST ):
+            kill_giganto(device_id, adb_path)  # passa ID e caminho do adb (compatível com util.py)
         press_help_button(device_id, adb_path)
     except Exception as e:
         print(f"[!] Erro ao executar kill_giganto em {display_name}: {e}")
@@ -34,11 +61,21 @@ def perform_actions(device):
 def main():
     print("Monitor de dispositivos ADB ativo. Pressione Ctrl+C para sair.\n")
 
+    # Lê parâmetro opcional: 'bluestacks' ou 'ldplayer'
+    target = None
+    if len(sys.argv) >= 2:
+        t = sys.argv[1].lower()
+        if t in ("bluestacks", "ldplayer"):
+            target = t
+        else:
+            print("Uso: monitor.py [bluestacks|ldplayer]")
+            sys.exit(1)
+
     try:
         help_button_interval = 1  # Intervalo para pressionar o botão de ajuda
         while True:
             start = time.time()
-            devices = list_devices()
+            devices = list_devices(target)  # passa o filtro aqui
             current_ids = [d["id"] for d in devices]
 
             for dev in devices:
@@ -50,7 +87,8 @@ def main():
                     handle_disconnect(d_id)
 
             for dev in active_devices.values():
-                perform_actions(dev)
+                if dev['id'] not in WHITELIST_IDS:
+                    perform_actions(dev)
 
             duration = time.time() - start
             sleep_time = max(0, SCAN_INTERVAL - duration)
@@ -58,8 +96,9 @@ def main():
             end_wait = time.time() + sleep_time
             while time.time() < end_wait:
                 for dev in active_devices.values():
-                    press_help_button(dev['id'], dev['adb_path'])  # Adapte os argumentos conforme assinatura correta!
-                    time.sleep(help_button_interval)  # Defina um intervalo curto para não sobrecarregar
+                    if dev['id'] not in WHITELIST_IDS:
+                        press_help_button(dev['id'], dev['adb_path'])
+                        time.sleep(help_button_interval)
 
 
     except KeyboardInterrupt:
