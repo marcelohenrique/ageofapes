@@ -184,7 +184,7 @@ def tap(device_id, adb_path, x, y):
     print(f"[ADB] TAP -> {cmd}")
     run_adb_command(adb_path, cmd)
 
-def press_back(device_id, adb_path):
+def press_back_esc(device_id, adb_path):
     cmd = f'-s "{device_id}" shell input keyevent 4'
     print(f"[ADB] BACK -> {cmd}")
     run_adb_command(adb_path, cmd)

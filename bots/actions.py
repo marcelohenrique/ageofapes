@@ -1,5 +1,5 @@
 from time import sleep
-from util import press_back, tap, list_devices
+from util import press_back_esc, tap, list_devices
 
 # Coordenadas dos botões — ajuste conforme sua resolução ou emulador
 COORDS = {
@@ -76,7 +76,7 @@ def kill_giganto(device_id, adb_path):
     sleep(5)
     click_march(device_id, adb_path)
     sleep(2)
-    press_back(device_id, adb_path)
+    press_back_esc(device_id, adb_path)
 
 def press_help_button(device_id, adb_path):
     """Clica no botão de ajuda/gangue."""
@@ -84,7 +84,7 @@ def press_help_button(device_id, adb_path):
     sleep(2)
     click_help_gang(device_id, adb_path)
     sleep(2)
-    press_back(device_id, adb_path)
+    press_back_esc(device_id, adb_path)
 
 if __name__ == "__main__":
     devices = list_devices()
