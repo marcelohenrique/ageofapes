@@ -1,7 +1,7 @@
 import time
 import sys
-from util import list_devices
-from actions import kill_giganto, press_help_button  # ← importa a função que realiza a ação
+from emulator_api import list_devices
+from aoa_actions import kill_giganto, press_help_button  # ← importa a função que realiza a ação
 
 SCAN_INTERVAL = 5 # 5*60  # segundos entre varreduras do ADB
 ACTION_DELAY = 2   # segundos entre ações nos dispositivos

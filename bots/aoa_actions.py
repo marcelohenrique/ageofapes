@@ -1,5 +1,5 @@
 from time import sleep
-from util import press_back_esc, tap, list_devices
+from emulator_api import press_back_esc, tap, list_devices
 
 # Coordenadas dos botões — ajuste conforme sua resolução ou emulador
 COORDS = {
