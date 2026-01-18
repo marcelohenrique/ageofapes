@@ -32,8 +32,8 @@ def start_adb_server(adb_path, server_port):
     subprocess.run(cmd, shell=True, capture_output=True, text=True, env=env)
     print(f"Servidor ADB iniciado na porta {server_port}")
 
-# Exemplo de uso
-if __name__ == "__main__":
+
+def start(target):
     ADB_BLUESTACKS = r"C:\Program Files\BlueStacks_nxt\HD-Adb.exe"
     ADB_DEFAULT = "adb"
 
@@ -41,12 +41,6 @@ if __name__ == "__main__":
     stop_adb_server(ADB_DEFAULT, 5037)
     stop_adb_server(ADB_DEFAULT, 5038)
 
-    # Recebe um parâmetro: "bluestacks" ou "ldplayer"
-    if len(sys.argv) < 2:
-        print("Uso: manage_adb_daemons.py <bluestacks|ldplayer>")
-        sys.exit(1)
-
-    target = sys.argv[1].lower()
     if target == "bluestacks":
         start_adb_server(ADB_BLUESTACKS, 5037)
     elif target == "ldplayer":
@@ -54,3 +48,11 @@ if __name__ == "__main__":
     else:
         print("Parâmetro inválido. Use 'bluestacks' ou 'ldplayer'.")
         sys.exit(1)
+
+if __name__ == "__main__":
+    # Recebe um parâmetro: "bluestacks" ou "ldplayer"
+    if len(sys.argv) < 2:
+        print("Uso: manage_adb_daemons.py <bluestacks|ldplayer>")
+        sys.exit(1)
+    target = sys.argv[1].lower()
+    start(target)
