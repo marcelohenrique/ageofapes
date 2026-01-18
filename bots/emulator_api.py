@@ -189,7 +189,14 @@ def press_back_esc(device_id, adb_path):
     print(f"[ADB] BACK -> {cmd}")
     run_adb_command(adb_path, cmd)
 
+def start_app(device_id, adb_path, package_name):
+    cmd = f'-s "{device_id}" shell monkey -p {package_name} 1'
+    print(f"[ADB] START APP -> {cmd}")
+    run_adb_command(adb_path, cmd)
+
 if __name__ == "__main__":
-    devices = list_devices()
-    for device in devices:
-        print(f"Dispositivo: {device['display_name']} ({device['id']}) [{device['type']}]")
+    # devices = list_devices()
+    # for device in devices:
+    #     print(f"Dispositivo: {device['display_name']} ({device['id']}) [{device['type']}]")
+    
+    start_app('emulator-5554', ADB_DEFAULT, 'com.tap4fun.ape.gplay')
