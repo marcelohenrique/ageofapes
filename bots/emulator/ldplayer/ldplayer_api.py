@@ -74,19 +74,31 @@ def is_instance_ready(instance_name=None, timeout=120, interval=2):
     if not instance_name:
         raise ValueError("instance_name é obrigatório para verificar readiness via ldconsole")
 
-    end_time = time.time() + timeout
+    start_time = time.time()
+    end_time = start_time + timeout
+    attempt = 0
+
     while time.time() < end_time:
+        attempt += 1
+        time_left = int(end_time - time.time())
+        print(f"[is_instance_ready] attempt={attempt} instance='{instance_name}' time_left={time_left}s")
         try:
             proc = subprocess.run([LDCONSOLE_PATH, "list2"], capture_output=True, text=True, timeout=5)
             out = proc.stdout or proc.stderr or ""
 
-            for line in out.splitlines():
-                line = line.strip()
-                if not line:
+            # print a short preview of the output for debugging
+            preview = out.strip()[:1000]
+            print(f"[is_instance_ready] ldconsole output preview (first 1000 chars):\n{preview}\n--- end preview ---")
+
+            found = False
+            for lineno, line in enumerate(out.splitlines(), start=1):
+                raw = line.rstrip()
+                if not raw:
                     continue
                 # split em colunas por espaços em branco; nome geralmente fica na segunda coluna
-                parts = re.split(r'\s+', line)
-                if len(parts) < 5:
+                parts = re.split(r',', raw)
+                print(f"[is_instance_ready] line {lineno}: parts={parts}")
+                if len(parts) < 2:
                     continue
                 # coluna 1 = index, 2 = name, 5 = status (0-based: parts[1], parts[4])
                 name_col = parts[1]
@@ -94,13 +106,21 @@ def is_instance_ready(instance_name=None, timeout=120, interval=2):
 
                 # compara nomes (case-insensitive). permite correspondência parcial também.
                 if instance_name.lower() == name_col.lower() or instance_name.lower() in name_col.lower():
-                    return status_col == "1"
-        except Exception:
-            # ignora erros transitórios e tenta novamente
-            pass
+                    print(f"[is_instance_ready] matched line {lineno}: name_col='{name_col}' status_col='{status_col}'")
+                    found = True
+                    ready = status_col == "1"
+                    print(f"[is_instance_ready] instance '{instance_name}' ready={ready}")
+                    return ready
+
+            if not found:
+                print(f"[is_instance_ready] instance '{instance_name}' not found in ldconsole output (attempt {attempt})")
+
+        except Exception as e:
+            print(f"[is_instance_ready] exception on attempt {attempt}: {e}")
 
         time.sleep(interval)
 
+    print(f"[is_instance_ready] timeout after {attempt} attempts; instance '{instance_name}' not ready")
     return False
 
 def stop_ldplayer_instance(instance_id):
