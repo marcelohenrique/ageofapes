@@ -56,72 +56,47 @@ def _get_adb_serial_from_ldconsole(instance_name):
         return m.group(1)
     return None
 
-def is_instance_ready(instance_name=None, adb_serial=None, timeout=120, interval=2, adb_path=None):
+def is_instance_ready(instance_name=None, timeout=120, interval=2):
     """
-    Espera até que a instância do emulador esteja pronta (boot completo).
-    Agora usa o device name (ex: 'emulator-5554') quando possível em vez do host:port.
-    - instance_name: nome da instância no LDPlayer (ex: "Minion04"). Opcional se adb_serial fornecido.
-    - adb_serial: serial do adb (ex: '127.0.0.1:5555'). Se fornecido, será usado para conectar, mas as verificações usarão
-      o device name retornado por get_emulator_device_name() se disponível.
-    - timeout: tempo máximo em segundos para aguardar.
-    - interval: intervalo entre tentativas em segundos.
-    - adb_path: caminho para adb (opcional). Se None, será procurado no PATH.
-    Retorna True se pronto, False se timeout ou erro ao resolver serial/device name.
+    Verifica se a instância LDPlayer está pronta lendo a saída de `ldconsole list2`.
+
+    A saída contém colunas: index, name, top_window_hwnd, bind_window_hwnd, status, pid, vbox_pid
+    A função procura pela linha correspondente a `instance_name` e considera pronta quando
+    a coluna `status` for '1'.
+
+    Parâmetros:
+    - instance_name: nome da instância LDPlayer (obrigatório)
+    - timeout: tempo máximo em segundos para aguardar
+    - interval: intervalo entre tentativas em segundos
+
+    Retorna True se status == '1' dentro do timeout, False caso contrário.
     """
-    adb_path = adb_path or _find_adb_executable()
-
-    # tenta resolver adb_serial a partir do nome da instância (ldconsole) se necessário
-    if not adb_serial and instance_name:
-        adb_serial = _get_adb_serial_from_ldconsole(instance_name)
-        # se não conseguiu resolver o host:port, ainda tentaremos obter o device name diretamente
-        # (por exemplo, se ldconsole não reporta host:port corretamente)
-    
-    # tenta obter o device name (emulator-XXXX) que aparece em `adb devices`
-    device_name = None
-    try:
-        device_name = get_emulator_device_name(instance_name=instance_name, adb_serial=adb_serial, adb_path=adb_path, timeout=10, interval=1)
-    except Exception:
-        device_name = None
-
-    # se não obteve nem adb_serial nem device_name, não é possível prosseguir
-    if not adb_serial and not device_name:
-        raise ValueError("É necessário fornecer adb_serial ou instance_name para determinar o dispositivo ADB.")
+    if not instance_name:
+        raise ValueError("instance_name é obrigatório para verificar readiness via ldconsole")
 
     end_time = time.time() + timeout
     while time.time() < end_time:
         try:
-            # se temos adb_serial, garante conexão (silenciosa) para expor o device no `adb devices`
-            if adb_serial:
-                subprocess.run([adb_path, "connect", adb_serial], capture_output=True, text=True, timeout=5)
+            proc = subprocess.run([LDCONSOLE_PATH, "list2"], capture_output=True, text=True, timeout=5)
+            out = proc.stdout or proc.stderr or ""
 
-            # escolhe o identificador para as chamadas adb: prefere device_name (emulator-XXXX)
-            target = device_name or adb_serial
+            for line in out.splitlines():
+                line = line.strip()
+                if not line:
+                    continue
+                # split em colunas por espaços em branco; nome geralmente fica na segunda coluna
+                parts = re.split(r'\s+', line)
+                if len(parts) < 5:
+                    continue
+                # coluna 1 = index, 2 = name, 5 = status (0-based: parts[1], parts[4])
+                name_col = parts[1]
+                status_col = parts[4] if len(parts) > 4 else "0"
 
-            # Verifica propriedade sys.boot_completed usando o identificador escolhido
-            proc = subprocess.run([adb_path, "-s", target, "shell", "getprop", "sys.boot_completed"],
-                                  capture_output=True, text=True, timeout=5)
-            output = (proc.stdout or "").strip()
-            if output == "1":
-                return True
-
-            # Algumas ROMs podem usar init.svc.bootanim => verificar alternativa
-            proc2 = subprocess.run([adb_path, "-s", target, "shell", "getprop", "init.svc.bootanim"],
-                                   capture_output=True, text=True, timeout=5)
-            if (proc2.stdout or "").strip() in ("stopped", "0"):
-                return True
-
-            # se ainda não temos device_name, tenta resolver novamente (pode aparecer após connect)
-            if not device_name:
-                try:
-                    device_name = get_emulator_device_name(instance_name=instance_name, adb_serial=adb_serial, adb_path=adb_path, timeout=1, interval=0.5)
-                    if device_name:
-                        # atualiza target para próximas iterações
-                        target = device_name
-                except Exception:
-                    pass
-
+                # compara nomes (case-insensitive). permite correspondência parcial também.
+                if instance_name.lower() == name_col.lower() or instance_name.lower() in name_col.lower():
+                    return status_col == "1"
         except Exception:
-            # ignora erros transitórios e tenta novamente até timeout
+            # ignora erros transitórios e tenta novamente
             pass
 
         time.sleep(interval)
@@ -224,7 +199,7 @@ def get_emulator_device_name(instance_name=None, adb_serial=None, adb_path=None,
     return None
 
 if __name__ == "__main__":
-    start_ldplayer_instance_by_name("Minion04")
+    # start_ldplayer_instance_by_name("Minion04")
     if is_instance_ready(instance_name="Minion04"):
         print("Emulator is ready!")
     # stop_all_ldplayer_instances()
