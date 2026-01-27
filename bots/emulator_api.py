@@ -1,5 +1,5 @@
 import subprocess
-# import time
+import time
 import os
 import re
 
@@ -194,9 +194,51 @@ def start_app(device_id, adb_path, package_name):
     print(f"[ADB] START APP -> {cmd}")
     run_adb_command(adb_path, cmd)
 
+def _escape_text_for_adb_input(text: str) -> str:
+    # adb 'input text' requires spaces to be replaced with %s and '%' escaped as %25.
+    # Also escape double quotes so they survive shell quoting.
+    if text is None:
+        return ""
+    s = text.replace('%', '%25')
+    s = s.replace(' ', '%s')
+    s = s.replace('"', '\\"')
+    return s
+
+
+def send_text(device_id, adb_path, text, per_char_sleep=0.05):
+    """Envia uma string para um campo de texto via ADB.
+
+    Tenta usar `adb shell input text` (mais rápido). Se houver falha, faz fallback
+    enviando a string caractere a caractere também via `input text` (uma a uma).
+
+    - device_id: identificador exibido em `adb devices` (ex: 'emulator-5554' ou '127.0.0.1:5555')
+    - adb_path: caminho para o executável adb a ser usado
+    - text: texto a enviar
+    - per_char_sleep: intervalo entre chars no fallback
+    """
+    if text is None:
+        return
+
+    # escaped = _escape_text_for_adb_input(text)
+    # cmd = f'-s "{device_id}" shell input text "{escaped}"'
+    # print(f"[ADB] SEND TEXT -> {cmd}")
+    # out = run_adb_command(adb_path, cmd)
+
+    # Se a saída indicar erro (adb pode imprimir mensagens de erro no stderr que já são mostradas
+    # por run_adb_command), ou se a resposta não contiver nada útil, tentamos fallback por caracteres.
+    # if out is None or out == "":
+    # fallback: enviar por caracteres para contornar problemas com caracteres especiais
+    for ch in text:
+        esc_ch = _escape_text_for_adb_input(ch)
+        cmd_c = f'-s "{device_id}" shell input text "{esc_ch}"'
+        print(f"[ADB] SEND CHAR -> {cmd_c}")
+        run_adb_command(adb_path, cmd_c)
+        time.sleep(per_char_sleep)
+
 if __name__ == "__main__":
-    # devices = list_devices()
-    # for device in devices:
-    #     print(f"Dispositivo: {device['display_name']} ({device['id']}) [{device['type']}]")
-    
-    start_app('emulator-5554', ADB_DEFAULT, 'com.tap4fun.ape.gplay')
+    devices = list_devices()
+    for device in devices:
+        print(f"Dispositivo: {device['display_name']} ({device['id']}) [{device['type']}]")
+        # start_app(device['id'], device['adb_path'], 'com.tap4fun.ape.gplay')
+        press_back_esc(device['id'], device['adb_path'])
+        # press_back_esc(device['id'], device['adb_path'])
