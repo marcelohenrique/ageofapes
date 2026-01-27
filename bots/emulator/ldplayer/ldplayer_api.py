@@ -108,9 +108,13 @@ def is_instance_ready(instance_name=None, timeout=120, interval=2):
                 if instance_name.lower() == name_col.lower() or instance_name.lower() in name_col.lower():
                     print(f"[is_instance_ready] matched line {lineno}: name_col='{name_col}' status_col='{status_col}'")
                     found = True
-                    ready = status_col == "1"
-                    print(f"[is_instance_ready] instance '{instance_name}' ready={ready}")
-                    return ready
+                    if status_col == "1":
+                        print(f"[is_instance_ready] instance '{instance_name}' ready=True")
+                        return True
+                    else:
+                        print(f"[is_instance_ready] instance '{instance_name}' matched but not ready (status={status_col}); will continue waiting")
+                        # stop scanning other lines this iteration and wait for next attempt
+                        break
 
             if not found:
                 print(f"[is_instance_ready] instance '{instance_name}' not found in ldconsole output (attempt {attempt})")
