@@ -1,17 +1,66 @@
+import time
+import aoa_actions, monitor
 import emulator_api
 from emulator.ldplayer import ldplayer_api
 import manage_adb_daemons
 
+LDPLAYER_INSTANCES = ["Minion04", "Minion05", "Minion06"]
 
-if __name__ == "__main__":
-    _ldplayer_instances = ["Minion04"] #, "Minion05", "Minion06"]
-    print('Starting LDPlayer ADB daemon...')
+def start_emulators():
+    print(f'[{time.strftime("%H:%M:%S")}] Starting LDPlayer ADB daemon...')
     manage_adb_daemons.start("ldplayer")
-    for _instance_name in _ldplayer_instances:
+    for _instance_name in LDPLAYER_INSTANCES:
         print(f'[{_instance_name}] Starting LDPlayer instance...')
         ldplayer_api.start_ldplayer_instance_by_name(_instance_name)
         if ldplayer_api.is_instance_ready(instance_name=_instance_name):
             print(f"[{_instance_name}] Emulator is ready!")
-            _device_name = ldplayer_api.get_emulator_device_name(instance_name=_instance_name)
-            print(f"[{_instance_name}] Launching Age of Apes game...")
-            emulator_api.start_app(_device_name, 'adb', 'com.tap4fun.ape.gplay')
+    
+    time.sleep(2)  # Wait a bit before listing devices
+
+def start_game(devices):
+    for device in devices:
+        print(f"Dispositivo: {device['display_name']} ({device['id']}) [{device['type']}]")
+        emulator_api.start_app(device['id'], device['adb_path'], 'com.tap4fun.ape.gplay')
+
+    time.sleep(300)  # Wait a bit before performing actions
+
+def run_aoa(devices):
+    # Press back and help button multiple times to avoid popups
+    for device in devices:
+        for i in range(5):
+            emulator_api.press_back_esc(device['id'], device['adb_path'])
+            time.sleep(1)
+            aoa_actions.press_help_button(device['id'], device['adb_path'])
+            time.sleep(1)
+
+    for device in devices:
+        aoa_actions.press_map_city_button(device['id'], device['adb_path'])
+        time.sleep(1)
+    
+    # Get gang gifts
+    get_gang_gifts(devices)
+
+    # heal troops, if needed
+
+    # run convoy missions
+
+    # Gang donations, take care about resources needed
+
+    # Use all stocked action points
+    # for device in devices:
+    #     aoa_actions.use_action_points(device['id'], device['adb_path'])
+    
+    # Figure out a way to develop gang research automatically
+
+    monitor.main()
+
+def get_gang_gifts(devices):
+    for device in devices:
+        aoa_actions.get_gang_gifts(device['id'], device['adb_path'])
+        time.sleep(1)
+
+if __name__ == "__main__":
+    # start_emulators()
+    devices = emulator_api.list_devices(target='ldplayer')
+    # start_game(devices)
+    run_aoa(devices)
