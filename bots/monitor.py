@@ -1,6 +1,6 @@
 import time
 import sys
-from emulator_api import list_devices
+import emulator_api
 from aoa_actions import kill_giganto, press_help_button  # ← importa a função que realiza a ação
 
 SCAN_INTERVAL = 5 # 5*60  # segundos entre varreduras do ADB
@@ -75,7 +75,7 @@ def main():
         help_button_interval = 1  # Intervalo para pressionar o botão de ajuda
         while True:
             start = time.time()
-            devices = list_devices(target)  # passa o filtro aqui
+            devices = emulator_api.list_devices(target)  # passa o filtro aqui
             current_ids = [d["id"] for d in devices]
 
             for dev in devices:
