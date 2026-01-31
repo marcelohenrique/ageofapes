@@ -51,7 +51,8 @@ def perform_actions(device):
     print(f"[>] Executando kill_giganto em {display_name} ({device_id}) [{device['type']}]")
     try:
         if KILL_GIGANTO or ( device_id not in DONT_KILL_GIGANTO_ID_LIST ):
-            kill_giganto(device_id, adb_path)  # passa ID e caminho do adb (compatível com util.py)
+            giganto_level = 5
+            kill_giganto(device_id, adb_path, giganto_level=giganto_level)  # passa ID e caminho do adb (compatível com util.py)
         press_help_button(device_id, adb_path)
     except Exception as e:
         print(f"[!] Erro ao executar kill_giganto em {display_name}: {e}")

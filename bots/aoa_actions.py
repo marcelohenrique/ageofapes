@@ -74,13 +74,13 @@ def click_items_ap_recharge_2x_button(device_id, adb_path):
 #     emulator_api.tap(device_id, adb_path, x, y)
 
 # Função principal compatível com monitor.py
-def kill_giganto(device_id, adb_path):
+def kill_giganto(device_id, adb_path, giganto_level=1):
     """Executa uma sequência automatizada para atacar um Giganto."""
     click_search(device_id, adb_path)
     sleep(2)
     click_giganto(device_id, adb_path)
     sleep(1)
-    for _ in range(4):
+    for _ in range(5-giganto_level):
         click_reduce_search_level(device_id, adb_path)
         sleep(1)
     click_second_search(device_id, adb_path)
