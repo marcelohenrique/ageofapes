@@ -9,6 +9,8 @@ COORDS = {
     "second_search_button": (1104, 646),
     "first_rally_button": (998, 549),
     "second_rally_button": (996, 500),
+    "first_delegation_first_march": (878, 321),
+    "first_delegation_second_march": (1034, 321),
     "march_button": (1096, 660),
     "small_mutants": (800, 500),
 
@@ -163,8 +165,22 @@ def heal_troops(troops_qty, device_id, adb_path, additional_time=0):
 
 # High-level actions simplified to use click_coord
 
-def kill_giganto(device_id, adb_path, giganto_level=1):
-    """Executa sequência automatizada para atacar um Giganto usando apenas click_coord."""
+def kill_giganto(device_id, adb_path, giganto_level=1, delegation=False, hasBus=False, selectedMarch=1):
+    """Executa sequência automatizada para atacar um Giganto usando apenas click_coord.
+       Parametros:
+       device_id: ID do dispositivo
+       adb_path: Caminho do adb
+       giganto_level: Nível do Giganto a ser atacado
+       delegation: Se está usando tropas delegadas (o menu de seleção de tropas muda)
+       hasBus: Se o jogador possui ônibus disponíveis (o menu de seleção de tropas muda)
+       selectedMarch: Marcha selecionada para o ataque.
+          1 - Seleciona a marcha principal simples (ps: incluir uma opção de selecionar preset marches futuramente)
+          2 - Seleciona o ônibus
+          3 - Seleciona a primeira marcha da primeira delegação
+          4 - Seleciona a segunda marcha da primeira delegação
+          5 - Seleciona a primeira marcha da segunda delegação
+          6 - Seleciona a segunda marcha da segunda delegação
+       """
     click_coord(device_id, adb_path, "first_search_button")
     sleep(2)
     click_coord(device_id, adb_path, "giganto_search_button")
@@ -178,17 +194,30 @@ def kill_giganto(device_id, adb_path, giganto_level=1):
     sleep(2)
     click_coord(device_id, adb_path, "second_rally_button")
     sleep(5)
-    click_coord(device_id, adb_path, "march_button")
-    sleep(2)
-    for _ in range(3):
-        click_coord(device_id, adb_path, "items_ap_recharge_use")
-        sleep(2)
-    emulator_api.press_back_esc(device_id, adb_path)
-    sleep(2)
-    click_coord(device_id, adb_path, "march_button")
-    sleep(2)
-    emulator_api.press_back_esc(device_id, adb_path)
 
+    # delegation - select rally troop
+    if delegation:
+        if selectedMarch == 1:
+            click_coord(device_id, adb_path, "march_button") # EDIT button
+            sleep(2)
+            click_coord(device_id, adb_path, "march_button")
+            sleep(2)
+            for _ in range(3):
+                click_coord(device_id, adb_path, "items_ap_recharge_use")
+                sleep(2)
+            emulator_api.press_back_esc(device_id, adb_path)
+            sleep(2)
+        elif selectedMarch == 3: # first delegation first march
+            click_coord(device_id, adb_path, "first_delegation_first_march")
+            sleep(2)
+        elif selectedMarch == 4: # first delegation second march
+            click_coord(device_id, adb_path, "first_delegation_second_march")
+            sleep(2)
+
+    click_coord(device_id, adb_path, "march_button")
+    sleep(2)
+    emulator_api.press_back_esc(device_id, adb_path)
+    sleep(2)
 
 def press_help_button(device_id, adb_path):
     """Clica no botão de ajuda/gangue e volta, usando click_coord."""

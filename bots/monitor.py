@@ -51,8 +51,15 @@ def perform_actions(device):
     print(f"[>] Executando kill_giganto em {display_name} ({device_id}) [{device['type']}]")
     try:
         if KILL_GIGANTO or ( device_id not in DONT_KILL_GIGANTO_ID_LIST ):
-            giganto_level = 5
-            kill_giganto(device_id, adb_path, giganto_level=giganto_level)  # passa ID e caminho do adb (compatível com util.py)
+            giganto_level = 5  # Nível do Giganto a ser eliminado
+            delegation = True  # Usar delegação
+            hasBus = False   # Não usar ônibus
+            USE_MAIN_MARCH = 1  # Usar a marcha principal
+            USE_FIRST_DELEGATION_FIRST_MARCH = 3  # Usar a primeira marcha da primeira delegação
+            USE_FIRST_DELEGATION_SECOND_MARCH = 4  # Usar a segunda marcha da primeira delegação
+            # kill_giganto(device_id, adb_path, giganto_level=giganto_level, delegation=delegation, hasBus=hasBus, selectedMarch=USE_MAIN_MARCH) # passa ID e caminho do adb (compatível com util.py)
+            kill_giganto(device_id, adb_path, giganto_level=giganto_level, delegation=delegation, hasBus=hasBus, selectedMarch=USE_FIRST_DELEGATION_FIRST_MARCH)
+            kill_giganto(device_id, adb_path, giganto_level=giganto_level, delegation=delegation, hasBus=hasBus, selectedMarch=USE_FIRST_DELEGATION_SECOND_MARCH)
         press_help_button(device_id, adb_path)
     except Exception as e:
         print(f"[!] Erro ao executar kill_giganto em {display_name}: {e}")
