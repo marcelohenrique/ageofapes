@@ -57,9 +57,13 @@ def perform_actions(device):
             USE_MAIN_MARCH = 1  # Usar a marcha principal
             USE_FIRST_DELEGATION_FIRST_MARCH = 3  # Usar a primeira marcha da primeira delegação
             USE_FIRST_DELEGATION_SECOND_MARCH = 4  # Usar a segunda marcha da primeira delegação
+            USE_SECOND_DELEGATION_FIRST_MARCH = 5  # Usar a primeira marcha da segunda delegação
+            USE_SECOND_DELEGATION_SECOND_MARCH = 6  # Usar a segunda marcha da segunda delegação
             # kill_giganto(device_id, adb_path, giganto_level=giganto_level, delegation=delegation, hasBus=hasBus, selectedMarch=USE_MAIN_MARCH) # passa ID e caminho do adb (compatível com util.py)
             kill_giganto(device_id, adb_path, giganto_level=giganto_level, delegation=delegation, hasBus=hasBus, selectedMarch=USE_FIRST_DELEGATION_FIRST_MARCH)
-            kill_giganto(device_id, adb_path, giganto_level=giganto_level, delegation=delegation, hasBus=hasBus, selectedMarch=USE_FIRST_DELEGATION_SECOND_MARCH)
+            # kill_giganto(device_id, adb_path, giganto_level=giganto_level, delegation=delegation, hasBus=hasBus, selectedMarch=USE_SECOND_DELEGATION_FIRST_MARCH)
+            # kill_giganto(device_id, adb_path, giganto_level=giganto_level, delegation=delegation, hasBus=hasBus, selectedMarch=USE_FIRST_DELEGATION_SECOND_MARCH)
+            # kill_giganto(device_id, adb_path, giganto_level=giganto_level, delegation=delegation, hasBus=hasBus, selectedMarch=USE_SECOND_DELEGATION_SECOND_MARCH)
         press_help_button(device_id, adb_path)
     except Exception as e:
         print(f"[!] Erro ao executar kill_giganto em {display_name}: {e}")
