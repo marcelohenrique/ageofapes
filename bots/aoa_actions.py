@@ -14,6 +14,7 @@ COORDS = {
     "second_delegation_first_march": (878, 504),
     "second_delegation_second_march": (1034, 504),
     "march_button": (1096, 660),
+    "preset_march_2": (1235, 267),
     "small_mutants": (800, 500),
 
     # Added mappings for other buttons previously hardcoded
@@ -202,6 +203,8 @@ def kill_giganto(device_id, adb_path, giganto_level=1, delegation=False, hasBus=
         if selectedMarch == 1:
             click_coord(device_id, adb_path, "march_button") # EDIT button
             sleep(2)
+            click_coord(device_id, adb_path, "preset_march_2")
+            sleep(2)
             click_coord(device_id, adb_path, "march_button")
             sleep(2)
             for _ in range(3):
@@ -210,11 +213,19 @@ def kill_giganto(device_id, adb_path, giganto_level=1, delegation=False, hasBus=
             emulator_api.press_back_esc(device_id, adb_path)
             sleep(2)
         elif selectedMarch == 3: # first delegation first march
-            click_coord(device_id, adb_path, "first_delegation_first_march")
-            sleep(2)
+            if hasBus:
+                click_coord(device_id, adb_path, "second_delegation_first_march") # ônibus
+                sleep(2)
+            else:
+                click_coord(device_id, adb_path, "first_delegation_first_march")
+                sleep(2)
         elif selectedMarch == 4: # first delegation second march
-            click_coord(device_id, adb_path, "first_delegation_second_march")
-            sleep(2)
+            if hasBus:
+                click_coord(device_id, adb_path, "second_delegation_second_march") # ônibus
+                sleep(2)
+            else:
+                click_coord(device_id, adb_path, "first_delegation_second_march")
+                sleep(2)
         elif selectedMarch == 5: # second delegation first march
             click_coord(device_id, adb_path, "second_delegation_first_march")
             sleep(2)
