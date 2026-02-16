@@ -51,19 +51,21 @@ def perform_actions(device):
     print(f"[>] Executando kill_giganto em {display_name} ({device_id}) [{device['type']}]")
     try:
         if KILL_GIGANTO or ( device_id not in DONT_KILL_GIGANTO_ID_LIST ):
-            aoa_actions.configure_display(width=1480, height=720) # Resolução s8+
+            width, height = emulator_api.get_screen_size(device_id, adb_path) # Atualiza as coordenadas de clique com base na resolução do dispositivo
+            aoa_actions.configure_display(width=width, height=height) # Resolução s8+
             giganto_level = 5  # Nível do Giganto a ser eliminado
             delegation = True  # Usar delegação
-            hasBus = True   # Não usar ônibus
+            hasBus = False   # Não usar ônibus
+            presetMarch = None # Preset de marcha (1 a 6) ou None para escolher manualmente
             USE_MAIN_MARCH = 1  # Usar a marcha principal
             USE_FIRST_DELEGATION_FIRST_MARCH = 3  # Usar a primeira marcha da primeira delegação
             USE_FIRST_DELEGATION_SECOND_MARCH = 4  # Usar a segunda marcha da primeira delegação
             USE_SECOND_DELEGATION_FIRST_MARCH = 5  # Usar a primeira marcha da segunda delegação
             USE_SECOND_DELEGATION_SECOND_MARCH = 6  # Usar a segunda marcha da segunda delegação
-            aoa_actions.kill_giganto(device_id, adb_path, giganto_level=giganto_level, delegation=delegation, hasBus=hasBus, selectedMarch=USE_MAIN_MARCH) # passa ID e caminho do adb (compatível com util.py)
+            aoa_actions.kill_giganto(device_id, adb_path, giganto_level=giganto_level, delegation=delegation, hasBus=hasBus, selectedMarch=USE_MAIN_MARCH, presetMarch=presetMarch) # passa ID e caminho do adb (compatível com util.py)
             aoa_actions.kill_giganto(device_id, adb_path, giganto_level=giganto_level, delegation=delegation, hasBus=hasBus, selectedMarch=USE_FIRST_DELEGATION_FIRST_MARCH)
             aoa_actions.kill_giganto(device_id, adb_path, giganto_level=giganto_level, delegation=delegation, hasBus=hasBus, selectedMarch=USE_SECOND_DELEGATION_FIRST_MARCH)
-            # aoa_actions.kill_giganto(device_id, adb_path, giganto_level=giganto_level, delegation=delegation, hasBus=hasBus, selectedMarch=USE_FIRST_DELEGATION_SECOND_MARCH)
+            aoa_actions.kill_giganto(device_id, adb_path, giganto_level=giganto_level, delegation=delegation, hasBus=hasBus, selectedMarch=USE_FIRST_DELEGATION_SECOND_MARCH)
             aoa_actions.kill_giganto(device_id, adb_path, giganto_level=giganto_level, delegation=delegation, hasBus=hasBus, selectedMarch=USE_SECOND_DELEGATION_SECOND_MARCH)
         aoa_actions.press_help_button(device_id, adb_path)
     except Exception as e:

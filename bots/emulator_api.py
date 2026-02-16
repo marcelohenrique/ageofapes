@@ -235,10 +235,79 @@ def send_text(device_id, adb_path, text, per_char_sleep=0.05):
         run_adb_command(adb_path, cmd_c)
         time.sleep(per_char_sleep)
 
+def get_screen_size(device_id, adb_path):
+    """Retorna (width, height) do dispositivo via `adb shell wm size` ou None se não conseguir.
+
+    device_id: adb device id (ex: 'emulator-5554' ou '127.0.0.1:5555')
+    adb_path: caminho para adb a usar
+    """
+    try:
+        out = run_adb_command(adb_path, f'-s "{device_id}" shell wm size')
+        if not out:
+            return None
+        m = re.search(r'(\d+)x(\d+)', out)
+        if m:
+            return int(m.group(1)), int(m.group(2))
+    except Exception:
+        pass
+    return None
+
+
+def swipe(device_id, adb_path, x1, y1, x2, y2, duration_ms=300):
+    """Executa um swipe via ADB (coords absolutos). duration_ms em milissegundos."""
+    cmd = f'-s "{device_id}" shell input swipe {x1} {y1} {x2} {y2} {duration_ms}'
+    print(f"[ADB] SWIPE -> {cmd}")
+    run_adb_command(adb_path, cmd)
+
+
+def scroll_vertical(device_id, adb_path, direction='up', percent=0.5, duration_ms=300):
+    """Rola a tela verticalmente.
+
+    direction: 'up' ou 'down' (up = arrasta para cima, mostrando conteúdo abaixo)
+    percent: quanto da altura deve ser percorrida (0.0-1.0)
+    """
+    if percent <= 0 or percent > 1:
+        raise ValueError('percent deve estar entre 0 (excl) e 1 (inclusivo)')
+
+    size = get_screen_size(device_id, adb_path)
+    if not size:
+        # fallback em caso de falha em obter tamanho
+        print("[ADB] get_screen_size falhou, usando fallback 1280x720")
+        w, h = 1280, 720
+    else:
+        w, h = size
+
+    cx = w // 2
+    mid = h // 2
+    half = int(h * percent / 2)
+
+    if direction == 'up':
+        start_y = min(h - 10, mid + half)
+        end_y = max(10, mid - half)
+    elif direction == 'down':
+        start_y = max(10, mid - half)
+        end_y = min(h - 10, mid + half)
+    else:
+        raise ValueError("direction deve ser 'up' ou 'down'")
+
+    print(f"[ADB] scroll_vertical direction={direction} percent={percent} from ({cx},{start_y}) to ({cx},{end_y}) duration={duration_ms}ms")
+    swipe(device_id, adb_path, cx, start_y, cx, end_y, duration_ms)
+
+
+def scroll_up(device_id, adb_path, percent=0.5, duration_ms=300):
+    """Convenience: rola para cima (arrasta para cima, mostrando itens abaixo)."""
+    scroll_vertical(device_id, adb_path, 'up', percent, duration_ms)
+
+
+def scroll_down(device_id, adb_path, percent=0.5, duration_ms=300):
+    """Convenience: rola para baixo (arrasta para baixo, mostrando itens acima)."""
+    scroll_vertical(device_id, adb_path, 'down', percent, duration_ms)
+
 if __name__ == "__main__":
-    devices = list_devices()
+    _target = "ldplayer"
+    devices = list_devices(_target)
     for device in devices:
         print(f"Dispositivo: {device['display_name']} ({device['id']}) [{device['type']}]")
         # start_app(device['id'], device['adb_path'], 'com.tap4fun.ape.gplay')
-        press_back_esc(device['id'], device['adb_path'])
         # press_back_esc(device['id'], device['adb_path'])
+        swipe(device['id'], device['adb_path'], 1228, 504, 1228, 175)

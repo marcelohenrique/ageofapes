@@ -168,7 +168,7 @@ def heal_troops(troops_qty, device_id, adb_path, additional_time=0):
 
 # High-level actions simplified to use click_coord
 
-def kill_giganto(device_id, adb_path, giganto_level=1, delegation=False, hasBus=False, selectedMarch=1):
+def kill_giganto(device_id, adb_path, giganto_level=1, delegation=False, hasBus=False, selectedMarch=1, presetMarch=None):
     """Executa sequência automatizada para atacar um Giganto usando apenas click_coord.
        Parametros:
        device_id: ID do dispositivo
@@ -183,6 +183,7 @@ def kill_giganto(device_id, adb_path, giganto_level=1, delegation=False, hasBus=
           4 - Seleciona a segunda marcha da primeira delegação
           5 - Seleciona a primeira marcha da segunda delegação
           6 - Seleciona a segunda marcha da segunda delegação
+        
        """
     click_coord(device_id, adb_path, "first_search_button")
     sleep(2)
@@ -203,8 +204,9 @@ def kill_giganto(device_id, adb_path, giganto_level=1, delegation=False, hasBus=
         if selectedMarch == 1:
             click_coord(device_id, adb_path, "march_button") # EDIT button
             sleep(2)
-            click_coord(device_id, adb_path, "preset_march_2")
-            sleep(2)
+            if presetMarch:
+                click_coord(device_id, adb_path, "preset_march_" + str(presetMarch)) # preset march
+                sleep(2)
             click_coord(device_id, adb_path, "march_button")
             sleep(2)
             for _ in range(3):
@@ -227,9 +229,15 @@ def kill_giganto(device_id, adb_path, giganto_level=1, delegation=False, hasBus=
                 click_coord(device_id, adb_path, "first_delegation_second_march")
                 sleep(2)
         elif selectedMarch == 5: # second delegation first march
+            if hasBus:
+                emulator_api.swipe(device_id, adb_path, 1228, 504, 1228, 175) # swipe para selecionar ônibus
+                sleep(2)
             click_coord(device_id, adb_path, "second_delegation_first_march")
             sleep(2)
         elif selectedMarch == 6: # second delegation second march
+            if hasBus:
+                emulator_api.swipe(device_id, adb_path, 1228, 504, 1228, 175) # swipe para selecionar ônibus
+                sleep(2)
             click_coord(device_id, adb_path, "second_delegation_second_march")
             sleep(2)
 
