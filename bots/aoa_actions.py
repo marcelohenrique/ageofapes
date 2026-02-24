@@ -1,6 +1,9 @@
 from time import sleep
 import emulator_api
 
+# New: toggle verbose debug output (tap/configure_display prints)
+DEBUG = False
+
 # Coordenadas dos botões — ajuste conforme sua resolução ou emulador
 COORDS = {
     "first_search_button": (60, 540),
@@ -73,7 +76,9 @@ def configure_display(width: int = None, height: int = None, dpi: int = None):
     SCALE_X = TARGET_WIDTH / BASE_WIDTH if BASE_WIDTH else 1.0
     SCALE_Y = TARGET_HEIGHT / BASE_HEIGHT if BASE_HEIGHT else 1.0
     DPI_SCALE = (TARGET_DPI / BASE_DPI) if BASE_DPI and TARGET_DPI else 1.0
-    print(f"[display] configured target={TARGET_WIDTH}x{TARGET_HEIGHT}@{TARGET_DPI} scale_x={SCALE_X:.3f} scale_y={SCALE_Y:.3f} dpi_scale={DPI_SCALE:.3f}")
+    # only print when debug enabled
+    if DEBUG:
+        print(f"[display] configured target={TARGET_WIDTH}x{TARGET_HEIGHT}@{TARGET_DPI} scale_x={SCALE_X:.3f} scale_y={SCALE_Y:.3f} dpi_scale={DPI_SCALE:.3f}")
 
 
 def _scale_coords(x: int, y: int):
@@ -89,11 +94,15 @@ _orig_tap = emulator_api.tap
 def tap_scaled(device_id, adb_path, x, y):
     sx, sy = _scale_coords(x, y)
     # debug print
-    print(f"[tap_scaled] {x},{y} -> {sx},{sy} (device={device_id})")
+    if DEBUG:
+        print(f"[tap_scaled] {x},{y} -> {sx},{sy} (device={device_id})")
     return _orig_tap(device_id, adb_path, sx, sy)
 
 # apply monkeypatch
 emulator_api.tap = tap_scaled
+
+# Ensure emulator_api verbosity follows this module's DEBUG flag
+emulator_api.VERBOSE = DEBUG
 
 # By default keep base scaling; call configure_display(...) from your launcher when needed
 
@@ -101,6 +110,7 @@ def click_coord(device_id, adb_path, coord_key):
     """Clique em uma coordenada definida em COORDS usando a chave coord_key."""
     if coord_key not in COORDS:
         raise KeyError(f"Coord key '{coord_key}' not found in COORDS")
+    print(f"Clicando em '{coord_key}'...")
     x, y = COORDS[coord_key]
     emulator_api.tap(device_id, adb_path, x, y)
 

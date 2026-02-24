@@ -7,6 +7,9 @@ ADB_DEFAULT = "adb"  # LDPlayer e genérico
 ADB_BLUESTACKS = r"C:\Program Files\BlueStacks_nxt\HD-Adb.exe"
 BLUESTACKS_CONF_PATH = r"C:\ProgramData\BlueStacks_nxt\bluestacks.conf"
 
+# New: controllable verbosity flag used by other modules
+VERBOSE = True
+
 # # ==================================================================
 # # Inicia o daemon na porta correta se ainda não estiver ativo
 # # ==================================================================
@@ -181,17 +184,20 @@ def list_devices(target=None):
 # ==================================================================
 def tap(device_id, adb_path, x, y):
     cmd = f'-s "{device_id}" shell input tap {x} {y}'
-    print(f"[ADB] TAP -> {cmd}")
+    if VERBOSE:
+        print(f"[ADB] TAP -> {cmd}")
     run_adb_command(adb_path, cmd)
 
 def press_back_esc(device_id, adb_path):
     cmd = f'-s "{device_id}" shell input keyevent 4'
+    # if VERBOSE:
     print(f"[ADB] BACK -> {cmd}")
     run_adb_command(adb_path, cmd)
 
 def start_app(device_id, adb_path, package_name):
     cmd = f'-s "{device_id}" shell monkey -p {package_name} 1'
-    print(f"[ADB] START APP -> {cmd}")
+    if VERBOSE:
+        print(f"[ADB] START APP -> {cmd}")
     run_adb_command(adb_path, cmd)
 
 def _escape_text_for_adb_input(text: str) -> str:
@@ -231,7 +237,8 @@ def send_text(device_id, adb_path, text, per_char_sleep=0.05):
     for ch in text:
         esc_ch = _escape_text_for_adb_input(ch)
         cmd_c = f'-s "{device_id}" shell input text "{esc_ch}"'
-        print(f"[ADB] SEND CHAR -> {cmd_c}")
+        if VERBOSE:
+            print(f"[ADB] SEND CHAR -> {cmd_c}")
         run_adb_command(adb_path, cmd_c)
         time.sleep(per_char_sleep)
 
@@ -256,7 +263,8 @@ def get_screen_size(device_id, adb_path):
 def swipe(device_id, adb_path, x1, y1, x2, y2, duration_ms=300):
     """Executa um swipe via ADB (coords absolutos). duration_ms em milissegundos."""
     cmd = f'-s "{device_id}" shell input swipe {x1} {y1} {x2} {y2} {duration_ms}'
-    print(f"[ADB] SWIPE -> {cmd}")
+    if VERBOSE:
+        print(f"[ADB] SWIPE -> {cmd}")
     run_adb_command(adb_path, cmd)
 
 
