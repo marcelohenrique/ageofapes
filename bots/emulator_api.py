@@ -260,6 +260,77 @@ def get_screen_size(device_id, adb_path):
     return None
 
 
+# New: verifica se um pacote Android está rodando no dispositivo
+def is_app_running(device_id, adb_path, package_name):
+    """Retorna True se o app com package_name estiver rodando no dispositivo.
+
+    Estratégia:
+    - Tenta usar `pidof <package>` (disponível em muitos dispositivos modernos).
+    - Se pidof não retornar, faz fallback para `ps | grep <package>`.
+
+    Retorna: (bool) True se o processo foi encontrado, False caso contrário.
+    """
+    try:
+        # Tenta pidof primeiro
+        out = run_adb_command(adb_path, f'-s "{device_id}" shell pidof {package_name}')
+        if out and out.strip():
+            if VERBOSE:
+                print(f"[ADB] is_app_running(pidof) -> {package_name}: {out.strip()}")
+            return True
+
+        # Fallback: ps | grep (o pipe é executado localmente, funciona para a verificação)
+        out = run_adb_command(adb_path, f'-s "{device_id}" shell ps | findstr {package_name}')
+        # use findstr no Windows local shell; se estiver em *nix, grep seria usado
+        if out and package_name in out:
+            if VERBOSE:
+                print(f"[ADB] is_app_running(ps) -> {package_name}: {out.strip()}")
+            return True
+
+    except Exception as e:
+        if VERBOSE:
+            print(f"[ADB] is_app_running error: {e}")
+
+    return False
+
+def is_app_in_foreground(device_id, adb_path, package_name):
+    """Retorna True se o app com package_name estiver visível em primeiro plano.
+
+    Estratégia:
+    - Consulta vários dumpsys (window, activity) que contém informações sobre a
+      activity/focus atual. Alguns dispositivos usam diferentes chaves (mCurrentFocus,
+      mFocusedApp, mResumedActivity, etc), por isso tentamos várias consultas.
+    - Para compatibilidade com o ambiente Windows onde este script roda, usamos
+      `findstr` como filtro local (mesma técnica usada em is_app_running).
+
+    Observação: o comando `adb shell dumpsys ... | findstr ...` usa o pipe no
+    lado do host; run_adb_command aceita essa construção.
+    """
+    probes = [
+        # f'-s "{device_id}" shell dumpsys window windows | findstr mCurrentFocus',
+        # f'-s "{device_id}" shell dumpsys window | findstr mCurrentFocus',
+        f'-s "{device_id}" shell dumpsys activity activities | findstr mResumedActivity'
+        # ,
+        # f'-s "{device_id}" shell dumpsys activity activities | findstr mFocusedActivity',
+        # f'-s "{device_id}" shell dumpsys activity top'
+    ]
+
+    try:
+        for probe in probes:
+            out = run_adb_command(adb_path, probe)
+            if not out:
+                continue
+            if VERBOSE:
+                print(f"[ADB] is_app_in_foreground probe -> {probe}\n    -> {out.strip()}")
+            if package_name in out:
+                if VERBOSE:
+                    print(f"[ADB] is_app_in_foreground: foreground matches {package_name}")
+                return True
+    except Exception as e:
+        if VERBOSE:
+            print(f"[ADB] is_app_in_foreground error: {e}")
+
+    return False
+
 def swipe(device_id, adb_path, x1, y1, x2, y2, duration_ms=300):
     """Executa um swipe via ADB (coords absolutos). duration_ms em milissegundos."""
     cmd = f'-s "{device_id}" shell input swipe {x1} {y1} {x2} {y2} {duration_ms}'
@@ -312,10 +383,20 @@ def scroll_down(device_id, adb_path, percent=0.5, duration_ms=300):
     scroll_vertical(device_id, adb_path, 'down', percent, duration_ms)
 
 if __name__ == "__main__":
-    _target = "ldplayer"
+    # _target = "ldplayer"
+    _target = "bluestacks"
     devices = list_devices(_target)
     for device in devices:
         print(f"Dispositivo: {device['display_name']} ({device['id']}) [{device['type']}]")
         # start_app(device['id'], device['adb_path'], 'com.tap4fun.ape.gplay')
         # press_back_esc(device['id'], device['adb_path'])
-        swipe(device['id'], device['adb_path'], 1228, 504, 1228, 175)
+        # swipe(device['id'], device['adb_path'], 1228, 504, 1228, 175)
+        if is_app_running(device['id'], device['adb_path'], 'com.tap4fun.ape.gplay'):
+            print(f"O jogo está rodando em {device['display_name']} ({device['id']}).")
+        else:
+            print(f"O jogo NÃO está rodando em {device['display_name']} ({device['id']}).")
+        
+        if is_app_in_foreground(device['id'], device['adb_path'], 'com.tap4fun.ape.gplay'):
+            print(f"O jogo está em primeiro plano em {device['display_name']} ({device['id']}).")
+        else:
+            print(f"O jogo NÃO está em primeiro plano em {device['display_name']} ({device['id']}).")

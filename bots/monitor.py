@@ -1,5 +1,6 @@
 import time
 import sys
+import game_launcher
 import emulator_api
 import aoa_actions
 
@@ -67,14 +68,15 @@ def perform_actions(device, loop_iter=0):
     try:
         if KILL_GIGANTO or ( device_id not in DONT_KILL_GIGANTO_ID_LIST ):
             width, height = emulator_api.get_screen_size(device_id, adb_path) # Atualiza as coordenadas de clique com base na resolução do dispositivo
-            aoa_actions.configure_display(width=width, height=height) # Resolução s8+
+            aoa_actions.configure_display(width=width, height=height)
             _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_MAIN_MARCH, presetMarch=presetMarch)
             _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_FIRST_DELEGATION_FIRST_MARCH, presetMarch=presetMarch)
-            # _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_SECOND_DELEGATION_FIRST_MARCH, presetMarch=presetMarch)
+            _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_SECOND_DELEGATION_FIRST_MARCH, presetMarch=presetMarch)
             _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_FIRST_DELEGATION_SECOND_MARCH, presetMarch=presetMarch)
-            # _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_SECOND_DELEGATION_SECOND_MARCH, presetMarch=presetMarch)
+            _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_SECOND_DELEGATION_SECOND_MARCH, presetMarch=presetMarch)
 
         aoa_actions.press_help_button(device_id, adb_path)
+        # aoa_actions.heal_troops(350, device_id, adb_path)
     except Exception as e:
         print(f"[!] Erro ao executar kill_giganto em {display_name}: {e}")
 
@@ -144,6 +146,13 @@ def main():
             for dev in active_devices.values():
                 if dev['id'] not in WHITELIST_IDS:
                     perform_actions(dev, loop_iter)
+                    # if not emulator_api.is_app_running(dev['id'], dev['adb_path'], 'com.tap4fun.ape.gplay'):
+                    if not emulator_api.is_app_in_foreground(dev['id'], dev['adb_path'], 'com.tap4fun.ape.gplay'):
+                        print(f"[!] O jogo não está rodando em {dev['display_name']} ({dev['id']}). Reiniciando o app...")
+                        game_launcher.start_game([dev])  # Usa a função start_game para reiniciar o app
+                        game_launcher.run_aoa([dev])  # Roda as ações do AOA após reiniciar o app
+                    else:
+                        print(f"[>] O jogo está rodando normalmente em {dev['display_name']} ({dev['id']}).")
 
             duration = time.time() - start
             sleep_time = max(0, SCAN_INTERVAL - duration)

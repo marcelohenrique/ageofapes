@@ -276,8 +276,15 @@ def get_gang_gifts(device_id, adb_path):
     sleep(2)
     emulator_api.press_back_esc(device_id, adb_path)
 
+def press_map_city_button(device_id, adb_path):
+    """Clica no botão de mapa/cidade usando click_coord."""
+    click_coord(device_id, adb_path, "map_city_button")
+    sleep(2)
+
 if __name__ == "__main__":
-    devices = emulator_api.list_devices(target='ldplayer')
+    # _target = "ldplayer"
+    _target = "bluestacks"
+    devices = emulator_api.list_devices(target=_target)
     if devices:
         while True:
             for device in devices:
@@ -286,7 +293,7 @@ if __name__ == "__main__":
                 # press_help_button(device["id"], device["adb_path"])
                 # get_gang_gifts(device["id"], device["adb_path"])
                 
-                heal_troops(7000, device["id"], device["adb_path"])
+                heal_troops(350, device["id"], device["adb_path"])
                 # click_medical_station_clear_button(device["id"], device["adb_path"])
                 # emulator_api.send_text(device["id"], device["adb_path"], str(7000))
     else:

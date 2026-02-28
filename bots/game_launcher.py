@@ -1,5 +1,5 @@
 import time
-import aoa_actions, monitor
+import aoa_actions
 import emulator_api
 from emulator.ldplayer import ldplayer_api
 import manage_adb_daemons
@@ -22,23 +22,23 @@ def start_game(devices):
         print(f"Dispositivo: {device['display_name']} ({device['id']}) [{device['type']}]")
         emulator_api.start_app(device['id'], device['adb_path'], 'com.tap4fun.ape.gplay')
 
-    time.sleep(300)  # Wait a bit before performing actions
+    time.sleep(600)  # Wait a bit before performing actions
 
 def run_aoa(devices):
     # Press back and help button multiple times to avoid popups
     for device in devices:
         for i in range(5):
-            emulator_api.press_back_esc(device['id'], device['adb_path'])
-            time.sleep(1)
             aoa_actions.press_help_button(device['id'], device['adb_path'])
-            time.sleep(1)
+            time.sleep(2)
+            # emulator_api.press_back_esc(device['id'], device['adb_path'])
+            # time.sleep(2)
 
     for device in devices:
         aoa_actions.press_map_city_button(device['id'], device['adb_path'])
-        time.sleep(1)
+        time.sleep(2)
     
     # Get gang gifts
-    get_gang_gifts(devices)
+    # get_gang_gifts(devices)
 
     # heal troops, if needed
 
@@ -52,7 +52,7 @@ def run_aoa(devices):
     
     # Figure out a way to develop gang research automatically
 
-    monitor.main()
+    # monitor.main()
 
 def get_gang_gifts(devices):
     for device in devices:
@@ -61,6 +61,6 @@ def get_gang_gifts(devices):
 
 if __name__ == "__main__":
     # start_emulators()
-    devices = emulator_api.list_devices(target='ldplayer')
+    devices = emulator_api.list_devices(target='bluestacks')
     # start_game(devices)
     run_aoa(devices)
