@@ -7,18 +7,26 @@ DEBUG = False
 # Coordenadas dos botões — ajuste conforme sua resolução ou emulador
 COORDS = {
     "first_search_button": (60, 540),
+    "small_mutants_search_button": (320, 480),
     "giganto_search_button": (480, 480),
     "reduce_search_level": (83, 642),
     "second_search_button": (1104, 646),
-    "first_rally_button": (998, 549),
+    "attack_small_mutants_button": (995, 505),
+    "first_rally_button": (998, 550),
     "second_rally_button": (996, 500),
+    
     "first_delegation_first_march": (878, 321),
     "first_delegation_second_march": (1034, 321),
     "second_delegation_first_march": (878, 504),
     "second_delegation_second_march": (1034, 504),
-    "march_button": (1096, 660),
+    
+    "march_button": (1040, 660), # 1096 - valor antigo que estava na mesma posição do botão items. agora a posição do clique fica entre os botões gang e items.
+    
     "preset_march_2": (1235, 267),
+    
     "small_mutants": (800, 500),
+
+    "troop_march_button": (953, 456),
 
     # Added mappings for other buttons previously hardcoded
     "help_gang": (980, 670),
@@ -31,8 +39,11 @@ COORDS = {
     "add_action_points": (808, 478),
     "ap_max_limit_confirm": (761, 437),
     "use_ap_bottles": (1006, 298),
+
     "roger_menu": (257, 619),
     "roger_military_tab": (50, 347),
+    "roger_menu_daily_essentials_tab": (40, 586),
+    "roger_menu_daily_essentials_tab_convoy_button": (626, 219),
     "roger_medical_claim": (627, 501),
     "medical_station_clear": (1082, 173),
     "medical_station_qty_input": (1079, 257),
@@ -178,7 +189,7 @@ def heal_troops(troops_qty, device_id, adb_path, additional_time=0):
 
 # High-level actions simplified to use click_coord
 
-def kill_giganto(device_id, adb_path, giganto_level=1, delegation=False, hasBus=False, selectedMarch=1, presetMarch=None):
+def kill_giganto(device_id, adb_path, giganto_level=1, delegation=False, hasBus=False, selectedMarch=1, presetMarch=None, isKvk=False):
     """Executa sequência automatizada para atacar um Giganto usando apenas click_coord.
        Parametros:
        device_id: ID do dispositivo
@@ -219,11 +230,12 @@ def kill_giganto(device_id, adb_path, giganto_level=1, delegation=False, hasBus=
                 sleep(2)
             click_coord(device_id, adb_path, "march_button")
             sleep(2)
-            for _ in range(3):
-                click_coord(device_id, adb_path, "items_ap_recharge_use")
+            if not isKvk:
+                for _ in range(3):
+                    click_coord(device_id, adb_path, "items_ap_recharge_use")
+                    sleep(2)
+                emulator_api.press_back_esc(device_id, adb_path)
                 sleep(2)
-            emulator_api.press_back_esc(device_id, adb_path)
-            sleep(2)
         elif selectedMarch == 3: # first delegation first march
             if hasBus:
                 click_coord(device_id, adb_path, "second_delegation_first_march") # ônibus
@@ -254,6 +266,33 @@ def kill_giganto(device_id, adb_path, giganto_level=1, delegation=False, hasBus=
     click_coord(device_id, adb_path, "march_button")
     sleep(2)
     emulator_api.press_back_esc(device_id, adb_path)
+    sleep(2)
+    go_to_outside_city_position(device_id, adb_path)
+
+def go_to_outside_city_position(device_id, adb_path):
+    """Clica no botão de mapa/cidade usando click_coord para ir para a posição fora da cidade."""
+    click_coord(device_id, adb_path, "roger_menu")
+    sleep(2)
+    click_coord(device_id, adb_path, "roger_menu")
+    sleep(2)
+    click_coord(device_id, adb_path, "roger_menu_daily_essentials_tab")
+    sleep(2)
+    click_coord(device_id, adb_path, "roger_menu_daily_essentials_tab_convoy_button")
+    sleep(3)
+    click_coord(device_id, adb_path, "map_city_button")
+    sleep(2)
+
+def kill_small_mutants(device_id, adb_path):
+    """Executa sequência automatizada para atacar mutantes usando apenas click_coord."""
+    click_coord(device_id, adb_path, "first_search_button")
+    sleep(2)
+    click_coord(device_id, adb_path, "small_mutants_search_button")
+    sleep(2)
+    click_coord(device_id, adb_path, "second_search_button")
+    sleep(3)
+    click_coord(device_id, adb_path, "attack_small_mutants_button")
+    sleep(2)
+    click_coord(device_id, adb_path, "troop_march_button")
     sleep(2)
 
 def press_help_button(device_id, adb_path):
