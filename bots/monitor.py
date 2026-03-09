@@ -64,25 +64,31 @@ def perform_actions(device, loop_iter=0):
     USE_SECOND_DELEGATION_FIRST_MARCH = 5  # Usar a primeira marcha da segunda delegação
     USE_SECOND_DELEGATION_SECOND_MARCH = 6  # Usar a segunda marcha da segunda delegação
 
+    _isKvk = True # Nos KvKs o back button não funciona.
+
     print(f"[>] Loop {loop_iter} em {display_name} ({device_id}) [{device['type']}]")
     try:
         if KILL_GIGANTO or ( device_id not in DONT_KILL_GIGANTO_ID_LIST ):
             width, height = emulator_api.get_screen_size(device_id, adb_path) # Atualiza as coordenadas de clique com base na resolução do dispositivo
             aoa_actions.configure_display(width=width, height=height)
-            _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_MAIN_MARCH, presetMarch=presetMarch)
-            _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_FIRST_DELEGATION_FIRST_MARCH, presetMarch=presetMarch)
-            _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_SECOND_DELEGATION_FIRST_MARCH, presetMarch=presetMarch)
-            _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_FIRST_DELEGATION_SECOND_MARCH, presetMarch=presetMarch)
-            _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_SECOND_DELEGATION_SECOND_MARCH, presetMarch=presetMarch)
 
-        aoa_actions.press_help_button(device_id, adb_path)
+            _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_MAIN_MARCH, presetMarch=presetMarch, isKvk=_isKvk)
+            # aoa_actions.kill_small_mutants(device_id, adb_path)
+            
+            _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_FIRST_DELEGATION_FIRST_MARCH, presetMarch=presetMarch, isKvk=_isKvk)
+            _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_SECOND_DELEGATION_FIRST_MARCH, presetMarch=presetMarch, isKvk=_isKvk)
+            _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_FIRST_DELEGATION_SECOND_MARCH, presetMarch=presetMarch, isKvk=_isKvk)
+            _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_SECOND_DELEGATION_SECOND_MARCH, presetMarch=presetMarch, isKvk=_isKvk)
+
+        if not _isKvk:
+            aoa_actions.press_help_button(device_id, adb_path)
         # aoa_actions.heal_troops(350, device_id, adb_path)
     except Exception as e:
         print(f"[!] Erro ao executar kill_giganto em {display_name}: {e}")
 
     time.sleep(ACTION_DELAY)
 
-def _kill_giganto(device_id, adb_path, giganto_level, isDelegation, hasBus, selectedMarch, presetMarch=None):
+def _kill_giganto(device_id, adb_path, giganto_level, isDelegation, hasBus, selectedMarch, presetMarch=None, isKvk=False):
     march_name_map = {
         1: 'Main march',
         2: 'Bus',
@@ -97,7 +103,7 @@ def _kill_giganto(device_id, adb_path, giganto_level, isDelegation, hasBus, sele
     march_name = march_name_map.get(selectedMarch, f'March: #{selectedMarch}')
     print(f"[>] Executando kill_giganto ({march_name})")
     # call kill_giganto with the selected march
-    aoa_actions.kill_giganto(device_id, adb_path, giganto_level=giganto_level, delegation=isDelegation, hasBus=hasBus, selectedMarch=selectedMarch, presetMarch=presetMarch)
+    aoa_actions.kill_giganto(device_id, adb_path, giganto_level=giganto_level, delegation=isDelegation, hasBus=hasBus, selectedMarch=selectedMarch, presetMarch=presetMarch, isKvk=isKvk)
 
 
 def main():
@@ -148,7 +154,7 @@ def main():
                     perform_actions(dev, loop_iter)
                     # if not emulator_api.is_app_running(dev['id'], dev['adb_path'], 'com.tap4fun.ape.gplay'):
                     if not emulator_api.is_app_in_foreground(dev['id'], dev['adb_path'], 'com.tap4fun.ape.gplay'):
-                        print(f"[!] O jogo não está rodando em {dev['display_name']} ({dev['id']}). Reiniciando o app...")
+                        print(f"[!] O jogo não está rodando em {dev['display_name']} ({dev['id']}). Reiniciando o app... [{time.strftime('%H:%M:%S')}]")
                         game_launcher.start_game([dev])  # Usa a função start_game para reiniciar o app
                         game_launcher.run_aoa([dev])  # Roda as ações do AOA após reiniciar o app
                     else:
