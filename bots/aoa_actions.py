@@ -6,13 +6,16 @@ DEBUG = False
 
 # Coordenadas dos botões — ajuste conforme sua resolução ou emulador
 COORDS = {
+    "top_left_back_button": (21, 78),
+
     "first_search_button": (60, 540),
     "small_mutants_search_button": (320, 480),
     "giganto_search_button": (480, 480),
+    "kvk_giganto_search_button": (578, 480), # Na segunda às 13h (16h utc) foram abertas novas zonas e apareceu a opção coral mine entre as opções de busca, o que alterou a posição do botão de giganto.
     "reduce_search_level": (83, 642),
     "second_search_button": (1104, 646),
     "attack_small_mutants_button": (995, 505),
-    "first_rally_button": (998, 550),
+    "first_rally_button": (1057, 550),
     "second_rally_button": (996, 500),
     
     "first_delegation_first_march": (878, 321),
@@ -167,7 +170,7 @@ def heal_troops(troops_qty, device_id, adb_path, additional_time=0):
     emulator_api.press_back_esc(device_id, adb_path)
     # click_items_close_button(device_id, adb_path)
     # Esse tempo deve ser configurado com tempo suficiente para a cura completar pois a tela fecha automaticamente
-    sleep(7 + additional_time)
+    sleep(2 + additional_time)
 
     # Removendo as opções de help e rss automático para simplificar o processo.
     # press_help_button(device_id, adb_path)
@@ -208,7 +211,8 @@ def kill_giganto(device_id, adb_path, giganto_level=1, delegation=False, hasBus=
        """
     click_coord(device_id, adb_path, "first_search_button")
     sleep(2)
-    click_coord(device_id, adb_path, "giganto_search_button")
+    # click_coord(device_id, adb_path, "giganto_search_button")
+    click_coord(device_id, adb_path, "kvk_giganto_search_button")
     sleep(1)
     for _ in range(5 - giganto_level):
         click_coord(device_id, adb_path, "reduce_search_level")
@@ -301,7 +305,10 @@ def press_help_button(device_id, adb_path):
     click_coord(device_id, adb_path, "help_gang")
     sleep(2)
     emulator_api.press_back_esc(device_id, adb_path)
-
+    sleep(2)
+    press_top_left_back_button(device_id, adb_path)
+    sleep(2)
+    press_top_left_back_button(device_id, adb_path)
 
 def get_gang_gifts(device_id, adb_path):
     """Clica no botão de presentes da gangue e dá claim all usando click_coord."""
@@ -320,20 +327,30 @@ def press_map_city_button(device_id, adb_path):
     click_coord(device_id, adb_path, "map_city_button")
     sleep(2)
 
+def press_top_left_back_button(device_id, adb_path):
+    """Clica no botão de voltar no canto superior esquerdo usando click_coord."""
+    click_coord(device_id, adb_path, "top_left_back_button")
+    sleep(2)
+
 if __name__ == "__main__":
     # _target = "ldplayer"
     _target = "bluestacks"
     devices = emulator_api.list_devices(target=_target)
     if devices:
         while True:
+        # for _ in range(2):
             for device in devices:
                 print(f"Usando dispositivo {device['display_name']} ({device['id']}) [{device['type']}]")
                 # kill_giganto(device["id"], device["adb_path"])
                 # press_help_button(device["id"], device["adb_path"])
                 # get_gang_gifts(device["id"], device["adb_path"])
                 
-                heal_troops(350, device["id"], device["adb_path"])
+                # heal_troops(1500, device["id"], device["adb_path"])
                 # click_medical_station_clear_button(device["id"], device["adb_path"])
                 # emulator_api.send_text(device["id"], device["adb_path"], str(7000))
+
+                # press_top_left_back_button(device["id"], device["adb_path"])
+                click_coord(device["id"], device["adb_path"], "first_rally_button")
+                sleep(1)
     else:
         print("Nenhum dispositivo conectado.")

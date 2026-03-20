@@ -77,12 +77,14 @@ def perform_actions(device, loop_iter=0):
             
             _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_FIRST_DELEGATION_FIRST_MARCH, presetMarch=presetMarch, isKvk=_isKvk)
             _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_SECOND_DELEGATION_FIRST_MARCH, presetMarch=presetMarch, isKvk=_isKvk)
+            
             _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_FIRST_DELEGATION_SECOND_MARCH, presetMarch=presetMarch, isKvk=_isKvk)
             _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_SECOND_DELEGATION_SECOND_MARCH, presetMarch=presetMarch, isKvk=_isKvk)
 
-        if not _isKvk:
-            aoa_actions.press_help_button(device_id, adb_path)
-        # aoa_actions.heal_troops(350, device_id, adb_path)
+        # if not _isKvk:
+        aoa_actions.press_help_button(device_id, adb_path)
+        aoa_actions.press_top_left_back_button(device_id, adb_path)
+        # aoa_actions.heal_troops(1500, device_id, adb_path)
     except Exception as e:
         print(f"[!] Erro ao executar kill_giganto em {display_name}: {e}")
 
@@ -104,7 +106,11 @@ def _kill_giganto(device_id, adb_path, giganto_level, isDelegation, hasBus, sele
     print(f"[>] Executando kill_giganto ({march_name})")
     # call kill_giganto with the selected march
     aoa_actions.kill_giganto(device_id, adb_path, giganto_level=giganto_level, delegation=isDelegation, hasBus=hasBus, selectedMarch=selectedMarch, presetMarch=presetMarch, isKvk=isKvk)
-
+    
+    aoa_actions.press_top_left_back_button(device_id, adb_path)
+    time.sleep(2)
+    aoa_actions.press_top_left_back_button(device_id, adb_path)
+    time.sleep(2)
 
 def main():
     print("Monitor de dispositivos ADB ativo. Pressione Ctrl+C para sair.\n")
