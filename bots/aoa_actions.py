@@ -11,7 +11,8 @@ COORDS = {
     "first_search_button": (60, 540),
     "small_mutants_search_button": (320, 480),
     "giganto_search_button": (480, 480),
-    "kvk_giganto_search_button": (578, 480), # Na segunda às 13h (16h utc) foram abertas novas zonas e apareceu a opção coral mine entre as opções de busca, o que alterou a posição do botão de giganto.
+    "giganto_search_button_coral_mine": (578, 480), # Na segunda às 13h (16h utc) foram abertas novas zonas e apareceu a opção coral mine entre as opções de busca, o que alterou a posição do botão de giganto.
+    "giganto_search_button_coral_mine_berseker_fish": (640, 480), # Apareceu um novo botão no menu de busca para Berserker Fish, isso alterou a posição do botão de busca de giganto no kvk.
     "reduce_search_level": (83, 642),
     "second_search_button": (1104, 646),
     "attack_small_mutants_button": (995, 505),
@@ -212,7 +213,8 @@ def kill_giganto(device_id, adb_path, giganto_level=1, delegation=False, hasBus=
     click_coord(device_id, adb_path, "first_search_button")
     sleep(2)
     # click_coord(device_id, adb_path, "giganto_search_button")
-    click_coord(device_id, adb_path, "kvk_giganto_search_button")
+    # click_coord(device_id, adb_path, "giganto_search_button_coral_mine")
+    click_coord(device_id, adb_path, "giganto_search_button_coral_mine_berseker_fish")
     sleep(1)
     for _ in range(5 - giganto_level):
         click_coord(device_id, adb_path, "reduce_search_level")
