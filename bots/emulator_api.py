@@ -3,6 +3,11 @@ import time
 import os
 import re
 
+import cv2
+import numpy
+# import subprocess
+from subprocess import Popen, PIPE
+
 ADB_DEFAULT = "adb"  # LDPlayer e genérico
 ADB_BLUESTACKS = r"C:\Program Files\BlueStacks_nxt\HD-Adb.exe"
 BLUESTACKS_CONF_PATH = r"C:\ProgramData\BlueStacks_nxt\bluestacks.conf"
@@ -242,23 +247,66 @@ def send_text(device_id, adb_path, text, per_char_sleep=0.05):
         run_adb_command(adb_path, cmd_c)
         time.sleep(per_char_sleep)
 
+# def get_screen_size(device_id, adb_path):
+#     """Retorna (width, height) do dispositivo via `adb shell wm size` ou None se não conseguir.
+
+#     device_id: adb device id (ex: 'emulator-5554' ou '127.0.0.1:5555')
+#     adb_path: caminho para adb a usar
+#     """
+#     try:
+#         out = run_adb_command(adb_path, f'-s "{device_id}" shell wm size')
+#         if not out:
+#             return None
+#         m = re.search(r'(\d+)x(\d+)', out)
+#         if m:
+#             return int(m.group(1)), int(m.group(2))
+#     except Exception:
+#         pass
+#     return None
+
 def get_screen_size(device_id, adb_path):
-    """Retorna (width, height) do dispositivo via `adb shell wm size` ou None se não conseguir.
-
-    device_id: adb device id (ex: 'emulator-5554' ou '127.0.0.1:5555')
-    adb_path: caminho para adb a usar
     """
+    Pega dimensões da tela ATUAL corrigindo para orientação padrão (paisagem).
+    Retorna SEMPRE (largura, altura) na orientação landscape.
+    """
+    # cmd = ["adb"]
+    # if device_id:
+    #     cmd.extend(["-s", device_id])
+    # cmd.extend(["shell", "wm", "size"])
+    
     try:
-        out = run_adb_command(adb_path, f'-s "{device_id}" shell wm size')
-        if not out:
-            return None
-        m = re.search(r'(\d+)x(\d+)', out)
-        if m:
-            return int(m.group(1)), int(m.group(2))
-    except Exception:
-        pass
-    return None
+        # result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+        # output = result.stdout.strip()
+        output = run_adb_command(adb_path, f'-s "{device_id}" shell wm size')
+        
+        # Pega Override size (prioridade)
+        override_match = re.search(r'Override size:\s*(\d+)x(\d+)', output)
+        if override_match:
+            w, h = int(override_match.group(1)), int(override_match.group(2))
+        else:
+            # Fallback Physical
+            physical_match = re.search(r'Physical size:\s*(\d+)x(\d+)', output)
+            if not physical_match:
+                raise ValueError("Não encontrou size na saída")
+            w, h = int(physical_match.group(1)), int(physical_match.group(2))
+        
+        # CORREÇÃO DE ORIENTAÇÃO: garante landscape (largura >= altura)
+        if w < h:
+            w, h = h, w  # Swap se estiver em portrait
+        
+        return w, h
+        
+    except Exception as e:
+        print(f"Erro: {e}")
+        return None
 
+def get_orientation(device_id=None):
+    cmd = ["adb", "-s", device_id, "shell", "dumpsys", "window", "|", "grep", "mRotation"]
+    try:
+        result = subprocess.run(cmd, capture_output=True, text=True, shell=True)
+        return result.stdout.strip()
+    except:
+        return None
 
 # New: verifica se um pacote Android está rodando no dispositivo
 def is_app_running(device_id, adb_path, package_name):
@@ -382,21 +430,99 @@ def scroll_down(device_id, adb_path, percent=0.5, duration_ms=300):
     """Convenience: rola para baixo (arrasta para baixo, mostrando itens acima)."""
     scroll_vertical(device_id, adb_path, 'down', percent, duration_ms)
 
+def capturar_xywh(device_id, x, y, w, h):
+    # Captura região específica para minimizar dados
+    cmd = f'adb -s {device_id} exec-out screencap -p | convert - -crop {w}x{h}+{x}+{y} - regiao.png'
+    Popen(cmd, shell=True).wait()  # Use ImageMagick para crop se instalado
+    return cv2.imread('regiao.png', cv2.IMREAD_GRAYSCALE)
+
+def capturar_xyxy(device_id, x1, y1, x2, y2):
+    """
+    Captura região definida por canto superior esquerdo (x1,y1) e inferior direito (x2,y2).
+    Calcula largura e altura automaticamente.
+    """
+    x = min(x1, x2)  # Canto superior esquerdo
+    y = min(y1, y2)
+
+    w = abs(x2 - x1)
+    h = abs(y2 - y1)
+    return capturar_xywh(device_id, x, y, w, h)
+
+def capturar_tela(device_id):
+    """Captura tela inteira direto na RAM (rápido, sem disco)"""
+    proc = Popen(['adb', '-s', device_id, 'exec-out', 'screencap', '-p'], 
+                 stdout=PIPE, stderr=PIPE)
+    imagem_bytes, erro = proc.communicate()
+    
+    if erro:
+        print(f"Erro ADB: {erro.decode()}")
+        return None
+
+    nparr = numpy.frombuffer(imagem_bytes, numpy.uint8)
+    tela = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+    
+    if tela is None:
+        print("Falha ao decodificar imagem!")
+        return None
+    
+    return tela
+
+def capturar_retangulo(device_id, x1, y1, x2, y2):
+    """Captura região: full tela -> crop em Python (sem ImageMagick)"""
+    tela_full = capturar_tela(device_id)
+    if tela_full is None:
+        return None
+    
+    x, y = min(x1, x2), min(y1, y2)
+    w, h = abs(x2 - x1), abs(y2 - y1)
+    
+    # Crop em Python (rápido!)
+    regiao = tela_full[y:y+h, x:x+w]
+    return regiao
+
+def match_template(imagem_tela, template_path, threshold=0.8):
+    template = cv2.imread(template_path, cv2.IMREAD_GRAYSCALE)
+    resultado = cv2.matchTemplate(imagem_tela, template, cv2.TM_CCOEFF_NORMED)
+    loc = numpy.where(resultado >= threshold)
+    if len(loc[0]) > 0:
+        return True, loc  # Popup detectado, retorna posição para clicar
+    return False, None
+
 if __name__ == "__main__":
-    # _target = "ldplayer"
-    _target = "bluestacks"
+    _target = "ldplayer"
+    # _target = "bluestacks"
     devices = list_devices(_target)
     for device in devices:
         print(f"Dispositivo: {device['display_name']} ({device['id']}) [{device['type']}]")
         # start_app(device['id'], device['adb_path'], 'com.tap4fun.ape.gplay')
         # press_back_esc(device['id'], device['adb_path'])
         # swipe(device['id'], device['adb_path'], 1228, 504, 1228, 175)
-        if is_app_running(device['id'], device['adb_path'], 'com.tap4fun.ape.gplay'):
-            print(f"O jogo está rodando em {device['display_name']} ({device['id']}).")
-        else:
-            print(f"O jogo NÃO está rodando em {device['display_name']} ({device['id']}).")
+        # if is_app_running(device['id'], device['adb_path'], 'com.tap4fun.ape.gplay'):
+        #     print(f"O jogo está rodando em {device['display_name']} ({device['id']}).")
+        # else:
+        #     print(f"O jogo NÃO está rodando em {device['display_name']} ({device['id']}).")
         
-        if is_app_in_foreground(device['id'], device['adb_path'], 'com.tap4fun.ape.gplay'):
-            print(f"O jogo está em primeiro plano em {device['display_name']} ({device['id']}).")
-        else:
-            print(f"O jogo NÃO está em primeiro plano em {device['display_name']} ({device['id']}).")
+        # if is_app_in_foreground(device['id'], device['adb_path'], 'com.tap4fun.ape.gplay'):
+        #     print(f"O jogo está em primeiro plano em {device['display_name']} ({device['id']}).")
+        # else:
+        #     print(f"O jogo NÃO está em primeiro plano em {device['display_name']} ({device['id']}).")
+
+        # template_raw  = capturar_xywh(device['id'], 8, 600, 104, 700)
+        # template_raw  = capturar_tela(device['id'])
+        # template_raw  = capturar_retangulo(device['id'], 8, 590, 125, 715)
+
+        # Salva como template limpo (grayscale pra matching rápido)
+        # cv2.imwrite('city_button.png', template_raw)
+        # print("Template 'city_button.png' salvo! Use no detectar_popup.")
+
+        # screen_capture = capturar_retangulo(device['id'], 8, 590, 125, 715)
+
+        # match_found, locations = match_template(screen_capture, 'city_button.png')
+
+        # if match_found:
+        #     print(f"Image match in {device['display_name']}! Locations: {locations}")
+
+        # _orientation = get_orientation(device['id'])
+        # print(f"Orientation for {device['display_name']}: {_orientation}")
+
+        print(f"Screen dimensions for {device['display_name']}: {get_screen_size(device['id'], device['adb_path'])}")
