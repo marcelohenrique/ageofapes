@@ -48,11 +48,12 @@ COORDS = {
     "roger_military_tab": (50, 347),
     "roger_menu_daily_essentials_tab": (40, 586),
     "roger_menu_daily_essentials_tab_convoy_button": (626, 219),
-    "roger_medical_claim": (627, 501),
-    "medical_station_clear": (1082, 173),
-    "medical_station_qty_input": (1079, 257),
+    "roger_medical_claim": (542, 501),
+    "medical_station_clear": (1015, 173),
+    "medical_station_qty_input": (1020, 257),
     "medical_station_ok": (1199, 667),
-    "medical_station_heal_help": (1000, 602),
+    "medical_station_click_out_of_troops_qty": (575, 145),
+    "medical_station_heal_help": (955, 602),
     "city_food_button": (701, 25),
     "items_auto_use_button": (1000, 299),
     "items_iron_tab": (89, 310),
@@ -70,47 +71,153 @@ TARGET_WIDTH = BASE_WIDTH
 TARGET_HEIGHT = BASE_HEIGHT
 TARGET_DPI = BASE_DPI
 
-SCALE_X = 1.0
-SCALE_Y = 1.0
-DPI_SCALE = 1.0
+# Per-device scaling storage. Keys are device_id strings.
+# Each value is a dict: { 'scale_x', 'scale_y', 'dpi_scale', 'target_width', 'target_height', 'target_dpi' }
+DEVICE_SCALES = {}
+
+# Global default scale (used when no device_id is provided)
+GLOBAL_SCALE = {
+    'scale_x': 1.0,
+    'scale_y': 1.0,
+    'dpi_scale': 1.0,
+    'target_width': TARGET_WIDTH,
+    'target_height': TARGET_HEIGHT,
+    'target_dpi': TARGET_DPI,
+}
 
 
-def configure_display(width: int = None, height: int = None, dpi: int = None):
+def configure_display(device_id: str = None, width: int = None, height: int = None, dpi: int = None):
     """Configura resolução/DPI alvo para escalonamento de coordenadas.
 
-    Exemplo: configure_display(width=1480, height=720, dpi=240)
+    Se device_id for fornecido, a escala será guardada para esse dispositivo.
+    Caso contrário, atualiza a escala global usada por dispositivos não mapeados.
+
+    Exemplo: configure_display(device_id='emulator-5554', width=1480, height=720, dpi=240)
     """
-    global TARGET_WIDTH, TARGET_HEIGHT, TARGET_DPI, SCALE_X, SCALE_Y, DPI_SCALE
+    global GLOBAL_SCALE, TARGET_WIDTH, TARGET_HEIGHT, TARGET_DPI
+
+    # determine base targets
+    target_w = GLOBAL_SCALE.get('target_width', TARGET_WIDTH)
+    target_h = GLOBAL_SCALE.get('target_height', TARGET_HEIGHT)
+    target_dpi = GLOBAL_SCALE.get('target_dpi', TARGET_DPI)
+
     if width:
-        TARGET_WIDTH = width
+        target_w = width
     if height:
-        TARGET_HEIGHT = height
+        target_h = height
     if dpi:
-        TARGET_DPI = dpi
+        target_dpi = dpi
 
-    SCALE_X = TARGET_WIDTH / BASE_WIDTH if BASE_WIDTH else 1.0
-    SCALE_Y = TARGET_HEIGHT / BASE_HEIGHT if BASE_HEIGHT else 1.0
-    DPI_SCALE = (TARGET_DPI / BASE_DPI) if BASE_DPI and TARGET_DPI else 1.0
-    # only print when debug enabled
+    scale_x = target_w / BASE_WIDTH if BASE_WIDTH else 1.0
+    scale_y = target_h / BASE_HEIGHT if BASE_HEIGHT else 1.0
+    dpi_scale = (target_dpi / BASE_DPI) if BASE_DPI and target_dpi else 1.0
+
+    scale_entry = {
+        'scale_x': scale_x,
+        'scale_y': scale_y,
+        'dpi_scale': dpi_scale,
+        'target_width': target_w,
+        'target_height': target_h,
+        'target_dpi': target_dpi,
+    }
+
+    if device_id:
+        DEVICE_SCALES[device_id] = scale_entry
+        if DEBUG:
+            print(f"[display] configured for device={device_id} target={target_w}x{target_h}@{target_dpi} scale_x={scale_x:.3f} scale_y={scale_y:.3f} dpi_scale={dpi_scale:.3f}")
+    else:
+        GLOBAL_SCALE = scale_entry
+        if DEBUG:
+            print(f"[display] configured global target={target_w}x{target_h}@{target_dpi} scale_x={scale_x:.3f} scale_y={scale_y:.3f} dpi_scale={dpi_scale:.3f}")
+
+
+def _get_scales_for_device(device_id: str):
+    """Retorna uma tupla (scale_x, scale_y, dpi_scale) para o device_id, usando GLOBAL_SCALE como fallback."""
+    if device_id and device_id in DEVICE_SCALES:
+        s = DEVICE_SCALES[device_id]
+        return s['scale_x'], s['scale_y'], s['dpi_scale']
+    s = GLOBAL_SCALE
+    return s['scale_x'], s['scale_y'], s['dpi_scale']
+
+
+def _scale_coords(device_id: str, x: int, y: int):
+    """Retorna coordenadas escaladas como inteiros usando as escalas do dispositivo.
+
+    Agora também realiza 'clamp' nas coordenadas usando o target_width/target_height
+    conhecidos para evitar cliques fora da tela caso a escala esteja errada.
+    """
+    scale_x, scale_y, dpi_scale = _get_scales_for_device(device_id)
+
+    # tenta obter largura/altura alvo do storage de escalas (fallback em GLOBAL_SCALE)
+    if device_id and device_id in DEVICE_SCALES:
+        target_w = DEVICE_SCALES[device_id].get('target_width')
+        target_h = DEVICE_SCALES[device_id].get('target_height')
+    else:
+        target_w = GLOBAL_SCALE.get('target_width')
+        target_h = GLOBAL_SCALE.get('target_height')
+
+    if not target_w or not target_h:
+        # fallback sensato
+        target_w, target_h = BASE_WIDTH, BASE_HEIGHT
+
+    # aplica escala
+    sx = x * scale_x * dpi_scale
+    sy = y * scale_y * dpi_scale
+
+    # round
+    sx_i = int(round(sx))
+    sy_i = int(round(sy))
+
+    # clamp (evita clicar fora da tela caso escala esteja errada)
+    max_x = max(0, int(target_w) - 1)
+    max_y = max(0, int(target_h) - 1)
+    clamped = False
+    if sx_i < 0:
+        sx_i = 0
+        clamped = True
+    if sy_i < 0:
+        sy_i = 0
+        clamped = True
+    if sx_i > max_x:
+        sx_i = max_x
+        clamped = True
+    if sy_i > max_y:
+        sy_i = max_y
+        clamped = True
+
     if DEBUG:
-        print(f"[display] configured target={TARGET_WIDTH}x{TARGET_HEIGHT}@{TARGET_DPI} scale_x={SCALE_X:.3f} scale_y={SCALE_Y:.3f} dpi_scale={DPI_SCALE:.3f}")
+        print(f"[scale] device={device_id} orig=({x},{y}) -> scaled=({sx_i},{sy_i}) using scale_x={scale_x:.3f} scale_y={scale_y:.3f} dpi_scale={dpi_scale:.3f} target={target_w}x{target_h} (clamped={clamped})")
 
-
-def _scale_coords(x: int, y: int):
-    """Retorna coordenadas escaladas como inteiros."""
-    sx = x * SCALE_X * DPI_SCALE
-    sy = y * SCALE_Y * DPI_SCALE
-    return int(round(sx)), int(round(sy))
+    return sx_i, sy_i
 
 
 # Monkeypatch emulator_api.tap so existing calls keep working but use scaled coords
 _orig_tap = emulator_api.tap
 
 def tap_scaled(device_id, adb_path, x, y):
-    sx, sy = _scale_coords(x, y)
+    sx, sy = _scale_coords(device_id, x, y)
     # debug print
     if DEBUG:
         print(f"[tap_scaled] {x},{y} -> {sx},{sy} (device={device_id})")
+
+    # safety: se o tap retornou coordenadas idênticas ao original, ainda assim
+    # garantimos que estão dentro dos limites do dispositivo antes de enviar.
+    try:
+        # usa target width/height conhecido para checagem rápida
+        if device_id and device_id in DEVICE_SCALES:
+            tw = DEVICE_SCALES[device_id]['target_width']
+            th = DEVICE_SCALES[device_id]['target_height']
+        else:
+            tw = GLOBAL_SCALE.get('target_width', BASE_WIDTH)
+            th = GLOBAL_SCALE.get('target_height', BASE_HEIGHT)
+        if sx < 0 or sx >= tw or sy < 0 or sy >= th:
+            print(f"[WARN] Tap calculado fora dos limites ({sx},{sy}) para device {device_id} size={tw}x{th}. Clamped before sending.")
+            sx = max(0, min(sx, int(tw) - 1))
+            sy = max(0, min(sy, int(th) - 1))
+    except Exception:
+        # se algo falhar aqui, prossegue sem clamping adicional
+        pass
+
     return _orig_tap(device_id, adb_path, sx, sy)
 
 # apply monkeypatch
@@ -163,7 +270,8 @@ def heal_troops(troops_qty, device_id, adb_path, additional_time=0):
     # Insere a quantidade de tropas a curar
     emulator_api.send_text(device_id, adb_path, str(troops_qty))
     sleep(3)
-    click_coord(device_id, adb_path, "medical_station_ok")
+    # click_coord(device_id, adb_path, "medical_station_ok")
+    click_coord(device_id, adb_path, "medical_station_click_out_of_troops_qty")
     sleep(3)
     for _ in range(2):
         click_coord(device_id, adb_path, "medical_station_heal_help")
@@ -335,12 +443,14 @@ def press_top_left_back_button(device_id, adb_path):
     sleep(2)
 
 if __name__ == "__main__":
-    # _target = "ldplayer"
-    _target = "bluestacks"
+    _target = "ldplayer"
+    # _target = "bluestacks"
+    DEBUG = True
+    emulator_api.VERBOSE = True
     devices = emulator_api.list_devices(target=_target)
     if devices:
-        while True:
-        # for _ in range(2):
+        # while True:
+        for _ in range(1):
             for device in devices:
                 print(f"Usando dispositivo {device['display_name']} ({device['id']}) [{device['type']}]")
                 # kill_giganto(device["id"], device["adb_path"])
@@ -352,7 +462,20 @@ if __name__ == "__main__":
                 # emulator_api.send_text(device["id"], device["adb_path"], str(7000))
 
                 # press_top_left_back_button(device["id"], device["adb_path"])
-                click_coord(device["id"], device["adb_path"], "first_rally_button")
-                sleep(1)
+                # click_coord(device["id"], device["adb_path"], "first_rally_button")
+                # sleep(1)
+                if device['id'] == '192.168.1.179:5555':
+                    print("Executando ações de cura para o smartphone...")
+                    # Antes de clicar, configura a escala específica deste dispositivo
+                    try:
+                        width, height = emulator_api.get_screen_size(device['id'], device['adb_path'])
+                        configure_display(device_id=device['id'], width=width, height=height)
+                    except Exception as e:
+                        print(f"[!] Não foi possível obter resolução/configurar escala para {device['id']}: {e}")
+
+                    # Agora chama click_coord — o tap será escalado usando a escala do device_id
+                    # click_coord(device['id'], device['adb_path'], "medical_station_clear")
+                    heal_troops(7000, device['id'], device['adb_path'])
+
     else:
         print("Nenhum dispositivo conectado.")
