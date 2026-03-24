@@ -20,6 +20,16 @@ WHITELIST_IDS = { # Preencha com os deviceids que quer isolar
     # , 'emulator-5564' # minion02
 }
 
+# Dispositivos podem ter modos diferentes — mapeie aqui por device id (adb id)
+# Suporte de modos: 'farm' (mata giganto), 'heal' (cura tropas), 'help_only' (aperta ajuda), 'idle'
+DEVICE_MODES = {
+    # Exemplos:
+    # 'emulator-5554': 'farm',
+    # 'emulator-5564': 'heal',
+    '192.168.1.179:5555': 'heal' # meu smartphone
+}
+DEFAULT_DEVICE_MODE = 'farm'  # modo padrão para dispositivos não mapeados
+
 DONT_KILL_GIGANTO_ID_LIST = {
     ''
     # , 'emulator-5554'  # FarmerApe04
@@ -40,15 +50,26 @@ active_devices = {}
 def handle_new_device(device):
     print(f"[+] Novo dispositivo detectado: {device['display_name']} ({device['id']}) [{device['type']}]")
     active_devices[device['id']] = device
+    # Tenta obter resolução do dispositivo e configurar escala específica para ele
+    try:
+        width, height = emulator_api.get_screen_size(device['id'], device['adb_path'])
+        aoa_actions.configure_display(device_id=device['id'], width=width, height=height)
+    except Exception as e:
+        print(f"[!] Não foi possível configurar a escala para {device['display_name']} ({device['id']}): {e}")
 
 def handle_disconnect(device_id):
     device = active_devices.pop(device_id, None)
     if device:
         print(f"[-] Dispositivo desconectado: {device['display_name']} ({device_id}) [{device['type']}]")
 
+def get_device_mode(device):
+    """Retorna o modo para o dispositivo (por id)."""
+    return DEVICE_MODES.get(device.get('id'), DEFAULT_DEVICE_MODE)
+
 def perform_actions(device, loop_iter=0):
-    """Executa a ação kill_giganto no dispositivo detectado.
-       Agora recebe o número de iteração para exibir no log."""
+    """Despacha ações diferentes dependendo do modo do dispositivo.
+       Recebe loop_iter para fins de log.
+    """
     adb_path = device["adb_path"]
     display_name = device["display_name"]
     device_id = device["id"]
@@ -66,11 +87,16 @@ def perform_actions(device, loop_iter=0):
 
     _isKvk = True # Nos KvKs o back button não funciona.
 
-    print(f"[>] Loop {loop_iter} em {display_name} ({device_id}) [{device['type']}]")
+    mode = get_device_mode(device)
+
+    print(f"[>] Loop {loop_iter} em {display_name} ({device_id}) [{device['type']}] - modo: {mode}")
     try:
-        if KILL_GIGANTO or ( device_id not in DONT_KILL_GIGANTO_ID_LIST ):
-            width, height = emulator_api.get_screen_size(device_id, adb_path) # Atualiza as coordenadas de clique com base na resolução do dispositivo
-            aoa_actions.configure_display(width=width, height=height)
+        # FARM: comportamento anterior (kill giganto, delegações, etc.)
+        if mode == 'farm':
+            if KILL_GIGANTO or (device_id not in DONT_KILL_GIGANTO_ID_LIST):
+                width, height = emulator_api.get_screen_size(device_id, adb_path)
+                # Configura display para este device (agora usando device_id)
+                aoa_actions.configure_display(device_id=device_id, width=width, height=height)
 
             _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_MAIN_MARCH, presetMarch=presetMarch, isKvk=_isKvk)
             # aoa_actions.kill_small_mutants(device_id, adb_path)
@@ -81,12 +107,22 @@ def perform_actions(device, loop_iter=0):
             _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_FIRST_DELEGATION_SECOND_MARCH, presetMarch=presetMarch, isKvk=_isKvk)
             _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_SECOND_DELEGATION_SECOND_MARCH, presetMarch=presetMarch, isKvk=_isKvk)
 
-        # if not _isKvk:
+        # HEAL: focar em curar tropas no hospital
+        elif mode == 'heal':
+            # Ajuste o valor de cura conforme necessário (ex.: 1500)
+            try:
+                print(f"[>] Executando cura em {display_name} ({device_id})")
+                aoa_actions.heal_troops(7000, device_id, adb_path)
+            except AttributeError:
+                print(f"[!] Função heal_troops não encontrada em aoa_actions para {display_name}")
+            # também podemos pressionar help para manter o jogo ativo
+            aoa_actions.press_help_button(device_id, adb_path)
+
         aoa_actions.press_help_button(device_id, adb_path)
         aoa_actions.press_top_left_back_button(device_id, adb_path)
-        # aoa_actions.heal_troops(1500, device_id, adb_path)
+
     except Exception as e:
-        print(f"[!] Erro ao executar kill_giganto em {display_name}: {e}")
+        print(f"[!] Erro ao executar ações ({mode}) em {display_name}: {e}")
 
     time.sleep(ACTION_DELAY)
 
