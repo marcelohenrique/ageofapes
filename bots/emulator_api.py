@@ -459,7 +459,8 @@ def capturar_tela(device_id):
         return None
 
     nparr = numpy.frombuffer(imagem_bytes, numpy.uint8)
-    tela = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+    # tela = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+    tela = cv2.imdecode(nparr, cv2.IMREAD_GRAYSCALE)
     
     if tela is None:
         print("Falha ao decodificar imagem!")
@@ -482,6 +483,8 @@ def capturar_retangulo(device_id, x1, y1, x2, y2):
 
 def match_template(imagem_tela, template_path, threshold=0.8):
     template = cv2.imread(template_path, cv2.IMREAD_GRAYSCALE)
+    # template = template_path
+    # template = cv2.imread(template_path)
     resultado = cv2.matchTemplate(imagem_tela, template, cv2.TM_CCOEFF_NORMED)
     loc = numpy.where(resultado >= threshold)
     if len(loc[0]) > 0:
@@ -507,22 +510,30 @@ if __name__ == "__main__":
         # else:
         #     print(f"O jogo NÃO está em primeiro plano em {device['display_name']} ({device['id']}).")
 
-        # template_raw  = capturar_xywh(device['id'], 8, 600, 104, 700)
-        # template_raw  = capturar_tela(device['id'])
-        # template_raw  = capturar_retangulo(device['id'], 8, 590, 125, 715)
+        # if device['id'] == '192.168.1.179:5555' or device['id'] == 'emulator-5568':
+        if device['id'] == 'emulator-5570':
+            print("Executando ações de cura para o smartphone...")
+            # template_raw  = capturar_xywh(device['id'], 8, 600, 104, 700)
+            # template_raw  = capturar_tela(device['id'])
+            _medical_station_claim_button_coords = (565, 476, 684, 522)
+            _retry_button_innitial_coords = (653, 378)
+            _retry_button_coords = (*_retry_button_innitial_coords, _retry_button_innitial_coords[0]+214, _retry_button_innitial_coords[1]+83)
 
-        # Salva como template limpo (grayscale pra matching rápido)
-        # cv2.imwrite('city_button.png', template_raw)
-        # print("Template 'city_button.png' salvo! Use no detectar_popup.")
+            _element_coords = _retry_button_coords
+            template_raw  = capturar_retangulo(device['id'], *_element_coords)
 
-        # screen_capture = capturar_retangulo(device['id'], 8, 590, 125, 715)
+            # Salva como template limpo (grayscale pra matching rápido)
+            # template_raw = cv2.cvtColor(template_raw, cv2.COLOR_BGR2GRAY)
+            # cv2.imwrite('medical_station_claim_button.png', template_raw)
+            cv2.imwrite('retry_button.png', template_raw)
+            print(f"Template 'retry_button.png' salvo! Use no detectar_popup. [{_element_coords}]")
 
-        # match_found, locations = match_template(screen_capture, 'city_button.png')
+            # match_found, locations = match_template(template_raw, 'medical_station_claim_button.png')
 
-        # if match_found:
-        #     print(f"Image match in {device['display_name']}! Locations: {locations}")
+            # if match_found:
+            #     print(f"Image match in {device['display_name']}! Locations: {locations}")
 
         # _orientation = get_orientation(device['id'])
         # print(f"Orientation for {device['display_name']}: {_orientation}")
 
-        print(f"Screen dimensions for {device['display_name']}: {get_screen_size(device['id'], device['adb_path'])}")
+        # print(f"Screen dimensions for {device['display_name']}: {get_screen_size(device['id'], device['adb_path'])}")

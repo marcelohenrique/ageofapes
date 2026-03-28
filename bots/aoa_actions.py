@@ -6,7 +6,9 @@ DEBUG = False
 
 # Coordenadas dos botões — ajuste conforme sua resolução ou emulador
 COORDS = {
-    "top_left_back_button": (21, 78),
+    # "top_left_back_button": (21, 78),
+    # "top_left_back_button": (15, 78), # working in s8+
+    "top_left_back_button": (20, 80),
 
     "first_search_button": (60, 540),
     "small_mutants_search_button": (320, 480),
@@ -55,9 +57,11 @@ COORDS = {
     "medical_station_click_out_of_troops_qty": (575, 145),
     "medical_station_heal_help": (955, 602),
     "city_food_button": (701, 25),
+
     "items_auto_use_button": (1000, 299),
     "items_iron_tab": (89, 310),
-    "items_close": (1115, 102),
+    # "items_close": (1115, 102),
+    "items_close": (1045, 105),
 }
 
 # === Display scaling configuration ===
@@ -256,30 +260,43 @@ def auto_use_rss(device_id, adb_path):
 
 def heal_troops(troops_qty, device_id, adb_path, additional_time=0):
     """Cura tropas feridas usando apenas click_coord e send_text."""
-    for _ in range(2):
-        click_coord(device_id, adb_path, "roger_menu")
-        sleep(3)
-        click_coord(device_id, adb_path, "roger_military_tab")
-        sleep(3)
-        click_coord(device_id, adb_path, "roger_medical_claim")
-        sleep(3)
+    click_coord(device_id, adb_path, "roger_menu")
+    sleep(1 + additional_time)
+    click_coord(device_id, adb_path, "roger_military_tab")
+    sleep(1 + additional_time)
+    _medical_station_claim_button_coords = (565, 476, 684, 522)
+    while True:
+        template_raw  = emulator_api.capturar_retangulo(device['id'], *_medical_station_claim_button_coords)
+        match_found, locations = emulator_api.match_template(template_raw, 'medical_station_claim_button.png')
+        if match_found:
+            break
+        sleep(1 + additional_time)
+    click_coord(device_id, adb_path, "roger_medical_claim")
+    sleep(1 + additional_time)
+    click_coord(device_id, adb_path, "roger_menu")
+    sleep(1 + additional_time)
+    click_coord(device_id, adb_path, "roger_military_tab")
+    sleep(1 + additional_time)
+    click_coord(device_id, adb_path, "roger_medical_claim")
+    sleep(1 + additional_time)
     click_coord(device_id, adb_path, "medical_station_clear")
-    sleep(3)
+    sleep(1 + additional_time)
     click_coord(device_id, adb_path, "medical_station_qty_input")
-    sleep(3)
+    sleep(1 + additional_time)
     # Insere a quantidade de tropas a curar
     emulator_api.send_text(device_id, adb_path, str(troops_qty))
-    sleep(3)
+    sleep(1 + additional_time)
     # click_coord(device_id, adb_path, "medical_station_ok")
     click_coord(device_id, adb_path, "medical_station_click_out_of_troops_qty")
-    sleep(3)
+    sleep(1 + additional_time)
     for _ in range(2):
         click_coord(device_id, adb_path, "medical_station_heal_help")
-        sleep(3)
+        sleep(1 + additional_time)
     emulator_api.press_back_esc(device_id, adb_path)
-    # click_items_close_button(device_id, adb_path)
-    # Esse tempo deve ser configurado com tempo suficiente para a cura completar pois a tela fecha automaticamente
-    sleep(2 + additional_time)
+    click_coord(device_id, adb_path, "items_close")
+    sleep(1 + additional_time)
+    press_top_left_back_button(device_id, adb_path)
+    sleep(1 + additional_time)
 
     # Removendo as opções de help e rss automático para simplificar o processo.
     # press_help_button(device_id, adb_path)
@@ -445,12 +462,12 @@ def press_top_left_back_button(device_id, adb_path):
 if __name__ == "__main__":
     _target = "ldplayer"
     # _target = "bluestacks"
-    DEBUG = True
-    emulator_api.VERBOSE = True
+    # DEBUG = True
+    # emulator_api.VERBOSE = True
     devices = emulator_api.list_devices(target=_target)
     if devices:
-        # while True:
-        for _ in range(1):
+        while True:
+        # for _ in range(1):
             for device in devices:
                 print(f"Usando dispositivo {device['display_name']} ({device['id']}) [{device['type']}]")
                 # kill_giganto(device["id"], device["adb_path"])
@@ -464,7 +481,8 @@ if __name__ == "__main__":
                 # press_top_left_back_button(device["id"], device["adb_path"])
                 # click_coord(device["id"], device["adb_path"], "first_rally_button")
                 # sleep(1)
-                if device['id'] == '192.168.1.179:5555':
+                if device['id'] == '192.168.1.179:5555' or device['id'] == 'emulator-5568':
+                # if not ( device['id'] == '192.168.1.179:5555' or device['id'] == 'emulator-5568' ):
                     print("Executando ações de cura para o smartphone...")
                     # Antes de clicar, configura a escala específica deste dispositivo
                     try:
@@ -475,7 +493,10 @@ if __name__ == "__main__":
 
                     # Agora chama click_coord — o tap será escalado usando a escala do device_id
                     # click_coord(device['id'], device['adb_path'], "medical_station_clear")
-                    heal_troops(7000, device['id'], device['adb_path'])
+
+                    heal_troops(1000, device['id'], device['adb_path'], additional_time=1)
+
+                    # press_top_left_back_button(device['id'], device['adb_path'])
 
     else:
         print("Nenhum dispositivo conectado.")
