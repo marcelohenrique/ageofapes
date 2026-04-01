@@ -66,6 +66,10 @@ COORDS = {
     "retry_button_xy": (653, 378),
     "retry_button_wh": (214, 83),
     "retry_button_click": (653+214/2, 378+83/2),
+
+    "server_maintenance_confirm_button_xy": (533, 378),
+    "server_maintenance_confirm_button_wh": (214, 83),
+    "server_maintenance_confirm_button_click": (533+214/2, 378+83/2),
 }
 
 # === Display scaling configuration ===

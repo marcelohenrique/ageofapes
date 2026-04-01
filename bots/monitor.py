@@ -105,8 +105,10 @@ def perform_actions(device, loop_iter=0):
             _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_FIRST_DELEGATION_FIRST_MARCH, presetMarch=presetMarch, isKvk=_isKvk)
             _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_SECOND_DELEGATION_FIRST_MARCH, presetMarch=presetMarch, isKvk=_isKvk)
             
-            # _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_FIRST_DELEGATION_SECOND_MARCH, presetMarch=presetMarch, isKvk=_isKvk)
+            _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_FIRST_DELEGATION_SECOND_MARCH, presetMarch=presetMarch, isKvk=_isKvk)
             _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_SECOND_DELEGATION_SECOND_MARCH, presetMarch=presetMarch, isKvk=_isKvk)
+
+            
 
         # HEAL: focar em curar tropas no hospital
         elif mode == 'heal':
@@ -210,6 +212,8 @@ def main():
                             aoa_actions.click_coord(dev['id'], dev['adb_path'], "retry_button_click")
                             time.sleep(600)  # Wait a bit before performing actions
                             game_launcher.run_aoa([dev])  # Roda as ações do AOA após reiniciar o app
+                        
+                        _check_screen_element_and_click(dev, "server_maintenance_confirm_button")
 
                     perform_actions(dev, loop_iter)
 
@@ -240,6 +244,23 @@ def _check_boot_screen_retry_button(device):
     # if match_found:
     #     print(f"Image match in {device['display_name']}! Locations: {locations}")
     return match_found
+
+def _check_screen_element(device, element_name):
+    _screen_element_xy_coords = aoa_actions.COORDS[element_name + '_xy']
+    _screen_element_wh_coords = aoa_actions.COORDS[element_name + '_wh']
+    _screen_element_coords = (*_screen_element_xy_coords, _screen_element_xy_coords[0]+_screen_element_wh_coords[0], _screen_element_xy_coords[1]+_screen_element_wh_coords[1])
+
+    template_raw = emulator_api.capturar_retangulo(device['id'], *_screen_element_coords)
+    match_found, locations = emulator_api.match_template(template_raw, f"{element_name}.png")
+
+    return match_found
+
+def _check_screen_element_and_click(device, element_name):
+    if _check_screen_element(device, element_name):
+        print(f"[!] Elemento '{element_name}' detectado em {device['display_name']} ({device['id']}). Clicando...")
+        aoa_actions.click_coord(device['id'], device['adb_path'], element_name + "_click")
+        time.sleep(600)  # Wait a bit before performing actions
+        game_launcher.run_aoa([device])  # Roda as ações do AOA após reiniciar o app
 
 if __name__ == "__main__":
     main()
