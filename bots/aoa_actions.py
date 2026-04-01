@@ -62,6 +62,10 @@ COORDS = {
     "items_iron_tab": (89, 310),
     # "items_close": (1115, 102),
     "items_close": (1045, 105),
+
+    "retry_button_xy": (653, 378),
+    "retry_button_wh": (214, 83),
+    "retry_button_click": (653+214/2, 378+83/2),
 }
 
 # === Display scaling configuration ===
@@ -337,9 +341,9 @@ def kill_giganto(device_id, adb_path, giganto_level=1, delegation=False, hasBus=
        """
     click_coord(device_id, adb_path, "first_search_button")
     sleep(2)
-    # click_coord(device_id, adb_path, "giganto_search_button")
+    click_coord(device_id, adb_path, "giganto_search_button")
     # click_coord(device_id, adb_path, "giganto_search_button_coral_mine")
-    click_coord(device_id, adb_path, "giganto_search_button_coral_mine_berseker_fish")
+    # click_coord(device_id, adb_path, "giganto_search_button_coral_mine_berseker_fish")
     sleep(1)
     for _ in range(5 - giganto_level):
         click_coord(device_id, adb_path, "reduce_search_level")
@@ -398,7 +402,8 @@ def kill_giganto(device_id, adb_path, giganto_level=1, delegation=False, hasBus=
     sleep(2)
     emulator_api.press_back_esc(device_id, adb_path)
     sleep(2)
-    go_to_outside_city_position(device_id, adb_path)
+    if isKvk:
+        go_to_outside_city_position(device_id, adb_path)
 
 def go_to_outside_city_position(device_id, adb_path):
     """Clica no botão de mapa/cidade usando click_coord para ir para a posição fora da cidade."""

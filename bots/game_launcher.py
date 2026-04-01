@@ -22,8 +22,6 @@ def start_game(devices):
         print(f"Dispositivo: {device['display_name']} ({device['id']}) [{device['type']}]")
         emulator_api.start_app(device['id'], device['adb_path'], 'com.tap4fun.ape.gplay')
 
-    time.sleep(600)  # Wait a bit before performing actions
-
 def run_aoa(devices):
     # Press back and help button multiple times to avoid popups
     for device in devices:
@@ -62,5 +60,5 @@ def get_gang_gifts(devices):
 if __name__ == "__main__":
     # start_emulators()
     devices = emulator_api.list_devices(target='bluestacks')
-    # start_game(devices)
-    run_aoa(devices)
+    start_game(devices)
+    # run_aoa(devices)

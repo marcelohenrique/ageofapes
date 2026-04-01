@@ -27,6 +27,7 @@ DEVICE_MODES = {
     # 'emulator-5554': 'farm',
     # 'emulator-5564': 'heal',
     '192.168.1.179:5555': 'heal' # meu smartphone
+    , 'emulator-5568': 'heal' # meu smartphone em LDPlayer
 }
 DEFAULT_DEVICE_MODE = 'farm'  # modo padrão para dispositivos não mapeados
 
@@ -85,7 +86,7 @@ def perform_actions(device, loop_iter=0):
     USE_SECOND_DELEGATION_FIRST_MARCH = 5  # Usar a primeira marcha da segunda delegação
     USE_SECOND_DELEGATION_SECOND_MARCH = 6  # Usar a segunda marcha da segunda delegação
 
-    _isKvk = True # Nos KvKs o back button não funciona.
+    _isKvk = False # Nos KvKs o back button não funciona.
 
     mode = get_device_mode(device)
 
@@ -104,7 +105,7 @@ def perform_actions(device, loop_iter=0):
             _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_FIRST_DELEGATION_FIRST_MARCH, presetMarch=presetMarch, isKvk=_isKvk)
             _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_SECOND_DELEGATION_FIRST_MARCH, presetMarch=presetMarch, isKvk=_isKvk)
             
-            _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_FIRST_DELEGATION_SECOND_MARCH, presetMarch=presetMarch, isKvk=_isKvk)
+            # _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_FIRST_DELEGATION_SECOND_MARCH, presetMarch=presetMarch, isKvk=_isKvk)
             _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_SECOND_DELEGATION_SECOND_MARCH, presetMarch=presetMarch, isKvk=_isKvk)
 
         # HEAL: focar em curar tropas no hospital
@@ -193,14 +194,24 @@ def main():
 
             for dev in active_devices.values():
                 if dev['id'] not in WHITELIST_IDS:
-                    perform_actions(dev, loop_iter)
                     # if not emulator_api.is_app_running(dev['id'], dev['adb_path'], 'com.tap4fun.ape.gplay'):
                     if not emulator_api.is_app_in_foreground(dev['id'], dev['adb_path'], 'com.tap4fun.ape.gplay'):
                         print(f"[!] O jogo não está rodando em {dev['display_name']} ({dev['id']}). Reiniciando o app... [{time.strftime('%H:%M:%S')}]")
                         game_launcher.start_game([dev])  # Usa a função start_game para reiniciar o app
+                        time.sleep(600)  # Wait a bit before performing actions
                         game_launcher.run_aoa([dev])  # Roda as ações do AOA após reiniciar o app
                     else:
                         print(f"[>] O jogo está rodando normalmente em {dev['display_name']} ({dev['id']}).")
+
+                        _is_there_retry_button = _check_boot_screen_retry_button(dev)
+
+                        if _is_there_retry_button:
+                            print(f"[!] Tela de boot detectada em {dev['display_name']} ({dev['id']}). Pressionando botão de retry...")
+                            aoa_actions.click_coord(dev['id'], dev['adb_path'], "retry_button_click")
+                            time.sleep(600)  # Wait a bit before performing actions
+                            game_launcher.run_aoa([dev])  # Roda as ações do AOA após reiniciar o app
+
+                    perform_actions(dev, loop_iter)
 
             duration = time.time() - start
             sleep_time = max(0, SCAN_INTERVAL - duration)
@@ -215,6 +226,20 @@ def main():
 
     except KeyboardInterrupt:
         print("\nEncerrando monitor de dispositivos...")
+
+def _check_boot_screen_retry_button(device):
+    _retry_button_xy_coords = aoa_actions.COORDS['retry_button_xy']
+    _retry_button_wh_coords = aoa_actions.COORDS['retry_button_wh']
+    _retry_button_coords = (*_retry_button_xy_coords, _retry_button_xy_coords[0]+_retry_button_wh_coords[0], _retry_button_xy_coords[1]+_retry_button_wh_coords[1])
+
+    _element_coords = _retry_button_coords
+    template_raw  = emulator_api.capturar_retangulo(device['id'], *_element_coords)
+
+    match_found, locations = emulator_api.match_template(template_raw, 'retry_button.png')
+
+    # if match_found:
+    #     print(f"Image match in {device['display_name']}! Locations: {locations}")
+    return match_found
 
 if __name__ == "__main__":
     main()
