@@ -108,7 +108,7 @@ def perform_actions(device, loop_iter=0):
             _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_FIRST_DELEGATION_SECOND_MARCH, presetMarch=presetMarch, isKvk=_isKvk)
             _kill_giganto(device_id, adb_path, giganto_level=giganto_level, isDelegation=delegation, hasBus=hasBus, selectedMarch=USE_SECOND_DELEGATION_SECOND_MARCH, presetMarch=presetMarch, isKvk=_isKvk)
 
-            
+
 
         # HEAL: focar em curar tropas no hospital
         elif mode == 'heal':
@@ -150,6 +150,12 @@ def _kill_giganto(device_id, adb_path, giganto_level, isDelegation, hasBus, sele
     time.sleep(2)
     aoa_actions.press_top_left_back_button(device_id, adb_path)
     time.sleep(2)
+
+def _check_game_loaded(dev):
+    while not _check_screen_element(dev, "map_button"):
+        print(f"[!] O jogo ainda não carregou completamente em {dev['display_name']} ({dev['id']}). Aguardando mais 30 segundos... [{time.strftime('%H:%M:%S')}]")
+        time.sleep(30)
+    time.sleep(30)  # Espera um pouco mais para garantir que o jogo esteja estável
 
 def main():
     print("Monitor de dispositivos ADB ativo. Pressione Ctrl+C para sair.\n")
@@ -200,19 +206,12 @@ def main():
                     if not emulator_api.is_app_in_foreground(dev['id'], dev['adb_path'], 'com.tap4fun.ape.gplay'):
                         print(f"[!] O jogo não está rodando em {dev['display_name']} ({dev['id']}). Reiniciando o app... [{time.strftime('%H:%M:%S')}]")
                         game_launcher.start_game([dev])  # Usa a função start_game para reiniciar o app
-                        time.sleep(600)  # Wait a bit before performing actions
+                        _check_game_loaded(dev)
                         game_launcher.run_aoa([dev])  # Roda as ações do AOA após reiniciar o app
                     else:
                         print(f"[>] O jogo está rodando normalmente em {dev['display_name']} ({dev['id']}).")
 
-                        _is_there_retry_button = _check_boot_screen_retry_button(dev)
-
-                        if _is_there_retry_button:
-                            print(f"[!] Tela de boot detectada em {dev['display_name']} ({dev['id']}). Pressionando botão de retry...")
-                            aoa_actions.click_coord(dev['id'], dev['adb_path'], "retry_button_click")
-                            time.sleep(600)  # Wait a bit before performing actions
-                            game_launcher.run_aoa([dev])  # Roda as ações do AOA após reiniciar o app
-                        
+                        _check_screen_element_and_click(dev, "retry_button")
                         _check_screen_element_and_click(dev, "server_maintenance_confirm_button")
 
                     perform_actions(dev, loop_iter)
@@ -231,20 +230,6 @@ def main():
     except KeyboardInterrupt:
         print("\nEncerrando monitor de dispositivos...")
 
-def _check_boot_screen_retry_button(device):
-    _retry_button_xy_coords = aoa_actions.COORDS['retry_button_xy']
-    _retry_button_wh_coords = aoa_actions.COORDS['retry_button_wh']
-    _retry_button_coords = (*_retry_button_xy_coords, _retry_button_xy_coords[0]+_retry_button_wh_coords[0], _retry_button_xy_coords[1]+_retry_button_wh_coords[1])
-
-    _element_coords = _retry_button_coords
-    template_raw  = emulator_api.capturar_retangulo(device['id'], *_element_coords)
-
-    match_found, locations = emulator_api.match_template(template_raw, 'retry_button.png')
-
-    # if match_found:
-    #     print(f"Image match in {device['display_name']}! Locations: {locations}")
-    return match_found
-
 def _check_screen_element(device, element_name):
     _screen_element_xy_coords = aoa_actions.COORDS[element_name + '_xy']
     _screen_element_wh_coords = aoa_actions.COORDS[element_name + '_wh']
@@ -259,7 +244,7 @@ def _check_screen_element_and_click(device, element_name):
     if _check_screen_element(device, element_name):
         print(f"[!] Elemento '{element_name}' detectado em {device['display_name']} ({device['id']}). Clicando...")
         aoa_actions.click_coord(device['id'], device['adb_path'], element_name + "_click")
-        time.sleep(600)  # Wait a bit before performing actions
+        _check_game_loaded(device)
         game_launcher.run_aoa([device])  # Roda as ações do AOA após reiniciar o app
 
 if __name__ == "__main__":

@@ -70,6 +70,10 @@ COORDS = {
     "server_maintenance_confirm_button_xy": (533, 378),
     "server_maintenance_confirm_button_wh": (214, 83),
     "server_maintenance_confirm_button_click": (533+214/2, 378+83/2),
+
+    "map_button_xy": (8, 590),
+    "map_button_wh": (120, 150),
+    "map_button_click": (8+120/2, 590+150/2),
 }
 
 # === Display scaling configuration ===
