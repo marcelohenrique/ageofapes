@@ -81,7 +81,13 @@ COORDS = {
 
     "gang_summon_button_xy": (600, 330),
     "gang_summon_button_wh": (80, 25),
-    "gang_summon_button_click": (600+80/2, 330+25/2)
+    "gang_summon_button_click": (600+80/2, 330+25/2),
+
+    "no_delegation_spot_one_message_xy": (230, 384),
+    "no_delegation_spot_one_message_wh": (225, 60),
+
+    "no_delegation_spot_two_message_xy": (825, 384),
+    "no_delegation_spot_two_message_wh": (225, 60),
 }
 
 # === Display scaling configuration ===
@@ -480,6 +486,35 @@ def press_top_left_back_button(device_id, adb_path):
     click_coord(device_id, adb_path, "top_left_back_button")
     sleep(2)
 
+def _check_screen_element(device, element_name):
+    _screen_element_xy_coords = COORDS[element_name + '_xy']
+    _screen_element_wh_coords = COORDS[element_name + '_wh']
+    _screen_element_coords = (*_screen_element_xy_coords, _screen_element_xy_coords[0]+_screen_element_wh_coords[0], _screen_element_xy_coords[1]+_screen_element_wh_coords[1])
+
+    template_raw = emulator_api.capturar_retangulo(device['id'], *_screen_element_coords)
+    match_found, locations = emulator_api.match_template(template_raw, f"{element_name}.png")
+
+    return match_found
+
+def check_delegations(device):
+    """Verifying delegations"""
+    
+    device_id = device['id']
+    adb_path = device['adb_path']
+
+    emulator_api.tap(device_id, adb_path, 141, 678) # chat button
+    sleep(2)
+    emulator_api.tap(device_id, adb_path, 36, 632) # friends tab
+    sleep(2)
+    emulator_api.tap(device_id, adb_path, 664, 130) # first friend delegation button
+    sleep(2)
+    emulator_api.tap(device_id, adb_path, 1196, 77) # delegate troops > requests received button
+    sleep(2)
+    no_delegation_spot_one = _check_screen_element(device, "no_delegation_spot_one_message")
+    no_delegation_spot_two = _check_screen_element(device, "no_delegation_spot_two_message")
+
+    return no_delegation_spot_one, no_delegation_spot_two
+
 if __name__ == "__main__":
     _target = "ldplayer"
     # _target = "bluestacks"
@@ -487,8 +522,8 @@ if __name__ == "__main__":
     # emulator_api.VERBOSE = True
     devices = emulator_api.list_devices(target=_target)
     if devices:
-        while True:
-        # for _ in range(1):
+        # while True:
+        for _ in range(1):
             for device in devices:
                 print(f"Usando dispositivo {device['display_name']} ({device['id']}) [{device['type']}]")
                 # kill_giganto(device["id"], device["adb_path"])
@@ -502,22 +537,26 @@ if __name__ == "__main__":
                 # press_top_left_back_button(device["id"], device["adb_path"])
                 # click_coord(device["id"], device["adb_path"], "first_rally_button")
                 # sleep(1)
-                if device['id'] == '192.168.1.179:5555' or device['id'] == 'emulator-5568':
-                # if not ( device['id'] == '192.168.1.179:5555' or device['id'] == 'emulator-5568' ):
-                    print("Executando ações de cura para o smartphone...")
-                    # Antes de clicar, configura a escala específica deste dispositivo
-                    try:
-                        width, height = emulator_api.get_screen_size(device['id'], device['adb_path'])
-                        configure_display(device_id=device['id'], width=width, height=height)
-                    except Exception as e:
-                        print(f"[!] Não foi possível obter resolução/configurar escala para {device['id']}: {e}")
+                # if device['id'] == '192.168.1.179:5555' or device['id'] == 'emulator-5568':
+                # # if not ( device['id'] == '192.168.1.179:5555' or device['id'] == 'emulator-5568' ):
+                #     print("Executando ações de cura para o smartphone...")
+                #     # Antes de clicar, configura a escala específica deste dispositivo
+                #     try:
+                #         width, height = emulator_api.get_screen_size(device['id'], device['adb_path'])
+                #         configure_display(device_id=device['id'], width=width, height=height)
+                #     except Exception as e:
+                #         print(f"[!] Não foi possível obter resolução/configurar escala para {device['id']}: {e}")
 
-                    # Agora chama click_coord — o tap será escalado usando a escala do device_id
-                    # click_coord(device['id'], device['adb_path'], "medical_station_clear")
+                #     # Agora chama click_coord — o tap será escalado usando a escala do device_id
+                #     # click_coord(device['id'], device['adb_path'], "medical_station_clear")
 
-                    heal_troops(1000, device['id'], device['adb_path'], additional_time=1)
+                #     heal_troops(1000, device['id'], device['adb_path'], additional_time=1)
 
                     # press_top_left_back_button(device['id'], device['adb_path'])
+                emulator_api.press_back_esc(device['id'], device['adb_path'])
+                sleep(2)
+                no_delegation_spot_one, no_delegation_spot_two = check_delegations(device)
+                print(f"Delegation spot 1 empty: {no_delegation_spot_one}, Delegation spot 2 empty: {no_delegation_spot_two}")
 
     else:
         print("Nenhum dispositivo conectado.")

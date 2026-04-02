@@ -218,14 +218,15 @@ def main():
                         print(f"[!] O jogo não está rodando em {dev['display_name']} ({dev['id']}). Reiniciando o app... [{time.strftime('%H:%M:%S')}]")
                         game_launcher.start_game([dev])  # Usa a função start_game para reiniciar o app
                         _check_game_loaded(dev)
-                        game_launcher.run_aoa([dev])  # Roda as ações do AOA após reiniciar o app
+                        # game_launcher.run_aoa([dev])  # Roda as ações do AOA após reiniciar o app
                     else:
                         print(f"[>] O jogo está rodando normalmente em {dev['display_name']} ({dev['id']}).")
 
-                        _check_screen_element_and_click(dev, "retry_button")
-                        _check_screen_element_and_click(dev, "server_maintenance_confirm_button")
-                        _check_screen_element_and_click(dev, "overlord_button")
-                        _check_screen_element_and_click(dev, "gang_summon_button")
+                        # _check_screen_element_and_click(dev, "retry_button")
+                        # _check_screen_element_and_click(dev, "server_maintenance_confirm_button")
+                        # _check_screen_element_and_click(dev, "overlord_button")
+                        # _check_screen_element_and_click(dev, "gang_summon_button")
+                        _check_game_loaded(dev)  # Verifica se o jogo está na tela principal, caso contrário tenta resolver popups e aguarda
 
                     perform_actions(dev, loop_iter)
 
@@ -242,16 +243,6 @@ def main():
 
     except KeyboardInterrupt:
         print("\nEncerrando monitor de dispositivos...")
-
-def _check_screen_element(device, element_name):
-    _screen_element_xy_coords = aoa_actions.COORDS[element_name + '_xy']
-    _screen_element_wh_coords = aoa_actions.COORDS[element_name + '_wh']
-    _screen_element_coords = (*_screen_element_xy_coords, _screen_element_xy_coords[0]+_screen_element_wh_coords[0], _screen_element_xy_coords[1]+_screen_element_wh_coords[1])
-
-    template_raw = emulator_api.capturar_retangulo(device['id'], *_screen_element_coords)
-    match_found, locations = emulator_api.match_template(template_raw, f"{element_name}.png")
-
-    return match_found
 
 def _check_screen_element_and_click(device, element_name):
     if _check_screen_element(device, element_name):
