@@ -74,6 +74,14 @@ COORDS = {
     "map_button_xy": (8, 590),
     "map_button_wh": (120, 150),
     "map_button_click": (8+120/2, 590+150/2),
+
+    "overlord_button_xy": (452, 536),
+    "overlord_button_wh": (372, 114),
+    "overlord_button_click": (452+372/2, 536+114/2),
+
+    "gang_summon_button_xy": (600, 330),
+    "gang_summon_button_wh": (80, 25),
+    "gang_summon_button_click": (600+80/2, 330+25/2)
 }
 
 # === Display scaling configuration ===

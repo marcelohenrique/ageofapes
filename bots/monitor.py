@@ -155,6 +155,17 @@ def _check_game_loaded(dev):
     while not _check_screen_element(dev, "map_button"):
         print(f"[!] O jogo ainda não carregou completamente em {dev['display_name']} ({dev['id']}). Aguardando mais 30 segundos... [{time.strftime('%H:%M:%S')}]")
         time.sleep(30)
+
+        if _check_screen_element_and_click(dev, "retry_button") or _check_screen_element_and_click(dev, "server_maintenance_confirm_button"):
+            print(f"[!] Server error or under maintenance. Trying to restart the game in {dev['display_name']} ({dev['id']})... [{time.strftime('%H:%M:%S')}]")
+            time.sleep(2)
+            game_launcher.run_aoa([dev])  # Roda as ações do AOA após reiniciar o app
+
+        if _check_screen_element_and_click(dev, "gang_summon_button"):
+            time.sleep(2)
+            emulator_api.press_back_esc(dev['id'], dev['adb_path'])
+        
+        _check_screen_element_and_click(dev, "overlord_button")
     time.sleep(30)  # Espera um pouco mais para garantir que o jogo esteja estável
 
 def main():
@@ -213,6 +224,8 @@ def main():
 
                         _check_screen_element_and_click(dev, "retry_button")
                         _check_screen_element_and_click(dev, "server_maintenance_confirm_button")
+                        _check_screen_element_and_click(dev, "overlord_button")
+                        _check_screen_element_and_click(dev, "gang_summon_button")
 
                     perform_actions(dev, loop_iter)
 
@@ -244,8 +257,10 @@ def _check_screen_element_and_click(device, element_name):
     if _check_screen_element(device, element_name):
         print(f"[!] Elemento '{element_name}' detectado em {device['display_name']} ({device['id']}). Clicando...")
         aoa_actions.click_coord(device['id'], device['adb_path'], element_name + "_click")
-        _check_game_loaded(device)
-        game_launcher.run_aoa([device])  # Roda as ações do AOA após reiniciar o app
+        # emulator_api.press_back_esc(device['id'], device['adb_path'])
+        # _check_game_loaded(device)
+        return True
+    return False
 
 if __name__ == "__main__":
     main()
